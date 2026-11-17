@@ -116,5 +116,6 @@ footer { border-top: 1px solid var(--borde); }
 
 @media (max-width: 600px) {
   .titulo h2 { font-size: 28px; }
+  .nav_links { display: none; }
   .campos { grid-template-columns: 1fr; }
 }

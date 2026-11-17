@@ -4,6 +4,17 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>PickLab - Picks de la semana</title>
+<meta name="description" content="Los picks de apuestas con mas probabilidad de pegar esta semana, basados en estadisticas reales.">
+<meta name="theme-color" content="#0B0F14">
+<meta property="og:title" content="PickLab - Picks de la semana">
+<meta property="og:description" content="Los picks con mas probabilidad de pegar, con sus numeros.">
+<meta property="og:image" content="icono-512.png">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="PickLab">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@500;700&display=swap">
 <link rel="stylesheet" href="estilos.css">
@@ -21,7 +32,10 @@
       <a href="#" data-ir="parlay">Parlay</a>
       <a href="#" data-ir="herramientas">Herramientas</a>
     </div>
-    <div class="pastilla" id="actualizado"></div>
+    <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+      <button type="button" id="instalar" class="boton" style="display:none;border:0;cursor:pointer;min-height:40px">Instalar app</button>
+      <div class="pastilla" id="actualizado"></div>
+    </div>
   </nav>
   <div class="tira">
     <div class="tira_dentro contenedor" id="tira" role="navigation" aria-label="Deportes"></div>
@@ -39,5 +53,10 @@
 
 <script src="picks.js"></script>
 <script src="app.js"></script>
+<script>
+  if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.register("sw.js").catch(function () {});
+  }
+</script>
 </body>
 </html>

@@ -217,6 +217,7 @@ function pintarInicio() {
     "<div><b>Prop</b><span>Apuesta sobre un jugador: puntos, rebotes, asistencias, etc.</span></div>" +
     "<div><b>Momio</b><span>-110: apuestas $110 para ganar $100. +150: apuestas $100 para ganar $150.</span></div>" +
     "<div><b>Ventaja</b><span>Nuestra probabilidad menos la que implica el momio. Positiva = valor.</span></div></div>" +
+    '<div class="caja"><h3 style="font-size:22px">Instala PickLab en tu celular</h3><p style="font-size:14px;color:#C9D1DB">iPhone: abre la pagina en Safari, toca Compartir y luego Agregar a inicio. Android: abre el menu de Chrome y toca Instalar app.</p></div>' +
     '<div class="caja"><h3 style="font-size:22px">Como calculamos</h3><p class="gris_claro" style="font-size:14px;color:#C9D1DB">' +
     "Props: 60% cuantas veces el jugador paso la linea en sus ultimos partidos + 40% el consenso de las casas sin su comision. " +
     "Spreads y totales: consenso de varias casas sin comision, comparado contra el mejor momio disponible. " +
@@ -386,6 +387,28 @@ function pintarPick(id) {
   app.innerHTML = html;
 }
 
+// ---------- Instalar como app ----------
+
+var promptInstalar = null;
+window.addEventListener("beforeinstallprompt", function (e) {
+  e.preventDefault();
+  promptInstalar = e;
+  var b = document.getElementById("instalar");
+  if (b) b.style.display = "inline-flex";
+});
+
+function botonInstalar() {
+  var b = document.getElementById("instalar");
+  if (!b) return;
+  b.onclick = function () {
+    if (promptInstalar) {
+      promptInstalar.prompt();
+      promptInstalar = null;
+      b.style.display = "none";
+    }
+  };
+}
+
 // ---------- Rutas ----------
 
 function pintar() {
@@ -403,7 +426,8 @@ function pintar() {
 
 window.addEventListener("hashchange", function () {
   filtro = { liga: "Todas", tipo: "Todos" };
-  pintar();
+  botonInstalar();
+pintar();
 });
 
 document.querySelectorAll("[data-ir]").forEach(function (a) {
@@ -417,4 +441,5 @@ document.querySelectorAll("[data-ir]").forEach(function (a) {
   };
 });
 
+botonInstalar();
 pintar();
