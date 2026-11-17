@@ -219,8 +219,8 @@ function pintarInicio() {
     "<div><b>Ventaja</b><span>Nuestra probabilidad menos la que implica el momio. Positiva = valor.</span></div></div>" +
     '<div class="caja"><h3 style="font-size:22px">Instala PickLab en tu celular</h3><p style="font-size:14px;color:#C9D1DB">iPhone: abre la pagina en Safari, toca Compartir y luego Agregar a inicio. Android: abre el menu de Chrome y toca Instalar app.</p></div>' +
     '<div class="caja"><h3 style="font-size:22px">Como calculamos</h3><p class="gris_claro" style="font-size:14px;color:#C9D1DB">' +
-    "Props: 60% cuantas veces el jugador paso la linea en sus ultimos partidos + 40% el consenso de las casas sin su comision. " +
-    "Spreads y totales: consenso de varias casas sin comision, comparado contra el mejor momio disponible. " +
+    "Props: 60% cuantas veces el jugador paso la linea en sus ultimos partidos + 40% el momio sin comision. " +
+    "Spreads y totales: 50% nuestro modelo con los puntos o goles a favor y en contra de la temporada + 50% el momio sin comision. " +
     "Solo mostramos picks donde nuestra probabilidad es mayor a la del momio.</p></div></div></div></section>";
 
   if (D.fuentes) {
@@ -302,7 +302,13 @@ function pintarDeporte(grupo) {
   html += '</div></div><div class="rejilla_ancha">';
   lista.forEach(function (p) { html += tarjetaPick(p); });
   html += "</div>";
-  if (lista.length === 0) html += '<div class="vacio">No hay picks con este filtro.</div>';
+  if (lista.length === 0) {
+    if (todos.length === 0 && info.partidos > 0) {
+      html += '<div class="vacio">Revisamos ' + info.partidos + " partidos de " + grupo + " y ninguno tuvo ventaja suficiente. Mejor no apostar que apostar sin ventaja.</div>";
+    } else {
+      html += '<div class="vacio">No hay picks con este filtro.</div>';
+    }
+  }
   html += "</section>";
 
   var racha = jugadoresEnRacha(todos, 8);
@@ -372,8 +378,11 @@ function pintarPick(id) {
   } else {
     html += '<section class="fila" style="align-items:flex-start"><div class="grande" style="display:flex;flex-direction:column;gap:20px">' +
       '<div class="caja"><span class="etiqueta">' + esc(p.liga) + " - " + esc(p.tipo) + '</span><h1 style="font-size:clamp(30px,4.5vw,46px)">' + esc(p.partido) + '</h1><span class="gris">' + fecha(p.fecha) + "</span></div>" +
-      '<div class="caja"><h2 style="font-size:22px">De donde sale este pick</h2><p style="color:#C9D1DB">Comparamos ' + p.casas + " casas de apuestas. Les quitamos su comision para sacar la probabilidad justa (" + p.prob + "%). " +
-      "El mejor momio lo tiene " + esc(p.casa) + " (" + momio(p.momio) + "), que implica " + p.implicita + "%. La diferencia es tu ventaja: +" + p.ventaja + "%.</p></div></div>";
+      (p.explicacion
+        ? '<div class="caja"><h2 style="font-size:22px">De donde sale este pick</h2><p style="color:#C9D1DB">' + esc(p.explicacion) + "</p>" +
+          '<div class="mini_stats"><div class="mini"><b>' + p.modelo + '%</b><span>Nuestro modelo</span></div><div class="mini"><b>' + p.mercado_prob + '%</b><span>Mercado sin comision</span></div><div class="mini"><b class="verde">' + p.prob + "%</b><span>Probabilidad final (50/50)</span></div></div></div></div>"
+        : '<div class="caja"><h2 style="font-size:22px">De donde sale este pick</h2><p style="color:#C9D1DB">Comparamos ' + p.casas + " casas de apuestas. Les quitamos su comision para sacar la probabilidad justa (" + p.prob + "%). " +
+          "El mejor momio lo tiene " + esc(p.casa) + " (" + momio(p.momio) + "), que implica " + p.implicita + "%. La diferencia es tu ventaja: +" + p.ventaja + "%.</p></div></div>");
   }
 
   // Columna derecha: el pick

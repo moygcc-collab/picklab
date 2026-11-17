@@ -1,40 +1,51 @@
 window.PICKS = {
- "actualizado": "2026-11-17 13:21",
+ "actualizado": "2026-11-17 13:28",
  "prueba": false,
  "manual": true,
- "nota": "Edicion del martes 17 de noviembre: props de NBA de esta noche con lineas y estadisticas reales. Cada semana se agregan mas deportes.",
+ "nota": "Edicion del martes 17 de noviembre: NBA (props de hoy), NHL (hoy), NFL semana 11 y Premier League jornada 11, con lineas y estadisticas reales. MLB esta fuera de temporada; UFC y tenis llegan en la proxima edicion.",
  "fuentes": [
   [
-   "DraftKings Network - NBA betting trends 17 nov",
+   "ESPN - momios NFL semana 11 (DraftKings)",
+   "https://www.espn.com/nfl/odds"
+  ],
+  [
+   "ESPN - tabla NFL (puntos a favor y en contra)",
+   "https://www.espn.com/nfl/standings"
+  ],
+  [
+   "ESPN - momios NHL (DraftKings)",
+   "https://www.espn.com/nhl/odds"
+  ],
+  [
+   "ESPN - tabla NHL (goles a favor y en contra)",
+   "https://www.espn.com/nhl/standings"
+  ],
+  [
+   "Betwatch - momios Premier League",
+   "https://betwatch.io/odds/premier-league"
+  ],
+  [
+   "ESPN - tabla Premier League",
+   "https://www.espn.com/soccer/standings/_/league/eng.1"
+  ],
+  [
+   "DraftKings Network - props NBA 17 nov",
    "https://dknetwork.draftkings.com/2026/11/17/nba-public-betting-trends-tuesday-november-17"
   ],
   [
-   "FanDuel Research - NBA props 17 nov",
+   "FanDuel Research - props NBA 17 nov",
    "https://www.fanduel.com/research/nba-props-today-player-prop-bets-tuesday-nov-17"
   ],
   [
-   "Steezanomics - Knicks vs Raptors props",
+   "Steezanomics - props NBA 17 nov",
    "https://steezanomics.com/picks/knicks-vs-raptors-player-props-november-17-2026/"
   ],
   [
-   "Steezanomics - Hornets vs Lakers props",
-   "https://steezanomics.com/picks/hornets-vs-lakers-player-props-november-17-2026/"
-  ],
-  [
-   "Steezanomics - rebounds props",
-   "https://steezanomics.com/picks/best-rebounds-props-tuesday-november-17-2026/"
-  ],
-  [
-   "ESPN - game logs de cada jugador",
+   "ESPN - game logs de jugadores NBA",
    "https://www.espn.com/nba/"
-  ],
-  [
-   "StatMuse - horarios del 17 nov",
-   "https://www.statmuse.com/nba/ask/play"
   ]
  ],
- "partidos_analizados": 5,
- "props_analizados": 9,
+ "partidos_analizados": 37,
  "descartados": [
   "LaMelo Ball Under 21.5"
  ],
@@ -276,6 +287,50 @@ window.PICKS = {
    "unidades": 1
   },
   {
+   "evento": "nfl_LV_DEN",
+   "grupo": "NFL",
+   "liga": "NFL",
+   "partido": "Raiders @ Broncos",
+   "fecha": "2026-11-22T21:25:00Z",
+   "tipo": "Totales",
+   "mercado": "Total de puntos",
+   "pick": "Over 40.5",
+   "momio": -108,
+   "casa": "DraftKings",
+   "casas": 1,
+   "prob": 60.7,
+   "ventaja": 8.8,
+   "modelo": 71.9,
+   "mercado_prob": 49.6,
+   "explicacion": "Con sus puntos a favor y en contra de esta temporada, proyectamos Broncos 26.4 y Raiders 21.9: total de 48.3 puntos contra una linea de 40.5.",
+   "base": "50% modelo con estadisticas de la temporada + 50% momio sin comision",
+   "id": 7,
+   "implicita": 51.9,
+   "unidades": 1
+  },
+  {
+   "evento": "nfl_IND_HOU",
+   "grupo": "NFL",
+   "liga": "NFL",
+   "partido": "Colts @ Texans",
+   "fecha": "2026-11-20T01:15:00Z",
+   "tipo": "Spreads",
+   "mercado": "Spread",
+   "pick": "Colts +12.5",
+   "momio": -112,
+   "casa": "DraftKings",
+   "casas": 1,
+   "prob": 59.6,
+   "ventaja": 6.7,
+   "modelo": 68.7,
+   "mercado_prob": 50.4,
+   "explicacion": "Proyectamos que Texans termine con un margen de +5.9 puntos, contra un spread de -12.5 para Texans.",
+   "base": "50% modelo con estadisticas de la temporada + 50% momio sin comision",
+   "id": 8,
+   "implicita": 52.8,
+   "unidades": 0.5
+  },
+  {
    "evento": "nyk_tor",
    "grupo": "NBA",
    "liga": "NBA",
@@ -310,8 +365,118 @@ window.PICKS = {
    "maximo": 51,
    "minimo": 6,
    "base": "Ultimos 9 partidos + momio de la casa. Linea via Steezanomics, partidos via ESPN",
-   "id": 7,
+   "id": 9,
    "implicita": 48.8,
+   "unidades": 0.5
+  },
+  {
+   "evento": "nfl_BAL_CAR",
+   "grupo": "NFL",
+   "liga": "NFL",
+   "partido": "Ravens @ Panthers",
+   "fecha": "2026-11-22T18:00:00Z",
+   "tipo": "Totales",
+   "mercado": "Total de puntos",
+   "pick": "Over 43.5",
+   "momio": -112,
+   "casa": "DraftKings",
+   "casas": 1,
+   "prob": 58.0,
+   "ventaja": 5.1,
+   "modelo": 65.5,
+   "mercado_prob": 50.4,
+   "explicacion": "Con sus puntos a favor y en contra de esta temporada, proyectamos Panthers 26.3 y Ravens 22.6: total de 48.9 puntos contra una linea de 43.5.",
+   "base": "50% modelo con estadisticas de la temporada + 50% momio sin comision",
+   "id": 10,
+   "implicita": 52.8,
+   "unidades": 0.5
+  },
+  {
+   "evento": "nfl_MIA_BUF",
+   "grupo": "NFL",
+   "liga": "NFL",
+   "partido": "Dolphins @ Bills",
+   "fecha": "2026-11-22T18:00:00Z",
+   "tipo": "Spreads",
+   "mercado": "Spread",
+   "pick": "Dolphins +16.5",
+   "momio": -112,
+   "casa": "DraftKings",
+   "casas": 1,
+   "prob": 58.0,
+   "ventaja": 5.1,
+   "modelo": 65.5,
+   "mercado_prob": 50.4,
+   "explicacion": "Proyectamos que Bills termine con un margen de +11.1 puntos, contra un spread de -16.5 para Bills.",
+   "base": "50% modelo con estadisticas de la temporada + 50% momio sin comision",
+   "id": 11,
+   "implicita": 52.8,
+   "unidades": 0.5
+  },
+  {
+   "evento": "nfl_LV_DEN",
+   "grupo": "NFL",
+   "liga": "NFL",
+   "partido": "Raiders @ Broncos",
+   "fecha": "2026-11-22T21:25:00Z",
+   "tipo": "Spreads",
+   "mercado": "Spread",
+   "pick": "Raiders +10",
+   "momio": -108,
+   "casa": "DraftKings",
+   "casas": 1,
+   "prob": 57.6,
+   "ventaja": 5.7,
+   "modelo": 65.6,
+   "mercado_prob": 49.6,
+   "explicacion": "Proyectamos que Broncos termine con un margen de +4.6 puntos, contra un spread de -10 para Broncos.",
+   "base": "50% modelo con estadisticas de la temporada + 50% momio sin comision",
+   "id": 12,
+   "implicita": 51.9,
+   "unidades": 0.5
+  },
+  {
+   "evento": "nfl_NYJ_LAC",
+   "grupo": "NFL",
+   "liga": "NFL",
+   "partido": "Jets @ Chargers",
+   "fecha": "2026-11-22T21:05:00Z",
+   "tipo": "Spreads",
+   "mercado": "Spread",
+   "pick": "Jets +3.5",
+   "momio": -118,
+   "casa": "DraftKings",
+   "casas": 1,
+   "prob": 57.6,
+   "ventaja": 3.4,
+   "modelo": 63.4,
+   "mercado_prob": 51.7,
+   "explicacion": "Proyectamos que Chargers termine con un margen de -1.1 puntos, contra un spread de -3.5 para Chargers.",
+   "base": "50% modelo con estadisticas de la temporada + 50% momio sin comision",
+   "id": 13,
+   "implicita": 54.1,
+   "unidades": 0.5
+  },
+  {
+   "evento": "nfl_ARI_KC",
+   "grupo": "NFL",
+   "liga": "NFL",
+   "partido": "Cardinals @ Chiefs",
+   "fecha": "2026-11-22T18:00:00Z",
+   "tipo": "Spreads",
+   "mercado": "Spread",
+   "pick": "Cardinals +16.5",
+   "momio": -115,
+   "casa": "DraftKings",
+   "casas": 1,
+   "prob": 57.4,
+   "ventaja": 3.9,
+   "modelo": 63.8,
+   "mercado_prob": 51.1,
+   "explicacion": "Proyectamos que Chiefs termine con un margen de +11.8 puntos, contra un spread de -16.5 para Chiefs.",
+   "base": "50% modelo con estadisticas de la temporada + 50% momio sin comision",
+   "id": 14,
+   "implicita": 53.5,
    "unidades": 0.5
   },
   {
@@ -350,8 +515,118 @@ window.PICKS = {
    "maximo": 31,
    "minimo": 9,
    "base": "Ultimos 10 partidos + momio de la casa. Linea via FanDuel Research, partidos via ESPN",
-   "id": 8,
+   "id": 15,
    "implicita": 51.5,
+   "unidades": 0.5
+  },
+  {
+   "evento": "nfl_NO_CHI",
+   "grupo": "NFL",
+   "liga": "NFL",
+   "partido": "Saints @ Bears",
+   "fecha": "2026-11-22T18:00:00Z",
+   "tipo": "Spreads",
+   "mercado": "Spread",
+   "pick": "Saints +11.5",
+   "momio": -108,
+   "casa": "DraftKings",
+   "casas": 1,
+   "prob": 56.2,
+   "ventaja": 4.3,
+   "modelo": 62.9,
+   "mercado_prob": 49.6,
+   "explicacion": "Proyectamos que Bears termine con un margen de +7.1 puntos, contra un spread de -11.5 para Bears.",
+   "base": "50% modelo con estadisticas de la temporada + 50% momio sin comision",
+   "id": 16,
+   "implicita": 51.9,
+   "unidades": 0.5
+  },
+  {
+   "evento": "nfl_IND_HOU",
+   "grupo": "NFL",
+   "liga": "NFL",
+   "partido": "Colts @ Texans",
+   "fecha": "2026-11-20T01:15:00Z",
+   "tipo": "Totales",
+   "mercado": "Total de puntos",
+   "pick": "Over 44.5",
+   "momio": -105,
+   "casa": "DraftKings",
+   "casas": 1,
+   "prob": 56.1,
+   "ventaja": 4.9,
+   "modelo": 63.2,
+   "mercado_prob": 48.9,
+   "explicacion": "Con sus puntos a favor y en contra de esta temporada, proyectamos Texans 27.5 y Colts 21.6: total de 49.1 puntos contra una linea de 44.5.",
+   "base": "50% modelo con estadisticas de la temporada + 50% momio sin comision",
+   "id": 17,
+   "implicita": 51.2,
+   "unidades": 0.5
+  },
+  {
+   "evento": "nfl_ARI_KC",
+   "grupo": "NFL",
+   "liga": "NFL",
+   "partido": "Cardinals @ Chiefs",
+   "fecha": "2026-11-22T18:00:00Z",
+   "tipo": "Totales",
+   "mercado": "Total de puntos",
+   "pick": "Over 41.5",
+   "momio": -108,
+   "casa": "DraftKings",
+   "casas": 1,
+   "prob": 55.6,
+   "ventaja": 3.7,
+   "modelo": 61.6,
+   "mercado_prob": 49.6,
+   "explicacion": "Con sus puntos a favor y en contra de esta temporada, proyectamos Chiefs 28.6 y Cardinals 16.9: total de 45.5 puntos contra una linea de 41.5.",
+   "base": "50% modelo con estadisticas de la temporada + 50% momio sin comision",
+   "id": 18,
+   "implicita": 51.9,
+   "unidades": 0.5
+  },
+  {
+   "evento": "nfl_TEN_DAL",
+   "grupo": "NFL",
+   "liga": "NFL",
+   "partido": "Titans @ Cowboys",
+   "fecha": "2026-11-22T18:00:00Z",
+   "tipo": "Totales",
+   "mercado": "Total de puntos",
+   "pick": "Under 54.5",
+   "momio": 100,
+   "casa": "DraftKings",
+   "casas": 1,
+   "prob": 54.1,
+   "ventaja": 4.1,
+   "modelo": 60.4,
+   "mercado_prob": 47.8,
+   "explicacion": "Con sus puntos a favor y en contra de esta temporada, proyectamos Cowboys 28.6 y Titans 22.4: total de 51.0 puntos contra una linea de 54.5.",
+   "base": "50% modelo con estadisticas de la temporada + 50% momio sin comision",
+   "id": 19,
+   "implicita": 50.0,
+   "unidades": 0.5
+  },
+  {
+   "evento": "epl_Newcastle_Arsenal",
+   "grupo": "Futbol",
+   "liga": "Premier League",
+   "partido": "Newcastle vs Arsenal",
+   "fecha": "2026-11-21T17:30:00Z",
+   "tipo": "Totales",
+   "mercado": "Total de goles",
+   "pick": "Under 2.5",
+   "momio": 115,
+   "casa": "Betwatch",
+   "casas": 1,
+   "prob": 50.5,
+   "ventaja": 4.0,
+   "modelo": 56.9,
+   "mercado_prob": 44.1,
+   "explicacion": "Con sus goles a favor y en contra en la Premier, esperamos 2.4 goles (Newcastle 1.0, Arsenal 1.4) contra una linea de 2.5.",
+   "base": "50% modelo con estadisticas de la temporada + 50% momio sin comision",
+   "id": 20,
+   "implicita": 46.5,
    "unidades": 0.5
   }
  ],
@@ -366,10 +641,10 @@ window.PICKS = {
  },
  "grupos": {
   "NFL": {
-   "picks": 0,
-   "partidos": 0,
+   "picks": 11,
+   "partidos": 13,
    "ligas": [
-    "NFL"
+    "NFL semana 11"
    ]
   },
   "NBA": {
@@ -380,13 +655,10 @@ window.PICKS = {
    ]
   },
   "Futbol": {
-   "picks": 0,
-   "partidos": 0,
+   "picks": 1,
+   "partidos": 8,
    "ligas": [
-    "Liga MX",
-    "Premier League",
-    "LaLiga",
-    "Champions"
+    "Premier League"
    ]
   },
   "MLB": {
@@ -398,7 +670,7 @@ window.PICKS = {
   },
   "NHL": {
    "picks": 0,
-   "partidos": 0,
+   "partidos": 11,
    "ligas": [
     "NHL"
    ]
@@ -408,6 +680,13 @@ window.PICKS = {
    "partidos": 0,
    "ligas": [
     "UFC"
+   ]
+  },
+  "Tenis": {
+   "picks": 0,
+   "partidos": 0,
+   "ligas": [
+    "ATP / WTA"
    ]
   }
  }
