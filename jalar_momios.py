@@ -8,6 +8,7 @@ import requests
 import config
 
 URL_BASE = "https://api.the-odds-api.com/v4"
+ERRORES = []
 
 
 def guardar(nombre_archivo, datos):
@@ -22,6 +23,9 @@ def pedir(url, parametros):
     print("  Creditos restantes:", respuesta.headers.get("x-requests-remaining"))
     if respuesta.status_code != 200:
         print("  ERROR", respuesta.status_code, respuesta.text)
+        error = "The Odds API " + str(respuesta.status_code) + ": " + respuesta.text[:200]
+        if error not in ERRORES:
+            ERRORES.append(error)
         return None
     return respuesta.json()
 
@@ -31,6 +35,21 @@ def ligas_activas():
     deportes = pedir(URL_BASE + "/sports", {})
     activas = {}
     if not deportes:
+        # Si falla, probamos con todas las ligas de config
+        for clave in config.LIGAS:
+            grupo = "Futbol"
+            if clave.startswith("americanfootball"):
+                grupo = "NFL"
+            elif clave.startswith("basketball"):
+                grupo = "NBA"
+            elif clave.startswith("icehockey"):
+                grupo = "NHL"
+            elif clave.startswith("baseball"):
+                grupo = "MLB"
+            elif clave.startswith("mma"):
+                grupo = "UFC"
+            activas[clave] = {"grupo": grupo, "liga": config.LIGAS[clave]}
+        guardar("ligas.json", activas)
         return activas
     for d in deportes:
         if not d.get("active") or d.get("has_outrights"):
@@ -83,9 +102,13 @@ def jalar_props(activas):
 
 
 def main():
+    if config.ODDS_API_KEY.startswith("PEGA_AQUI") or config.ODDS_API_KEY.strip() == "":
+        ERRORES.append("No se encontro la llave ODDS_API_KEY")
+    print("Largo de la llave de The Odds API:", len(config.ODDS_API_KEY.strip()))
     activas = ligas_activas()
     jalar_lineas(activas)
     jalar_props(activas)
+    guardar("errores_momios.json", ERRORES)
 
 
 if __name__ == "__main__":

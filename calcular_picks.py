@@ -352,7 +352,10 @@ def main():
     for p in picks:
         grupos[p["grupo"]]["picks"] += 1
 
+    errores = leer("errores_momios.json", []) + leer("errores_stats.json", [])
+
     salida = {
+        "errores": errores,
         "actualizado": datetime.now().strftime("%Y-%m-%d %H:%M"),
         "prueba": os.path.exists("datos/es_prueba.txt"),
         "partidos_analizados": partidos,

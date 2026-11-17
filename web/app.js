@@ -111,6 +111,10 @@ function pintarInicio() {
     html += '<div class="aviso">Estas viendo DATOS DE PRUEBA. Pega tus llaves en config.py y corre: python correr_todo.py</div>';
   }
 
+  if (D.errores && D.errores.length) {
+    html += '<div class="aviso" style="background:#3A1A16;border-color:#7A2E24;color:#FFB4A8">Hubo errores al actualizar: ' + esc(D.errores.join(" | ")) + "</div>";
+  }
+
   if (D.nota) {
     html += '<div class="aviso" style="background:#1A2410;border-color:#3A4F1B;color:#E2FF8A">' + esc(D.nota) + "</div>";
   }

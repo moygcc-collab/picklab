@@ -6,6 +6,8 @@ on:
     # Con el plan gratis de The Odds API (500 creditos) no alcanza para diario
     - cron: "0 15 */3 * *"
   workflow_dispatch:
+  push:
+    branches: [main]
 
 permissions:
   contents: read

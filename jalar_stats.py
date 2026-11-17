@@ -10,6 +10,7 @@ import requests
 import config
 
 URL_BASE = "https://v2.nba.api-sports.io"
+ERRORES = []
 
 
 def pedir(ruta, parametros):
@@ -18,6 +19,7 @@ def pedir(ruta, parametros):
     datos = respuesta.json()
     if datos.get("errors"):
         print("  ERROR:", datos["errors"])
+        ERRORES.append("API-Sports: " + json.dumps(datos["errors"])[:200])
         return []
     return datos.get("response", [])
 
@@ -90,6 +92,8 @@ def main():
 
     with open("datos/stats_nba.json", "w", encoding="utf-8") as archivo:
         json.dump(jugadores, archivo, indent=2)
+    with open("datos/errores_stats.json", "w", encoding="utf-8") as archivo:
+        json.dump(ERRORES, archivo, indent=2)
     print("Guardado: stats_nba.json con", len(jugadores), "jugadores")
 
 
