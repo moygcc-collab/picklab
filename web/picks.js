@@ -1,8 +1,8 @@
 window.PICKS = {
- "actualizado": "2026-11-17 13:18",
+ "actualizado": "2026-11-17 13:21",
  "prueba": false,
  "manual": true,
- "nota": "Edicion del martes 17 de noviembre: props de NBA de esta noche con lineas y estadisticas reales. Los demas deportes llegan con la version automatica.",
+ "nota": "Edicion del martes 17 de noviembre: props de NBA de esta noche con lineas y estadisticas reales. Cada semana se agregan mas deportes.",
  "fuentes": [
   [
    "DraftKings Network - NBA betting trends 17 nov",

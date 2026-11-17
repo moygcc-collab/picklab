@@ -140,7 +140,7 @@ salida = {
     "actualizado": datetime.now().strftime("%Y-%m-%d %H:%M"),
     "prueba": False,
     "manual": True,
-    "nota": "Edicion del martes 17 de noviembre: props de NBA de esta noche con lineas y estadisticas reales. Los demas deportes llegan con la version automatica.",
+    "nota": "Edicion del martes 17 de noviembre: props de NBA de esta noche con lineas y estadisticas reales. Cada semana se agregan mas deportes.",
     "fuentes": [
         ["DraftKings Network - NBA betting trends 17 nov", "https://dknetwork.draftkings.com/2026/11/17/nba-public-betting-trends-tuesday-november-17"],
         ["FanDuel Research - NBA props 17 nov", "https://www.fanduel.com/research/nba-props-today-player-prop-bets-tuesday-nov-17"],

@@ -276,7 +276,7 @@ function pintarDeporte(grupo) {
     '<p class="gris">' + info.partidos + " partidos analizados - " + todos.length + " picks con ventaja</p>";
 
   if (info.partidos === 0) {
-    html += '<div class="aviso">' + (D.manual ? grupo + " llega con la version automatica. Esta edicion solo trae NBA." : "No hay partidos de " + grupo + " esta semana (puede estar fuera de temporada).") + "</div>";
+    html += '<div class="aviso">' + (D.manual ? grupo + " llega en las proximas ediciones. Esta edicion trae NBA." : "No hay partidos de " + grupo + " esta semana (puede estar fuera de temporada).") + "</div>";
   }
 
   if (info.ligas.length > 1) {
