@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PickLab - Picks de la semana</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@500;700&display=swap">
+<link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+<header>
+  <nav class="nav contenedor">
+    <a href="#" class="logo">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#C6F432" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 17l6-6 4 4 8-8"></path><path d="M14 7h7v7"></path></svg>
+      <span>PickLab</span>
+    </a>
+    <div class="nav_links">
+      <a href="#">Picks</a>
+      <a href="#" data-ir="tendencias">Tendencias</a>
+      <a href="#" data-ir="parlay">Parlay</a>
+      <a href="#" data-ir="herramientas">Herramientas</a>
+    </div>
+    <div class="pastilla" id="actualizado"></div>
+  </nav>
+  <div class="tira">
+    <div class="tira_dentro contenedor" id="tira" role="navigation" aria-label="Deportes"></div>
+  </div>
+</header>
+
+<main class="contenedor" id="app"></main>
+
+<footer>
+  <div class="contenedor pie">
+    <span>PickLab - Los picks son analisis estadistico, no garantia de resultado.</span>
+    <span>+18 - Apuesta con responsabilidad</span>
+  </div>
+</footer>
+
+<script src="picks.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
