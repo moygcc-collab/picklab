@@ -15,8 +15,10 @@ import json
 import math
 from datetime import datetime
 from calcular_picks import prob_implicita, a_decimal, a_americano
+import historial
 
 EDICION = "martes 17 de noviembre"
+FECHA_EDICION = "2026-11-17"  # para el historial (AAAA-MM-DD)
 
 # ---------- Funciones de probabilidad ----------
 
@@ -417,6 +419,10 @@ def main():
         archivo.write("window.PICKS = ")
         archivo.write(json.dumps(salida, ensure_ascii=False, indent=1))
         archivo.write(";\n")
+
+    # Guardar en el historial y actualizar el record de la pagina
+    lista = historial.guardar_edicion(picks, FECHA_EDICION)
+    historial.escribir_web(historial.aplicar_resultados(lista))
 
     for p in picks:
         extra = ""

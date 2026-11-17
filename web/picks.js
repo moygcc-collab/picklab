@@ -1,5 +1,5 @@
 window.PICKS = {
- "actualizado": "2026-11-17 13:28",
+ "actualizado": "2026-11-17 21:56",
  "prueba": false,
  "manual": true,
  "nota": "Edicion del martes 17 de noviembre: NBA (props de hoy), NHL (hoy), NFL semana 11 y Premier League jornada 11, con lineas y estadisticas reales. MLB esta fuera de temporada; UFC y tenis llegan en la proxima edicion.",

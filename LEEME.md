@@ -42,3 +42,11 @@ Abre `web/index.html`.
 - `ERROR 401` → la llave de The Odds API está mal en los secretos.
 - `ERROR 429` o créditos en 0 → se acabaron los créditos del mes.
 - `ERROR: ... plan ...` en estadísticas → tu plan gratis de API-Sports no incluye la temporada actual. Los picks de líneas siguen saliendo; solo faltan las gráficas de jugadores.
+
+## Historial de resultados (record de la pagina)
+Cada vez que corres `python edicion.py`, los picks se guardan solos en `historial.json`.
+Para calificarlos despues de los partidos:
+1. Corre `python historial.py`: te imprime las claves de los picks que ya se jugaron.
+2. Pega cada clave en `resultados.py` con `"G"` (gano), `"P"` (perdio) o `"E"` (empate/push).
+3. Vuelve a correr `python historial.py`. Eso actualiza `web/historial.js` y la pagina muestra record, % de acierto, unidades, ROI, grafica y resultados por deporte.
+4. Haz commit y push.

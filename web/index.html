@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>PickLab - Picks de la semana</title>
 <meta name="description" content="Los picks de apuestas con mas probabilidad de pegar esta semana, basados en estadisticas reales.">
-<meta name="theme-color" content="#0B0F14">
+<meta name="theme-color" content="#070A12">
 <meta property="og:title" content="PickLab - Picks de la semana">
 <meta property="og:description" content="Los picks con mas probabilidad de pegar, con sus numeros.">
 <meta property="og:image" content="icono-512.png">
@@ -23,13 +23,14 @@
 <header>
   <nav class="nav contenedor">
     <a href="#" class="logo">
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#C6F432" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 17l6-6 4 4 8-8"></path><path d="M14 7h7v7"></path></svg>
+      <span class="logo_icono"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#070A12" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 17l6-6 4 4 8-8"></path><path d="M14 7h7v7"></path></svg></span>
       <span>PickLab</span>
     </a>
     <div class="nav_links">
       <a href="#">Picks</a>
       <a href="#" data-ir="tendencias">Tendencias</a>
       <a href="#" data-ir="parlay">Parlay</a>
+      <a href="#historial">Historial</a>
       <a href="#" data-ir="herramientas">Herramientas</a>
     </div>
     <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
@@ -37,6 +38,7 @@
       <div class="pastilla" id="actualizado"></div>
     </div>
   </nav>
+  <div class="cinta" id="cinta" aria-label="Picks de la semana"></div>
   <div class="tira">
     <div class="tira_dentro contenedor" id="tira" role="navigation" aria-label="Deportes"></div>
   </div>
@@ -52,6 +54,7 @@
 </footer>
 
 <script src="picks.js"></script>
+<script src="historial.js"></script>
 <script src="app.js"></script>
 <script>
   if ("serviceWorker" in navigator) {
