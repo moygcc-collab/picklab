@@ -202,6 +202,26 @@ a.tarjeta:hover { transform: translateY(-3px); border-color: color-mix(in srgb, 
 .puntos_espera i { width: 14px; height: 14px; border-radius: 4px; background: var(--c); opacity: 0.85; animation: latido 2.4s ease-in-out infinite; }
 @keyframes latido { 0%, 100% { opacity: 0.35; } 50% { opacity: 0.95; } }
 
+/* ===== Ultimo enfrentamiento ===== */
+.sello_duelo { align-self: flex-start; font-size: 12px; font-weight: 600; padding: 4px 10px; border-radius: 999px; }
+.sello_duelo.si { background: rgba(52, 211, 153, 0.14); color: var(--verde_ok); }
+.sello_duelo.no { background: rgba(255, 92, 122, 0.14); color: var(--rojo); }
+.sello_duelo.igual { background: rgba(255,255,255,0.08); color: var(--gris_claro); }
+.tabla .sello_duelo { display: inline-block; margin-top: 4px; font-size: 11px; padding: 2px 8px; }
+.duelo_marcador { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); gap: 12px; align-items: center; }
+.duelo_equipo { background: rgba(0,0,0,0.25); border: 1px solid var(--borde); border-radius: 16px; padding: 14px; display: flex; flex-direction: column; align-items: center; text-align: center; }
+.duelo_equipo span { font-weight: 600; }
+.duelo_equipo b { font-size: 36px; line-height: 1.1; color: var(--gris_claro); }
+.duelo_equipo small { font-size: 11px; color: var(--gris); text-transform: uppercase; letter-spacing: 0.08em; }
+.duelo_equipo.gano { border-color: color-mix(in srgb, var(--c) 55%, transparent); box-shadow: 0 0 28px -12px var(--c); }
+.duelo_equipo.gano b { color: var(--c); }
+.duelo_vs { font-family: "JetBrains Mono", monospace; font-size: 12px; color: var(--gris); }
+.duelo_stats { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 8px; }
+.duelo_stats .mini { align-items: center; padding: 10px 6px; }
+.duelo_stats .mini.marcada { border-color: var(--c); background: color-mix(in srgb, var(--c) 12%, transparent); }
+.duelo_stats .mini.marcada b { color: var(--c); }
+.duelo_antes { display: flex; flex-direction: column; gap: 4px; font-size: 14px; color: var(--gris_claro); border-top: 1px solid var(--borde); padding-top: 12px; }
+
 /* ===== Calculadora ===== */
 .campos { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
 .campos label { display: flex; flex-direction: column; gap: 6px; font-size: 13px; color: var(--gris); }
@@ -235,6 +255,8 @@ footer { border-top: 1px solid var(--borde); }
   .anillo div { width: 84px; height: 84px; }
   .anillo b { font-size: 21px; }
   .barra_deporte { grid-template-columns: 70px minmax(0, 1fr) 70px; }
+  .duelo_stats { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .duelo_equipo b { font-size: 28px; }
   .rejilla_deportes { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
   .rejilla_deportes .tarjeta { padding: 16px; min-height: 0 !important; }
   .rejilla_deportes .icono_deporte { width: 40px; height: 40px; }

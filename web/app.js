@@ -140,7 +140,7 @@ function tarjetaJugador(p) {
     '<span class="etiqueta deporte">' + icono(p.grupo, 14) + esc(p.grupo) + " - " + esc(p.mercado) + "</span>" +
     '<span><b style="font-family:Space Grotesk,sans-serif;font-size:19px">' + esc(p.jugador) + '</b><br><span class="gris" style="font-size:13px">' + esc(p.equipo) + "</span></span>" +
     "<b>" + esc(p.lado) + " " + p.linea + " " + esc(p.mercado.toLowerCase()) + "</b>" +
-    chispa(p) +
+    chispa(p) + selloDuelo(p) +
     '<span style="display:flex;justify-content:space-between;border-top:1px solid var(--borde);padding-top:12px">' +
     '<span class="mono" style="font-size:14px"><b style="color:var(--c)">' + p.aciertos + "</b> de sus ultimos " + p.valores.length + "</span>" +
     '<span style="font-weight:600;font-size:14px;color:var(--c)">Ver &rarr;</span></span></a>';
@@ -150,8 +150,76 @@ function tarjetaPick(p) {
   return '<a class="tarjeta"' + estiloDeporte(p.grupo) + ' href="#pick-' + p.id + '">' +
     '<span style="display:flex;justify-content:space-between;gap:8px"><span class="etiqueta deporte">' + icono(p.grupo, 14) + esc(p.tipo) + " - " + esc(p.liga) + '</span><span class="gris" style="font-size:13px">' + fecha(p.fecha) + "</span></span>" +
     '<span><span class="gris" style="font-size:14px">' + esc(p.partido) + '</span><br><b style="font-family:Space Grotesk,sans-serif;font-size:22px">' + esc(p.pick) + '</b><br><span class="gris" style="font-size:13px">' + esc(p.mercado) + " - " + esc(p.base) + "</span></span>" +
-    barra(p.prob) +
+    barra(p.prob) + selloDuelo(p) +
     '<div class="pie_tarjeta"><div><b>' + momio(p.momio) + "</b>Momio</div><div><b>" + esc(p.casa) + "</b>Casa</div><div><b class=\"verde\">+" + p.ventaja + "%</b>Ventaja</div><div><b>" + p.unidades + "u</b>Unidades</div></div></a>";
+}
+
+
+// ---------- ULTIMO ENFRENTAMIENTO ----------
+
+function fechaCorta(iso) {
+  var d = new Date(iso + "T12:00:00");
+  return d.toLocaleDateString("es-MX", { day: "numeric", month: "short", year: "numeric" });
+}
+
+// Sello chiquito: si con la linea de hoy hubiera pegado en el ultimo duelo
+function selloDuelo(p) {
+  if (!p.duelo || p.duelo.pego === undefined) return "";
+  var pego = p.duelo.pego;
+  var clase = pego === true ? "si" : pego === false ? "no" : "igual";
+  var texto = pego === true ? "Pegaba en el ultimo duelo" : pego === false ? "No pegaba en el ultimo duelo" : "Empate en el ultimo duelo";
+  return '<span class="sello_duelo ' + clase + '">' + (pego === true ? "&#10003; " : pego === false ? "&#10007; " : "= ") + texto + "</span>";
+}
+
+function marcadorDuelo(d, grupo) {
+  var v = d.marcador[0], l = d.marcador[1];
+  var ganaV = v[1] > l[1], ganaL = l[1] > v[1];
+  return '<div class="duelo_marcador"' + estiloDeporte(grupo) + ">" +
+    '<div class="duelo_equipo' + (ganaV ? " gano" : "") + '"><span>' + esc(v[0]) + '</span><b class="mono">' + v[1] + "</b><small>Visitante</small></div>" +
+    '<div class="duelo_vs">VS</div>' +
+    '<div class="duelo_equipo' + (ganaL ? " gano" : "") + '"><span>' + esc(l[0]) + '</span><b class="mono">' + l[1] + "</b><small>Local</small></div></div>";
+}
+
+function cajaDuelo(p) {
+  var d = p.duelo;
+  if (!d) {
+    return '<div class="caja"><h2 style="font-size:22px">Ultimo enfrentamiento</h2><p class="gris">No encontramos datos verificados del ultimo partido entre estos rivales.</p></div>';
+  }
+  var html = '<div class="caja duelo"' + estiloDeporte(p.grupo) + '><div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;align-items:center">' +
+    '<div><span class="sobretitulo">Head to head</span><h2 style="font-size:22px">Ultimo enfrentamiento</h2></div>' + selloDuelo(p) + "</div>";
+
+  var j = d.jugador;
+  if (j) {
+    var claves = { pts: "PTS", reb: "REB", ast: "AST", tri: "3PM", min: "MIN" };
+    var usados = { "Puntos": ["pts"], "Rebotes": ["reb"], "Asistencias": ["ast"], "Triples": ["tri"], "Puntos + Asistencias": ["pts", "ast"], "Puntos + Rebotes": ["pts", "reb"], "Pts + Reb + Ast": ["pts", "reb", "ast"] }[p.mercado] || [];
+    html += '<div class="gris" style="font-size:14px">' + esc(p.jugador) + " vs " + esc(j.rival) + " - " + fechaCorta(j.fecha) + " - jugaba con " + esc(j.equipo) + "</div>";
+    html += '<div class="duelo_stats">';
+    Object.keys(claves).forEach(function (k) {
+      html += '<div class="mini' + (usados.indexOf(k) !== -1 ? " marcada" : "") + '"><b>' + j[k] + "</b><span>" + claves[k] + "</span></div>";
+    });
+    html += "</div>";
+  }
+  if (d.marcador) {
+    html += '<div class="gris" style="font-size:13px">' + esc(d.liga || "") + " - " + fechaCorta(d.fecha) + (j && j.fecha !== d.fecha ? " (ultimo partido entre los equipos)" : "") + "</div>";
+    html += marcadorDuelo(d, p.grupo);
+  }
+  if (d.resumen) {
+    html += '<p style="color:var(--gris_claro)">' + esc(d.resumen) + ".</p>";
+  }
+  if (d.detalle) {
+    html += '<p class="gris" style="font-size:14px">' + esc(d.detalle) + "</p>";
+  }
+  if (d.anteriores && d.anteriores.length) {
+    html += '<div class="duelo_antes"><span class="gris" style="font-size:12px;text-transform:uppercase;letter-spacing:0.08em">Antes de eso</span>';
+    d.anteriores.forEach(function (a) { html += "<span>" + esc(a) + "</span>"; });
+    html += "</div>";
+  }
+  var fuente = (j && j.fuente) || d.fuente;
+  if (fuente) {
+    html += '<a href="' + esc(fuente) + '" target="_blank" rel="noopener" style="font-size:13px">Ver box score &rarr;</a>';
+  }
+  html += '<span class="gris" style="font-size:12px">Un solo partido es informacion, no prueba: no cambia la probabilidad del modelo.</span>';
+  return html + "</div>";
 }
 
 // ---------- HISTORIAL (pedazos) ----------
@@ -271,6 +339,11 @@ function pintarInicio() {
     '<div class="hero_dato"><b class="brillo">' + D.partidos_analizados + "</b><span>Partidos analizados</span></div>" +
     '<div class="hero_dato"><b>' + D.picks.length + "</b><span>Picks con ventaja</span></div>" +
     '<div class="hero_dato"><b>' + deportesConPicks + "</b><span>Deportes</span></div>" +
+    (function () {
+      var con = D.picks.filter(function (p) { return p.duelo && p.duelo.pego !== undefined; });
+      var si = con.filter(function (p) { return p.duelo.pego === true; }).length;
+      return con.length ? '<div class="hero_dato"><b>' + si + "/" + con.length + "</b><span>Pegaban en el ultimo duelo</span></div>" : "";
+    })() +
     (H && H.total.acierto !== null ? '<div class="hero_dato"><b class="verde">' + H.total.acierto + '%</b><span>Acierto historico</span></div>' : "") +
     "</div></div>" +
 
@@ -306,7 +379,7 @@ function pintarInicio() {
   top10.forEach(function (p, i) {
     html += '<a class="renglon"' + estiloDeporte(p.grupo) + ' href="#pick-' + p.id + '"><span class="medalla' + (i < 3 ? " m" + (i + 1) : "") + '">' + (i + 1) + "</span>" +
       '<span class="etiqueta deporte">' + icono(p.grupo, 14) + esc(p.grupo) + "</span>" +
-      '<span><b>' + esc(p.pick) + '</b><br><span class="gris" style="font-size:13px">' + esc(p.partido) + " - " + esc(p.mercado) + "</span></span>" +
+      '<span><b>' + esc(p.pick) + '</b><br><span class="gris" style="font-size:13px">' + esc(p.partido) + " - " + esc(p.mercado) + "</span>" + (p.duelo && p.duelo.pego !== undefined ? "<br>" + selloDuelo(p) : "") + "</span>" +
       '<span class="mono">' + momio(p.momio) + '</span><span class="mono">' + p.unidades + "u</span>" + barra(p.prob) +
       '<span class="mono verde">+' + p.ventaja + "%</span></a>";
   });
@@ -528,13 +601,13 @@ function pintarPick(id) {
     html += '<div class="caja"><h2 style="font-size:22px">Resumen de ' + esc(p.mercado.toLowerCase()) + '</h2><div class="mini_stats">' +
       '<div class="mini"><b>' + p.promedio + '</b><span>Promedio</span></div><div class="mini"><b>' + p.mediana + "</b><span>Mediana</span></div>" +
       '<div class="mini"><b>' + p.maximo + '</b><span>Maximo</span></div><div class="mini"><b>' + p.minimo + "</b><span>Minimo</span></div>" +
-      '<div class="mini"><b>' + (p.promedio - p.linea > 0 ? "+" : "") + (p.promedio - p.linea).toFixed(1) + "</b><span>Promedio vs linea</span></div></div></div></div>";
+      '<div class="mini"><b>' + (p.promedio - p.linea > 0 ? "+" : "") + (p.promedio - p.linea).toFixed(1) + "</b><span>Promedio vs linea</span></div></div></div>" + cajaDuelo(p) + "</div>";
   } else {
     html += '<section class="fila" style="align-items:flex-start;--c:' + c + '"><div class="grande" style="display:flex;flex-direction:column;gap:20px">' +
       '<div class="caja aparece"><div style="display:flex;align-items:center;gap:14px"><span class="icono_deporte">' + icono(p.grupo, 26) + '</span><span class="etiqueta deporte">' + esc(p.liga) + " - " + esc(p.tipo) + '</span></div><h1 style="font-size:clamp(30px,4.5vw,46px)">' + esc(p.partido) + '</h1><span class="gris">' + fecha(p.fecha) + "</span></div>" +
       (p.explicacion
         ? '<div class="caja"><h2 style="font-size:22px">De donde sale este pick</h2><p style="color:var(--gris_claro)">' + esc(p.explicacion) + "</p>" +
-          '<div class="mini_stats"><div class="mini"><b>' + p.modelo + '%</b><span>Nuestro modelo</span></div><div class="mini"><b>' + p.mercado_prob + '%</b><span>Mercado sin comision</span></div><div class="mini"><b class="brillo">' + p.prob + "%</b><span>Probabilidad final (50/50)</span></div></div></div></div>"
+          '<div class="mini_stats"><div class="mini"><b>' + p.modelo + '%</b><span>Nuestro modelo</span></div><div class="mini"><b>' + p.mercado_prob + '%</b><span>Mercado sin comision</span></div><div class="mini"><b class="brillo">' + p.prob + "%</b><span>Probabilidad final (50/50)</span></div></div></div>" + cajaDuelo(p) + "</div>"
         : '<div class="caja"><h2 style="font-size:22px">De donde sale este pick</h2><p style="color:var(--gris_claro)">Comparamos ' + p.casas + " casas de apuestas. Les quitamos su comision para sacar la probabilidad justa (" + p.prob + "%). " +
           "El mejor momio lo tiene " + esc(p.casa) + " (" + momio(p.momio) + "), que implica " + p.implicita + "%. La diferencia es tu ventaja: +" + p.ventaja + "%.</p></div></div>");
   }

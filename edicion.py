@@ -343,6 +343,134 @@ def picks_epl():
     return picks
 
 
+# ---------- Ultimo enfrentamiento ----------
+# Por partido (la misma clave "evento" que usan los picks).
+# marcador: [[visitante, puntos], [local, puntos]]  -  los nombres deben ser
+# iguales a los que salen en el pick (ej. "Colts +12.5" -> "Colts").
+# Solo datos verificados; si no se encuentra, no se pone.
+BR = "https://www.basketball-reference.com/boxscores/"
+CBS = "https://www.cbssports.com/nfl/gametracker/boxscore/"
+ULTIMO_DUELO = {
+    "cha_lal": {"fecha": "2026-01-15", "liga": "NBA 2025-26", "marcador": [["Hornets", 135], ["Lakers", 117]],
+                "anteriores": ["10 nov 2025: Lakers 121 - 111 Hornets (en Charlotte)"],
+                "fuente": BR + "202601150LAL.html"},
+    "det_sas": {"fecha": "2026-03-05", "liga": "NBA 2025-26", "marcador": [["Pistons", 106], ["Spurs", 121]],
+                "anteriores": ["23 feb 2026: Spurs 114 - 103 Pistons (en Detroit)"],
+                "fuente": BR + "202603050SAS.html"},
+    "nyk_tor": {"fecha": "2026-11-15", "liga": "NBA 2026-27 (tiempo extra)", "marcador": [["Knicks", 112], ["Raptors", 108]],
+                "fuente": BR + "202611150TOR.html"},
+    "nfl_LV_DEN": {"fecha": "2025-12-07", "liga": "NFL 2025, semana 14", "marcador": [["Broncos", 24], ["Raiders", 17]],
+                   "detalle": "Bo Nix 212 yds, 0 TD de pase (1 por tierra). Geno Smith 116 yds, 1 TD y salio lesionado; Kenny Pickett 97 yds, 1 TD.",
+                   "anteriores": ["6 nov 2025: Broncos 10 - 7 Raiders (en Denver)"],
+                   "fuente": CBS + "NFL_20251207_DEN@LV/"},
+    "nfl_IND_HOU": {"fecha": "2026-09-27", "liga": "NFL 2026, semana 3", "marcador": [["Texans", 17], ["Colts", 19]],
+                    "detalle": "Gano Colts con gol de campo a 16 segundos del final. Daniel Jones 235 yds, 1 TD, 1 INT. C.J. Stroud 167 yds, 1 TD.",
+                    "fuente": "https://www.cbssports.com/nfl/gametracker/recap/NFL_20260927_HOU@IND/"},
+    "nfl_BAL_CAR": {"fecha": "2022-11-20", "liga": "NFL 2022, semana 11", "marcador": [["Panthers", 3], ["Ravens", 13]],
+                    "detalle": "Lamar Jackson 209 yds, 0 TD, 1 INT. Baker Mayfield 196 yds, 0 TD, 2 INT. Hace 4 anos: los equipos cambiaron mucho.",
+                    "fuente": CBS + "NFL_20221120_CAR@BAL/"},
+    "nfl_MIA_BUF": {"fecha": "2025-11-09", "liga": "NFL 2025, semana 10", "marcador": [["Bills", 13], ["Dolphins", 30]],
+                    "detalle": "Tua Tagovailoa 173 yds, 2 TD, 2 INT. Josh Allen 306 yds, 2 TD, 1 INT.",
+                    "fuente": CBS + "NFL_20251109_BUF@MIA"},
+    "nfl_NYJ_LAC": {"fecha": "2023-11-06", "liga": "NFL 2023, semana 9", "marcador": [["Chargers", 27], ["Jets", 6]],
+                    "detalle": "Justin Herbert 136 yds, 0 TD. Zach Wilson 263 yds, 0 TD. Hace 3 anos: otros planteles.",
+                    "fuente": CBS + "NFL_20231106_LAC@NYJ/"},
+    "nfl_ARI_KC": {"fecha": "2022-09-11", "liga": "NFL 2022, semana 1", "marcador": [["Chiefs", 44], ["Cardinals", 21]],
+                   "detalle": "Patrick Mahomes 360 yds, 5 TD. Kyler Murray 193 yds, 2 TD. Hace 4 anos: otros planteles.",
+                   "fuente": "https://www.statmuse.com/nfl/ask/chiefs-vs-cardinals-record"},
+    "nfl_NO_CHI": {"fecha": "2025-10-19", "liga": "NFL 2025, semana 7", "marcador": [["Saints", 14], ["Bears", 26]],
+                   "detalle": "Caleb Williams 172 yds, 0 TD, 1 INT. Spencer Rattler 233 yds, 2 TD, 3 INT.",
+                   "fuente": CBS + "NFL_20251019_NO@CHI/"},
+    "nfl_TEN_DAL": {"fecha": "2022-12-29", "liga": "NFL 2022, semana 17", "marcador": [["Cowboys", 27], ["Titans", 13]],
+                    "detalle": "Dak Prescott 282 yds, 2 TD, 2 INT. Joshua Dobbs 232 yds, 1 TD, 1 INT. Hace casi 4 anos.",
+                    "fuente": CBS + "NFL_20221229_DAL@TEN/"},
+    "epl_Newcastle_Arsenal": {"fecha": "2026-04-25", "liga": "Premier League 2025-26", "marcador": [["Newcastle", 0], ["Arsenal", 1]],
+                              "detalle": "Gol de Eberechi Eze al 9' (asistencia de Havertz). Tiros: Arsenal 11, Newcastle 12-13.",
+                              "anteriores": ["28 sep 2025: Newcastle 1 - 2 Arsenal (Premier)",
+                                             "18 may 2025: Arsenal 1 - 0 Newcastle (Premier)",
+                                             "5 feb 2025: Newcastle 2 - 0 Arsenal (Copa de la Liga)",
+                                             "7 ene 2025: Arsenal 0 - 2 Newcastle (Copa de la Liga)"],
+                              "fuente": "https://theanalyst.com/articles/arsenal-vs-newcastle-stats-opta-premier-league-04-2026"},
+}
+
+# Ultimo partido de cada jugador contra el rival de hoy (puede ser con otro equipo)
+# pts, reb, ast, tri (triples metidos), min (minutos)
+ULTIMO_DUELO_JUGADOR = {
+    "Luka Doncic": {"fecha": "2026-01-15", "equipo": "Lakers", "rival": "Hornets", "pts": 39, "reb": 3, "ast": 4, "tri": 6, "min": 36,
+                    "fuente": BR + "202601150LAL.html"},
+    "Coby White": {"fecha": "2026-01-26", "equipo": "Bulls", "rival": "Lakers", "pts": 23, "reb": 5, "ast": 6, "tri": 5, "min": 31,
+                   "fuente": BR + "202601260CHI.html"},
+    "Quentin Grimes": {"fecha": "2026-03-28", "equipo": "76ers", "rival": "Hornets", "pts": 8, "reb": 1, "ast": 3, "tri": 2, "min": 29,
+                       "fuente": BR + "202603280CHO.html"},
+    "Victor Wembanyama": {"fecha": "2026-03-05", "equipo": "Spurs", "rival": "Pistons", "pts": 38, "reb": 16, "ast": 3, "tri": 4, "min": 39,
+                          "fuente": BR + "202603050SAS.html"},
+    "Jalen Brunson": {"fecha": "2026-11-15", "equipo": "Knicks", "rival": "Raptors", "pts": 28, "reb": 1, "ast": 9, "tri": 3, "min": 41,
+                      "fuente": BR + "202611150TOR.html"},
+    "Karl-Anthony Towns": {"fecha": "2026-11-15", "equipo": "Knicks", "rival": "Raptors", "pts": 28, "reb": 17, "ast": 3, "tri": 3, "min": 43,
+                           "fuente": BR + "202611150TOR.html"},
+    "Scottie Barnes": {"fecha": "2026-11-15", "equipo": "Raptors", "rival": "Knicks", "pts": 30, "reb": 9, "ast": 4, "tri": 4, "min": 36,
+                       "fuente": BR + "202611150TOR.html"},
+    "RJ Barrett": {"fecha": "2026-11-15", "equipo": "Raptors", "rival": "Knicks", "pts": 14, "reb": 5, "ast": 6, "tri": 0, "min": 37,
+                   "fuente": BR + "202611150TOR.html"},
+}
+
+# Como se suma cada mercado de props con la linea del jugador
+MERCADOS = {
+    "Puntos": ["pts"], "Rebotes": ["reb"], "Asistencias": ["ast"], "Triples": ["tri"],
+    "Puntos + Asistencias": ["pts", "ast"], "Puntos + Rebotes": ["pts", "reb"],
+    "Pts + Reb + Ast": ["pts", "reb", "ast"],
+}
+
+
+def comparar(valor, lado, linea):
+    # True si pegaba, False si no, None si fue empate exacto
+    if valor == linea:
+        return None
+    if lado == "Over":
+        return valor > linea
+    return valor < linea
+
+
+def agregar_duelo(p):
+    # Pega al pick el ultimo enfrentamiento y si con la linea de hoy hubiera pegado
+    d = ULTIMO_DUELO.get(p["evento"])
+    jug = ULTIMO_DUELO_JUGADOR.get(p.get("jugador", ""))
+    if d is None and jug is None:
+        return
+    duelo = {}
+    if d is not None:
+        duelo.update(d)
+    texto = p["pick"]
+
+    if p["tipo"] == "Props" and jug is not None:
+        claves = MERCADOS.get(p["mercado"])
+        duelo["jugador"] = jug
+        if claves:
+            valor = sum(jug[c] for c in claves)
+            duelo["valor"] = valor
+            duelo["pego"] = comparar(valor, p["lado"], p["linea"])
+            duelo["resumen"] = (p["jugador"] + " hizo " + str(valor) + " " + p["mercado"].lower() +
+                                " vs " + jug["rival"] + " (linea de hoy " + str(p["linea"]) + ")")
+    elif p["tipo"] == "Totales" and d is not None:
+        lado, linea = texto.split(" ")[0], float(texto.split(" ")[1])
+        total = d["marcador"][0][1] + d["marcador"][1][1]
+        duelo["valor"] = total
+        duelo["pego"] = comparar(total, lado, linea)
+        duelo["resumen"] = "Total de " + str(total) + " contra la linea de hoy de " + texto_linea(linea)
+    elif p["tipo"] == "Spreads" and d is not None:
+        equipo = texto.rsplit(" ", 1)[0]
+        handicap = float(texto.rsplit(" ", 1)[1])
+        marcador = dict((e, pts) for e, pts in d["marcador"])
+        if equipo in marcador:
+            rival = [e for e in marcador if e != equipo][0]
+            margen = marcador[equipo] - marcador[rival]
+            duelo["valor"] = margen
+            duelo["pego"] = comparar(margen + handicap, "Over", 0)
+            duelo["resumen"] = (equipo + (" gano por " + str(margen) if margen > 0 else " perdio por " + str(-margen)) +
+                                "; con " + texto.rsplit(" ", 1)[1] + " hoy")
+    p["duelo"] = duelo
+
+
 # ---------- Juntar todo ----------
 
 def main():
@@ -351,6 +479,8 @@ def main():
     nhl = picks_nhl()
     epl = picks_epl()
     picks = nba + nfl + nhl + epl
+    for p in picks:
+        agregar_duelo(p)
 
     picks.sort(key=lambda p: p["prob"], reverse=True)
     for i in range(len(picks)):
@@ -407,6 +537,9 @@ def main():
             ["FanDuel Research - props NBA 17 nov", "https://www.fanduel.com/research/nba-props-today-player-prop-bets-tuesday-nov-17"],
             ["Steezanomics - props NBA 17 nov", "https://steezanomics.com/picks/knicks-vs-raptors-player-props-november-17-2026/"],
             ["ESPN - game logs de jugadores NBA", "https://www.espn.com/nba/"],
+            ["Ultimos enfrentamientos NBA - Basketball-Reference", "https://www.basketball-reference.com/"],
+            ["Ultimos enfrentamientos NFL - CBS Sports y StatMuse", "https://www.statmuse.com/nfl"],
+            ["Ultimo Newcastle vs Arsenal - Opta / The Analyst", "https://theanalyst.com/articles/arsenal-vs-newcastle-stats-opta-premier-league-04-2026"],
         ],
         "partidos_analizados": 5 + len(NFL_PARTIDOS) + len(NHL_PARTIDOS) + len(EPL_PARTIDOS),
         "descartados": descartados,

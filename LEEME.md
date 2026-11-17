@@ -50,3 +50,9 @@ Para calificarlos despues de los partidos:
 2. Pega cada clave en `resultados.py` con `"G"` (gano), `"P"` (perdio) o `"E"` (empate/push).
 3. Vuelve a correr `python historial.py`. Eso actualiza `web/historial.js` y la pagina muestra record, % de acierto, unidades, ROI, grafica y resultados por deporte.
 4. Haz commit y push.
+
+## Ultimo enfrentamiento (head to head)
+En `edicion.py` hay dos listas:
+- `ULTIMO_DUELO`: por partido (la clave es el `evento` del pick, ej. `"cha_lal"` o `"nfl_LV_DEN"`): fecha, liga, marcador `[[visitante, puntos], [local, puntos]]`, detalle, partidos anteriores y fuente.
+- `ULTIMO_DUELO_JUGADOR`: por jugador: su ultimo partido contra el rival de hoy (pts, reb, ast, tri, min).
+Al correr `python edicion.py` se calcula solo si el pick de hoy hubiera pegado en ese partido y la pagina lo muestra en cada pick. Es informacion extra: no cambia la probabilidad del modelo.
