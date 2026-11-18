@@ -1,57 +1,32 @@
 # ============================================
-# EDICION SEMANAL DE PICKLAB (datos juntados a mano)
+# EDICION DE PICKLAB
 # Edicion: miercoles 18 de noviembre de 2026
 #
-# Fuentes:
-#  - Lineas NFL y NHL: ESPN Odds (DraftKings)
-#  - Lineas Premier League: Betwatch
-#  - Lineas NHL de hoy: SportsbookReview (DraftKings)
-#  - Props NBA: FanDuel Research, TheLines, Covers, SportsBettingDime
-#  - Estadisticas: StatMuse, CBS, Hockey-Reference, ESPN
+# Aqui van los datos que se juntan a mano (estadisticas, contexto y, si la API
+# no los trae, momios). La decision de cada pick la toma motor.py.
+# Si existe datos/lineas.json (The Odds API), esas ligas usan los momios de la API
+# con el mejor precio entre todas las casas, y las tablas de aqui alimentan el modelo.
 #
-# Uso: python edicion.py  -> escribe web/picks.js
+# Uso: python edicion.py  -> escribe web/picks.js y actualiza el historial
 # ============================================
 
 import json
-import math
-from datetime import datetime
+from datetime import datetime, timezone
 from calcular_picks import prob_implicita, a_decimal, a_americano
+import motor
+import api_picks
 import historial
 
 EDICION = "miercoles 18 de noviembre"
 FECHA_EDICION = "2026-11-18"  # para el historial (AAAA-MM-DD)
 
-# ---------- Funciones de probabilidad ----------
-
-def normal_mayor(x, media, desv):
-    # Probabilidad de que un valor normal sea mayor que x
-    return 0.5 * (1 - math.erf((x - media) / (desv * math.sqrt(2))))
-
-
-def poisson(k, lam):
-    return math.exp(-lam) * lam ** k / math.factorial(k)
-
-
-def poisson_mayor(linea, lam):
-    # Probabilidad de que el total de goles sea mayor que la linea (ej. 5.5)
-    hasta = int(math.floor(linea))
-    suma = 0
-    for k in range(hasta + 1):
-        suma += poisson(k, lam)
-    return 1 - suma
-
-
-def sin_comision(momio_a, momio_b):
-    pa = prob_implicita(momio_a)
-    pb = prob_implicita(momio_b)
-    return pa / (pa + pb), pb / (pa + pb)
+sin_comision = motor.sin_comision
 
 
 def texto_linea(punto):
     if punto == int(punto):
         return str(int(punto))
     return str(punto)
-
 
 # ---------- NBA: props de esta noche ----------
 
@@ -93,82 +68,6 @@ PROPS_NBA = [
 ]
 
 
-def evaluar_prop(lado, linea, momio, prob_mercado, valores):
-    aciertos = 0
-    for v in valores:
-        if lado == "Over" and v > linea:
-            aciertos += 1
-        if lado == "Under" and v < linea:
-            aciertos += 1
-    prob = 0.6 * aciertos / len(valores) + 0.4 * prob_mercado
-    return {"lado": lado, "momio": momio, "aciertos": aciertos, "prob": prob,
-            "ventaja": prob - prob_implicita(momio)}
-
-
-def picks_nba():
-    picks = []
-    descartados = []
-    for jugador, equipo, partido, mercado, linea, over, under, casa, fuente, valores in PROPS_NBA:
-        opciones = []
-        if over is not None and under is not None:
-            p_over, p_under = sin_comision(over, under)
-            opciones.append(evaluar_prop("Over", linea, over, p_over, valores))
-            opciones.append(evaluar_prop("Under", linea, under, p_under, valores))
-            base = "Ultimos " + str(len(valores)) + " partidos + momio sin comision"
-        else:
-            lado = "Over" if over is not None else "Under"
-            momio = over if over is not None else under
-            opciones.append(evaluar_prop(lado, linea, momio, prob_implicita(momio), valores))
-            base = "Ultimos " + str(len(valores)) + " partidos + momio de la casa"
-        mejor = max(opciones, key=lambda o: o["ventaja"])
-        ordenados = sorted(valores)
-        pick = {
-            "evento": partido[0], "grupo": "NBA", "liga": "NBA",
-            "partido": partido[1], "fecha": partido[2], "tipo": "Props",
-            "mercado": mercado, "jugador": jugador, "equipo": equipo,
-            "pick": jugador + " " + mejor["lado"] + " " + str(linea),
-            "lado": mejor["lado"], "linea": linea, "momio": mejor["momio"],
-            "casa": casa, "casas": 1, "prob": mejor["prob"], "ventaja": mejor["ventaja"],
-            "valores": valores, "aciertos": mejor["aciertos"],
-            "promedio": round(sum(valores) / len(valores), 1),
-            "mediana": ordenados[len(ordenados) // 2],
-            "maximo": max(valores), "minimo": min(valores),
-            "base": base + ". Linea via " + fuente + ", partidos via ESPN",
-        }
-        if mejor["ventaja"] > 0:
-            picks.append(pick)
-        else:
-            descartados.append(pick["pick"])
-    return picks, descartados
-
-
-# ---------- Modelo para spreads y totales ----------
-# Probabilidad final = 50% nuestro modelo + 50% el mercado sin comision.
-# Asi no nos vamos a numeros exagerados con muestras chicas.
-# Solo publicamos si la ventaja es de al menos 3%.
-VENTAJA_MINIMA = 0.03
-
-def elegir(opciones):
-    mejor = None
-    for op in opciones:
-        op["prob"] = 0.5 * op["modelo"] + 0.5 * op["mercado"]
-        op["ventaja"] = op["prob"] - prob_implicita(op["momio"])
-        if mejor is None or op["ventaja"] > mejor["ventaja"]:
-            mejor = op
-    return mejor
-
-
-def armar_pick(evento, grupo, liga, partido, fecha, tipo, mercado, op, casa, explicacion):
-    return {
-        "evento": evento, "grupo": grupo, "liga": liga, "partido": partido, "fecha": fecha,
-        "tipo": tipo, "mercado": mercado, "pick": op["texto"], "momio": op["momio"],
-        "casa": casa, "casas": 1, "prob": op["prob"], "ventaja": op["ventaja"],
-        "modelo": round(op["modelo"] * 100, 1), "mercado_prob": round(op["mercado"] * 100, 1),
-        "explicacion": explicacion,
-        "base": "50% modelo con estadisticas de la temporada + 50% momio sin comision",
-    }
-
-
 # ---------- NFL semana 11 ----------
 # Equipo: (partidos jugados, puntos a favor, puntos en contra)  ESPN standings
 NFL_EQUIPOS = {
@@ -201,54 +100,7 @@ NFL_PARTIDOS = [
 ]
 
 
-def picks_nfl():
-    picks = []
-    for vis, loc, spread_loc, m_vis, m_loc, total, m_over, m_under, fecha, neutral in NFL_PARTIDOS:
-        nv, gv, pfv, pav = NFL_EQUIPOS[vis]
-        nl, gl, pfl, pal = NFL_EQUIPOS[loc]
-        ventaja_casa = 0 if neutral else 1.0
-        pts_loc = (pfl / gl + pav / gv) / 2 + ventaja_casa
-        pts_vis = (pfv / gv + pal / gl) / 2 - ventaja_casa
-        proy_total = pts_loc + pts_vis
-        proy_margen = pts_loc - pts_vis
-        partido = nv + " @ " + nl + (" (Estadio Banorte, CDMX)" if neutral else "")
-        evento = "nfl_" + vis + "_" + loc
-
-        # Total
-        p_over_m, p_under_m = sin_comision(m_over, m_under)
-        p_over = normal_mayor(total, proy_total, 13.5)
-        op = elegir([
-            {"texto": "Over " + texto_linea(total), "momio": m_over, "modelo": p_over, "mercado": p_over_m},
-            {"texto": "Under " + texto_linea(total), "momio": m_under, "modelo": 1 - p_over, "mercado": p_under_m},
-        ])
-        if op["ventaja"] >= VENTAJA_MINIMA:
-            explicacion = ("Con sus puntos a favor y en contra de esta temporada, proyectamos " +
-                           nl + " " + str(round(pts_loc, 1)) + " y " + nv + " " + str(round(pts_vis, 1)) +
-                           ": total de " + str(round(proy_total, 1)) + " puntos contra una linea de " +
-                           texto_linea(total) + ".")
-            picks.append(armar_pick(evento, "NFL", "NFL", partido, fecha, "Totales", "Total de puntos",
-                                    op, "DraftKings", explicacion))
-
-        # Spread (margen del local mayor a -spread)
-        p_vis_m, p_loc_m = sin_comision(m_vis, m_loc)
-        p_loc_cubre = normal_mayor(-spread_loc, proy_margen, 13.5)
-        signo_loc = "+" if spread_loc > 0 else ""
-        signo_vis = "+" if -spread_loc > 0 else ""
-        op = elegir([
-            {"texto": nl + " " + signo_loc + texto_linea(spread_loc), "momio": m_loc, "modelo": p_loc_cubre, "mercado": p_loc_m},
-            {"texto": nv + " " + signo_vis + texto_linea(-spread_loc), "momio": m_vis, "modelo": 1 - p_loc_cubre, "mercado": p_vis_m},
-        ])
-        if op["ventaja"] >= VENTAJA_MINIMA:
-            explicacion = ("Proyectamos que " + nl + " termine con un margen de " +
-                           ("+" if proy_margen > 0 else "") + str(round(proy_margen, 1)) +
-                           " puntos, contra un spread de " + signo_loc + texto_linea(spread_loc) + " para " + nl + ".")
-            picks.append(armar_pick(evento, "NFL", "NFL", partido, fecha, "Spreads", "Spread",
-                                    op, "DraftKings", explicacion))
-    return picks
-
-
 # ---------- NHL de hoy: totales ----------
-# Equipo: (nombre, partidos, goles a favor, goles en contra)  ESPN standings
 NHL_EQUIPOS = {
     "BOS": ("Bruins", 21, 72, 55), "DET": ("Red Wings", 21, 57, 64),
     "MTL": ("Canadiens", 21, 69, 64), "NJ": ("Devils", 21, 80, 61),
@@ -261,29 +113,6 @@ NHL_PARTIDOS = [
     ("MTL", "NJ", 6.5, 114, -135, "2026-11-19T00:30:00Z"),
     ("COL", "UTA", 6.5, -102, -118, "2026-11-19T03:00:00Z"),
 ]
-
-
-def picks_nhl():
-    picks = []
-    for vis, loc, total, m_over, m_under, fecha in NHL_PARTIDOS:
-        nv, gv, gfv, gav = NHL_EQUIPOS[vis]
-        nl, gl, gfl, gal = NHL_EQUIPOS[loc]
-        lam_loc = (gfl / gl + gav / gv) / 2
-        lam_vis = (gfv / gv + gal / gl) / 2
-        lam = lam_loc + lam_vis
-        p_over = poisson_mayor(total, lam)
-        p_over_m, p_under_m = sin_comision(m_over, m_under)
-        op = elegir([
-            {"texto": "Over " + texto_linea(total), "momio": m_over, "modelo": p_over, "mercado": p_over_m},
-            {"texto": "Under " + texto_linea(total), "momio": m_under, "modelo": 1 - p_over, "mercado": p_under_m},
-        ])
-        if op["ventaja"] >= VENTAJA_MINIMA:
-            explicacion = ("Con sus goles a favor y en contra de esta temporada, esperamos " +
-                           str(round(lam, 2)) + " goles en total (" + nl + " " + str(round(lam_loc, 2)) +
-                           ", " + nv + " " + str(round(lam_vis, 2)) + ") contra una linea de " + texto_linea(total) + ".")
-            picks.append(armar_pick("nhl_" + vis + "_" + loc, "NHL", "NHL", nv + " @ " + nl, fecha,
-                                    "Totales", "Total de goles", op, "DraftKings", explicacion))
-    return picks
 
 
 # ---------- Premier League (jornada 11): totales ----------
@@ -307,41 +136,6 @@ EPL_PARTIDOS = [
     ("Newcastle", "Arsenal", 2.5, -143, 115, "2026-11-21T17:30:00Z"),
     ("Hull City", "Brighton", 2.5, -159, 120, "2026-11-22T14:00:00Z"),
 ]
-
-
-def picks_epl():
-    total_goles = 0
-    total_partidos = 0
-    for eq in EPL_EQUIPOS.values():
-        total_goles += eq[1]
-        total_partidos += eq[0]
-    prom = total_goles / total_partidos  # goles por equipo por partido en la liga
-
-    picks = []
-    for loc, vis, total, m_over, m_under, fecha in EPL_PARTIDOS:
-        gl, fl, al = EPL_EQUIPOS[loc]
-        gv, fv, av = EPL_EQUIPOS[vis]
-        # Fuerza de ataque y defensa, jalada 50% hacia el promedio (solo 10 partidos)
-        ataque_loc = 0.5 + 0.5 * (fl / gl) / prom
-        defensa_loc = 0.5 + 0.5 * (al / gl) / prom
-        ataque_vis = 0.5 + 0.5 * (fv / gv) / prom
-        defensa_vis = 0.5 + 0.5 * (av / gv) / prom
-        lam_loc = prom * 1.1 * ataque_loc * defensa_vis
-        lam_vis = prom * 0.9 * ataque_vis * defensa_loc
-        lam = lam_loc + lam_vis
-        p_over = poisson_mayor(total, lam)
-        p_over_m, p_under_m = sin_comision(m_over, m_under)
-        op = elegir([
-            {"texto": "Over " + texto_linea(total), "momio": m_over, "modelo": p_over, "mercado": p_over_m},
-            {"texto": "Under " + texto_linea(total), "momio": m_under, "modelo": 1 - p_over, "mercado": p_under_m},
-        ])
-        if op["ventaja"] >= VENTAJA_MINIMA:
-            explicacion = ("Con sus goles a favor y en contra en la Premier, esperamos " + str(round(lam, 2)) +
-                           " goles (" + loc + " " + str(round(lam_loc, 2)) + ", " + vis + " " +
-                           str(round(lam_vis, 2)) + ") contra una linea de " + texto_linea(total) + ".")
-            picks.append(armar_pick("epl_" + loc + "_" + vis, "Futbol", "Premier League", loc + " vs " + vis,
-                                    fecha, "Totales", "Total de goles", op, "Betwatch", explicacion))
-    return picks
 
 
 # ---------- Ultimo enfrentamiento ----------
@@ -500,31 +294,246 @@ def agregar_duelo(p):
     p["duelo"] = duelo
 
 
+# ---------- Contexto (solo datos verificados) ----------
+# Cada ajuste dice a quien ayuda: "Over", "Under" o el nombre del equipo, y cuanto (0.01 = 1 punto).
+# El motor los suma con un tope de 5 puntos.
+def ajuste(efecto, delta, texto):
+    return {"efecto": efecto, "delta": delta, "texto": texto}
+
+# Por jugador (props)
+CONTEXTO_JUGADOR = {
+    "Luka Doncic": [ajuste("Under", 0.02, "Segunda noche seguida: anoche jugo 42 minutos con tiempo extra")],
+    "Cade Cunningham": [ajuste("Under", 0.02, "Segunda noche seguida: jugo anoche contra San Antonio")],
+    "Bam Adebayo": [ajuste("Under", 0.02, "Llega como probable por molestia en la cadera y jugo solo 16 minutos en su ultimo partido")],
+}
+
+# Por partido (clave "evento" o, para la API, el texto "Visitante @ Local")
+CONTEXTO_EVENTO = {
+}
+
+# Estadisticas por liga para el modelo de los picks de la API (pj, a favor, en contra).
+# Los nombres pueden ser cortos ("Chiefs"): se buscan dentro del nombre completo de la API.
+ALIAS = {"Man City": "Manchester City", "Man United": "Manchester United", "Nottm Forest": "Nottingham Forest",
+         "Hull City": "Hull", "Ipswich": "Ipswich Town"}
+
+
+def tablas_api():
+    return {
+        "americanfootball_nfl": dict((v[0], v[1:]) for v in NFL_EQUIPOS.values()),
+        "icehockey_nhl": dict((v[0], v[1:]) for v in NHL_EQUIPOS.values()),
+        "soccer_epl": EPL_EQUIPOS,
+    }
+
+# Ultimos 10 de jugadores para props de la API: {"Jugador": {"player_points": [...]}}
+ULTIMOS_API = {}
+
+# ---------- Armar candidatos con los datos de arriba ----------
+
+CLAVE_MERCADO = {"Puntos": "pts", "Rebotes": "reb", "Asistencias": "ast", "Triples": "tri"}
+
+
+def picks_nba():
+    salida = []
+    for jugador, equipo, partido, mercado, linea, over, under, casa, fuente, valores in PROPS_NBA:
+        opciones = []
+        if over is not None and under is not None:
+            p_over, p_under = sin_comision(over, under)
+            opciones = [("Over", over, p_over, True), ("Under", under, p_under, True)]
+        elif over is not None:
+            opciones = [("Over", over, prob_implicita(over), False)]
+        else:
+            opciones = [("Under", under, prob_implicita(under), False)]
+        mejor = None
+        for lado, momio, p_m, dos in opciones:
+            c = {
+                "evento": partido[0], "grupo": "NBA", "liga": "NBA", "partido": partido[1], "fecha": partido[2],
+                "tipo": "Props", "mercado": mercado, "jugador": jugador, "equipo": equipo,
+                "pick": jugador + " " + lado + " " + str(linea), "lado": lado, "linea": linea,
+                "momio": momio, "casa": casa, "casas": 1, "p_mercado": p_m, "dos_lados": dos,
+                "valores": valores, "ajustes": CONTEXTO_JUGADOR.get(jugador, []),
+                "base": "Ultimos " + str(len(valores)) + " partidos + momio. Linea via " + fuente + ", partidos via StatMuse",
+            }
+            agregar_duelo(c)
+            motor.evaluar(c)
+            if mejor is None or c["ventaja"] > mejor["ventaja"]:
+                mejor = c
+        ordenados = sorted(valores)
+        mejor.update({"promedio": round(sum(valores) / len(valores), 1), "mediana": ordenados[len(ordenados) // 2],
+                      "maximo": max(valores), "minimo": min(valores)})
+        salida.append(mejor)
+    return salida
+
+
+def pick_equipo(evento, grupo, liga, partido, fecha, tipo, mercado, texto, momio, p_m, p_e, muestra, explicacion, extra, casa):
+    c = {
+        "evento": evento, "grupo": grupo, "liga": liga, "partido": partido, "fecha": fecha,
+        "tipo": tipo, "mercado": mercado, "pick": texto, "momio": momio, "casa": casa, "casas": 1,
+        "p_mercado": p_m, "dos_lados": True, "p_modelo": p_e, "muestra": muestra,
+        "peso_modelo": motor.PESO_MAX_EQUIPOS * min(1, muestra / 8),
+        "modelo_texto": explicacion, "explicacion": explicacion,
+        "ajustes": CONTEXTO_EVENTO.get(evento, []),
+        "base": "Modelo con estadisticas de la temporada + momio sin comision + contexto",
+    }
+    c.update(extra)
+    agregar_duelo(c)
+    return motor.evaluar(c)
+
+
+def mejor_de(a, b):
+    return a if a["ventaja"] >= b["ventaja"] else b
+
+
+def picks_nfl():
+    salida = []
+    for vis, loc, spread_loc, m_vis, m_loc, total, m_over, m_under, fecha, neutral in NFL_PARTIDOS:
+        nv, gv, pfv, pav = NFL_EQUIPOS[vis]
+        nl, gl, pfl, pal = NFL_EQUIPOS[loc]
+        casa_v = 0 if neutral else 1.0
+        pts_loc = (pfl / gl + pav / gv) / 2 + casa_v
+        pts_vis = (pfv / gv + pal / gl) / 2 - casa_v
+        proy_total = pts_loc + pts_vis
+        margen = pts_loc - pts_vis
+        partido = nv + " @ " + nl + (" (Estadio Banorte, CDMX)" if neutral else "")
+        evento = "nfl_" + vis + "_" + loc
+        muestra = min(gv, gl)
+
+        p_over_m, p_under_m = sin_comision(m_over, m_under)
+        p_over = motor.normal_mayor(total, proy_total, 13.5)
+        expl = ("Con sus puntos a favor y en contra de la temporada proyectamos " + nl + " " + str(round(pts_loc, 1)) +
+                " y " + nv + " " + str(round(pts_vis, 1)) + ": " + str(round(proy_total, 1)) + " puntos")
+        a = pick_equipo(evento, "NFL", "NFL", partido, fecha, "Totales", "Total de puntos", "Over " + texto_linea(total),
+                        m_over, p_over_m, p_over, muestra, expl, {"lado": "Over"}, "DraftKings")
+        b = pick_equipo(evento, "NFL", "NFL", partido, fecha, "Totales", "Total de puntos", "Under " + texto_linea(total),
+                        m_under, p_under_m, 1 - p_over, muestra, expl, {"lado": "Under"}, "DraftKings")
+        salida.append(mejor_de(a, b))
+
+        p_vis_m, p_loc_m = sin_comision(m_vis, m_loc)
+        p_loc = motor.normal_mayor(-spread_loc, margen, 13.5)
+        s_loc = ("+" if spread_loc > 0 else "") + texto_linea(spread_loc)
+        s_vis = ("+" if -spread_loc > 0 else "") + texto_linea(-spread_loc)
+        expl = "Proyectamos que " + nl + " termine con margen de " + ("+" if margen > 0 else "") + str(round(margen, 1)) + " puntos"
+        a = pick_equipo(evento, "NFL", "NFL", partido, fecha, "Spreads", "Spread", nl + " " + s_loc, m_loc, p_loc_m, p_loc,
+                        muestra, expl, {"equipo_pick": nl, "rival_pick": nv}, "DraftKings")
+        b = pick_equipo(evento, "NFL", "NFL", partido, fecha, "Spreads", "Spread", nv + " " + s_vis, m_vis, p_vis_m, 1 - p_loc,
+                        muestra, expl, {"equipo_pick": nv, "rival_pick": nl}, "DraftKings")
+        salida.append(mejor_de(a, b))
+    return salida
+
+
+def picks_nhl():
+    salida = []
+    for vis, loc, total, m_over, m_under, fecha in NHL_PARTIDOS:
+        nv, gv, gfv, gav = NHL_EQUIPOS[vis]
+        nl, gl, gfl, gal = NHL_EQUIPOS[loc]
+        lam_loc = (gfl / gl + gav / gv) / 2
+        lam_vis = (gfv / gv + gal / gl) / 2
+        lam = lam_loc + lam_vis
+        p_over = motor.poisson_mayor(total, lam)
+        p_over_m, p_under_m = sin_comision(m_over, m_under)
+        expl = ("Con sus goles a favor y en contra esperamos " + str(round(lam, 2)) + " goles (" + nl + " " +
+                str(round(lam_loc, 2)) + ", " + nv + " " + str(round(lam_vis, 2)) + ")")
+        evento = "nhl_" + vis + "_" + loc
+        args = (evento, "NHL", "NHL", nv + " @ " + nl, fecha, "Totales", "Total de goles")
+        a = pick_equipo(*args, "Over " + texto_linea(total), m_over, p_over_m, p_over, min(gv, gl), expl, {"lado": "Over"}, "DraftKings")
+        b = pick_equipo(*args, "Under " + texto_linea(total), m_under, p_under_m, 1 - p_over, min(gv, gl), expl, {"lado": "Under"}, "DraftKings")
+        salida.append(mejor_de(a, b))
+    return salida
+
+
+def picks_epl():
+    prom = sum(e[1] for e in EPL_EQUIPOS.values()) / sum(e[0] for e in EPL_EQUIPOS.values())
+    salida = []
+    for loc, vis, total, m_over, m_under, fecha in EPL_PARTIDOS:
+        gl, fl, al = EPL_EQUIPOS[loc]
+        gv, fv, av = EPL_EQUIPOS[vis]
+        ataque_loc = 0.5 + 0.5 * (fl / gl) / prom
+        defensa_loc = 0.5 + 0.5 * (al / gl) / prom
+        ataque_vis = 0.5 + 0.5 * (fv / gv) / prom
+        defensa_vis = 0.5 + 0.5 * (av / gv) / prom
+        lam_loc = prom * 1.1 * ataque_loc * defensa_vis
+        lam_vis = prom * 0.9 * ataque_vis * defensa_loc
+        lam = lam_loc + lam_vis
+        p_over = motor.poisson_mayor(total, lam)
+        p_over_m, p_under_m = sin_comision(m_over, m_under)
+        expl = ("Con sus goles a favor y en contra en la Premier esperamos " + str(round(lam, 2)) + " goles (" + loc + " " +
+                str(round(lam_loc, 2)) + ", " + vis + " " + str(round(lam_vis, 2)) + ")")
+        evento = "epl_" + loc + "_" + vis
+        args = (evento, "Futbol", "Premier League", loc + " vs " + vis, fecha, "Totales", "Total de goles")
+        a = pick_equipo(*args, "Over " + texto_linea(total), m_over, p_over_m, p_over, min(gl, gv), expl, {"lado": "Over"}, "Betwatch")
+        b = pick_equipo(*args, "Under " + texto_linea(total), m_under, p_under_m, 1 - p_over, min(gl, gv), expl, {"lado": "Under"}, "Betwatch")
+        salida.append(mejor_de(a, b))
+    return salida
+
+
 # ---------- Juntar todo ----------
 
-def main():
-    nba, descartados = picks_nba()
-    nfl = picks_nfl()
-    nhl = picks_nhl()
-    epl = picks_epl()
-    picks = nba + nfl + nhl + epl
-    for p in picks:
-        agregar_duelo(p)
+ORDEN_GRUPOS = ["NFL", "NBA", "Futbol", "MLB", "NHL", "UFC", "Tenis"]
 
-    picks.sort(key=lambda p: p["prob"], reverse=True)
-    for i in range(len(picks)):
-        p = picks[i]
+
+def main():
+    candidatos = []
+    analizados = {}
+    ligas_por_grupo = {}
+
+    def contar(grupo, liga, n):
+        analizados[grupo] = analizados.get(grupo, 0) + n
+        ligas_por_grupo.setdefault(grupo, [])
+        if liga not in ligas_por_grupo[grupo]:
+            ligas_por_grupo[grupo].append(liga)
+
+    # 1. Datos manuales (solo para las ligas que la API no trae)
+    if not api_picks.hay_props("basketball_nba"):
+        candidatos += picks_nba()
+        contar("NBA", "NBA", len(set(x[2][0] for x in PROPS_NBA)))
+    if not api_picks.hay_api("americanfootball_nfl"):
+        candidatos += picks_nfl()
+        contar("NFL", "NFL", len(NFL_PARTIDOS))
+    if not api_picks.hay_api("icehockey_nhl"):
+        candidatos += picks_nhl()
+        contar("NHL", "NHL", len(NHL_PARTIDOS))
+    if not api_picks.hay_api("soccer_epl"):
+        candidatos += picks_epl()
+        contar("Futbol", "Premier League", len(EPL_PARTIDOS))
+
+    # 2. The Odds API (todas las ligas activas)
+    contexto_api = dict(CONTEXTO_EVENTO)
+    lineas_api, por_grupo = api_picks.candidatos_lineas(tablas_api(), ALIAS, contexto_api)
+    for c in lineas_api:
+        agregar_duelo(c)
+        motor.evaluar(c)
+    props_api = api_picks.candidatos_props(ULTIMOS_API, CONTEXTO_JUGADOR)
+    candidatos += lineas_api + props_api
+    for g, n in por_grupo.items():
+        analizados[g] = analizados.get(g, 0) + n
+    for c in lineas_api + props_api:
+        ligas_por_grupo.setdefault(c["grupo"], [])
+        if c["liga"] not in ligas_por_grupo[c["grupo"]]:
+            ligas_por_grupo[c["grupo"]].append(c["liga"])
+
+    # 3. Quitar partidos que ya empezaron y filtrar: solo lo que pasa las reglas del motor
+    ahora = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+    candidatos = [c for c in candidatos if c["fecha"] > ahora]
+    picks = [c for c in candidatos if c["publicar"]]
+    descartados = [c["pick"] + " (" + str(c["score"]) + ")" for c in candidatos if not c["publicar"] and c["tipo"] == "Props"]
+
+    # Orden: primero el nivel de confianza, luego la probabilidad
+    picks.sort(key=lambda p: (p["score"], p["prob"]), reverse=True)
+    for i, p in enumerate(picks):
         p["id"] = i + 1
         p["prob"] = round(p["prob"] * 100, 1)
         p["ventaja"] = round(p["ventaja"] * 100, 1)
         p["implicita"] = round(prob_implicita(p["momio"]) * 100, 1)
-        p["unidades"] = 2 if i == 0 else (1 if p["prob"] >= 60 else 0.5)
+        if "p_estadisticas" in p and not p.get("valores"):
+            p["modelo"] = p["p_estadisticas"]
+            p["mercado_prob"] = p["p_mercado_pct"]
+        for k in ["p_mercado", "p_modelo", "peso_modelo", "ajustes", "publicar", "dos_lados", "muestra", "modelo_texto"]:
+            p.pop(k, None)
 
-    # Parlay: los 3 mas probables de partidos y deportes diferentes
+    # Parlay: los 3 de mas confianza de partidos diferentes (nivel A primero)
     parlay = []
     usados = []
     for p in picks:
-        if p["evento"] not in usados:
+        if p["evento"] not in usados and p["prob"] >= 58:
             parlay.append(p["id"])
             usados.append(p["evento"])
         if len(parlay) == 3:
@@ -536,48 +545,26 @@ def main():
             decimal *= a_decimal(p["momio"])
             prob_parlay *= p["prob"] / 100
 
-    def contar(grupo):
-        return len([p for p in picks if p["grupo"] == grupo])
+    grupos = {}
+    for g in ORDEN_GRUPOS:
+        grupos[g] = {"picks": len([p for p in picks if p["grupo"] == g]), "partidos": analizados.get(g, 0),
+                     "ligas": ligas_por_grupo.get(g, [])}
 
-    grupos = {
-        "NFL": {"picks": contar("NFL"), "partidos": len(NFL_PARTIDOS), "ligas": ["NFL semana 11"]},
-        "NBA": {"picks": contar("NBA"), "partidos": len(set(x[2][0] for x in PROPS_NBA)), "ligas": ["NBA"]},
-        "Futbol": {"picks": contar("Futbol"), "partidos": len(EPL_PARTIDOS), "ligas": ["Premier League"]},
-        "MLB": {"picks": 0, "partidos": 0, "ligas": ["MLB"]},
-        "NHL": {"picks": contar("NHL"), "partidos": len(NHL_PARTIDOS), "ligas": ["NHL"]},
-        "UFC": {"picks": 0, "partidos": 0, "ligas": ["UFC"]},
-        "Tenis": {"picks": 0, "partidos": 0, "ligas": ["ATP / WTA"]},
-    }
-
+    cal = motor.calibracion()
     salida = {
         "actualizado": datetime.now().strftime("%Y-%m-%d %H:%M"),
         "prueba": False,
         "manual": True,
-        "nota": ("Edicion del " + EDICION + ": NBA (props de hoy, 10 partidos), NHL (3 partidos de hoy), NFL semana 11 y "
-                 "Premier League jornada 11, con lineas y estadisticas reales. Ya calificamos los picks NBA de anoche (ve el Historial). "
-                 "Nota: en NBA la mayoria de las fuentes solo publican un lado del momio; ahi usamos el momio de la casa. "
-                 "MLB esta fuera de temporada; UFC y tenis llegan en una proxima edicion."),
-        "fuentes": [
-            ["ESPN - momios NFL semana 11 (DraftKings)", "https://www.espn.com/nfl/odds"],
-            ["ESPN - tabla NFL (puntos a favor y en contra)", "https://www.espn.com/nfl/standings"],
-            ["SportsbookReview - totales NHL 18 nov (DraftKings)", "https://www.sportsbookreview.com/betting-odds/nhl-hockey/totals/full-game/?date=2026-11-18"],
-            ["CBS Sports - tabla NHL (goles a favor y en contra)", "https://www.cbssports.com/nhl/standings/"],
-            ["Betwatch - momios Premier League", "https://betwatch.io/odds/premier-league"],
-            ["ESPN - tabla Premier League", "https://www.espn.com/soccer/standings/_/league/eng.1"],
-            ["FanDuel Research - props NBA 18 nov", "https://www.fanduel.com/research/nba-props-today-3-best-nba-player-prop-bets-for-wednesday-nov-18"],
-            ["TheLines - props NBA 18 nov", "https://www.thelines.com/nba/player-props/expert-nba-picks-and-player-props-best-nba-bets-today-nov-18/"],
-            ["SportsBettingDime - props NBA 18 nov", "https://www.sportsbettingdime.com/news/nba/best-player-prop-picks-today-key-injuries-nov-18/"],
-            ["Covers - props NBA", "https://www.covers.com/sport/basketball/nba/player-props"],
-            ["StatMuse - ultimos 10 partidos y enfrentamientos NBA", "https://www.statmuse.com/nba"],
-            ["Hockey-Reference - ultimos enfrentamientos NHL", "https://www.hockey-reference.com/"],
-            ["Ultimos enfrentamientos NFL - CBS Sports y StatMuse", "https://www.statmuse.com/nfl"],
-            ["Ultimo Newcastle vs Arsenal - Opta / The Analyst", "https://theanalyst.com/articles/arsenal-vs-newcastle-stats-opta-premier-league-04-2026"],
-            ["Resultados NBA 17 nov - CBS Sports y PlainTextSports", "https://plaintextsports.com/nba/2026-11-17/"],
-        ],
-        "partidos_analizados": len(set(x[2][0] for x in PROPS_NBA)) + len(NFL_PARTIDOS) + len(NHL_PARTIDOS) + len(EPL_PARTIDOS),
+        "api": bool(api_picks.LINEAS),
+        "nota": NOTA,
+        "fuentes": FUENTES,
+        "reglas": {"prob_minima": round(motor.PROB_MINIMA * 100), "ventaja_minima": round(motor.VENTAJA_MINIMA * 100),
+                   "calibracion": cal},
+        "partidos_analizados": sum(analizados.values()),
+        "candidatos": len(candidatos),
         "descartados": descartados,
         "picks": picks,
-        "parlay": {"ids": parlay, "momio": a_americano(decimal), "prob": round(prob_parlay * 100, 1)},
+        "parlay": {"ids": parlay, "momio": a_americano(decimal) if parlay else 0, "prob": round(prob_parlay * 100, 1)},
         "grupos": grupos,
     }
 
@@ -586,16 +573,39 @@ def main():
         archivo.write(json.dumps(salida, ensure_ascii=False, indent=1))
         archivo.write(";\n")
 
-    # Guardar en el historial y actualizar el record de la pagina
+    # Historial: calificar lo que se pueda solo, guardar los picks nuevos y actualizar la pagina
     lista = historial.guardar_edicion(picks, FECHA_EDICION)
-    historial.escribir_web(historial.aplicar_resultados(lista))
+    historial.escribir_web(historial.aplicar_resultados(historial.calificar_auto(lista)))
 
+    print("Candidatos:", len(candidatos), "| publicados:", len(picks))
     for p in picks:
-        extra = ""
-        if "modelo" in p:
-            extra = " | modelo " + str(p["modelo"]) + " mercado " + str(p["mercado_prob"])
-        print(p["id"], p["grupo"], "|", p["pick"], "|", p["partido"], "|", p["momio"], "| prob", p["prob"], "| ventaja", p["ventaja"], extra)
+        print(p["id"], p["nivel"], p["score"], p["grupo"], "|", p["pick"], "|", p["partido"], "|", p["momio"],
+              "| prob", p["prob"], "| ventaja", p["ventaja"], "|", p["unidades"], "u | senales", p["senales"])
     print("Parlay:", salida["parlay"])
+
+
+NOTA = ("Edicion del " + EDICION + ": NBA (props de hoy), NHL (hoy), NFL semana 11 y Premier League jornada 11. "
+        "Cada pick pasa por el motor de PickLab: mercado + estadisticas + contexto + historial, y solo se publica si tiene "
+        "55% o mas de probabilidad, 3% o mas de ventaja y nivel de confianza A o B. MLB esta fuera de temporada; "
+        "las demas ligas entran en cuanto este activa la API de momios.")
+
+FUENTES = [
+    ["ESPN - momios NFL semana 11 (DraftKings)", "https://www.espn.com/nfl/odds"],
+    ["ESPN - tabla NFL (puntos a favor y en contra)", "https://www.espn.com/nfl/standings"],
+    ["SportsbookReview - totales NHL 18 nov (DraftKings)", "https://www.sportsbookreview.com/betting-odds/nhl-hockey/totals/full-game/?date=2026-11-18"],
+    ["CBS Sports - tabla NHL (goles a favor y en contra)", "https://www.cbssports.com/nhl/standings/"],
+    ["Betwatch - momios Premier League", "https://betwatch.io/odds/premier-league"],
+    ["ESPN - tabla Premier League", "https://www.espn.com/soccer/standings/_/league/eng.1"],
+    ["FanDuel Research - props NBA 18 nov", "https://www.fanduel.com/research/nba-props-today-3-best-nba-player-prop-bets-for-wednesday-nov-18"],
+    ["TheLines - props NBA 18 nov", "https://www.thelines.com/nba/player-props/expert-nba-picks-and-player-props-best-nba-bets-today-nov-18/"],
+    ["SportsBettingDime - props NBA 18 nov", "https://www.sportsbettingdime.com/news/nba/best-player-prop-picks-today-key-injuries-nov-18/"],
+    ["Covers - props NBA", "https://www.covers.com/sport/basketball/nba/player-props"],
+    ["StatMuse - ultimos 10 partidos y enfrentamientos NBA", "https://www.statmuse.com/nba"],
+    ["Hockey-Reference - ultimos enfrentamientos NHL", "https://www.hockey-reference.com/"],
+    ["Ultimos enfrentamientos NFL - CBS Sports y StatMuse", "https://www.statmuse.com/nfl"],
+    ["Ultimo Newcastle vs Arsenal - Opta / The Analyst", "https://theanalyst.com/articles/arsenal-vs-newcastle-stats-opta-premier-league-04-2026"],
+    ["Resultados NBA 17 nov - CBS Sports y PlainTextSports", "https://plaintextsports.com/nba/2026-11-17/"],
+]
 
 
 if __name__ == "__main__":

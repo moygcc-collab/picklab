@@ -129,10 +129,13 @@
   "partido": "Bulls @ Nets",
   "pick": "Julius Randle Under 22.5",
   "momio": -113,
-  "unidades": 2,
-  "prob": 69.2,
-  "ventaja": 16.2,
-  "resultado": null
+  "unidades": 1.5,
+  "prob": 65.2,
+  "ventaja": 12.2,
+  "resultado": null,
+  "nivel": "A",
+  "score": 73,
+  "lado": "Under"
  },
  {
   "clave": "2026-11-19 | Hawks @ Thunder | Shai Gilgeous-Alexander Under 5.5",
@@ -144,40 +147,13 @@
   "partido": "Hawks @ Thunder",
   "pick": "Shai Gilgeous-Alexander Under 5.5",
   "momio": -115,
-  "unidades": 1,
-  "prob": 63.4,
-  "ventaja": 9.9,
-  "resultado": null
- },
- {
-  "clave": "2026-11-19 | Pistons @ Pelicans | Cade Cunningham Over 24.5",
-  "edicion": "2026-11-18",
-  "fecha": "2026-11-19T01:00:00Z",
-  "grupo": "NBA",
-  "liga": "NBA",
-  "tipo": "Props",
-  "partido": "Pistons @ Pelicans",
-  "pick": "Cade Cunningham Over 24.5",
-  "momio": -108,
-  "unidades": 0.5,
-  "prob": 56.8,
-  "ventaja": 4.8,
-  "resultado": null
- },
- {
-  "clave": "2026-11-19 | Celtics @ Nuggets | Nikola Jokic Over 9.5",
-  "edicion": "2026-11-18",
-  "fecha": "2026-11-19T02:30:00Z",
-  "grupo": "NBA",
-  "liga": "NBA",
-  "tipo": "Props",
-  "partido": "Celtics @ Nuggets",
-  "pick": "Nikola Jokic Over 9.5",
-  "momio": 116,
-  "unidades": 0.5,
-  "prob": 48.5,
-  "ventaja": 2.2,
-  "resultado": null
+  "unidades": 1.0,
+  "prob": 60.4,
+  "ventaja": 6.9,
+  "resultado": null,
+  "nivel": "B",
+  "score": 59,
+  "lado": "Under"
  },
  {
   "clave": "2026-11-19 | Jazz @ Lakers | Luka Doncic Over 36.5",
@@ -189,10 +165,13 @@
   "partido": "Jazz @ Lakers",
   "pick": "Luka Doncic Over 36.5",
   "momio": -110,
-  "unidades": 1,
-  "prob": 63.0,
-  "ventaja": 10.6,
-  "resultado": null
+  "unidades": 1.0,
+  "prob": 60.0,
+  "ventaja": 7.6,
+  "resultado": null,
+  "nivel": "B",
+  "score": 56,
+  "lado": "Over"
  },
  {
   "clave": "2026-11-20 | Colts @ Texans | Colts +12.5",

@@ -1,8 +1,9 @@
 window.PICKS = {
- "actualizado": "2026-11-18 20:48",
+ "actualizado": "2026-11-18 21:06",
  "prueba": false,
  "manual": true,
- "nota": "Edicion del miercoles 18 de noviembre: NBA (props de hoy, 10 partidos), NHL (3 partidos de hoy), NFL semana 11 y Premier League jornada 11, con lineas y estadisticas reales. Ya calificamos los picks NBA de anoche (ve el Historial). Nota: en NBA la mayoria de las fuentes solo publican un lado del momio; ahi usamos el momio de la casa. MLB esta fuera de temporada; UFC y tenis llegan en una proxima edicion.",
+ "api": false,
+ "nota": "Edicion del miercoles 18 de noviembre: NBA (props de hoy), NHL (hoy), NFL semana 11 y Premier League jornada 11. Cada pick pasa por el motor de PickLab: mercado + estadisticas + contexto + historial, y solo se publica si tiene 55% o mas de probabilidad, 3% o mas de ventaja y nivel de confianza A o B. MLB esta fuera de temporada; las demas ligas entran en cuanto este activa la API de momios.",
  "fuentes": [
   [
    "ESPN - momios NFL semana 11 (DraftKings)",
@@ -65,13 +66,26 @@ window.PICKS = {
    "https://plaintextsports.com/nba/2026-11-17/"
   ]
  ],
+ "reglas": {
+  "prob_minima": 55,
+  "ventaja_minima": 3,
+  "calibracion": {
+   "factor": 1.0,
+   "picks": 8,
+   "esperado": 65.5,
+   "real": 50.0
+  }
+ },
  "partidos_analizados": 34,
+ "candidatos": 47,
  "descartados": [
-  "Bam Adebayo Under 8.5",
-  "VJ Edgecombe Over 13.5",
-  "Kyrie Irving Over 22.5",
-  "Trae Young Over 8.5",
-  "Alperen Sengun Over 20.5"
+  "Bam Adebayo Under 8.5 (30)",
+  "VJ Edgecombe Over 13.5 (15)",
+  "Nikola Jokic Over 9.5 (18)",
+  "Kyrie Irving Over 22.5 (27)",
+  "Trae Young Over 8.5 (33)",
+  "Cade Cunningham Over 24.5 (37)",
+  "Alperen Sengun Over 20.5 (21)"
  ],
  "picks": [
   {
@@ -90,8 +104,6 @@ window.PICKS = {
    "momio": -113,
    "casa": "Caesars",
    "casas": 1,
-   "prob": 69.2,
-   "ventaja": 16.2,
    "valores": [
     24,
     15,
@@ -104,12 +116,7 @@ window.PICKS = {
     22,
     33
    ],
-   "aciertos": 8,
-   "promedio": 20.6,
-   "mediana": 21,
-   "maximo": 33,
-   "minimo": 13,
-   "base": "Ultimos 10 partidos + momio de la casa. Linea via Covers, partidos via ESPN",
+   "base": "Ultimos 10 partidos + momio. Linea via Covers, partidos via StatMuse",
    "duelo": {
     "fecha": "2026-02-09",
     "liga": "NBA 2025-26",
@@ -139,9 +146,185 @@ window.PICKS = {
     "pego": false,
     "resumen": "Julius Randle hizo 30 puntos vs Bulls (linea de hoy 22.5)"
    },
+   "aciertos": 8,
+   "prob": 65.2,
+   "ventaja": 12.2,
+   "score": 73,
+   "nivel": "A",
+   "senales": "3/4",
+   "unidades": 1.5,
+   "razones": [
+    {
+     "tipo": "i",
+     "texto": "Solo encontramos este lado del momio en Caesars; usamos su probabilidad con comision (53.1%), que es mas conservador"
+    },
+    {
+     "tipo": "+",
+     "texto": "Le pego al Under 22.5 en 8 de sus ultimos 10"
+    },
+    {
+     "tipo": "+",
+     "texto": "Promedia 20.6 contra la linea de 22.5"
+    },
+    {
+     "tipo": "+",
+     "texto": "En racha: 4 de 5 en sus ultimos 5"
+    },
+    {
+     "tipo": "-",
+     "texto": "Ultimo enfrentamiento: Julius Randle hizo 30 puntos vs Bulls (linea de hoy 22.5): no hubiera pegado"
+    },
+    {
+     "tipo": "+",
+     "texto": "El momio -113 implica 53.1%; nosotros calculamos 65.2% (ventaja +12.2%)"
+    }
+   ],
+   "p_estadisticas": 75.0,
+   "p_mercado_pct": 53.1,
+   "promedio": 20.6,
+   "mediana": 21,
+   "maximo": 33,
+   "minimo": 13,
    "id": 1,
-   "implicita": 53.1,
-   "unidades": 2
+   "implicita": 53.1
+  },
+  {
+   "evento": "nfl_IND_HOU",
+   "grupo": "NFL",
+   "liga": "NFL",
+   "partido": "Colts @ Texans",
+   "fecha": "2026-11-20T01:15:00Z",
+   "tipo": "Spreads",
+   "mercado": "Spread",
+   "pick": "Colts +12.5",
+   "momio": -112,
+   "casa": "DraftKings",
+   "casas": 1,
+   "explicacion": "Proyectamos que Texans termine con margen de +5.9 puntos",
+   "base": "Modelo con estadisticas de la temporada + momio sin comision + contexto",
+   "equipo_pick": "Colts",
+   "rival_pick": "Texans",
+   "duelo": {
+    "fecha": "2026-09-27",
+    "liga": "NFL 2026, semana 3",
+    "marcador": [
+     [
+      "Texans",
+      17
+     ],
+     [
+      "Colts",
+      19
+     ]
+    ],
+    "detalle": "Gano Colts con gol de campo a 16 segundos del final. Daniel Jones 235 yds, 1 TD, 1 INT. C.J. Stroud 167 yds, 1 TD.",
+    "fuente": "https://www.cbssports.com/nfl/gametracker/recap/NFL_20260927_HOU@IND/",
+    "valor": 2,
+    "pego": true,
+    "resumen": "Colts gano por 2; con +12.5 hoy"
+   },
+   "prob": 60.6,
+   "ventaja": 7.7,
+   "score": 69,
+   "nivel": "B",
+   "senales": "3/3",
+   "unidades": 1.0,
+   "razones": [
+    {
+     "tipo": "+",
+     "texto": "DraftKings le da 50.4% ya sin su comision"
+    },
+    {
+     "tipo": "+",
+     "texto": "Modelo de la temporada: le da 68.7% a este pick (Proyectamos que Texans termine con margen de +5.9 puntos)"
+    },
+    {
+     "tipo": "+",
+     "texto": "Ultimo enfrentamiento: Colts gano por 2; con +12.5 hoy: hubiera pegado"
+    },
+    {
+     "tipo": "+",
+     "texto": "El momio -112 implica 52.8%; nosotros calculamos 60.6% (ventaja +7.7%)"
+    }
+   ],
+   "p_estadisticas": 68.7,
+   "p_mercado_pct": 50.4,
+   "id": 2,
+   "implicita": 52.8,
+   "modelo": 68.7,
+   "mercado_prob": 50.4
+  },
+  {
+   "evento": "nfl_LV_DEN",
+   "grupo": "NFL",
+   "liga": "NFL",
+   "partido": "Raiders @ Broncos",
+   "fecha": "2026-11-22T21:25:00Z",
+   "tipo": "Totales",
+   "mercado": "Total de puntos",
+   "pick": "Over 40.5",
+   "momio": -108,
+   "casa": "DraftKings",
+   "casas": 1,
+   "explicacion": "Con sus puntos a favor y en contra de la temporada proyectamos Broncos 26.4 y Raiders 21.9: 48.3 puntos",
+   "base": "Modelo con estadisticas de la temporada + momio sin comision + contexto",
+   "lado": "Over",
+   "duelo": {
+    "fecha": "2025-12-07",
+    "liga": "NFL 2025, semana 14",
+    "marcador": [
+     [
+      "Broncos",
+      24
+     ],
+     [
+      "Raiders",
+      17
+     ]
+    ],
+    "detalle": "Bo Nix 212 yds, 0 TD de pase (1 por tierra). Geno Smith 116 yds, 1 TD y salio lesionado; Kenny Pickett 97 yds, 1 TD.",
+    "anteriores": [
+     "6 nov 2025: Broncos 10 - 7 Raiders (en Denver)"
+    ],
+    "fuente": "https://www.cbssports.com/nfl/gametracker/boxscore/NFL_20251207_DEN@LV/",
+    "valor": 41,
+    "pego": true,
+    "resumen": "Total de 41 contra la linea de hoy de 40.5"
+   },
+   "prob": 61.7,
+   "ventaja": 9.8,
+   "score": 68,
+   "nivel": "B",
+   "senales": "2/3",
+   "unidades": 1.5,
+   "razones": [
+    {
+     "tipo": "-",
+     "texto": "DraftKings le da 49.6% ya sin su comision"
+    },
+    {
+     "tipo": "+",
+     "texto": "Modelo de la temporada: le da 71.9% a este pick (Con sus puntos a favor y en contra de la temporada proyectamos Broncos 26.4 y Raiders 21.9: 48.3 puntos)"
+    },
+    {
+     "tipo": "-",
+     "texto": "Las estadisticas y el mercado no coinciden"
+    },
+    {
+     "tipo": "+",
+     "texto": "Ultimo enfrentamiento: Total de 41 contra la linea de hoy de 40.5: hubiera pegado"
+    },
+    {
+     "tipo": "+",
+     "texto": "El momio -108 implica 51.9%; nosotros calculamos 61.7% (ventaja +9.8%)"
+    }
+   ],
+   "p_estadisticas": 71.9,
+   "p_mercado_pct": 49.6,
+   "id": 3,
+   "implicita": 51.9,
+   "modelo": 71.9,
+   "mercado_prob": 49.6
   },
   {
    "evento": "atl_okc",
@@ -159,8 +342,6 @@ window.PICKS = {
    "momio": -115,
    "casa": "bet365",
    "casas": 1,
-   "prob": 63.4,
-   "ventaja": 9.9,
    "valores": [
     2,
     3,
@@ -173,12 +354,7 @@ window.PICKS = {
     5,
     2
    ],
-   "aciertos": 7,
-   "promedio": 4.6,
-   "mediana": 4,
-   "maximo": 9,
-   "minimo": 2,
-   "base": "Ultimos 10 partidos + momio de la casa. Linea via Covers, partidos via ESPN",
+   "base": "Ultimos 10 partidos + momio. Linea via Covers, partidos via StatMuse",
    "duelo": {
     "fecha": "2025-12-29",
     "liga": "NBA 2025-26",
@@ -208,9 +384,178 @@ window.PICKS = {
     "pego": false,
     "resumen": "Shai Gilgeous-Alexander hizo 6 asistencias vs Hawks (linea de hoy 5.5)"
    },
-   "id": 2,
-   "implicita": 53.5,
-   "unidades": 1
+   "aciertos": 7,
+   "prob": 60.4,
+   "ventaja": 6.9,
+   "score": 59,
+   "nivel": "B",
+   "senales": "3/4",
+   "unidades": 1.0,
+   "razones": [
+    {
+     "tipo": "i",
+     "texto": "Solo encontramos este lado del momio en bet365; usamos su probabilidad con comision (53.5%), que es mas conservador"
+    },
+    {
+     "tipo": "+",
+     "texto": "Le pego al Under 5.5 en 7 de sus ultimos 10"
+    },
+    {
+     "tipo": "+",
+     "texto": "Promedia 4.6 contra la linea de 5.5"
+    },
+    {
+     "tipo": "+",
+     "texto": "En racha: 4 de 5 en sus ultimos 5"
+    },
+    {
+     "tipo": "-",
+     "texto": "Ultimo enfrentamiento: Shai Gilgeous-Alexander hizo 6 asistencias vs Hawks (linea de hoy 5.5): no hubiera pegado"
+    },
+    {
+     "tipo": "+",
+     "texto": "El momio -115 implica 53.5%; nosotros calculamos 60.4% (ventaja +6.9%)"
+    }
+   ],
+   "p_estadisticas": 66.7,
+   "p_mercado_pct": 53.5,
+   "promedio": 4.6,
+   "mediana": 4,
+   "maximo": 9,
+   "minimo": 2,
+   "id": 4,
+   "implicita": 53.5
+  },
+  {
+   "evento": "nfl_BAL_CAR",
+   "grupo": "NFL",
+   "liga": "NFL",
+   "partido": "Ravens @ Panthers",
+   "fecha": "2026-11-22T18:00:00Z",
+   "tipo": "Totales",
+   "mercado": "Total de puntos",
+   "pick": "Over 43.5",
+   "momio": -112,
+   "casa": "DraftKings",
+   "casas": 1,
+   "explicacion": "Con sus puntos a favor y en contra de la temporada proyectamos Panthers 26.3 y Ravens 22.6: 48.9 puntos",
+   "base": "Modelo con estadisticas de la temporada + momio sin comision + contexto",
+   "lado": "Over",
+   "duelo": {
+    "fecha": "2022-11-20",
+    "liga": "NFL 2022, semana 11",
+    "marcador": [
+     [
+      "Panthers",
+      3
+     ],
+     [
+      "Ravens",
+      13
+     ]
+    ],
+    "detalle": "Lamar Jackson 209 yds, 0 TD, 1 INT. Baker Mayfield 196 yds, 0 TD, 2 INT. Hace 4 anos: los equipos cambiaron mucho.",
+    "fuente": "https://www.cbssports.com/nfl/gametracker/boxscore/NFL_20221120_CAR@BAL/",
+    "valor": 16,
+    "pego": false,
+    "resumen": "Total de 16 contra la linea de hoy de 43.5"
+   },
+   "prob": 58.0,
+   "ventaja": 5.1,
+   "score": 59,
+   "nivel": "B",
+   "senales": "2/2",
+   "unidades": 0.5,
+   "razones": [
+    {
+     "tipo": "+",
+     "texto": "DraftKings le da 50.4% ya sin su comision"
+    },
+    {
+     "tipo": "+",
+     "texto": "Modelo de la temporada: le da 65.5% a este pick (Con sus puntos a favor y en contra de la temporada proyectamos Panthers 26.3 y Ravens 22.6: 48.9 puntos)"
+    },
+    {
+     "tipo": "i",
+     "texto": "Ultimo enfrentamiento: Total de 16 contra la linea de hoy de 43.5 (hace mas de un ano, no cuenta)"
+    },
+    {
+     "tipo": "+",
+     "texto": "El momio -112 implica 52.8%; nosotros calculamos 58.0% (ventaja +5.1%)"
+    }
+   ],
+   "p_estadisticas": 65.5,
+   "p_mercado_pct": 50.4,
+   "id": 5,
+   "implicita": 52.8,
+   "modelo": 65.5,
+   "mercado_prob": 50.4
+  },
+  {
+   "evento": "nfl_MIA_BUF",
+   "grupo": "NFL",
+   "liga": "NFL",
+   "partido": "Dolphins @ Bills",
+   "fecha": "2026-11-22T18:00:00Z",
+   "tipo": "Spreads",
+   "mercado": "Spread",
+   "pick": "Dolphins +16.5",
+   "momio": -112,
+   "casa": "DraftKings",
+   "casas": 1,
+   "explicacion": "Proyectamos que Bills termine con margen de +11.1 puntos",
+   "base": "Modelo con estadisticas de la temporada + momio sin comision + contexto",
+   "equipo_pick": "Dolphins",
+   "rival_pick": "Bills",
+   "duelo": {
+    "fecha": "2025-11-09",
+    "liga": "NFL 2025, semana 10",
+    "marcador": [
+     [
+      "Bills",
+      13
+     ],
+     [
+      "Dolphins",
+      30
+     ]
+    ],
+    "detalle": "Tua Tagovailoa 173 yds, 2 TD, 2 INT. Josh Allen 306 yds, 2 TD, 1 INT.",
+    "fuente": "https://www.cbssports.com/nfl/gametracker/boxscore/NFL_20251109_BUF@MIA",
+    "valor": 17,
+    "pego": true,
+    "resumen": "Dolphins gano por 17; con +16.5 hoy"
+   },
+   "prob": 58.0,
+   "ventaja": 5.1,
+   "score": 59,
+   "nivel": "B",
+   "senales": "2/2",
+   "unidades": 0.5,
+   "razones": [
+    {
+     "tipo": "+",
+     "texto": "DraftKings le da 50.4% ya sin su comision"
+    },
+    {
+     "tipo": "+",
+     "texto": "Modelo de la temporada: le da 65.5% a este pick (Proyectamos que Bills termine con margen de +11.1 puntos)"
+    },
+    {
+     "tipo": "i",
+     "texto": "Ultimo enfrentamiento: Dolphins gano por 17; con +16.5 hoy (hace mas de un ano, no cuenta)"
+    },
+    {
+     "tipo": "+",
+     "texto": "El momio -112 implica 52.8%; nosotros calculamos 58.0% (ventaja +5.1%)"
+    }
+   ],
+   "p_estadisticas": 65.5,
+   "p_mercado_pct": 50.4,
+   "id": 6,
+   "implicita": 52.8,
+   "modelo": 65.5,
+   "mercado_prob": 50.4
   },
   {
    "evento": "uta_lal",
@@ -228,8 +573,6 @@ window.PICKS = {
    "momio": -110,
    "casa": "Caesars",
    "casas": 1,
-   "prob": 63.0,
-   "ventaja": 10.6,
    "valores": [
     41,
     37,
@@ -242,12 +585,7 @@ window.PICKS = {
     43,
     36
    ],
-   "aciertos": 7,
-   "promedio": 40.1,
-   "mediana": 41,
-   "maximo": 53,
-   "minimo": 32,
-   "base": "Ultimos 10 partidos + momio de la casa. Linea via SportsBettingDime, partidos via ESPN",
+   "base": "Ultimos 10 partidos + momio. Linea via SportsBettingDime, partidos via StatMuse",
    "duelo": {
     "fecha": "2026-10-25",
     "liga": "NBA 2026-27 (se jugo en Utah)",
@@ -277,176 +615,47 @@ window.PICKS = {
     "pego": true,
     "resumen": "Luka Doncic hizo 52 puntos vs Jazz (linea de hoy 36.5)"
    },
-   "id": 3,
-   "implicita": 52.4,
-   "unidades": 1
-  },
-  {
-   "evento": "nfl_LV_DEN",
-   "grupo": "NFL",
-   "liga": "NFL",
-   "partido": "Raiders @ Broncos",
-   "fecha": "2026-11-22T21:25:00Z",
-   "tipo": "Totales",
-   "mercado": "Total de puntos",
-   "pick": "Over 40.5",
-   "momio": -108,
-   "casa": "DraftKings",
-   "casas": 1,
-   "prob": 60.7,
-   "ventaja": 8.8,
-   "modelo": 71.9,
-   "mercado_prob": 49.6,
-   "explicacion": "Con sus puntos a favor y en contra de esta temporada, proyectamos Broncos 26.4 y Raiders 21.9: total de 48.3 puntos contra una linea de 40.5.",
-   "base": "50% modelo con estadisticas de la temporada + 50% momio sin comision",
-   "duelo": {
-    "fecha": "2025-12-07",
-    "liga": "NFL 2025, semana 14",
-    "marcador": [
-     [
-      "Broncos",
-      24
-     ],
-     [
-      "Raiders",
-      17
-     ]
-    ],
-    "detalle": "Bo Nix 212 yds, 0 TD de pase (1 por tierra). Geno Smith 116 yds, 1 TD y salio lesionado; Kenny Pickett 97 yds, 1 TD.",
-    "anteriores": [
-     "6 nov 2025: Broncos 10 - 7 Raiders (en Denver)"
-    ],
-    "fuente": "https://www.cbssports.com/nfl/gametracker/boxscore/NFL_20251207_DEN@LV/",
-    "valor": 41,
-    "pego": true,
-    "resumen": "Total de 41 contra la linea de hoy de 40.5"
-   },
-   "id": 4,
-   "implicita": 51.9,
-   "unidades": 1
-  },
-  {
-   "evento": "nfl_IND_HOU",
-   "grupo": "NFL",
-   "liga": "NFL",
-   "partido": "Colts @ Texans",
-   "fecha": "2026-11-20T01:15:00Z",
-   "tipo": "Spreads",
-   "mercado": "Spread",
-   "pick": "Colts +12.5",
-   "momio": -112,
-   "casa": "DraftKings",
-   "casas": 1,
-   "prob": 59.6,
-   "ventaja": 6.7,
-   "modelo": 68.7,
-   "mercado_prob": 50.4,
-   "explicacion": "Proyectamos que Texans termine con un margen de +5.9 puntos, contra un spread de -12.5 para Texans.",
-   "base": "50% modelo con estadisticas de la temporada + 50% momio sin comision",
-   "duelo": {
-    "fecha": "2026-09-27",
-    "liga": "NFL 2026, semana 3",
-    "marcador": [
-     [
-      "Texans",
-      17
-     ],
-     [
-      "Colts",
-      19
-     ]
-    ],
-    "detalle": "Gano Colts con gol de campo a 16 segundos del final. Daniel Jones 235 yds, 1 TD, 1 INT. C.J. Stroud 167 yds, 1 TD.",
-    "fuente": "https://www.cbssports.com/nfl/gametracker/recap/NFL_20260927_HOU@IND/",
-    "valor": 2,
-    "pego": true,
-    "resumen": "Colts gano por 2; con +12.5 hoy"
-   },
-   "id": 5,
-   "implicita": 52.8,
-   "unidades": 0.5
-  },
-  {
-   "evento": "nfl_BAL_CAR",
-   "grupo": "NFL",
-   "liga": "NFL",
-   "partido": "Ravens @ Panthers",
-   "fecha": "2026-11-22T18:00:00Z",
-   "tipo": "Totales",
-   "mercado": "Total de puntos",
-   "pick": "Over 43.5",
-   "momio": -112,
-   "casa": "DraftKings",
-   "casas": 1,
-   "prob": 58.0,
-   "ventaja": 5.1,
-   "modelo": 65.5,
-   "mercado_prob": 50.4,
-   "explicacion": "Con sus puntos a favor y en contra de esta temporada, proyectamos Panthers 26.3 y Ravens 22.6: total de 48.9 puntos contra una linea de 43.5.",
-   "base": "50% modelo con estadisticas de la temporada + 50% momio sin comision",
-   "duelo": {
-    "fecha": "2022-11-20",
-    "liga": "NFL 2022, semana 11",
-    "marcador": [
-     [
-      "Panthers",
-      3
-     ],
-     [
-      "Ravens",
-      13
-     ]
-    ],
-    "detalle": "Lamar Jackson 209 yds, 0 TD, 1 INT. Baker Mayfield 196 yds, 0 TD, 2 INT. Hace 4 anos: los equipos cambiaron mucho.",
-    "fuente": "https://www.cbssports.com/nfl/gametracker/boxscore/NFL_20221120_CAR@BAL/",
-    "valor": 16,
-    "pego": false,
-    "resumen": "Total de 16 contra la linea de hoy de 43.5"
-   },
-   "id": 6,
-   "implicita": 52.8,
-   "unidades": 0.5
-  },
-  {
-   "evento": "nfl_MIA_BUF",
-   "grupo": "NFL",
-   "liga": "NFL",
-   "partido": "Dolphins @ Bills",
-   "fecha": "2026-11-22T18:00:00Z",
-   "tipo": "Spreads",
-   "mercado": "Spread",
-   "pick": "Dolphins +16.5",
-   "momio": -112,
-   "casa": "DraftKings",
-   "casas": 1,
-   "prob": 58.0,
-   "ventaja": 5.1,
-   "modelo": 65.5,
-   "mercado_prob": 50.4,
-   "explicacion": "Proyectamos que Bills termine con un margen de +11.1 puntos, contra un spread de -16.5 para Bills.",
-   "base": "50% modelo con estadisticas de la temporada + 50% momio sin comision",
-   "duelo": {
-    "fecha": "2025-11-09",
-    "liga": "NFL 2025, semana 10",
-    "marcador": [
-     [
-      "Bills",
-      13
-     ],
-     [
-      "Dolphins",
-      30
-     ]
-    ],
-    "detalle": "Tua Tagovailoa 173 yds, 2 TD, 2 INT. Josh Allen 306 yds, 2 TD, 1 INT.",
-    "fuente": "https://www.cbssports.com/nfl/gametracker/boxscore/NFL_20251109_BUF@MIA",
-    "valor": 17,
-    "pego": true,
-    "resumen": "Dolphins gano por 17; con +16.5 hoy"
-   },
+   "aciertos": 7,
+   "prob": 60.0,
+   "ventaja": 7.6,
+   "score": 56,
+   "nivel": "B",
+   "senales": "3/5",
+   "unidades": 1.0,
+   "razones": [
+    {
+     "tipo": "i",
+     "texto": "Solo encontramos este lado del momio en Caesars; usamos su probabilidad con comision (52.4%), que es mas conservador"
+    },
+    {
+     "tipo": "+",
+     "texto": "Le pego al Over 36.5 en 7 de sus ultimos 10"
+    },
+    {
+     "tipo": "+",
+     "texto": "Promedia 40.1 contra la linea de 36.5"
+    },
+    {
+     "tipo": "-",
+     "texto": "Segunda noche seguida: anoche jugo 42 minutos con tiempo extra"
+    },
+    {
+     "tipo": "+",
+     "texto": "Ultimo enfrentamiento: Luka Doncic hizo 52 puntos vs Jazz (linea de hoy 36.5): hubiera pegado"
+    },
+    {
+     "tipo": "+",
+     "texto": "El momio -110 implica 52.4%; nosotros calculamos 60.0% (ventaja +7.6%)"
+    }
+   ],
+   "p_estadisticas": 66.7,
+   "p_mercado_pct": 52.4,
+   "promedio": 40.1,
+   "mediana": 41,
+   "maximo": 53,
+   "minimo": 32,
    "id": 7,
-   "implicita": 52.8,
-   "unidades": 0.5
+   "implicita": 52.4
   },
   {
    "evento": "nfl_LV_DEN",
@@ -460,12 +669,10 @@ window.PICKS = {
    "momio": -108,
    "casa": "DraftKings",
    "casas": 1,
-   "prob": 57.6,
-   "ventaja": 5.7,
-   "modelo": 65.6,
-   "mercado_prob": 49.6,
-   "explicacion": "Proyectamos que Broncos termine con un margen de +4.6 puntos, contra un spread de -10 para Broncos.",
-   "base": "50% modelo con estadisticas de la temporada + 50% momio sin comision",
+   "explicacion": "Proyectamos que Broncos termine con margen de +4.6 puntos",
+   "base": "Modelo con estadisticas de la temporada + momio sin comision + contexto",
+   "equipo_pick": "Raiders",
+   "rival_pick": "Broncos",
    "duelo": {
     "fecha": "2025-12-07",
     "liga": "NFL 2025, semana 14",
@@ -488,50 +695,40 @@ window.PICKS = {
     "pego": true,
     "resumen": "Raiders perdio por 7; con +10 hoy"
    },
+   "prob": 58.6,
+   "ventaja": 6.7,
+   "score": 56,
+   "nivel": "B",
+   "senales": "2/3",
+   "unidades": 1.0,
+   "razones": [
+    {
+     "tipo": "-",
+     "texto": "DraftKings le da 49.6% ya sin su comision"
+    },
+    {
+     "tipo": "+",
+     "texto": "Modelo de la temporada: le da 65.6% a este pick (Proyectamos que Broncos termine con margen de +4.6 puntos)"
+    },
+    {
+     "tipo": "-",
+     "texto": "Las estadisticas y el mercado no coinciden"
+    },
+    {
+     "tipo": "+",
+     "texto": "Ultimo enfrentamiento: Raiders perdio por 7; con +10 hoy: hubiera pegado"
+    },
+    {
+     "tipo": "+",
+     "texto": "El momio -108 implica 51.9%; nosotros calculamos 58.6% (ventaja +6.7%)"
+    }
+   ],
+   "p_estadisticas": 65.6,
+   "p_mercado_pct": 49.6,
    "id": 8,
    "implicita": 51.9,
-   "unidades": 0.5
-  },
-  {
-   "evento": "nfl_NYJ_LAC",
-   "grupo": "NFL",
-   "liga": "NFL",
-   "partido": "Jets @ Chargers",
-   "fecha": "2026-11-22T21:05:00Z",
-   "tipo": "Spreads",
-   "mercado": "Spread",
-   "pick": "Jets +3.5",
-   "momio": -118,
-   "casa": "DraftKings",
-   "casas": 1,
-   "prob": 57.6,
-   "ventaja": 3.4,
-   "modelo": 63.4,
-   "mercado_prob": 51.7,
-   "explicacion": "Proyectamos que Chargers termine con un margen de -1.1 puntos, contra un spread de -3.5 para Chargers.",
-   "base": "50% modelo con estadisticas de la temporada + 50% momio sin comision",
-   "duelo": {
-    "fecha": "2023-11-06",
-    "liga": "NFL 2023, semana 9",
-    "marcador": [
-     [
-      "Chargers",
-      27
-     ],
-     [
-      "Jets",
-      6
-     ]
-    ],
-    "detalle": "Justin Herbert 136 yds, 0 TD. Zach Wilson 263 yds, 0 TD. Hace 3 anos: otros planteles.",
-    "fuente": "https://www.cbssports.com/nfl/gametracker/boxscore/NFL_20231106_LAC@NYJ/",
-    "valor": -21,
-    "pego": false,
-    "resumen": "Jets perdio por 21; con +3.5 hoy"
-   },
-   "id": 9,
-   "implicita": 54.1,
-   "unidades": 0.5
+   "modelo": 65.6,
+   "mercado_prob": 49.6
   },
   {
    "evento": "nfl_ARI_KC",
@@ -545,12 +742,10 @@ window.PICKS = {
    "momio": -115,
    "casa": "DraftKings",
    "casas": 1,
-   "prob": 57.4,
-   "ventaja": 3.9,
-   "modelo": 63.8,
-   "mercado_prob": 51.1,
-   "explicacion": "Proyectamos que Chiefs termine con un margen de +11.8 puntos, contra un spread de -16.5 para Chiefs.",
-   "base": "50% modelo con estadisticas de la temporada + 50% momio sin comision",
+   "explicacion": "Proyectamos que Chiefs termine con margen de +11.8 puntos",
+   "base": "Modelo con estadisticas de la temporada + momio sin comision + contexto",
+   "equipo_pick": "Cardinals",
+   "rival_pick": "Chiefs",
    "duelo": {
     "fecha": "2022-09-11",
     "liga": "NFL 2022, semana 1",
@@ -570,358 +765,36 @@ window.PICKS = {
     "pego": false,
     "resumen": "Cardinals perdio por 23; con +16.5 hoy"
    },
-   "id": 10,
+   "prob": 57.4,
+   "ventaja": 3.9,
+   "score": 56,
+   "nivel": "B",
+   "senales": "2/2",
+   "unidades": 0.5,
+   "razones": [
+    {
+     "tipo": "+",
+     "texto": "DraftKings le da 51.1% ya sin su comision"
+    },
+    {
+     "tipo": "+",
+     "texto": "Modelo de la temporada: le da 63.8% a este pick (Proyectamos que Chiefs termine con margen de +11.8 puntos)"
+    },
+    {
+     "tipo": "i",
+     "texto": "Ultimo enfrentamiento: Cardinals perdio por 23; con +16.5 hoy (hace mas de un ano, no cuenta)"
+    },
+    {
+     "tipo": "+",
+     "texto": "El momio -115 implica 53.5%; nosotros calculamos 57.4% (ventaja +3.9%)"
+    }
+   ],
+   "p_estadisticas": 63.8,
+   "p_mercado_pct": 51.1,
+   "id": 9,
    "implicita": 53.5,
-   "unidades": 0.5
-  },
-  {
-   "evento": "det_nop",
-   "grupo": "NBA",
-   "liga": "NBA",
-   "partido": "Pistons @ Pelicans",
-   "fecha": "2026-11-19T01:00:00Z",
-   "tipo": "Props",
-   "mercado": "Puntos",
-   "jugador": "Cade Cunningham",
-   "equipo": "Pistons",
-   "pick": "Cade Cunningham Over 24.5",
-   "lado": "Over",
-   "linea": 24.5,
-   "momio": -108,
-   "casa": "BetRivers",
-   "casas": 1,
-   "prob": 56.8,
-   "ventaja": 4.8,
-   "valores": [
-    19,
-    30,
-    20,
-    33,
-    26,
-    14,
-    17,
-    52,
-    33,
-    27
-   ],
-   "aciertos": 6,
-   "promedio": 27.1,
-   "mediana": 27,
-   "maximo": 52,
-   "minimo": 14,
-   "base": "Ultimos 10 partidos + momio de la casa. Linea via SportsBettingDime, partidos via ESPN",
-   "duelo": {
-    "fecha": "2026-03-26",
-    "liga": "NBA 2025-26 (se jugo en Detroit)",
-    "marcador": [
-     [
-      "Pelicans",
-      108
-     ],
-     [
-      "Pistons",
-      129
-     ]
-    ],
-    "fuente": "https://www.statmuse.com/nba/game/3-26-2026-nop-at-det-78275",
-    "jugador": {
-     "fecha": "2025-03-17",
-     "equipo": "Pistons",
-     "rival": "Pelicans",
-     "pts": 24,
-     "reb": 4,
-     "ast": 8,
-     "tri": 1,
-     "min": 30,
-     "fuente": "https://www.statmuse.com/nba/ask/cade-cunningham-last-game-vs-pelicans"
-    },
-    "valor": 24,
-    "pego": false,
-    "resumen": "Cade Cunningham hizo 24 puntos vs Pelicans (linea de hoy 24.5)"
-   },
-   "id": 11,
-   "implicita": 51.9,
-   "unidades": 0.5
-  },
-  {
-   "evento": "nfl_NO_CHI",
-   "grupo": "NFL",
-   "liga": "NFL",
-   "partido": "Saints @ Bears",
-   "fecha": "2026-11-22T18:00:00Z",
-   "tipo": "Spreads",
-   "mercado": "Spread",
-   "pick": "Saints +11.5",
-   "momio": -108,
-   "casa": "DraftKings",
-   "casas": 1,
-   "prob": 56.2,
-   "ventaja": 4.3,
-   "modelo": 62.9,
-   "mercado_prob": 49.6,
-   "explicacion": "Proyectamos que Bears termine con un margen de +7.1 puntos, contra un spread de -11.5 para Bears.",
-   "base": "50% modelo con estadisticas de la temporada + 50% momio sin comision",
-   "duelo": {
-    "fecha": "2025-10-19",
-    "liga": "NFL 2025, semana 7",
-    "marcador": [
-     [
-      "Saints",
-      14
-     ],
-     [
-      "Bears",
-      26
-     ]
-    ],
-    "detalle": "Caleb Williams 172 yds, 0 TD, 1 INT. Spencer Rattler 233 yds, 2 TD, 3 INT.",
-    "fuente": "https://www.cbssports.com/nfl/gametracker/boxscore/NFL_20251019_NO@CHI/",
-    "valor": -12,
-    "pego": false,
-    "resumen": "Saints perdio por 12; con +11.5 hoy"
-   },
-   "id": 12,
-   "implicita": 51.9,
-   "unidades": 0.5
-  },
-  {
-   "evento": "nfl_IND_HOU",
-   "grupo": "NFL",
-   "liga": "NFL",
-   "partido": "Colts @ Texans",
-   "fecha": "2026-11-20T01:15:00Z",
-   "tipo": "Totales",
-   "mercado": "Total de puntos",
-   "pick": "Over 44.5",
-   "momio": -105,
-   "casa": "DraftKings",
-   "casas": 1,
-   "prob": 56.1,
-   "ventaja": 4.9,
-   "modelo": 63.2,
-   "mercado_prob": 48.9,
-   "explicacion": "Con sus puntos a favor y en contra de esta temporada, proyectamos Texans 27.5 y Colts 21.6: total de 49.1 puntos contra una linea de 44.5.",
-   "base": "50% modelo con estadisticas de la temporada + 50% momio sin comision",
-   "duelo": {
-    "fecha": "2026-09-27",
-    "liga": "NFL 2026, semana 3",
-    "marcador": [
-     [
-      "Texans",
-      17
-     ],
-     [
-      "Colts",
-      19
-     ]
-    ],
-    "detalle": "Gano Colts con gol de campo a 16 segundos del final. Daniel Jones 235 yds, 1 TD, 1 INT. C.J. Stroud 167 yds, 1 TD.",
-    "fuente": "https://www.cbssports.com/nfl/gametracker/recap/NFL_20260927_HOU@IND/",
-    "valor": 36,
-    "pego": false,
-    "resumen": "Total de 36 contra la linea de hoy de 44.5"
-   },
-   "id": 13,
-   "implicita": 51.2,
-   "unidades": 0.5
-  },
-  {
-   "evento": "nfl_ARI_KC",
-   "grupo": "NFL",
-   "liga": "NFL",
-   "partido": "Cardinals @ Chiefs",
-   "fecha": "2026-11-22T18:00:00Z",
-   "tipo": "Totales",
-   "mercado": "Total de puntos",
-   "pick": "Over 41.5",
-   "momio": -108,
-   "casa": "DraftKings",
-   "casas": 1,
-   "prob": 55.6,
-   "ventaja": 3.7,
-   "modelo": 61.6,
-   "mercado_prob": 49.6,
-   "explicacion": "Con sus puntos a favor y en contra de esta temporada, proyectamos Chiefs 28.6 y Cardinals 16.9: total de 45.5 puntos contra una linea de 41.5.",
-   "base": "50% modelo con estadisticas de la temporada + 50% momio sin comision",
-   "duelo": {
-    "fecha": "2022-09-11",
-    "liga": "NFL 2022, semana 1",
-    "marcador": [
-     [
-      "Chiefs",
-      44
-     ],
-     [
-      "Cardinals",
-      21
-     ]
-    ],
-    "detalle": "Patrick Mahomes 360 yds, 5 TD. Kyler Murray 193 yds, 2 TD. Hace 4 anos: otros planteles.",
-    "fuente": "https://www.statmuse.com/nfl/ask/chiefs-vs-cardinals-record",
-    "valor": 65,
-    "pego": true,
-    "resumen": "Total de 65 contra la linea de hoy de 41.5"
-   },
-   "id": 14,
-   "implicita": 51.9,
-   "unidades": 0.5
-  },
-  {
-   "evento": "nfl_TEN_DAL",
-   "grupo": "NFL",
-   "liga": "NFL",
-   "partido": "Titans @ Cowboys",
-   "fecha": "2026-11-22T18:00:00Z",
-   "tipo": "Totales",
-   "mercado": "Total de puntos",
-   "pick": "Under 54.5",
-   "momio": 100,
-   "casa": "DraftKings",
-   "casas": 1,
-   "prob": 54.1,
-   "ventaja": 4.1,
-   "modelo": 60.4,
-   "mercado_prob": 47.8,
-   "explicacion": "Con sus puntos a favor y en contra de esta temporada, proyectamos Cowboys 28.6 y Titans 22.4: total de 51.0 puntos contra una linea de 54.5.",
-   "base": "50% modelo con estadisticas de la temporada + 50% momio sin comision",
-   "duelo": {
-    "fecha": "2022-12-29",
-    "liga": "NFL 2022, semana 17",
-    "marcador": [
-     [
-      "Cowboys",
-      27
-     ],
-     [
-      "Titans",
-      13
-     ]
-    ],
-    "detalle": "Dak Prescott 282 yds, 2 TD, 2 INT. Joshua Dobbs 232 yds, 1 TD, 1 INT. Hace casi 4 anos.",
-    "fuente": "https://www.cbssports.com/nfl/gametracker/boxscore/NFL_20221229_DAL@TEN/",
-    "valor": 40,
-    "pego": true,
-    "resumen": "Total de 40 contra la linea de hoy de 54.5"
-   },
-   "id": 15,
-   "implicita": 50.0,
-   "unidades": 0.5
-  },
-  {
-   "evento": "epl_Newcastle_Arsenal",
-   "grupo": "Futbol",
-   "liga": "Premier League",
-   "partido": "Newcastle vs Arsenal",
-   "fecha": "2026-11-21T17:30:00Z",
-   "tipo": "Totales",
-   "mercado": "Total de goles",
-   "pick": "Under 2.5",
-   "momio": 115,
-   "casa": "Betwatch",
-   "casas": 1,
-   "prob": 50.5,
-   "ventaja": 4.0,
-   "modelo": 56.9,
-   "mercado_prob": 44.1,
-   "explicacion": "Con sus goles a favor y en contra en la Premier, esperamos 2.4 goles (Newcastle 1.0, Arsenal 1.4) contra una linea de 2.5.",
-   "base": "50% modelo con estadisticas de la temporada + 50% momio sin comision",
-   "duelo": {
-    "fecha": "2026-04-25",
-    "liga": "Premier League 2025-26",
-    "marcador": [
-     [
-      "Newcastle",
-      0
-     ],
-     [
-      "Arsenal",
-      1
-     ]
-    ],
-    "detalle": "Gol de Eberechi Eze al 9' (asistencia de Havertz). Tiros: Arsenal 11, Newcastle 12-13.",
-    "anteriores": [
-     "28 sep 2025: Newcastle 1 - 2 Arsenal (Premier)",
-     "18 may 2025: Arsenal 1 - 0 Newcastle (Premier)",
-     "5 feb 2025: Newcastle 2 - 0 Arsenal (Copa de la Liga)",
-     "7 ene 2025: Arsenal 0 - 2 Newcastle (Copa de la Liga)"
-    ],
-    "fuente": "https://theanalyst.com/articles/arsenal-vs-newcastle-stats-opta-premier-league-04-2026",
-    "valor": 1,
-    "pego": true,
-    "resumen": "Total de 1 contra la linea de hoy de 2.5"
-   },
-   "id": 16,
-   "implicita": 46.5,
-   "unidades": 0.5
-  },
-  {
-   "evento": "bos_den",
-   "grupo": "NBA",
-   "liga": "NBA",
-   "partido": "Celtics @ Nuggets",
-   "fecha": "2026-11-19T02:30:00Z",
-   "tipo": "Props",
-   "mercado": "Asistencias",
-   "jugador": "Nikola Jokic",
-   "equipo": "Nuggets",
-   "pick": "Nikola Jokic Over 9.5",
-   "lado": "Over",
-   "linea": 9.5,
-   "momio": 116,
-   "casa": "FanDuel",
-   "casas": 1,
-   "prob": 48.5,
-   "ventaja": 2.2,
-   "valores": [
-    11,
-    10,
-    10,
-    8,
-    11,
-    8,
-    9,
-    8,
-    10,
-    7
-   ],
-   "aciertos": 5,
-   "promedio": 9.2,
-   "mediana": 10,
-   "maximo": 11,
-   "minimo": 7,
-   "base": "Ultimos 10 partidos + momio de la casa. Linea via FanDuel Research, partidos via ESPN",
-   "duelo": {
-    "fecha": "2026-02-25",
-    "liga": "NBA 2025-26",
-    "marcador": [
-     [
-      "Celtics",
-      84
-     ],
-     [
-      "Nuggets",
-      103
-     ]
-    ],
-    "fuente": "https://www.statmuse.com/nba/game/2-25-2026-bos-at-den-78059",
-    "jugador": {
-     "fecha": "2026-02-25",
-     "equipo": "Nuggets",
-     "rival": "Celtics",
-     "pts": 30,
-     "reb": 12,
-     "ast": 6,
-     "tri": 4,
-     "min": 33,
-     "fuente": "https://www.statmuse.com/nba/game/2-25-2026-bos-at-den-78059"
-    },
-    "valor": 6,
-    "pego": false,
-    "resumen": "Nikola Jokic hizo 6 asistencias vs Celtics (linea de hoy 9.5)"
-   },
-   "id": 17,
-   "implicita": 46.3,
-   "unidades": 0.5
+   "modelo": 63.8,
+   "mercado_prob": 51.1
   }
  ],
  "parlay": {
@@ -930,26 +803,26 @@ window.PICKS = {
    2,
    3
   ],
-  "momio": 573,
-  "prob": 27.6
+  "momio": 587,
+  "prob": 24.4
  },
  "grupos": {
   "NFL": {
-   "picks": 11,
+   "picks": 6,
    "partidos": 13,
    "ligas": [
-    "NFL semana 11"
+    "NFL"
    ]
   },
   "NBA": {
-   "picks": 5,
+   "picks": 3,
    "partidos": 10,
    "ligas": [
     "NBA"
    ]
   },
   "Futbol": {
-   "picks": 1,
+   "picks": 0,
    "partidos": 8,
    "ligas": [
     "Premier League"
@@ -958,9 +831,7 @@ window.PICKS = {
   "MLB": {
    "picks": 0,
    "partidos": 0,
-   "ligas": [
-    "MLB"
-   ]
+   "ligas": []
   },
   "NHL": {
    "picks": 0,
@@ -972,16 +843,12 @@ window.PICKS = {
   "UFC": {
    "picks": 0,
    "partidos": 0,
-   "ligas": [
-    "UFC"
-   ]
+   "ligas": []
   },
   "Tenis": {
    "picks": 0,
    "partidos": 0,
-   "ligas": [
-    "ATP / WTA"
-   ]
+   "ligas": []
   }
  }
 };

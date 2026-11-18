@@ -142,8 +142,8 @@ section { display: flex; flex-direction: column; gap: 20px; }
 
 /* ===== Tabla ===== */
 .tabla_caja { overflow-x: auto; background: var(--tarjeta); border: 1px solid var(--borde); border-radius: 20px; }
-.tabla { min-width: 960px; }
-.tabla .renglon { display: grid; grid-template-columns: 56px 110px minmax(0, 2.4fr) 90px 90px minmax(0, 1.4fr) 80px; gap: 12px; padding: 14px 20px; border-bottom: 1px solid var(--borde); align-items: center; font-size: 15px; }
+.tabla { min-width: 1060px; }
+.tabla .renglon { display: grid; grid-template-columns: 56px 110px 110px minmax(0, 2.4fr) 80px 80px minmax(0, 1.3fr) 80px; gap: 12px; padding: 14px 20px; border-bottom: 1px solid var(--borde); align-items: center; font-size: 15px; }
 .tabla .encabezado { font-size: 12px; font-weight: 600; color: var(--gris); text-transform: uppercase; letter-spacing: 0.06em; }
 .tabla a.renglon { color: var(--texto); position: relative; }
 .tabla a.renglon:hover { background: rgba(255,255,255,0.03); }
@@ -201,6 +201,21 @@ a.tarjeta:hover { transform: translateY(-3px); border-color: color-mix(in srgb, 
 .puntos_espera { display: flex; flex-wrap: wrap; gap: 6px; }
 .puntos_espera i { width: 14px; height: 14px; border-radius: 4px; background: var(--c); opacity: 0.85; animation: latido 2.4s ease-in-out infinite; }
 @keyframes latido { 0%, 100% { opacity: 0.35; } 50% { opacity: 0.95; } }
+
+/* ===== Motor: confianza y razones ===== */
+.nivel { align-self: flex-start; display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 700; padding: 4px 10px; border-radius: 999px; white-space: nowrap; }
+.nivel b { font-family: "JetBrains Mono", monospace; }
+.nivel.nA { background: linear-gradient(90deg, #C6F432, #2BD99F); color: #070A12; }
+.nivel.nB { background: rgba(34, 211, 238, 0.16); color: var(--cian); border: 1px solid rgba(34, 211, 238, 0.35); }
+.razones { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+.razones li { display: flex; gap: 10px; align-items: flex-start; font-size: 14px; color: var(--gris_claro); line-height: 1.4; }
+.razones.cortas li { font-size: 13px; }
+.r_icono { flex: none; width: 20px; height: 20px; border-radius: 6px; display: grid; place-items: center; font-style: normal; font-size: 12px; font-weight: 800; margin-top: 1px; }
+.r_icono.a_favor { background: rgba(52, 211, 153, 0.16); color: var(--verde_ok); }
+.r_icono.en_contra { background: rgba(255, 92, 122, 0.16); color: var(--rojo); }
+.r_icono.info { background: rgba(255,255,255,0.08); color: var(--gris_claro); font-family: Georgia, serif; }
+.medidor { height: 10px; border-radius: 999px; background: rgba(255,255,255,0.07); overflow: hidden; }
+.medidor div { height: 100%; border-radius: 999px; background: linear-gradient(90deg, #8B5CF6, #22D3EE, #C6F432); }
 
 /* ===== Ultimo enfrentamiento ===== */
 .sello_duelo { align-self: flex-start; font-size: 12px; font-weight: 600; padding: 4px 10px; border-radius: 999px; }

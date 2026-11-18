@@ -1,6 +1,6 @@
 // Service worker: permite instalar PickLab como app
 // Siempre intenta bajar lo mas nuevo; si no hay internet usa lo guardado
-var CACHE = "picklab-v2";
+var CACHE = "picklab-v3";
 var ARCHIVOS = ["./", "index.html", "estilos.css", "app.js", "picks.js", "historial.js", "manifest.json", "icono-192.png"];
 
 self.addEventListener("install", function (e) {

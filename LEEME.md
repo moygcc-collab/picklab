@@ -1,47 +1,37 @@
 # PickLab
 
-Página de picks de apuestas basada en estadísticas. Se actualiza sola con GitHub Actions y se publica gratis en GitHub Pages.
+Pagina de picks de apuestas basada en numeros. Se publica en GitHub Pages: https://moygcc-collab.github.io/picklab/
 
-## Qué hace cada corrida
-1. `jalar_momios.py`: revisa qué ligas están en temporada (gratis) y jala spreads y totales de NFL, NBA, NHL, MLB, Liga MX, Premier, LaLiga, Champions, UFC y los torneos de tenis ATP/WTA activos. También jala props de NBA, NFL y NHL (The Odds API).
-2. `jalar_stats.py`: saca los últimos partidos de los jugadores de NBA que tienen props (API-Sports).
-3. `calcular_picks.py`: calcula la probabilidad y la ventaja de cada pick, los ordena y escribe `web/picks.js`.
+## Como funciona
+1. **Momios (automatico, diario 5:10 am Monterrey):** el workflow `jalar_momios` corre `jalar_momios.py` con The Odds API y baja spreads, totales y props de todas las ligas activas (ver `config.py`): NFL, NCAA futbol americano, NBA, NCAA basquetbol, Euroliga, NHL, MLB, Premier, LaLiga, Serie A, Bundesliga, Ligue 1, Champions, Europa League, Liga MX, UFC y tenis ATP/WTA. Tambien baja los marcadores de los ultimos 3 dias para calificar solo los spreads y totales. Despues corre `edicion.py` y publica la pagina.
+2. **Estadisticas y contexto (lunes y jueves):** las ediciones programadas juntan a mano lo que la API no trae: ultimos 10 partidos de jugadores, tablas de puntos/goles a favor y en contra, lesiones, descanso y ultimo enfrentamiento. Todo va en `edicion.py`.
+3. **Motor (`motor.py`):** decide cada pick.
 
-## Configurar GitHub (una sola vez)
-1. **Settings → Secrets and variables → Actions → New repository secret**:
-   - `ODDS_API_KEY` = tu llave de the-odds-api.com
-   - `API_SPORTS_KEY` = tu llave de dashboard.api-football.com
-2. **Settings → Pages → Source: GitHub Actions**.
-3. **Actions → picks_automaticos → Run workflow** para la primera corrida.
+## El motor
+Cada pick pasa por 4 senales:
+- **Mercado:** probabilidad sin comision (consenso si hay varias casas) y el mejor precio disponible.
+- **Estadisticas:** props = veces que el jugador paso la linea en sus ultimos 10 (pesa hasta 60%); spreads/totales = modelo con lo que anota y recibe cada equipo (pesa hasta 50%).
+- **Contexto:** ajustes chicos (descanso, lesiones, racha, ultimo enfrentamiento del ultimo ano) con tope de 5 puntos.
+- **Historial:** con 30+ picks calificados, si pegamos menos de lo esperado el motor baja su confianza solo.
 
-Tu página queda en `https://TU_USUARIO.github.io/picklab/`.
+Salen: probabilidad, ventaja, **score de confianza 0-100** (probabilidad 35%, ventaja 25%, senales que coinciden 25%, calidad de datos 15%), **nivel A (70+) o B (55-69)**, razones a favor y en contra, y unidades (Kelly/16, entre 0.5u y 2u).
+Solo se publica si: probabilidad >= 55%, ventaja >= 3% y nivel A o B.
 
-## Cuándo se actualiza
-Cada 3 días a las 9:00 am de Monterrey, y cuando le das **Run workflow**.
-Cada corrida gasta unos 40–50 créditos de The Odds API. El plan gratis trae 500 al mes, así que no alcanza para diario. Si subes al plan de $30 USD (20,000 créditos), cambia en `.github/workflows/picks.yml` la línea del cron a `"0 15 * * *"` para que sea diario.
+## Configurar la API (una sola vez)
+1. Compra el plan 20K de https://the-odds-api.com (30 USD/mes). Te llega la llave por correo (32 caracteres).
+2. En GitHub: **Settings -> Secrets and variables -> Actions -> ODDS_API_KEY -> Update** y pega la llave.
+3. **Actions -> jalar_momios -> Run workflow** para la primera corrida.
+Cada corrida gasta unos 250 creditos (el plan trae 20,000 al mes).
 
-## Ajustes en config.py
-- `LIGAS`: qué ligas revisar.
-- `PROPS`: cuántos partidos y qué props revisar por deporte (menos partidos = menos créditos).
-- `TEMPORADA_NBA`: 2026 = temporada 2026-27.
+## Archivos
+- `edicion.py`: datos manuales, contexto y armado de la edicion. `python edicion.py` escribe `web/picks.js`.
+- `motor.py`: el algoritmo. `api_picks.py`: convierte los momios de la API en candidatos.
+- `jalar_momios.py` + `config.py`: descarga de momios y ligas.
+- `historial.py` + `resultados.py` + `historial.json`: record de todos los picks.
 
-## Probar en tu compu sin llaves
-```
-pip install requests
-python datos_prueba.py
-python calcular_picks.py
-```
-Abre `web/index.html`.
-
-## Cómo se calcula cada pick
-- **Props de NBA:** 60% = cuántas veces el jugador pasó la línea en sus últimos 10 partidos. 40% = probabilidad justa por consenso de casas, sin comisión.
-- **Props de NFL y NHL, spreads y totales:** probabilidad justa por consenso de casas, sin comisión, comparada contra el mejor momio disponible.
-- Solo se muestran picks con ventaja positiva, ordenados de más a menos probable.
-
-## Si algo falla (pestaña Actions → la corrida en rojo)
-- `ERROR 401` → la llave de The Odds API está mal en los secretos.
-- `ERROR 429` o créditos en 0 → se acabaron los créditos del mes.
-- `ERROR: ... plan ...` en estadísticas → tu plan gratis de API-Sports no incluye la temporada actual. Los picks de líneas siguen saliendo; solo faltan las gráficas de jugadores.
+## Si algo falla (Actions -> la corrida en rojo)
+- `401 INVALID_KEY`: la llave de The Odds API esta mal en el secreto.
+- `429` o creditos en 0: se acabaron los creditos del mes.
 
 ## Historial de resultados (record de la pagina)
 Cada vez que corres `python edicion.py`, los picks se guardan solos en `historial.json`.

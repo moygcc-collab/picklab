@@ -1,29 +1,48 @@
 # ============================================
-# PASO 1: Jalar momios de The Odds API
-# Guarda: datos/lineas.json y datos/props.json
+# JALAR MOMIOS DE THE ODDS API
+# Lo corre el workflow "jalar_momios" de GitHub (con el secreto ODDS_API_KEY).
+# Guarda en datos/:
+#   ligas.json       ligas activas
+#   lineas.json      spreads y totales de todas las ligas (todas las casas)
+#   props.json       props de jugadores de NBA, NFL y NHL
+#   marcadores.json  resultados de los ultimos 3 dias (para calificar solo)
+#   uso_api.json     creditos gastados y restantes
+#
+# Gasto aproximado por corrida: ~60 lineas + ~150 props + ~35 marcadores = ~250 creditos.
+# Con el plan de 20,000 al mes alcanza para correr diario y sobra.
 # ============================================
 
 import json
+import os
+from datetime import datetime, timedelta, timezone
 import requests
 import config
 
 URL_BASE = "https://api.the-odds-api.com/v4"
 ERRORES = []
+USO = {"restantes": None, "usados": None}
 
 
 def guardar(nombre_archivo, datos):
+    os.makedirs("datos", exist_ok=True)
     with open("datos/" + nombre_archivo, "w", encoding="utf-8") as archivo:
-        json.dump(datos, archivo, indent=2)
+        json.dump(datos, archivo, indent=1)
     print("Guardado:", nombre_archivo)
 
 
 def pedir(url, parametros):
     parametros["apiKey"] = config.ODDS_API_KEY
-    respuesta = requests.get(url, params=parametros, timeout=30)
-    print("  Creditos restantes:", respuesta.headers.get("x-requests-remaining"))
+    try:
+        respuesta = requests.get(url, params=parametros, timeout=30)
+    except requests.RequestException as e:
+        ERRORES.append("Conexion: " + str(e)[:150])
+        return None
+    if respuesta.headers.get("x-requests-remaining"):
+        USO["restantes"] = respuesta.headers.get("x-requests-remaining")
+        USO["usados"] = respuesta.headers.get("x-requests-used")
     if respuesta.status_code != 200:
-        print("  ERROR", respuesta.status_code, respuesta.text)
         error = "The Odds API " + str(respuesta.status_code) + ": " + respuesta.text[:200]
+        print("  ERROR", error)
         if error not in ERRORES:
             ERRORES.append(error)
         return None
@@ -34,81 +53,84 @@ def ligas_activas():
     # Esta lista es gratis: nos dice que ligas estan en temporada
     deportes = pedir(URL_BASE + "/sports", {})
     activas = {}
-    if not deportes:
-        # Si falla, probamos con todas las ligas de config
-        for clave in config.LIGAS:
-            grupo = "Futbol"
-            if clave.startswith("americanfootball"):
-                grupo = "NFL"
-            elif clave.startswith("basketball"):
-                grupo = "NBA"
-            elif clave.startswith("icehockey"):
-                grupo = "NHL"
-            elif clave.startswith("baseball"):
-                grupo = "MLB"
-            elif clave.startswith("mma"):
-                grupo = "UFC"
-            activas[clave] = {"grupo": grupo, "liga": config.LIGAS[clave]}
-        guardar("ligas.json", activas)
-        return activas
-    for d in deportes:
+    for d in deportes or []:
         if not d.get("active") or d.get("has_outrights"):
             continue
         clave = d["key"]
-        grupo = config.GRUPOS.get(d["group"])
-        if grupo is None:
-            continue
         if clave in config.LIGAS:
-            activas[clave] = {"grupo": grupo, "liga": config.LIGAS[clave]}
-        elif clave.startswith("tennis_atp") or clave.startswith("tennis_wta"):
-            activas[clave] = {"grupo": "Tenis", "liga": d["title"]}
-    guardar("ligas.json", activas)
+            grupo, nombre, regiones = config.LIGAS[clave]
+            activas[clave] = {"grupo": grupo, "liga": nombre, "regiones": regiones}
+        elif (clave.startswith("tennis_atp") or clave.startswith("tennis_wta")) and "doubles" not in clave:
+            activas[clave] = {"grupo": "Tenis", "liga": d["title"], "regiones": config.REGION_TENIS}
     return activas
 
 
+def dentro(iso, horas):
+    t = datetime.strptime(iso, "%Y-%m-%dT%H:%M:%SZ").replace(tzinfo=timezone.utc)
+    ahora = datetime.now(timezone.utc)
+    return ahora < t < ahora + timedelta(hours=horas)
+
+
 def jalar_lineas(activas):
-    # Spreads y totales: 2 creditos por liga
     todas = {}
-    for clave in activas:
-        print("Pidiendo lineas de", clave)
+    for clave, info in activas.items():
+        print("Lineas de", clave)
         datos = pedir(URL_BASE + "/sports/" + clave + "/odds", {
-            "regions": config.REGION,
-            "markets": "spreads,totals",
-            "oddsFormat": "american",
-        })
-        todas[clave] = datos or []
-    guardar("lineas.json", todas)
+            "regions": info["regiones"], "markets": config.MERCADOS, "oddsFormat": "american",
+        }) or []
+        todas[clave] = [ev for ev in datos if dentro(ev["commence_time"], config.DIAS_ADELANTE * 24)]
+    return todas
 
 
 def jalar_props(activas):
     props = {}
-    for clave in config.PROPS:
+    for clave, ajustes in config.PROPS.items():
         if clave not in activas:
             continue
-        ajustes = config.PROPS[clave]
-        print("Pidiendo partidos de", clave)
         eventos = pedir(URL_BASE + "/sports/" + clave + "/events", {}) or []
+        eventos = [ev for ev in eventos if dentro(ev["commence_time"], ajustes["horas"])][:ajustes["partidos"]]
         props[clave] = []
-        for evento in eventos[:ajustes["partidos"]]:
-            print("  Props de", evento["away_team"], "@", evento["home_team"])
-            datos = pedir(URL_BASE + "/sports/" + clave + "/events/" + evento["id"] + "/odds", {
-                "regions": config.REGION,
-                "markets": ",".join(ajustes["mercados"]),
-                "oddsFormat": "american",
+        for ev in eventos:
+            print("Props de", ev["away_team"], "@", ev["home_team"])
+            datos = pedir(URL_BASE + "/sports/" + clave + "/events/" + ev["id"] + "/odds", {
+                "regions": "us", "markets": ",".join(ajustes["mercados"]), "oddsFormat": "american",
             })
             if datos:
                 props[clave].append(datos)
-    guardar("props.json", props)
+    return props
+
+
+def jalar_marcadores(activas):
+    marcadores = {}
+    for clave in activas:
+        datos = pedir(URL_BASE + "/sports/" + clave + "/scores", {"daysFrom": 3})
+        marcadores[clave] = [ev for ev in (datos or []) if ev.get("completed")]
+    return marcadores
 
 
 def main():
-    if config.ODDS_API_KEY.startswith("PEGA_AQUI") or config.ODDS_API_KEY.strip() == "":
-        ERRORES.append("No se encontro la llave ODDS_API_KEY")
-    print("Largo de la llave de The Odds API:", len(config.ODDS_API_KEY.strip()))
+    llave = config.ODDS_API_KEY.strip()
+    if llave.startswith("PEGA_AQUI") or llave == "":
+        print("No hay llave ODDS_API_KEY. No se jala nada.")
+        return
+    print("Largo de la llave:", len(llave))
     activas = ligas_activas()
-    jalar_lineas(activas)
-    jalar_props(activas)
+    if not activas:
+        print("No se pudieron leer las ligas:", ERRORES)
+        guardar("errores_momios.json", ERRORES)
+        raise SystemExit(1)
+    lineas = jalar_lineas(activas)
+    props = jalar_props(activas)
+    marcadores = jalar_marcadores(activas)
+    guardar("ligas.json", activas)
+    guardar("lineas.json", lineas)
+    guardar("props.json", props)
+    guardar("marcadores.json", marcadores)
     guardar("errores_momios.json", ERRORES)
+    USO["fecha"] = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
+    USO["partidos"] = sum(len(v) for v in lineas.values())
+    guardar("uso_api.json", USO)
+    print("Partidos con lineas:", USO["partidos"], "| creditos restantes:", USO["restantes"])
 
 
 if __name__ == "__main__":

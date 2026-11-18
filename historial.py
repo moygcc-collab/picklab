@@ -57,6 +57,10 @@ def guardar_edicion(picks, edicion):
             "unidades": p["unidades"], "prob": p["prob"], "ventaja": p["ventaja"],
             "resultado": None,
         }
+        # Datos extra: nivel de confianza y lo necesario para calificar solo
+        for k in ["nivel", "score", "api_id", "liga_clave", "local", "visitante", "linea_num", "lado", "equipo_pick"]:
+            if k in p:
+                nuevo[k] = p[k]
         viejo = por_clave.get(clave)
         if viejo is None:
             lista.append(nuevo)
@@ -90,6 +94,41 @@ def resumen(lista):
         "roi": round(100 * neto / arriesgado, 1) if arriesgado > 0 else None,
         "prob_promedio": round(sum(h["prob"] for h in lista) / len(lista), 1) if lista else None,
     }
+
+
+def calificar_auto(lista):
+    # Califica spreads y totales con los marcadores de The Odds API (datos/marcadores.json)
+    ruta = "datos/marcadores.json"
+    if not os.path.exists(ruta):
+        return lista
+    with open(ruta, encoding="utf-8") as f:
+        marcadores = json.load(f)
+    por_id = {}
+    for eventos in marcadores.values():
+        for ev in eventos or []:
+            if ev.get("completed") and ev.get("scores"):
+                por_id[ev["id"]] = dict((s["name"], float(s["score"])) for s in ev["scores"])
+    for h in lista:
+        if h["resultado"] is not None or h.get("api_id") not in por_id or h.get("linea_num") is None:
+            continue
+        pts = por_id[h["api_id"]]
+        if h["tipo"] == "Totales":
+            total = sum(pts.values())
+            if total == h["linea_num"]:
+                h["resultado"] = "E"
+            elif (total > h["linea_num"]) == (h.get("lado") == "Over"):
+                h["resultado"] = "G"
+            else:
+                h["resultado"] = "P"
+        elif h["tipo"] == "Spreads" and h.get("equipo_pick") in pts:
+            rival = [e for e in pts if e != h["equipo_pick"]][0]
+            margen = pts[h["equipo_pick"]] - pts[rival] + h["linea_num"]
+            h["resultado"] = "E" if margen == 0 else ("G" if margen > 0 else "P")
+        if h["resultado"] is not None:
+            h["auto"] = True
+            print("Calificado solo:", h["clave"], "->", h["resultado"])
+    guardar_archivo(lista)
+    return lista
 
 
 def aplicar_resultados(lista):
@@ -129,6 +168,9 @@ def escribir_web(lista):
     por_grupo = {}
     for grupo in sorted(set(h["grupo"] for h in calificados)):
         por_grupo[grupo] = resumen([h for h in calificados if h["grupo"] == grupo])
+    por_nivel = {}
+    for nivel in sorted(set(h.get("nivel", "-") for h in calificados)):
+        por_nivel[nivel] = resumen([h for h in calificados if h.get("nivel", "-") == nivel])
     por_tipo = {}
     for tipo in sorted(set(h["tipo"] for h in calificados)):
         por_tipo[tipo] = resumen([h for h in calificados if h["tipo"] == tipo])
@@ -145,6 +187,7 @@ def escribir_web(lista):
         "serie": serie,
         "por_grupo": por_grupo,
         "por_tipo": por_tipo,
+        "por_nivel": por_nivel,
         "calificados": recientes,
     }
     with open(SALIDA_WEB, "w", encoding="utf-8") as f:
@@ -155,7 +198,7 @@ def escribir_web(lista):
 
 
 def main():
-    lista = aplicar_resultados(cargar())
+    lista = aplicar_resultados(calificar_auto(cargar()))
     guardar_archivo(lista)
     salida = escribir_web(lista)
     t = salida["total"]

@@ -1,0 +1,60 @@
+name: jalar_momios
+
+# Todos los dias a las 5:10 am de Monterrey (11:10 UTC) y cuando le das "Run workflow":
+# 1. Baja momios de todas las ligas activas con The Odds API (secreto ODDS_API_KEY)
+# 2. Califica solo los spreads/totales que ya terminaron
+# 3. Recalcula los picks con el motor y publica la pagina
+on:
+  schedule:
+    - cron: "10 11 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  momios:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.publicar.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: instalar_librerias
+        run: pip install requests
+
+      - name: jalar_momios
+        env:
+          ODDS_API_KEY: ${{ secrets.ODDS_API_KEY }}
+        run: python jalar_momios.py
+
+      - name: calcular_picks
+        run: python edicion.py
+
+      - name: guardar_cambios
+        run: |
+          git config user.name "picklab-bot"
+          git config user.email "picklab-bot@users.noreply.github.com"
+          git add datos historial.json web
+          git diff --cached --quiet || git commit -m "Momios del dia $(date -u +%Y-%m-%d)"
+          git push
+
+      - uses: actions/configure-pages@v5
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: web
+
+      - id: publicar
+        uses: actions/deploy-pages@v4

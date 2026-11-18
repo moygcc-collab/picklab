@@ -1,5 +1,5 @@
 window.HISTORIAL = {
- "actualizado": "2026-11-18 20:48",
+ "actualizado": "2026-11-18 21:06",
  "total": {
   "ganados": 4,
   "perdidos": 4,
@@ -9,8 +9,8 @@ window.HISTORIAL = {
   "roi": 8.8,
   "prob_promedio": 65.5
  },
- "pendientes": 17,
- "publicados": 25,
+ "pendientes": 15,
+ "publicados": 23,
  "serie": [
   {
    "fecha": "2026-11-18",
@@ -58,6 +58,17 @@ window.HISTORIAL = {
  },
  "por_tipo": {
   "Props": {
+   "ganados": 4,
+   "perdidos": 4,
+   "empates": 0,
+   "acierto": 50.0,
+   "unidades": 0.71,
+   "roi": 8.8,
+   "prob_promedio": 65.5
+  }
+ },
+ "por_nivel": {
+  "-": {
    "ganados": 4,
    "perdidos": 4,
    "empates": 0,

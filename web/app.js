@@ -66,6 +66,46 @@ function anillo(prob, texto) {
   return '<div class="anillo" style="--p:' + prob + '"><div><b>' + prob + "%</b><span>" + texto + "</span></div></div>";
 }
 
+var NOMBRE_GRUPO = { NFL: "Americano", NBA: "Basquet", Futbol: "Futbol", MLB: "Beisbol", NHL: "Hockey", UFC: "UFC", Tenis: "Tenis" };
+
+function nombreGrupo(g) {
+  return NOMBRE_GRUPO[g] || g;
+}
+
+// Pastilla de confianza: nivel A o B y el score de 0 a 100
+function nivel(p) {
+  if (!p.nivel) return "";
+  return '<span class="nivel n' + p.nivel + '" title="Confianza ' + p.score + ' de 100">Nivel ' + p.nivel + " <b>" + p.score + "</b></span>";
+}
+
+function iconoRazon(tipo) {
+  if (tipo === "+") return '<i class="r_icono a_favor" aria-label="a favor">&#10003;</i>';
+  if (tipo === "-") return '<i class="r_icono en_contra" aria-label="en contra">!</i>';
+  return '<i class="r_icono info" aria-label="dato">i</i>';
+}
+
+// Las razones mas fuertes: primero a favor, luego en contra
+function razonesCortas(p, cuantas) {
+  if (!p.razones) return "";
+  var favor = p.razones.filter(function (r) { return r.tipo === "+"; });
+  var contra = p.razones.filter(function (r) { return r.tipo === "-"; });
+  var lista = favor.slice(0, cuantas - (contra.length ? 1 : 0)).concat(contra.slice(0, 1));
+  var html = '<ul class="razones cortas">';
+  lista.forEach(function (r) { html += "<li>" + iconoRazon(r.tipo) + "<span>" + esc(r.texto) + "</span></li>"; });
+  return html + "</ul>";
+}
+
+function cajaRazones(p) {
+  if (!p.razones) return "";
+  var html = '<div class="caja razones_caja"><div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;align-items:center">' +
+    '<div><span class="sobretitulo" style="--c:#22D3EE">Motor PickLab</span><h2 style="font-size:22px">Por que este pick</h2></div>' + nivel(p) + "</div>" +
+    '<div class="medidor"><div style="width:' + p.score + '%"></div></div>' +
+    '<p class="gris" style="font-size:14px">Confianza ' + p.score + " de 100. Coinciden " + p.senales + " senales (mercado, estadisticas, contexto). " +
+    "Apuesta sugerida: " + p.unidades + "u (1u = 1% de tu banco).</p>" + '<ul class="razones">';
+  p.razones.forEach(function (r) { html += "<li>" + iconoRazon(r.tipo) + "<span>" + esc(r.texto) + "</span></li>"; });
+  return html + "</ul></div>";
+}
+
 function unidadesTexto(u) {
   return (u > 0 ? "+" : "") + u.toFixed(2) + "u";
 }
@@ -108,7 +148,7 @@ function irA(id) {
 function tiraDeportes(activo) {
   var html = '<a class="tab' + (activo === "" ? " activo" : "") + '" href="#">Inicio</a>';
   ORDEN_GRUPOS.forEach(function (g) {
-    html += '<a class="tab' + (activo === g ? " activo" : "") + '" href="#deporte-' + g + '"' + estiloDeporte(g) + ">" + icono(g, 16) + g + "</a>";
+    html += '<a class="tab' + (activo === g ? " activo" : "") + '" href="#deporte-' + g + '"' + estiloDeporte(g) + ">" + icono(g, 16) + nombreGrupo(g) + "</a>";
   });
   html += '<a class="tab' + (activo === "historial" ? " activo" : "") + '" href="#historial" style="--c:#8B5CF6">Historial</a>';
   document.getElementById("tira").innerHTML = html;
@@ -150,7 +190,7 @@ function tarjetaPick(p) {
   return '<a class="tarjeta"' + estiloDeporte(p.grupo) + ' href="#pick-' + p.id + '">' +
     '<span style="display:flex;justify-content:space-between;gap:8px"><span class="etiqueta deporte">' + icono(p.grupo, 14) + esc(p.tipo) + " - " + esc(p.liga) + '</span><span class="gris" style="font-size:13px">' + fecha(p.fecha) + "</span></span>" +
     '<span><span class="gris" style="font-size:14px">' + esc(p.partido) + '</span><br><b style="font-family:Space Grotesk,sans-serif;font-size:22px">' + esc(p.pick) + '</b><br><span class="gris" style="font-size:13px">' + esc(p.mercado) + " - " + esc(p.base) + "</span></span>" +
-    barra(p.prob) + selloDuelo(p) +
+    nivel(p) + barra(p.prob) + razonesCortas(p, 3) + selloDuelo(p) +
     '<div class="pie_tarjeta"><div><b>' + momio(p.momio) + "</b>Momio</div><div><b>" + esc(p.casa) + "</b>Casa</div><div><b class=\"verde\">+" + p.ventaja + "%</b>Ventaja</div><div><b>" + p.unidades + "u</b>Unidades</div></div></a>";
 }
 
@@ -218,7 +258,7 @@ function cajaDuelo(p) {
   if (fuente) {
     html += '<a href="' + esc(fuente) + '" target="_blank" rel="noopener" style="font-size:13px">Ver box score &rarr;</a>';
   }
-  html += '<span class="gris" style="font-size:12px">Un solo partido es informacion, no prueba: no cambia la probabilidad del modelo.</span>';
+  html += '<span class="gris" style="font-size:12px">Un solo partido pesa poco: mueve la probabilidad maximo 1 punto, y solo si fue en el ultimo ano.</span>';
   return html + "</div>";
 }
 
@@ -290,6 +330,13 @@ function bloqueHistorial(completo) {
       '<div class="barra"><div style="width:' + Math.max(4, (Math.abs(r.unidades) / maxAbs) * 100) + "%;background:" + (r.unidades >= 0 ? "var(--c)" : "var(--rojo)") + '"></div></div>' +
       '<span class="mono" style="font-size:13px;text-align:right">' + r.ganados + "-" + r.perdidos + " " + unidadesTexto(r.unidades) + "</span></div>";
   });
+  if (H.por_nivel) {
+    html += '<h3 style="font-size:20px;margin-top:8px">Por nivel de confianza</h3>';
+    Object.keys(H.por_nivel).forEach(function (n) {
+      var r = H.por_nivel[n];
+      html += '<div style="display:flex;justify-content:space-between;font-size:14px"><span>' + (n === "-" ? "Antes del motor" : "Nivel " + n) + '</span><span class="mono">' + r.ganados + "-" + r.perdidos + " - " + (r.acierto === null ? "-" : r.acierto + "%") + ' - <span class="' + (r.unidades >= 0 ? "verde" : "rojo") + '">' + unidadesTexto(r.unidades) + "</span></span></div>";
+    });
+  }
   html += '<h3 style="font-size:20px;margin-top:8px">Por tipo</h3>';
   Object.keys(H.por_tipo).forEach(function (tipo) {
     var r = H.por_tipo[tipo];
@@ -333,11 +380,11 @@ function pintarInicio() {
   // Hero
   html += '<section class="hero aparece"><div style="display:flex;flex-direction:column;gap:18px">' +
     '<span class="sobretitulo" style="--c:#22D3EE">Todos los deportes - Basado en datos</span>' +
-    '<h1>Los picks con <span class="brillo">mas probabilidad</span> de pegar esta semana.</h1>' +
-    '<p class="gris" style="font-size:18px;max-width:560px">Analizamos cada partido, filtramos lo que tiene ventaja estadistica y lo reducimos hasta el pick mas fuerte.</p>' +
+    '<h1>Cada pick con <span class="brillo">numeros y razones</span>, no corazonadas.</h1>' +
+    '<p class="gris" style="font-size:18px;max-width:560px">Nuestro motor cruza el mercado, las estadisticas y el contexto de cada partido. Solo publicamos lo que pasa todas las reglas, y te decimos por que.</p>' +
     '<div class="hero_datos">' +
     '<div class="hero_dato"><b class="brillo">' + D.partidos_analizados + "</b><span>Partidos analizados</span></div>" +
-    '<div class="hero_dato"><b>' + D.picks.length + "</b><span>Picks con ventaja</span></div>" +
+    '<div class="hero_dato"><b>' + D.picks.length + "</b><span>Pasaron el filtro</span></div>" +
     '<div class="hero_dato"><b>' + deportesConPicks + "</b><span>Deportes</span></div>" +
     (function () {
       var con = D.picks.filter(function (p) { return p.duelo && p.duelo.pego !== undefined; });
@@ -348,7 +395,7 @@ function pintarInicio() {
     "</div></div>" +
 
     '<a class="caja destacada" href="#pick-' + uno.id + '" style="color:inherit">' +
-    '<span style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px"><span class="etiqueta verde_lleno">Pick #1 de la semana</span><span class="etiqueta deporte"' + estiloDeporte(uno.grupo) + ">" + icono(uno.grupo, 14) + esc(uno.liga) + "</span></span>" +
+    '<span style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px"><span class="etiqueta verde_lleno">Pick mas solido</span>' + nivel(uno) + '<span style="flex:1"></span><span class="etiqueta deporte"' + estiloDeporte(uno.grupo) + ">" + icono(uno.grupo, 14) + esc(uno.liga) + "</span></span>" +
     '<div style="display:flex;gap:20px;align-items:center;flex-wrap:wrap">' + anillo(uno.prob, "probabilidad") +
     '<div style="flex:1;min-width:180px"><span class="gris" style="font-size:14px">' + esc(uno.partido) + " - " + fecha(uno.fecha) + "</span>" +
     '<h2 style="font-size:clamp(26px,3.4vw,36px);line-height:1.1">' + esc(uno.pick) + "</h2>" +
@@ -358,7 +405,15 @@ function pintarInicio() {
       ? '<div class="mini"><b>' + uno.aciertos + "/" + uno.valores.length + "</b><span>Veces que paso la linea</span></div>" +
         '<div class="mini"><b>' + uno.promedio + "</b><span>Promedio vs linea " + uno.linea + "</span></div>"
       : '<div class="mini"><b>' + uno.modelo + "%</b><span>Nuestro modelo</span></div>") +
-    '<div class="mini"><b class="verde">+' + uno.ventaja + '%</b><span>Ventaja vs el momio</span></div></div></a></section>';
+    '<div class="mini"><b class="verde">+' + uno.ventaja + '%</b><span>Ventaja vs el momio</span></div></div>' + razonesCortas(uno, 3) + "</a></section>";
+
+  // Los mas solidos: nivel A y B, de cualquier deporte
+  var solidos = D.picks.slice(0, 6);
+  html += '<section id="seguros"><div class="titulo"><span class="sobretitulo" style="--c:#C6F432">Sin importar el deporte</span><h2>Los picks mas solidos</h2>' +
+    "<p>Ordenados por confianza: probabilidad, ventaja contra el momio, cuantas senales coinciden y calidad de los datos." +
+    (D.candidatos ? " Revisamos " + D.candidatos + " opciones y solo " + D.picks.length + " pasaron." : "") + '</p></div><div class="rejilla_ancha">';
+  solidos.forEach(function (p) { html += tarjetaPick(p); });
+  html += "</div></section>";
 
   // Deportes
   html += '<section id="deportes"><div class="titulo"><span class="sobretitulo" style="--c:#F472B6">Elige tu deporte</span><h2>Explora por deporte</h2><p>Picale a un deporte para ver todos sus picks.</p></div><div class="rejilla rejilla_deportes">';
@@ -368,16 +423,16 @@ function pintarInicio() {
     html += '<a class="tarjeta"' + estiloDeporte(g) + ' href="#deporte-' + g + '" style="min-height:190px">' +
       '<span style="display:flex;justify-content:space-between;align-items:center"><span class="icono_deporte">' + icono(g, 26) + "</span>" +
       '<span class="etiqueta' + (sin ? " amarilla" : "") + '">' + (sin ? (D.manual ? "Proximamente" : "Sin partidos") : info.partidos + " partidos") + "</span></span>" +
-      '<span><b style="font-family:Space Grotesk,sans-serif;font-size:24px">' + g + '</b><br><span class="gris" style="font-size:13px">' + esc(info.ligas.join(" - ")) + "</span></span>" +
+      '<span><b style="font-family:Space Grotesk,sans-serif;font-size:24px">' + nombreGrupo(g) + '</b><br><span class="gris" style="font-size:13px">' + esc(info.ligas.join(" - ")) + "</span></span>" +
       '<span style="margin-top:auto;display:flex;justify-content:space-between;align-items:flex-end"><span><span class="numero_grande">' + info.picks + '</span> <span class="gris" style="font-size:13px">picks</span></span><span style="font-weight:600;color:var(--c)">Ver &rarr;</span></span></a>';
   });
   html += "</div></section>";
 
   // Top 10
-  html += '<section id="picks"><div class="titulo"><span class="sobretitulo" style="--c:#FBBF24">Ranking</span><h2>Top 10 de la semana</h2><p>Ordenados por probabilidad. Solo picks con ventaja contra el momio.</p></div>' +
-    '<div class="tabla_caja"><div class="tabla"><div class="renglon encabezado"><span>#</span><span>Deporte</span><span>Partido / pick</span><span>Momio</span><span>Unidades</span><span>Probabilidad</span><span>Ventaja</span></div>';
+  html += '<section id="picks"><div class="titulo"><span class="sobretitulo" style="--c:#FBBF24">Ranking</span><h2>Top 10 por confianza</h2><p>Todos pasaron: 55% o mas de probabilidad, 3% o mas de ventaja y nivel A o B.</p></div>' +
+    '<div class="tabla_caja"><div class="tabla"><div class="renglon encabezado"><span>#</span><span>Confianza</span><span>Deporte</span><span>Partido / pick</span><span>Momio</span><span>Unidades</span><span>Probabilidad</span><span>Ventaja</span></div>';
   top10.forEach(function (p, i) {
-    html += '<a class="renglon"' + estiloDeporte(p.grupo) + ' href="#pick-' + p.id + '"><span class="medalla' + (i < 3 ? " m" + (i + 1) : "") + '">' + (i + 1) + "</span>" +
+    html += '<a class="renglon"' + estiloDeporte(p.grupo) + ' href="#pick-' + p.id + '"><span class="medalla' + (i < 3 ? " m" + (i + 1) : "") + '">' + (i + 1) + "</span>" + "<span>" + nivel(p) + "</span>" +
       '<span class="etiqueta deporte">' + icono(p.grupo, 14) + esc(p.grupo) + "</span>" +
       '<span><b>' + esc(p.pick) + '</b><br><span class="gris" style="font-size:13px">' + esc(p.partido) + " - " + esc(p.mercado) + "</span>" + (p.duelo && p.duelo.pego !== undefined ? "<br>" + selloDuelo(p) : "") + "</span>" +
       '<span class="mono">' + momio(p.momio) + '</span><span class="mono">' + p.unidades + "u</span>" + barra(p.prob) +
@@ -429,12 +484,15 @@ function pintarInicio() {
     "<div><b>Prop</b><span>Apuesta sobre un jugador: puntos, rebotes, asistencias, etc.</span></div>" +
     "<div><b>Momio</b><span>-110: apuestas $110 para ganar $100. +150: apuestas $100 para ganar $150.</span></div>" +
     "<div><b>Ventaja</b><span>Nuestra probabilidad menos la que implica el momio. Positiva = valor.</span></div>" +
+    "<div><b>Confianza</b><span>Score de 0 a 100 del motor. Nivel A: 70 o mas. Nivel B: 55 a 69. Abajo de 55 no se publica.</span></div>" +
     "<div><b>Unidad (u)</b><span>Tu apuesta base. Si 1u = $100, un pick de 2u es de $200.</span></div></div>" +
     '<div class="caja"><h3 style="font-size:22px">Instala PickLab en tu celular</h3><p style="font-size:14px;color:var(--gris_claro)">iPhone: abre la pagina en Safari, toca Compartir y luego Agregar a inicio. Android: abre el menu de Chrome y toca Instalar app.</p></div>' +
-    '<div class="caja"><h3 style="font-size:22px">Como calculamos</h3><p style="font-size:14px;color:var(--gris_claro)">' +
-    "Props: 60% cuantas veces el jugador paso la linea en sus ultimos partidos + 40% el momio sin comision. " +
-    "Spreads y totales: 50% nuestro modelo con los puntos o goles a favor y en contra de la temporada + 50% el momio sin comision. " +
-    "Solo mostramos picks donde nuestra probabilidad es mayor a la del momio.</p></div></div></div></section>";
+    '<div class="caja"><h3 style="font-size:22px">Como decide el motor</h3><p style="font-size:14px;color:var(--gris_claro)">' +
+    "1) Mercado: lo que dicen las casas sin su comision; si hay varias, el consenso, y buscamos el mejor precio. " +
+    "2) Estadisticas: en props, cuantas veces el jugador paso la linea en sus ultimos 10 (pesa hasta 60%); en spreads y totales, un modelo con lo que anota y recibe cada equipo (pesa hasta 50%). " +
+    "3) Contexto: descanso, lesiones, racha y ultimo enfrentamiento, con un tope de 5 puntos. " +
+    "4) Historial: si nuestros picks pegan menos de lo esperado, el motor baja su confianza solo. " +
+    "Solo publicamos si la probabilidad es 55% o mas, la ventaja 3% o mas y el nivel es A o B. La apuesta sugerida sale de Kelly/16, entre 0.5u y 2u.</p></div></div></div></section>";
 
   if (D.fuentes) {
     html += '<section><div class="titulo"><h2 style="font-size:26px">Fuentes de esta edicion</h2><p>De aqui salen las lineas, momios y estadisticas.</p></div><div class="caja" style="gap:8px">';
@@ -497,7 +555,7 @@ function pintarDeporte(grupo) {
 
   var html = '<div class="migas"><a href="#">&larr; Inicio</a><span>/</span><span style="color:var(--texto)">' + grupo + "</span></div>";
   html += '<section class="aparece"' + estiloDeporte(grupo) + ' style="gap:16px;--c:' + color(grupo) + '"><div style="display:flex;align-items:center;gap:16px"><span class="icono_deporte" style="width:64px;height:64px">' + icono(grupo, 34) + '</span><span class="etiqueta deporte">' + esc(info.ligas.join(" - ")) + "</span></div>" +
-    '<h1 style="font-size:clamp(40px,6vw,64px);line-height:1">Picks de <span style="color:var(--c)">' + grupo + "</span></h1>" +
+    '<h1 style="font-size:clamp(40px,6vw,64px);line-height:1">Picks de <span style="color:var(--c)">' + nombreGrupo(grupo) + "</span></h1>" +
     '<p class="gris">' + info.partidos + " partidos analizados - " + todos.length + " picks con ventaja</p>";
 
   if (info.partidos === 0) {
@@ -586,7 +644,7 @@ function pintarPick(id) {
     // Grafica de barras
     var maximo = Math.max.apply(null, p.valores.concat([p.linea])) * 1.15;
     var alturaLinea = (p.linea / maximo) * 100;
-    html += '<section class="fila" style="align-items:flex-start;--c:' + c + '"><div class="grande" style="display:flex;flex-direction:column;gap:20px">' +
+    html += '<section class="fila" style="align-items:flex-start;--c:' + c + '"><div class="grande" style="display:flex;flex-direction:column;gap:20px">' + cajaRazones(p) +
       '<div class="caja"><div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px"><div><h2 style="font-size:22px">' + esc(p.mercado) + " - ultimos " + p.valores.length + ' partidos</h2><span class="gris" style="font-size:13px">Cada barra es un partido (del mas viejo al mas nuevo). La linea punteada es la linea de la casa.</span></div>' +
       '<div class="leyenda"><span><i style="background:var(--c)"></i>Le pego al ' + esc(p.lado) + '</span><span><i style="background:var(--barra_mal)"></i>No le pego</span></div></div>' +
       '<div><b class="mono" style="font-size:36px;color:var(--c)">' + p.aciertos + "/" + p.valores.length + '</b> <span class="gris">veces le pego al ' + esc(p.lado) + " " + p.linea + "</span></div>" +
@@ -604,16 +662,16 @@ function pintarPick(id) {
       '<div class="mini"><b>' + (p.promedio - p.linea > 0 ? "+" : "") + (p.promedio - p.linea).toFixed(1) + "</b><span>Promedio vs linea</span></div></div></div>" + cajaDuelo(p) + "</div>";
   } else {
     html += '<section class="fila" style="align-items:flex-start;--c:' + c + '"><div class="grande" style="display:flex;flex-direction:column;gap:20px">' +
-      '<div class="caja aparece"><div style="display:flex;align-items:center;gap:14px"><span class="icono_deporte">' + icono(p.grupo, 26) + '</span><span class="etiqueta deporte">' + esc(p.liga) + " - " + esc(p.tipo) + '</span></div><h1 style="font-size:clamp(30px,4.5vw,46px)">' + esc(p.partido) + '</h1><span class="gris">' + fecha(p.fecha) + "</span></div>" +
+      '<div class="caja aparece"><div style="display:flex;align-items:center;gap:14px"><span class="icono_deporte">' + icono(p.grupo, 26) + '</span><span class="etiqueta deporte">' + esc(p.liga) + " - " + esc(p.tipo) + '</span></div><h1 style="font-size:clamp(30px,4.5vw,46px)">' + esc(p.partido) + '</h1><span class="gris">' + fecha(p.fecha) + "</span></div>" + cajaRazones(p) +
       (p.explicacion
         ? '<div class="caja"><h2 style="font-size:22px">De donde sale este pick</h2><p style="color:var(--gris_claro)">' + esc(p.explicacion) + "</p>" +
-          '<div class="mini_stats"><div class="mini"><b>' + p.modelo + '%</b><span>Nuestro modelo</span></div><div class="mini"><b>' + p.mercado_prob + '%</b><span>Mercado sin comision</span></div><div class="mini"><b class="brillo">' + p.prob + "%</b><span>Probabilidad final (50/50)</span></div></div></div>" + cajaDuelo(p) + "</div>"
+          '<div class="mini_stats"><div class="mini"><b>' + p.modelo + '%</b><span>Nuestro modelo</span></div><div class="mini"><b>' + p.mercado_prob + '%</b><span>Mercado sin comision</span></div><div class="mini"><b class="brillo">' + p.prob + "%</b><span>Probabilidad final</span></div></div></div>" + cajaDuelo(p) + "</div>"
         : '<div class="caja"><h2 style="font-size:22px">De donde sale este pick</h2><p style="color:var(--gris_claro)">Comparamos ' + p.casas + " casas de apuestas. Les quitamos su comision para sacar la probabilidad justa (" + p.prob + "%). " +
           "El mejor momio lo tiene " + esc(p.casa) + " (" + momio(p.momio) + "), que implica " + p.implicita + "%. La diferencia es tu ventaja: +" + p.ventaja + "%.</p></div></div>");
   }
 
   // Columna derecha: el pick
-  html += '<aside class="chica" style="display:flex;flex-direction:column;gap:20px"><div class="caja destacada"><span class="etiqueta verde_lleno">Pick sugerido</span>' +
+  html += '<aside class="chica" style="display:flex;flex-direction:column;gap:20px"><div class="caja destacada"><span class="etiqueta verde_lleno">Pick sugerido</span>' + nivel(p) +
     '<div style="display:flex;gap:16px;align-items:center">' + anillo(p.prob, "probabilidad") +
     '<b style="font-family:Space Grotesk,sans-serif;font-size:24px;line-height:1.15">' + esc(p.pick) + "</b></div>" +
     '<span class="gris" style="font-size:14px">' + esc(p.mercado) + " - Momio " + momio(p.momio) + " en " + esc(p.casa) + " - " + p.unidades + "u</span>" +
