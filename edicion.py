@@ -318,11 +318,13 @@ ALIAS = {"Man City": "Manchester City", "Man United": "Manchester United", "Nott
 
 
 def tablas_api():
-    return {
+    tablas = {
         "americanfootball_nfl": dict((v[0], v[1:]) for v in NFL_EQUIPOS.values()),
         "icehockey_nhl": dict((v[0], v[1:]) for v in NHL_EQUIPOS.values()),
-        "soccer_epl": EPL_EQUIPOS,
     }
+    for liga, (equipos, partidos, prefijo, clave_api, casa) in FUTBOL_LIGAS.items():
+        tablas[clave_api] = equipos
+    return tablas
 
 # Ultimos 10 de jugadores para props de la API: {"Jugador": {"player_points": [...]}}
 ULTIMOS_API = {}
@@ -440,12 +442,20 @@ def picks_nhl():
     return salida
 
 
-def picks_epl():
-    prom = sum(e[1] for e in EPL_EQUIPOS.values()) / sum(e[0] for e in EPL_EQUIPOS.values())
+# Ligas de futbol con datos manuales: nombre -> (tabla de equipos, partidos, prefijo, clave de la API, casa)
+# Para agregar otra liga (LaLiga, Serie A, Liga MX...) copia el formato de EPL_EQUIPOS y EPL_PARTIDOS.
+FUTBOL_LIGAS = {
+    "Premier League": (EPL_EQUIPOS, EPL_PARTIDOS, "epl", "soccer_epl", "Betwatch"),
+}
+
+
+def picks_futbol(liga, equipos, partidos, prefijo, casa):
+    prom = sum(e[1] for e in equipos.values()) / sum(e[0] for e in equipos.values())
     salida = []
-    for loc, vis, total, m_over, m_under, fecha in EPL_PARTIDOS:
-        gl, fl, al = EPL_EQUIPOS[loc]
-        gv, fv, av = EPL_EQUIPOS[vis]
+    for loc, vis, total, m_over, m_under, fecha in partidos:
+        gl, fl, al = equipos[loc]
+        gv, fv, av = equipos[vis]
+        # Fuerza de ataque y defensa, jalada 50% hacia el promedio de la liga
         ataque_loc = 0.5 + 0.5 * (fl / gl) / prom
         defensa_loc = 0.5 + 0.5 * (al / gl) / prom
         ataque_vis = 0.5 + 0.5 * (fv / gv) / prom
@@ -455,12 +465,12 @@ def picks_epl():
         lam = lam_loc + lam_vis
         p_over = motor.poisson_mayor(total, lam)
         p_over_m, p_under_m = sin_comision(m_over, m_under)
-        expl = ("Con sus goles a favor y en contra en la Premier esperamos " + str(round(lam, 2)) + " goles (" + loc + " " +
+        expl = ("Con sus goles a favor y en contra en " + liga + " esperamos " + str(round(lam, 2)) + " goles (" + loc + " " +
                 str(round(lam_loc, 2)) + ", " + vis + " " + str(round(lam_vis, 2)) + ")")
-        evento = "epl_" + loc + "_" + vis
-        args = (evento, "Futbol", "Premier League", loc + " vs " + vis, fecha, "Totales", "Total de goles")
-        a = pick_equipo(*args, "Over " + texto_linea(total), m_over, p_over_m, p_over, min(gl, gv), expl, {"lado": "Over"}, "Betwatch")
-        b = pick_equipo(*args, "Under " + texto_linea(total), m_under, p_under_m, 1 - p_over, min(gl, gv), expl, {"lado": "Under"}, "Betwatch")
+        evento = prefijo + "_" + loc + "_" + vis
+        args = (evento, "Futbol", liga, loc + " vs " + vis, fecha, "Totales", "Total de goles")
+        a = pick_equipo(*args, "Over " + texto_linea(total), m_over, p_over_m, p_over, min(gl, gv), expl, {"lado": "Over"}, casa)
+        b = pick_equipo(*args, "Under " + texto_linea(total), m_under, p_under_m, 1 - p_over, min(gl, gv), expl, {"lado": "Under"}, casa)
         salida.append(mejor_de(a, b))
     return salida
 
@@ -491,9 +501,10 @@ def main():
     if not api_picks.hay_api("icehockey_nhl"):
         candidatos += picks_nhl()
         contar("NHL", "NHL", len(NHL_PARTIDOS))
-    if not api_picks.hay_api("soccer_epl"):
-        candidatos += picks_epl()
-        contar("Futbol", "Premier League", len(EPL_PARTIDOS))
+    for liga, (equipos, partidos, prefijo, clave_api, casa) in FUTBOL_LIGAS.items():
+        if not api_picks.hay_api(clave_api):
+            candidatos += picks_futbol(liga, equipos, partidos, prefijo, casa)
+            contar("Futbol", liga, len(partidos))
 
     # 2. The Odds API (todas las ligas activas)
     contexto_api = dict(CONTEXTO_EVENTO)
