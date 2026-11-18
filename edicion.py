@@ -1,12 +1,13 @@
 # ============================================
 # EDICION SEMANAL DE PICKLAB (datos juntados a mano)
-# Edicion: martes 17 de noviembre de 2026
+# Edicion: miercoles 18 de noviembre de 2026
 #
 # Fuentes:
 #  - Lineas NFL y NHL: ESPN Odds (DraftKings)
 #  - Lineas Premier League: Betwatch
-#  - Props NBA: DraftKings Network, FanDuel Research, Steezanomics
-#  - Estadisticas: ESPN (standings y game logs)
+#  - Lineas NHL de hoy: SportsbookReview (DraftKings)
+#  - Props NBA: FanDuel Research, TheLines, Covers, SportsBettingDime
+#  - Estadisticas: StatMuse, CBS, Hockey-Reference, ESPN
 #
 # Uso: python edicion.py  -> escribe web/picks.js
 # ============================================
@@ -17,8 +18,8 @@ from datetime import datetime
 from calcular_picks import prob_implicita, a_decimal, a_americano
 import historial
 
-EDICION = "martes 17 de noviembre"
-FECHA_EDICION = "2026-11-17"  # para el historial (AAAA-MM-DD)
+EDICION = "miercoles 18 de noviembre"
+FECHA_EDICION = "2026-11-18"  # para el historial (AAAA-MM-DD)
 
 # ---------- Funciones de probabilidad ----------
 
@@ -54,29 +55,41 @@ def texto_linea(punto):
 
 # ---------- NBA: props de esta noche ----------
 
-KNICKS_RAPTORS = ("nyk_tor", "Knicks @ Raptors", "2026-11-18T00:30:00Z")
-PISTONS_SPURS = ("det_sas", "Pistons @ Spurs", "2026-11-18T01:00:00Z")
-HORNETS_LAKERS = ("cha_lal", "Hornets @ Lakers", "2026-11-18T04:00:00Z")
+# Partidos NBA del miercoles 18 nov (horas en UTC)
+HOU_IND = ("hou_ind", "Rockets @ Pacers", "2026-11-19T00:00:00Z")
+MIL_MIA = ("mil_mia", "Bucks @ Heat", "2026-11-19T00:00:00Z")
+PHI_ORL = ("phi_orl", "76ers @ Magic", "2026-11-19T00:00:00Z")
+CHI_BKN = ("chi_bkn", "Bulls @ Nets", "2026-11-19T00:30:00Z")
+WAS_TOR = ("was_tor", "Wizards @ Raptors", "2026-11-19T00:30:00Z")
+ATL_OKC = ("atl_okc", "Hawks @ Thunder", "2026-11-19T01:00:00Z")
+DET_NOP = ("det_nop", "Pistons @ Pelicans", "2026-11-19T01:00:00Z")
+GSW_DAL = ("gsw_dal", "Warriors @ Mavericks", "2026-11-19T01:00:00Z")
+BOS_DEN = ("bos_den", "Celtics @ Nuggets", "2026-11-19T02:30:00Z")
+UTA_LAL = ("uta_lal", "Jazz @ Lakers", "2026-11-19T03:00:00Z")
 
+# jugador, equipo, partido, mercado, linea, momio over, momio under, casa, fuente,
+# ultimos 10 partidos (del mas viejo al mas nuevo, StatMuse)
 PROPS_NBA = [
-    ["Luka Doncic", "Lakers", HORNETS_LAKERS, "Triples", 4.5, -124, -106, "DraftKings", "DK Network",
-     [8, 6, 6, 8, 6, 6, 5, 3, 5, 5]],
-    ["Victor Wembanyama", "Spurs", PISTONS_SPURS, "Puntos + Asistencias", 31.5, -109, -121, "DraftKings", "DK Network",
-     [41, 47, 17, 54, 32, 32, 43, 33, 18, 32]],
-    ["Jalen Brunson", "Knicks", KNICKS_RAPTORS, "Triples", 2.5, 117, -155, "DraftKings", "DK Network",
-     [0, 6, 3, 4, 5, 3, 1, 3, 4, 3]],
-    ["Quentin Grimes", "Lakers", HORNETS_LAKERS, "Puntos", 12.5, -124, -103, "DraftKings", "DK Network",
-     [3, 2, 23, 3, 7, 7, 6, 2, 12, 22]],
-    ["RJ Barrett", "Raptors", KNICKS_RAPTORS, "Puntos", 19.5, -106, None, "FanDuel", "FanDuel Research",
-     [25, 9, 22, 26, 22, 27, 19, 12, 31, 14]],
-    ["Karl-Anthony Towns", "Knicks", KNICKS_RAPTORS, "Rebotes", 12.5, -105, None, "Bovada", "Steezanomics",
-     [20, 13, 12, 16, 12, 13, 16, 11, 15, 17]],
-    ["Scottie Barnes", "Raptors", KNICKS_RAPTORS, "Pts + Reb + Ast", 34.5, 105, None, "Bovada", "Steezanomics",
-     [34, 47, 6, 38, 51, 40, 45, 29, 43]],
-    ["LaMelo Ball", "Hornets", HORNETS_LAKERS, "Puntos", 21.5, None, -120, "FanDuel", "FanDuel Research",
-     [8, 24, 10, 34, 20, 22, 24, 22, 19, 6]],
-    ["Coby White", "Hornets", HORNETS_LAKERS, "Asistencias", 3.5, None, -106, "NoVig", "Steezanomics",
-     [3, 2, 1, 9, 3, 1]],
+    ["Bam Adebayo", "Heat", MIL_MIA, "Rebotes", 8.5, None, -138, "FanDuel", "FanDuel Research",
+     [9, 9, 9, 10, 10, 8, 8, 14, 5, 1]],
+    ["VJ Edgecombe", "76ers", PHI_ORL, "Puntos", 13.5, 102, None, "FanDuel", "FanDuel Research",
+     [13, 10, 21, 11, 19, 13, 8, 15, 11, 14]],
+    ["Nikola Jokic", "Nuggets", BOS_DEN, "Asistencias", 9.5, 116, None, "FanDuel", "FanDuel Research",
+     [11, 10, 10, 8, 11, 8, 9, 8, 10, 7]],
+    ["Kyrie Irving", "Mavericks", GSW_DAL, "Puntos", 22.5, -115, None, "BetMGM", "TheLines",
+     [24, 18, 15, 35, 29, 14, 21, 35, 10, 34]],
+    ["Trae Young", "Wizards", WAS_TOR, "Asistencias", 8.5, -135, None, "BetMGM", "TheLines",
+     [9, 9, 6, 10, 3, 7, 4, 14, 8, 12]],
+    ["Shai Gilgeous-Alexander", "Thunder", ATL_OKC, "Asistencias", 5.5, None, -115, "bet365", "Covers",
+     [2, 3, 8, 8, 4, 9, 3, 2, 5, 2]],
+    ["Cade Cunningham", "Pistons", DET_NOP, "Puntos", 24.5, -108, None, "BetRivers", "SportsBettingDime",
+     [19, 30, 20, 33, 26, 14, 17, 52, 33, 27]],
+    ["Luka Doncic", "Lakers", UTA_LAL, "Puntos", 36.5, -110, None, "Caesars", "SportsBettingDime",
+     [41, 37, 45, 42, 40, 53, 32, 32, 43, 36]],
+    ["Julius Randle", "Nets", CHI_BKN, "Puntos", 22.5, None, -113, "Caesars", "Covers",
+     [24, 15, 20, 21, 22, 19, 13, 17, 22, 33]],
+    ["Alperen Sengun", "Rockets", HOU_IND, "Puntos", 20.5, -105, None, "BetMGM", "SportsBettingDime",
+     [29, 16, 26, 17, 15, 20, 19, 43, 19, 23]],
 ]
 
 
@@ -237,28 +250,16 @@ def picks_nfl():
 # ---------- NHL de hoy: totales ----------
 # Equipo: (nombre, partidos, goles a favor, goles en contra)  ESPN standings
 NHL_EQUIPOS = {
-    "LA": ("Kings", 18, 49, 63), "BOS": ("Bruins", 20, 72, 52), "EDM": ("Oilers", 22, 87, 60),
-    "FLA": ("Panthers", 22, 70, 63), "CBJ": ("Blue Jackets", 18, 45, 58), "NYI": ("Islanders", 19, 60, 56),
-    "BUF": ("Sabres", 20, 55, 70), "PHI": ("Flyers", 23, 53, 77), "OTT": ("Senators", 21, 68, 61),
-    "WPG": ("Jets", 21, 66, 72), "WSH": ("Capitals", 18, 62, 65), "TB": ("Lightning", 20, 74, 59),
-    "TOR": ("Maple Leafs", 22, 69, 76), "CHI": ("Blackhawks", 20, 46, 83), "ANA": ("Ducks", 21, 79, 77),
-    "STL": ("Blues", 20, 55, 59), "NSH": ("Predators", 21, 64, 59), "MIN": ("Wild", 22, 76, 48),
-    "DAL": ("Stars", 20, 56, 50), "VGK": ("Golden Knights", 22, 74, 63), "CGY": ("Flames", 21, 51, 74),
-    "SJ": ("Sharks", 23, 63, 81),
+    "BOS": ("Bruins", 21, 72, 55), "DET": ("Red Wings", 21, 57, 64),
+    "MTL": ("Canadiens", 21, 69, 64), "NJ": ("Devils", 21, 80, 61),
+    "COL": ("Avalanche", 21, 85, 64), "UTA": ("Mammoth", 22, 73, 78),
 }
 
+# visitante, local, linea, over, under, hora UTC  (DraftKings via SportsbookReview)
 NHL_PARTIDOS = [
-    ("LA", "BOS", 5.5, -135, 114, "2026-11-18T00:00:00Z"),
-    ("EDM", "FLA", 6.5, 114, -135, "2026-11-18T00:00:00Z"),
-    ("CBJ", "NYI", 5.5, -118, -102, "2026-11-18T00:00:00Z"),
-    ("BUF", "PHI", 5.5, -135, 114, "2026-11-18T00:00:00Z"),
-    ("OTT", "WPG", 5.5, -130, 110, "2026-11-18T00:00:00Z"),
-    ("WSH", "TB", 6.5, -110, -110, "2026-11-18T00:30:00Z"),
-    ("TOR", "CHI", 6.5, -105, -115, "2026-11-18T00:30:00Z"),
-    ("ANA", "STL", 6.5, -102, -118, "2026-11-18T01:00:00Z"),
-    ("NSH", "MIN", 6.5, 114, -135, "2026-11-18T01:00:00Z"),
-    ("DAL", "VGK", 5.5, -122, 102, "2026-11-18T03:00:00Z"),
-    ("CGY", "SJ", 5.5, -135, 114, "2026-11-18T03:00:00Z"),
+    ("BOS", "DET", 5.5, -145, 105, "2026-11-19T00:30:00Z"),
+    ("MTL", "NJ", 6.5, 114, -135, "2026-11-19T00:30:00Z"),
+    ("COL", "UTA", 6.5, -102, -118, "2026-11-19T03:00:00Z"),
 ]
 
 
@@ -351,14 +352,38 @@ def picks_epl():
 BR = "https://www.basketball-reference.com/boxscores/"
 CBS = "https://www.cbssports.com/nfl/gametracker/boxscore/"
 ULTIMO_DUELO = {
-    "cha_lal": {"fecha": "2026-01-15", "liga": "NBA 2025-26", "marcador": [["Hornets", 135], ["Lakers", 117]],
-                "anteriores": ["10 nov 2025: Lakers 121 - 111 Hornets (en Charlotte)"],
-                "fuente": BR + "202601150LAL.html"},
-    "det_sas": {"fecha": "2026-03-05", "liga": "NBA 2025-26", "marcador": [["Pistons", 106], ["Spurs", 121]],
-                "anteriores": ["23 feb 2026: Spurs 114 - 103 Pistons (en Detroit)"],
-                "fuente": BR + "202603050SAS.html"},
-    "nyk_tor": {"fecha": "2026-11-15", "liga": "NBA 2026-27 (tiempo extra)", "marcador": [["Knicks", 112], ["Raptors", 108]],
-                "fuente": BR + "202611150TOR.html"},
+    "hou_ind": {"fecha": "2026-02-02", "liga": "NBA 2025-26", "marcador": [["Rockets", 118], ["Pacers", 114]],
+                "fuente": "https://www.statmuse.com/nba/game/2-2-2026-hou-at-ind-77925"},
+    "mil_mia": {"fecha": "2026-03-12", "liga": "NBA 2025-26", "marcador": [["Bucks", 105], ["Heat", 112]],
+                "fuente": "https://www.statmuse.com/nba/game/3-12-2026-mil-at-mia-78169"},
+    "phi_orl": {"fecha": "2026-04-15", "liga": "NBA 2025-26 (se jugo en Filadelfia)", "marcador": [["Magic", 97], ["76ers", 109]],
+                "fuente": "https://www.statmuse.com/nba/game/4-15-2026-orl-at-phi-78457"},
+    "chi_bkn": {"fecha": "2026-02-09", "liga": "NBA 2025-26", "marcador": [["Bulls", 115], ["Nets", 123]],
+                "fuente": "https://www.statmuse.com/nba/game/2-9-2026-chi-at-bkn-77976"},
+    "was_tor": {"fecha": "2026-10-23", "liga": "NBA 2026-27 (se jugo en Washington)", "marcador": [["Raptors", 112], ["Wizards", 102]],
+                "fuente": "https://www.statmuse.com/nba/game/10-23-2026-tor-at-was-78656"},
+    "atl_okc": {"fecha": "2025-12-29", "liga": "NBA 2025-26", "marcador": [["Hawks", 129], ["Thunder", 140]],
+                "fuente": "https://www.statmuse.com/nba/game/12-29-2025-atl-at-okc-77665"},
+    "det_nop": {"fecha": "2026-03-26", "liga": "NBA 2025-26 (se jugo en Detroit)", "marcador": [["Pelicans", 108], ["Pistons", 129]],
+                "fuente": "https://www.statmuse.com/nba/game/3-26-2026-nop-at-det-78275"},
+    "gsw_dal": {"fecha": "2026-03-23", "liga": "NBA 2025-26 (tiempo extra)", "marcador": [["Warriors", 137], ["Mavericks", 131]],
+                "fuente": "https://www.statmuse.com/nba/game/3-23-2026-gsw-at-dal-78256"},
+    "bos_den": {"fecha": "2026-02-25", "liga": "NBA 2025-26", "marcador": [["Celtics", 84], ["Nuggets", 103]],
+                "fuente": "https://www.statmuse.com/nba/game/2-25-2026-bos-at-den-78059"},
+    "uta_lal": {"fecha": "2026-10-25", "liga": "NBA 2026-27 (se jugo en Utah)", "marcador": [["Lakers", 132], ["Jazz", 123]],
+                "fuente": "https://www.statmuse.com/nba/game/10-25-2026-lal-at-uta-78673"},
+    "nhl_BOS_DET": {"fecha": "2026-03-21", "liga": "NHL 2025-26", "marcador": [["Bruins", 4], ["Red Wings", 2]],
+                    "anteriores": ["13 ene 2026: Bruins 3 - 0 Red Wings (en Boston)", "2 dic 2025: Red Wings 5 - 4 Bruins (en Detroit)",
+                                   "29 nov 2025: Bruins 3 - 2 Red Wings, en penales (en Boston)"],
+                    "fuente": "https://www.hockey-reference.com/boxscores/202603210DET.html"},
+    "nhl_MTL_NJ": {"fecha": "2026-04-05", "liga": "NHL 2025-26 (se jugo en Montreal)", "marcador": [["Devils", 3], ["Canadiens", 0]],
+                   "anteriores": ["4 abr 2026: Canadiens 4 - 3 Devils, en penales (en New Jersey)",
+                                  "6 nov 2025: Devils 4 - 3 Canadiens, tiempo extra (en New Jersey)"],
+                   "fuente": "https://www.hockey-reference.com/boxscores/202604050MTL.html"},
+    "nhl_COL_UTA": {"fecha": "2026-02-25", "liga": "NHL 2025-26", "marcador": [["Avalanche", 4], ["Mammoth", 2]],
+                    "anteriores": ["23 dic 2025: Avalanche 1 - 0 Mammoth (en Colorado)", "21 oct 2025: Mammoth 4 - 3 Avalanche, tiempo extra (en Utah)",
+                                   "9 oct 2025: Avalanche 2 - 1 Mammoth (en Colorado)"],
+                    "fuente": "https://www.hockey-reference.com/boxscores/202602250UTA.html"},
     "nfl_LV_DEN": {"fecha": "2025-12-07", "liga": "NFL 2025, semana 14", "marcador": [["Broncos", 24], ["Raiders", 17]],
                    "detalle": "Bo Nix 212 yds, 0 TD de pase (1 por tierra). Geno Smith 116 yds, 1 TD y salio lesionado; Kenny Pickett 97 yds, 1 TD.",
                    "anteriores": ["6 nov 2025: Broncos 10 - 7 Raiders (en Denver)"],
@@ -396,22 +421,26 @@ ULTIMO_DUELO = {
 # Ultimo partido de cada jugador contra el rival de hoy (puede ser con otro equipo)
 # pts, reb, ast, tri (triples metidos), min (minutos)
 ULTIMO_DUELO_JUGADOR = {
-    "Luka Doncic": {"fecha": "2026-01-15", "equipo": "Lakers", "rival": "Hornets", "pts": 39, "reb": 3, "ast": 4, "tri": 6, "min": 36,
-                    "fuente": BR + "202601150LAL.html"},
-    "Coby White": {"fecha": "2026-01-26", "equipo": "Bulls", "rival": "Lakers", "pts": 23, "reb": 5, "ast": 6, "tri": 5, "min": 31,
-                   "fuente": BR + "202601260CHI.html"},
-    "Quentin Grimes": {"fecha": "2026-03-28", "equipo": "76ers", "rival": "Hornets", "pts": 8, "reb": 1, "ast": 3, "tri": 2, "min": 29,
-                       "fuente": BR + "202603280CHO.html"},
-    "Victor Wembanyama": {"fecha": "2026-03-05", "equipo": "Spurs", "rival": "Pistons", "pts": 38, "reb": 16, "ast": 3, "tri": 4, "min": 39,
-                          "fuente": BR + "202603050SAS.html"},
-    "Jalen Brunson": {"fecha": "2026-11-15", "equipo": "Knicks", "rival": "Raptors", "pts": 28, "reb": 1, "ast": 9, "tri": 3, "min": 41,
-                      "fuente": BR + "202611150TOR.html"},
-    "Karl-Anthony Towns": {"fecha": "2026-11-15", "equipo": "Knicks", "rival": "Raptors", "pts": 28, "reb": 17, "ast": 3, "tri": 3, "min": 43,
-                           "fuente": BR + "202611150TOR.html"},
-    "Scottie Barnes": {"fecha": "2026-11-15", "equipo": "Raptors", "rival": "Knicks", "pts": 30, "reb": 9, "ast": 4, "tri": 4, "min": 36,
-                       "fuente": BR + "202611150TOR.html"},
-    "RJ Barrett": {"fecha": "2026-11-15", "equipo": "Raptors", "rival": "Knicks", "pts": 14, "reb": 5, "ast": 6, "tri": 0, "min": 37,
-                   "fuente": BR + "202611150TOR.html"},
+    "Bam Adebayo": {"fecha": "2026-03-12", "equipo": "Heat", "rival": "Bucks", "pts": 21, "reb": 8, "ast": 2, "tri": 0, "min": 35,
+        "fuente": "https://www.statmuse.com/nba/game/3-12-2026-mil-at-mia-78169"},
+    "VJ Edgecombe": {"fecha": "2026-04-15", "equipo": "76ers", "rival": "Magic", "pts": 19, "reb": 11, "ast": 1, "tri": 1, "min": 42,
+        "fuente": "https://www.statmuse.com/nba/game/4-15-2026-orl-at-phi-78457"},
+    "Nikola Jokic": {"fecha": "2026-02-25", "equipo": "Nuggets", "rival": "Celtics", "pts": 30, "reb": 12, "ast": 6, "tri": 4, "min": 33,
+        "fuente": "https://www.statmuse.com/nba/game/2-25-2026-bos-at-den-78059"},
+    "Kyrie Irving": {"fecha": "2025-02-23", "equipo": "Mavericks", "rival": "Warriors", "pts": 17, "reb": 5, "ast": 4, "tri": 1, "min": 32,
+        "fuente": "https://www.statmuse.com/nba/ask/kyrie-irving-last-game-vs-warriors"},
+    "Trae Young": {"fecha": "2026-10-23", "equipo": "Wizards", "rival": "Raptors", "pts": 22, "reb": 1, "ast": 12, "tri": 4, "min": 37,
+        "fuente": "https://www.statmuse.com/nba/game/10-23-2026-tor-at-was-78656"},
+    "Shai Gilgeous-Alexander": {"fecha": "2025-12-29", "equipo": "Thunder", "rival": "Hawks", "pts": 39, "reb": 6, "ast": 6, "tri": 2, "min": 36,
+        "fuente": "https://www.statmuse.com/nba/game/12-29-2025-atl-at-okc-77665"},
+    "Cade Cunningham": {"fecha": "2025-03-17", "equipo": "Pistons", "rival": "Pelicans", "pts": 24, "reb": 4, "ast": 8, "tri": 1, "min": 30,
+        "fuente": "https://www.statmuse.com/nba/ask/cade-cunningham-last-game-vs-pelicans"},
+    "Luka Doncic": {"fecha": "2026-10-25", "equipo": "Lakers", "rival": "Jazz", "pts": 52, "reb": 8, "ast": 10, "tri": 8, "min": 38,
+        "fuente": "https://www.statmuse.com/nba/game/10-25-2026-lal-at-uta-78673"},
+    "Julius Randle": {"fecha": "2026-01-22", "equipo": "Timberwolves", "rival": "Bulls", "pts": 30, "reb": 7, "ast": 6, "tri": 3, "min": 31,
+        "fuente": "https://www.statmuse.com/nba/ask/julius-randle-last-game-vs-bulls"},
+    "Alperen Sengun": {"fecha": "2026-02-02", "equipo": "Rockets", "rival": "Pacers", "pts": 39, "reb": 16, "ast": 5, "tri": 0, "min": 35,
+        "fuente": "https://www.statmuse.com/nba/game/2-2-2026-hou-at-ind-77925"},
 }
 
 # Como se suma cada mercado de props con la linea del jugador
@@ -512,7 +541,7 @@ def main():
 
     grupos = {
         "NFL": {"picks": contar("NFL"), "partidos": len(NFL_PARTIDOS), "ligas": ["NFL semana 11"]},
-        "NBA": {"picks": contar("NBA"), "partidos": 5, "ligas": ["NBA"]},
+        "NBA": {"picks": contar("NBA"), "partidos": len(set(x[2][0] for x in PROPS_NBA)), "ligas": ["NBA"]},
         "Futbol": {"picks": contar("Futbol"), "partidos": len(EPL_PARTIDOS), "ligas": ["Premier League"]},
         "MLB": {"picks": 0, "partidos": 0, "ligas": ["MLB"]},
         "NHL": {"picks": contar("NHL"), "partidos": len(NHL_PARTIDOS), "ligas": ["NHL"]},
@@ -524,24 +553,28 @@ def main():
         "actualizado": datetime.now().strftime("%Y-%m-%d %H:%M"),
         "prueba": False,
         "manual": True,
-        "nota": ("Edicion del " + EDICION + ": NBA (props de hoy), NHL (hoy), NFL semana 11 y Premier League "
-                 "jornada 11, con lineas y estadisticas reales. MLB esta fuera de temporada; UFC y tenis llegan en la proxima edicion."),
+        "nota": ("Edicion del " + EDICION + ": NBA (props de hoy, 10 partidos), NHL (3 partidos de hoy), NFL semana 11 y "
+                 "Premier League jornada 11, con lineas y estadisticas reales. Ya calificamos los picks NBA de anoche (ve el Historial). "
+                 "Nota: en NBA la mayoria de las fuentes solo publican un lado del momio; ahi usamos el momio de la casa. "
+                 "MLB esta fuera de temporada; UFC y tenis llegan en una proxima edicion."),
         "fuentes": [
             ["ESPN - momios NFL semana 11 (DraftKings)", "https://www.espn.com/nfl/odds"],
             ["ESPN - tabla NFL (puntos a favor y en contra)", "https://www.espn.com/nfl/standings"],
-            ["ESPN - momios NHL (DraftKings)", "https://www.espn.com/nhl/odds"],
-            ["ESPN - tabla NHL (goles a favor y en contra)", "https://www.espn.com/nhl/standings"],
+            ["SportsbookReview - totales NHL 18 nov (DraftKings)", "https://www.sportsbookreview.com/betting-odds/nhl-hockey/totals/full-game/?date=2026-11-18"],
+            ["CBS Sports - tabla NHL (goles a favor y en contra)", "https://www.cbssports.com/nhl/standings/"],
             ["Betwatch - momios Premier League", "https://betwatch.io/odds/premier-league"],
             ["ESPN - tabla Premier League", "https://www.espn.com/soccer/standings/_/league/eng.1"],
-            ["DraftKings Network - props NBA 17 nov", "https://dknetwork.draftkings.com/2026/11/17/nba-public-betting-trends-tuesday-november-17"],
-            ["FanDuel Research - props NBA 17 nov", "https://www.fanduel.com/research/nba-props-today-player-prop-bets-tuesday-nov-17"],
-            ["Steezanomics - props NBA 17 nov", "https://steezanomics.com/picks/knicks-vs-raptors-player-props-november-17-2026/"],
-            ["ESPN - game logs de jugadores NBA", "https://www.espn.com/nba/"],
-            ["Ultimos enfrentamientos NBA - Basketball-Reference", "https://www.basketball-reference.com/"],
+            ["FanDuel Research - props NBA 18 nov", "https://www.fanduel.com/research/nba-props-today-3-best-nba-player-prop-bets-for-wednesday-nov-18"],
+            ["TheLines - props NBA 18 nov", "https://www.thelines.com/nba/player-props/expert-nba-picks-and-player-props-best-nba-bets-today-nov-18/"],
+            ["SportsBettingDime - props NBA 18 nov", "https://www.sportsbettingdime.com/news/nba/best-player-prop-picks-today-key-injuries-nov-18/"],
+            ["Covers - props NBA", "https://www.covers.com/sport/basketball/nba/player-props"],
+            ["StatMuse - ultimos 10 partidos y enfrentamientos NBA", "https://www.statmuse.com/nba"],
+            ["Hockey-Reference - ultimos enfrentamientos NHL", "https://www.hockey-reference.com/"],
             ["Ultimos enfrentamientos NFL - CBS Sports y StatMuse", "https://www.statmuse.com/nfl"],
             ["Ultimo Newcastle vs Arsenal - Opta / The Analyst", "https://theanalyst.com/articles/arsenal-vs-newcastle-stats-opta-premier-league-04-2026"],
+            ["Resultados NBA 17 nov - CBS Sports y PlainTextSports", "https://plaintextsports.com/nba/2026-11-17/"],
         ],
-        "partidos_analizados": 5 + len(NFL_PARTIDOS) + len(NHL_PARTIDOS) + len(EPL_PARTIDOS),
+        "partidos_analizados": len(set(x[2][0] for x in PROPS_NBA)) + len(NFL_PARTIDOS) + len(NHL_PARTIDOS) + len(EPL_PARTIDOS),
         "descartados": descartados,
         "picks": picks,
         "parlay": {"ids": parlay, "momio": a_americano(decimal), "prob": round(prob_parlay * 100, 1)},

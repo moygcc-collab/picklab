@@ -1,8 +1,8 @@
 window.PICKS = {
- "actualizado": "2026-11-17 22:14",
+ "actualizado": "2026-11-18 20:48",
  "prueba": false,
  "manual": true,
- "nota": "Edicion del martes 17 de noviembre: NBA (props de hoy), NHL (hoy), NFL semana 11 y Premier League jornada 11, con lineas y estadisticas reales. MLB esta fuera de temporada; UFC y tenis llegan en la proxima edicion.",
+ "nota": "Edicion del miercoles 18 de noviembre: NBA (props de hoy, 10 partidos), NHL (3 partidos de hoy), NFL semana 11 y Premier League jornada 11, con lineas y estadisticas reales. Ya calificamos los picks NBA de anoche (ve el Historial). Nota: en NBA la mayoria de las fuentes solo publican un lado del momio; ahi usamos el momio de la casa. MLB esta fuera de temporada; UFC y tenis llegan en una proxima edicion.",
  "fuentes": [
   [
    "ESPN - momios NFL semana 11 (DraftKings)",
@@ -13,12 +13,12 @@ window.PICKS = {
    "https://www.espn.com/nfl/standings"
   ],
   [
-   "ESPN - momios NHL (DraftKings)",
-   "https://www.espn.com/nhl/odds"
+   "SportsbookReview - totales NHL 18 nov (DraftKings)",
+   "https://www.sportsbookreview.com/betting-odds/nhl-hockey/totals/full-game/?date=2026-11-18"
   ],
   [
-   "ESPN - tabla NHL (goles a favor y en contra)",
-   "https://www.espn.com/nhl/standings"
+   "CBS Sports - tabla NHL (goles a favor y en contra)",
+   "https://www.cbssports.com/nhl/standings/"
   ],
   [
    "Betwatch - momios Premier League",
@@ -29,24 +29,28 @@ window.PICKS = {
    "https://www.espn.com/soccer/standings/_/league/eng.1"
   ],
   [
-   "DraftKings Network - props NBA 17 nov",
-   "https://dknetwork.draftkings.com/2026/11/17/nba-public-betting-trends-tuesday-november-17"
+   "FanDuel Research - props NBA 18 nov",
+   "https://www.fanduel.com/research/nba-props-today-3-best-nba-player-prop-bets-for-wednesday-nov-18"
   ],
   [
-   "FanDuel Research - props NBA 17 nov",
-   "https://www.fanduel.com/research/nba-props-today-player-prop-bets-tuesday-nov-17"
+   "TheLines - props NBA 18 nov",
+   "https://www.thelines.com/nba/player-props/expert-nba-picks-and-player-props-best-nba-bets-today-nov-18/"
   ],
   [
-   "Steezanomics - props NBA 17 nov",
-   "https://steezanomics.com/picks/knicks-vs-raptors-player-props-november-17-2026/"
+   "SportsBettingDime - props NBA 18 nov",
+   "https://www.sportsbettingdime.com/news/nba/best-player-prop-picks-today-key-injuries-nov-18/"
   ],
   [
-   "ESPN - game logs de jugadores NBA",
-   "https://www.espn.com/nba/"
+   "Covers - props NBA",
+   "https://www.covers.com/sport/basketball/nba/player-props"
   ],
   [
-   "Ultimos enfrentamientos NBA - Basketball-Reference",
-   "https://www.basketball-reference.com/"
+   "StatMuse - ultimos 10 partidos y enfrentamientos NBA",
+   "https://www.statmuse.com/nba"
+  ],
+  [
+   "Hockey-Reference - ultimos enfrentamientos NHL",
+   "https://www.hockey-reference.com/"
   ],
   [
    "Ultimos enfrentamientos NFL - CBS Sports y StatMuse",
@@ -55,433 +59,226 @@ window.PICKS = {
   [
    "Ultimo Newcastle vs Arsenal - Opta / The Analyst",
    "https://theanalyst.com/articles/arsenal-vs-newcastle-stats-opta-premier-league-04-2026"
+  ],
+  [
+   "Resultados NBA 17 nov - CBS Sports y PlainTextSports",
+   "https://plaintextsports.com/nba/2026-11-17/"
   ]
  ],
- "partidos_analizados": 37,
+ "partidos_analizados": 34,
  "descartados": [
-  "LaMelo Ball Under 21.5"
+  "Bam Adebayo Under 8.5",
+  "VJ Edgecombe Over 13.5",
+  "Kyrie Irving Over 22.5",
+  "Trae Young Over 8.5",
+  "Alperen Sengun Over 20.5"
  ],
  "picks": [
   {
-   "evento": "cha_lal",
+   "evento": "chi_bkn",
    "grupo": "NBA",
    "liga": "NBA",
-   "partido": "Hornets @ Lakers",
-   "fecha": "2026-11-18T04:00:00Z",
+   "partido": "Bulls @ Nets",
+   "fecha": "2026-11-19T00:30:00Z",
    "tipo": "Props",
-   "mercado": "Triples",
-   "jugador": "Luka Doncic",
-   "equipo": "Lakers",
-   "pick": "Luka Doncic Over 4.5",
-   "lado": "Over",
-   "linea": 4.5,
-   "momio": -124,
-   "casa": "DraftKings",
+   "mercado": "Puntos",
+   "jugador": "Julius Randle",
+   "equipo": "Nets",
+   "pick": "Julius Randle Under 22.5",
+   "lado": "Under",
+   "linea": 22.5,
+   "momio": -113,
+   "casa": "Caesars",
    "casas": 1,
-   "prob": 74.7,
-   "ventaja": 19.4,
+   "prob": 69.2,
+   "ventaja": 16.2,
    "valores": [
-    8,
-    6,
-    6,
-    8,
-    6,
-    6,
-    5,
-    3,
-    5,
-    5
+    24,
+    15,
+    20,
+    21,
+    22,
+    19,
+    13,
+    17,
+    22,
+    33
    ],
-   "aciertos": 9,
-   "promedio": 5.8,
-   "mediana": 6,
-   "maximo": 8,
-   "minimo": 3,
-   "base": "Ultimos 10 partidos + momio sin comision. Linea via DK Network, partidos via ESPN",
+   "aciertos": 8,
+   "promedio": 20.6,
+   "mediana": 21,
+   "maximo": 33,
+   "minimo": 13,
+   "base": "Ultimos 10 partidos + momio de la casa. Linea via Covers, partidos via ESPN",
    "duelo": {
-    "fecha": "2026-01-15",
+    "fecha": "2026-02-09",
     "liga": "NBA 2025-26",
     "marcador": [
      [
-      "Hornets",
-      135
+      "Bulls",
+      115
      ],
      [
-      "Lakers",
-      117
+      "Nets",
+      123
      ]
     ],
-    "anteriores": [
-     "10 nov 2025: Lakers 121 - 111 Hornets (en Charlotte)"
-    ],
-    "fuente": "https://www.basketball-reference.com/boxscores/202601150LAL.html",
+    "fuente": "https://www.statmuse.com/nba/game/2-9-2026-chi-at-bkn-77976",
     "jugador": {
-     "fecha": "2026-01-15",
-     "equipo": "Lakers",
-     "rival": "Hornets",
-     "pts": 39,
-     "reb": 3,
-     "ast": 4,
-     "tri": 6,
-     "min": 36,
-     "fuente": "https://www.basketball-reference.com/boxscores/202601150LAL.html"
+     "fecha": "2026-01-22",
+     "equipo": "Timberwolves",
+     "rival": "Bulls",
+     "pts": 30,
+     "reb": 7,
+     "ast": 6,
+     "tri": 3,
+     "min": 31,
+     "fuente": "https://www.statmuse.com/nba/ask/julius-randle-last-game-vs-bulls"
     },
-    "valor": 6,
-    "pego": true,
-    "resumen": "Luka Doncic hizo 6 triples vs Hornets (linea de hoy 4.5)"
+    "valor": 30,
+    "pego": false,
+    "resumen": "Julius Randle hizo 30 puntos vs Bulls (linea de hoy 22.5)"
    },
    "id": 1,
-   "implicita": 55.4,
+   "implicita": 53.1,
    "unidades": 2
   },
   {
-   "evento": "cha_lal",
+   "evento": "atl_okc",
    "grupo": "NBA",
    "liga": "NBA",
-   "partido": "Hornets @ Lakers",
-   "fecha": "2026-11-18T04:00:00Z",
+   "partido": "Hawks @ Thunder",
+   "fecha": "2026-11-19T01:00:00Z",
    "tipo": "Props",
    "mercado": "Asistencias",
-   "jugador": "Coby White",
-   "equipo": "Hornets",
-   "pick": "Coby White Under 3.5",
+   "jugador": "Shai Gilgeous-Alexander",
+   "equipo": "Thunder",
+   "pick": "Shai Gilgeous-Alexander Under 5.5",
    "lado": "Under",
-   "linea": 3.5,
-   "momio": -106,
-   "casa": "NoVig",
+   "linea": 5.5,
+   "momio": -115,
+   "casa": "bet365",
    "casas": 1,
-   "prob": 70.6,
-   "ventaja": 19.1,
+   "prob": 63.4,
+   "ventaja": 9.9,
    "valores": [
-    3,
     2,
-    1,
+    3,
+    8,
+    8,
+    4,
     9,
     3,
-    1
+    2,
+    5,
+    2
    ],
-   "aciertos": 5,
-   "promedio": 3.2,
-   "mediana": 3,
+   "aciertos": 7,
+   "promedio": 4.6,
+   "mediana": 4,
    "maximo": 9,
-   "minimo": 1,
-   "base": "Ultimos 6 partidos + momio de la casa. Linea via Steezanomics, partidos via ESPN",
+   "minimo": 2,
+   "base": "Ultimos 10 partidos + momio de la casa. Linea via Covers, partidos via ESPN",
    "duelo": {
-    "fecha": "2026-01-15",
+    "fecha": "2025-12-29",
     "liga": "NBA 2025-26",
     "marcador": [
      [
-      "Hornets",
-      135
+      "Hawks",
+      129
      ],
      [
-      "Lakers",
-      117
+      "Thunder",
+      140
      ]
     ],
-    "anteriores": [
-     "10 nov 2025: Lakers 121 - 111 Hornets (en Charlotte)"
-    ],
-    "fuente": "https://www.basketball-reference.com/boxscores/202601150LAL.html",
+    "fuente": "https://www.statmuse.com/nba/game/12-29-2025-atl-at-okc-77665",
     "jugador": {
-     "fecha": "2026-01-26",
-     "equipo": "Bulls",
-     "rival": "Lakers",
-     "pts": 23,
-     "reb": 5,
+     "fecha": "2025-12-29",
+     "equipo": "Thunder",
+     "rival": "Hawks",
+     "pts": 39,
+     "reb": 6,
      "ast": 6,
-     "tri": 5,
-     "min": 31,
-     "fuente": "https://www.basketball-reference.com/boxscores/202601260CHI.html"
+     "tri": 2,
+     "min": 36,
+     "fuente": "https://www.statmuse.com/nba/game/12-29-2025-atl-at-okc-77665"
     },
     "valor": 6,
     "pego": false,
-    "resumen": "Coby White hizo 6 asistencias vs Lakers (linea de hoy 3.5)"
+    "resumen": "Shai Gilgeous-Alexander hizo 6 asistencias vs Hawks (linea de hoy 5.5)"
    },
    "id": 2,
-   "implicita": 51.5,
+   "implicita": 53.5,
    "unidades": 1
   },
   {
-   "evento": "det_sas",
+   "evento": "uta_lal",
    "grupo": "NBA",
    "liga": "NBA",
-   "partido": "Pistons @ Spurs",
-   "fecha": "2026-11-18T01:00:00Z",
+   "partido": "Jazz @ Lakers",
+   "fecha": "2026-11-19T03:00:00Z",
    "tipo": "Props",
-   "mercado": "Puntos + Asistencias",
-   "jugador": "Victor Wembanyama",
-   "equipo": "Spurs",
-   "pick": "Victor Wembanyama Over 31.5",
+   "mercado": "Puntos",
+   "jugador": "Luka Doncic",
+   "equipo": "Lakers",
+   "pick": "Luka Doncic Over 36.5",
    "lado": "Over",
-   "linea": 31.5,
-   "momio": -109,
-   "casa": "DraftKings",
+   "linea": 36.5,
+   "momio": -110,
+   "casa": "Caesars",
    "casas": 1,
-   "prob": 67.5,
-   "ventaja": 15.4,
+   "prob": 63.0,
+   "ventaja": 10.6,
    "valores": [
     41,
-    47,
-    17,
-    54,
+    37,
+    45,
+    42,
+    40,
+    53,
     32,
     32,
     43,
-    33,
-    18,
-    32
-   ],
-   "aciertos": 8,
-   "promedio": 34.9,
-   "mediana": 33,
-   "maximo": 54,
-   "minimo": 17,
-   "base": "Ultimos 10 partidos + momio sin comision. Linea via DK Network, partidos via ESPN",
-   "duelo": {
-    "fecha": "2026-03-05",
-    "liga": "NBA 2025-26",
-    "marcador": [
-     [
-      "Pistons",
-      106
-     ],
-     [
-      "Spurs",
-      121
-     ]
-    ],
-    "anteriores": [
-     "23 feb 2026: Spurs 114 - 103 Pistons (en Detroit)"
-    ],
-    "fuente": "https://www.basketball-reference.com/boxscores/202603050SAS.html",
-    "jugador": {
-     "fecha": "2026-03-05",
-     "equipo": "Spurs",
-     "rival": "Pistons",
-     "pts": 38,
-     "reb": 16,
-     "ast": 3,
-     "tri": 4,
-     "min": 39,
-     "fuente": "https://www.basketball-reference.com/boxscores/202603050SAS.html"
-    },
-    "valor": 41,
-    "pego": true,
-    "resumen": "Victor Wembanyama hizo 41 puntos + asistencias vs Pistons (linea de hoy 31.5)"
-   },
-   "id": 3,
-   "implicita": 52.2,
-   "unidades": 1
-  },
-  {
-   "evento": "cha_lal",
-   "grupo": "NBA",
-   "liga": "NBA",
-   "partido": "Hornets @ Lakers",
-   "fecha": "2026-11-18T04:00:00Z",
-   "tipo": "Props",
-   "mercado": "Puntos",
-   "jugador": "Quentin Grimes",
-   "equipo": "Lakers",
-   "pick": "Quentin Grimes Under 12.5",
-   "lado": "Under",
-   "linea": 12.5,
-   "momio": -103,
-   "casa": "DraftKings",
-   "casas": 1,
-   "prob": 67.1,
-   "ventaja": 16.4,
-   "valores": [
-    3,
-    2,
-    23,
-    3,
-    7,
-    7,
-    6,
-    2,
-    12,
-    22
-   ],
-   "aciertos": 8,
-   "promedio": 8.7,
-   "mediana": 7,
-   "maximo": 23,
-   "minimo": 2,
-   "base": "Ultimos 10 partidos + momio sin comision. Linea via DK Network, partidos via ESPN",
-   "duelo": {
-    "fecha": "2026-01-15",
-    "liga": "NBA 2025-26",
-    "marcador": [
-     [
-      "Hornets",
-      135
-     ],
-     [
-      "Lakers",
-      117
-     ]
-    ],
-    "anteriores": [
-     "10 nov 2025: Lakers 121 - 111 Hornets (en Charlotte)"
-    ],
-    "fuente": "https://www.basketball-reference.com/boxscores/202601150LAL.html",
-    "jugador": {
-     "fecha": "2026-03-28",
-     "equipo": "76ers",
-     "rival": "Hornets",
-     "pts": 8,
-     "reb": 1,
-     "ast": 3,
-     "tri": 2,
-     "min": 29,
-     "fuente": "https://www.basketball-reference.com/boxscores/202603280CHO.html"
-    },
-    "valor": 8,
-    "pego": true,
-    "resumen": "Quentin Grimes hizo 8 puntos vs Hornets (linea de hoy 12.5)"
-   },
-   "id": 4,
-   "implicita": 50.7,
-   "unidades": 1
-  },
-  {
-   "evento": "nyk_tor",
-   "grupo": "NBA",
-   "liga": "NBA",
-   "partido": "Knicks @ Raptors",
-   "fecha": "2026-11-18T00:30:00Z",
-   "tipo": "Props",
-   "mercado": "Triples",
-   "jugador": "Jalen Brunson",
-   "equipo": "Knicks",
-   "pick": "Jalen Brunson Over 2.5",
-   "lado": "Over",
-   "linea": 2.5,
-   "momio": 117,
-   "casa": "DraftKings",
-   "casas": 1,
-   "prob": 65.2,
-   "ventaja": 19.2,
-   "valores": [
-    0,
-    6,
-    3,
-    4,
-    5,
-    3,
-    1,
-    3,
-    4,
-    3
-   ],
-   "aciertos": 8,
-   "promedio": 3.2,
-   "mediana": 3,
-   "maximo": 6,
-   "minimo": 0,
-   "base": "Ultimos 10 partidos + momio sin comision. Linea via DK Network, partidos via ESPN",
-   "duelo": {
-    "fecha": "2026-11-15",
-    "liga": "NBA 2026-27 (tiempo extra)",
-    "marcador": [
-     [
-      "Knicks",
-      112
-     ],
-     [
-      "Raptors",
-      108
-     ]
-    ],
-    "fuente": "https://www.basketball-reference.com/boxscores/202611150TOR.html",
-    "jugador": {
-     "fecha": "2026-11-15",
-     "equipo": "Knicks",
-     "rival": "Raptors",
-     "pts": 28,
-     "reb": 1,
-     "ast": 9,
-     "tri": 3,
-     "min": 41,
-     "fuente": "https://www.basketball-reference.com/boxscores/202611150TOR.html"
-    },
-    "valor": 3,
-    "pego": true,
-    "resumen": "Jalen Brunson hizo 3 triples vs Raptors (linea de hoy 2.5)"
-   },
-   "id": 5,
-   "implicita": 46.1,
-   "unidades": 1
-  },
-  {
-   "evento": "nyk_tor",
-   "grupo": "NBA",
-   "liga": "NBA",
-   "partido": "Knicks @ Raptors",
-   "fecha": "2026-11-18T00:30:00Z",
-   "tipo": "Props",
-   "mercado": "Rebotes",
-   "jugador": "Karl-Anthony Towns",
-   "equipo": "Knicks",
-   "pick": "Karl-Anthony Towns Over 12.5",
-   "lado": "Over",
-   "linea": 12.5,
-   "momio": -105,
-   "casa": "Bovada",
-   "casas": 1,
-   "prob": 62.5,
-   "ventaja": 11.3,
-   "valores": [
-    20,
-    13,
-    12,
-    16,
-    12,
-    13,
-    16,
-    11,
-    15,
-    17
+    36
    ],
    "aciertos": 7,
-   "promedio": 14.5,
-   "mediana": 15,
-   "maximo": 20,
-   "minimo": 11,
-   "base": "Ultimos 10 partidos + momio de la casa. Linea via Steezanomics, partidos via ESPN",
+   "promedio": 40.1,
+   "mediana": 41,
+   "maximo": 53,
+   "minimo": 32,
+   "base": "Ultimos 10 partidos + momio de la casa. Linea via SportsBettingDime, partidos via ESPN",
    "duelo": {
-    "fecha": "2026-11-15",
-    "liga": "NBA 2026-27 (tiempo extra)",
+    "fecha": "2026-10-25",
+    "liga": "NBA 2026-27 (se jugo en Utah)",
     "marcador": [
      [
-      "Knicks",
-      112
+      "Lakers",
+      132
      ],
      [
-      "Raptors",
-      108
+      "Jazz",
+      123
      ]
     ],
-    "fuente": "https://www.basketball-reference.com/boxscores/202611150TOR.html",
+    "fuente": "https://www.statmuse.com/nba/game/10-25-2026-lal-at-uta-78673",
     "jugador": {
-     "fecha": "2026-11-15",
-     "equipo": "Knicks",
-     "rival": "Raptors",
-     "pts": 28,
-     "reb": 17,
-     "ast": 3,
-     "tri": 3,
-     "min": 43,
-     "fuente": "https://www.basketball-reference.com/boxscores/202611150TOR.html"
+     "fecha": "2026-10-25",
+     "equipo": "Lakers",
+     "rival": "Jazz",
+     "pts": 52,
+     "reb": 8,
+     "ast": 10,
+     "tri": 8,
+     "min": 38,
+     "fuente": "https://www.statmuse.com/nba/game/10-25-2026-lal-at-uta-78673"
     },
-    "valor": 17,
+    "valor": 52,
     "pego": true,
-    "resumen": "Karl-Anthony Towns hizo 17 rebotes vs Raptors (linea de hoy 12.5)"
+    "resumen": "Luka Doncic hizo 52 puntos vs Jazz (linea de hoy 36.5)"
    },
-   "id": 6,
-   "implicita": 51.2,
+   "id": 3,
+   "implicita": 52.4,
    "unidades": 1
   },
   {
@@ -524,7 +321,7 @@ window.PICKS = {
     "pego": true,
     "resumen": "Total de 41 contra la linea de hoy de 40.5"
    },
-   "id": 7,
+   "id": 4,
    "implicita": 51.9,
    "unidades": 1
   },
@@ -565,76 +362,8 @@ window.PICKS = {
     "pego": true,
     "resumen": "Colts gano por 2; con +12.5 hoy"
    },
-   "id": 8,
+   "id": 5,
    "implicita": 52.8,
-   "unidades": 0.5
-  },
-  {
-   "evento": "nyk_tor",
-   "grupo": "NBA",
-   "liga": "NBA",
-   "partido": "Knicks @ Raptors",
-   "fecha": "2026-11-18T00:30:00Z",
-   "tipo": "Props",
-   "mercado": "Pts + Reb + Ast",
-   "jugador": "Scottie Barnes",
-   "equipo": "Raptors",
-   "pick": "Scottie Barnes Over 34.5",
-   "lado": "Over",
-   "linea": 34.5,
-   "momio": 105,
-   "casa": "Bovada",
-   "casas": 1,
-   "prob": 59.5,
-   "ventaja": 10.7,
-   "valores": [
-    34,
-    47,
-    6,
-    38,
-    51,
-    40,
-    45,
-    29,
-    43
-   ],
-   "aciertos": 6,
-   "promedio": 37.0,
-   "mediana": 40,
-   "maximo": 51,
-   "minimo": 6,
-   "base": "Ultimos 9 partidos + momio de la casa. Linea via Steezanomics, partidos via ESPN",
-   "duelo": {
-    "fecha": "2026-11-15",
-    "liga": "NBA 2026-27 (tiempo extra)",
-    "marcador": [
-     [
-      "Knicks",
-      112
-     ],
-     [
-      "Raptors",
-      108
-     ]
-    ],
-    "fuente": "https://www.basketball-reference.com/boxscores/202611150TOR.html",
-    "jugador": {
-     "fecha": "2026-11-15",
-     "equipo": "Raptors",
-     "rival": "Knicks",
-     "pts": 30,
-     "reb": 9,
-     "ast": 4,
-     "tri": 4,
-     "min": 36,
-     "fuente": "https://www.basketball-reference.com/boxscores/202611150TOR.html"
-    },
-    "valor": 43,
-    "pego": true,
-    "resumen": "Scottie Barnes hizo 43 pts + reb + ast vs Knicks (linea de hoy 34.5)"
-   },
-   "id": 9,
-   "implicita": 48.8,
    "unidades": 0.5
   },
   {
@@ -674,7 +403,7 @@ window.PICKS = {
     "pego": false,
     "resumen": "Total de 16 contra la linea de hoy de 43.5"
    },
-   "id": 10,
+   "id": 6,
    "implicita": 52.8,
    "unidades": 0.5
   },
@@ -715,7 +444,7 @@ window.PICKS = {
     "pego": true,
     "resumen": "Dolphins gano por 17; con +16.5 hoy"
    },
-   "id": 11,
+   "id": 7,
    "implicita": 52.8,
    "unidades": 0.5
   },
@@ -759,7 +488,7 @@ window.PICKS = {
     "pego": true,
     "resumen": "Raiders perdio por 7; con +10 hoy"
    },
-   "id": 12,
+   "id": 8,
    "implicita": 51.9,
    "unidades": 0.5
   },
@@ -800,7 +529,7 @@ window.PICKS = {
     "pego": false,
     "resumen": "Jets perdio por 21; con +3.5 hoy"
    },
-   "id": 13,
+   "id": 9,
    "implicita": 54.1,
    "unidades": 0.5
   },
@@ -841,77 +570,77 @@ window.PICKS = {
     "pego": false,
     "resumen": "Cardinals perdio por 23; con +16.5 hoy"
    },
-   "id": 14,
+   "id": 10,
    "implicita": 53.5,
    "unidades": 0.5
   },
   {
-   "evento": "nyk_tor",
+   "evento": "det_nop",
    "grupo": "NBA",
    "liga": "NBA",
-   "partido": "Knicks @ Raptors",
-   "fecha": "2026-11-18T00:30:00Z",
+   "partido": "Pistons @ Pelicans",
+   "fecha": "2026-11-19T01:00:00Z",
    "tipo": "Props",
    "mercado": "Puntos",
-   "jugador": "RJ Barrett",
-   "equipo": "Raptors",
-   "pick": "RJ Barrett Over 19.5",
+   "jugador": "Cade Cunningham",
+   "equipo": "Pistons",
+   "pick": "Cade Cunningham Over 24.5",
    "lado": "Over",
-   "linea": 19.5,
-   "momio": -106,
-   "casa": "FanDuel",
+   "linea": 24.5,
+   "momio": -108,
+   "casa": "BetRivers",
    "casas": 1,
-   "prob": 56.6,
-   "ventaja": 5.1,
+   "prob": 56.8,
+   "ventaja": 4.8,
    "valores": [
-    25,
-    9,
-    22,
-    26,
-    22,
-    27,
     19,
-    12,
-    31,
-    14
+    30,
+    20,
+    33,
+    26,
+    14,
+    17,
+    52,
+    33,
+    27
    ],
    "aciertos": 6,
-   "promedio": 20.7,
-   "mediana": 22,
-   "maximo": 31,
-   "minimo": 9,
-   "base": "Ultimos 10 partidos + momio de la casa. Linea via FanDuel Research, partidos via ESPN",
+   "promedio": 27.1,
+   "mediana": 27,
+   "maximo": 52,
+   "minimo": 14,
+   "base": "Ultimos 10 partidos + momio de la casa. Linea via SportsBettingDime, partidos via ESPN",
    "duelo": {
-    "fecha": "2026-11-15",
-    "liga": "NBA 2026-27 (tiempo extra)",
+    "fecha": "2026-03-26",
+    "liga": "NBA 2025-26 (se jugo en Detroit)",
     "marcador": [
      [
-      "Knicks",
-      112
+      "Pelicans",
+      108
      ],
      [
-      "Raptors",
-      108
+      "Pistons",
+      129
      ]
     ],
-    "fuente": "https://www.basketball-reference.com/boxscores/202611150TOR.html",
+    "fuente": "https://www.statmuse.com/nba/game/3-26-2026-nop-at-det-78275",
     "jugador": {
-     "fecha": "2026-11-15",
-     "equipo": "Raptors",
-     "rival": "Knicks",
-     "pts": 14,
-     "reb": 5,
-     "ast": 6,
-     "tri": 0,
-     "min": 37,
-     "fuente": "https://www.basketball-reference.com/boxscores/202611150TOR.html"
+     "fecha": "2025-03-17",
+     "equipo": "Pistons",
+     "rival": "Pelicans",
+     "pts": 24,
+     "reb": 4,
+     "ast": 8,
+     "tri": 1,
+     "min": 30,
+     "fuente": "https://www.statmuse.com/nba/ask/cade-cunningham-last-game-vs-pelicans"
     },
-    "valor": 14,
+    "valor": 24,
     "pego": false,
-    "resumen": "RJ Barrett hizo 14 puntos vs Knicks (linea de hoy 19.5)"
+    "resumen": "Cade Cunningham hizo 24 puntos vs Pelicans (linea de hoy 24.5)"
    },
-   "id": 15,
-   "implicita": 51.5,
+   "id": 11,
+   "implicita": 51.9,
    "unidades": 0.5
   },
   {
@@ -951,7 +680,7 @@ window.PICKS = {
     "pego": false,
     "resumen": "Saints perdio por 12; con +11.5 hoy"
    },
-   "id": 16,
+   "id": 12,
    "implicita": 51.9,
    "unidades": 0.5
   },
@@ -992,7 +721,7 @@ window.PICKS = {
     "pego": false,
     "resumen": "Total de 36 contra la linea de hoy de 44.5"
    },
-   "id": 17,
+   "id": 13,
    "implicita": 51.2,
    "unidades": 0.5
   },
@@ -1033,7 +762,7 @@ window.PICKS = {
     "pego": true,
     "resumen": "Total de 65 contra la linea de hoy de 41.5"
    },
-   "id": 18,
+   "id": 14,
    "implicita": 51.9,
    "unidades": 0.5
   },
@@ -1074,7 +803,7 @@ window.PICKS = {
     "pego": true,
     "resumen": "Total de 40 contra la linea de hoy de 54.5"
    },
-   "id": 19,
+   "id": 15,
    "implicita": 50.0,
    "unidades": 0.5
   },
@@ -1121,19 +850,88 @@ window.PICKS = {
     "pego": true,
     "resumen": "Total de 1 contra la linea de hoy de 2.5"
    },
-   "id": 20,
+   "id": 16,
    "implicita": 46.5,
+   "unidades": 0.5
+  },
+  {
+   "evento": "bos_den",
+   "grupo": "NBA",
+   "liga": "NBA",
+   "partido": "Celtics @ Nuggets",
+   "fecha": "2026-11-19T02:30:00Z",
+   "tipo": "Props",
+   "mercado": "Asistencias",
+   "jugador": "Nikola Jokic",
+   "equipo": "Nuggets",
+   "pick": "Nikola Jokic Over 9.5",
+   "lado": "Over",
+   "linea": 9.5,
+   "momio": 116,
+   "casa": "FanDuel",
+   "casas": 1,
+   "prob": 48.5,
+   "ventaja": 2.2,
+   "valores": [
+    11,
+    10,
+    10,
+    8,
+    11,
+    8,
+    9,
+    8,
+    10,
+    7
+   ],
+   "aciertos": 5,
+   "promedio": 9.2,
+   "mediana": 10,
+   "maximo": 11,
+   "minimo": 7,
+   "base": "Ultimos 10 partidos + momio de la casa. Linea via FanDuel Research, partidos via ESPN",
+   "duelo": {
+    "fecha": "2026-02-25",
+    "liga": "NBA 2025-26",
+    "marcador": [
+     [
+      "Celtics",
+      84
+     ],
+     [
+      "Nuggets",
+      103
+     ]
+    ],
+    "fuente": "https://www.statmuse.com/nba/game/2-25-2026-bos-at-den-78059",
+    "jugador": {
+     "fecha": "2026-02-25",
+     "equipo": "Nuggets",
+     "rival": "Celtics",
+     "pts": 30,
+     "reb": 12,
+     "ast": 6,
+     "tri": 4,
+     "min": 33,
+     "fuente": "https://www.statmuse.com/nba/game/2-25-2026-bos-at-den-78059"
+    },
+    "valor": 6,
+    "pego": false,
+    "resumen": "Nikola Jokic hizo 6 asistencias vs Celtics (linea de hoy 9.5)"
+   },
+   "id": 17,
+   "implicita": 46.3,
    "unidades": 0.5
   }
  ],
  "parlay": {
   "ids": [
    1,
-   3,
-   5
+   2,
+   3
   ],
-  "momio": 652,
-  "prob": 32.9
+  "momio": 573,
+  "prob": 27.6
  },
  "grupos": {
   "NFL": {
@@ -1144,8 +942,8 @@ window.PICKS = {
    ]
   },
   "NBA": {
-   "picks": 8,
-   "partidos": 5,
+   "picks": 5,
+   "partidos": 10,
    "ligas": [
     "NBA"
    ]
@@ -1166,7 +964,7 @@ window.PICKS = {
   },
   "NHL": {
    "picks": 0,
-   "partidos": 11,
+   "partidos": 3,
    "ligas": [
     "NHL"
    ]
