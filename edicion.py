@@ -1,6 +1,6 @@
 # ============================================
 # EDICION DE PICKLAB
-# Edicion: miercoles 18 de noviembre de 2026
+# Edicion: jueves 19 de noviembre de 2026
 #
 # Aqui van los datos que se juntan a mano (estadisticas, contexto y, si la API
 # no los trae, momios). La decision de cada pick la toma motor.py.
@@ -17,8 +17,8 @@ import motor
 import api_picks
 import historial
 
-EDICION = "miercoles 18 de noviembre"
-FECHA_EDICION = "2026-11-18"  # para el historial (AAAA-MM-DD)
+EDICION = "jueves 19 de noviembre"
+FECHA_EDICION = "2026-11-19"  # para el historial (AAAA-MM-DD)
 
 sin_comision = motor.sin_comision
 
@@ -30,41 +30,31 @@ def texto_linea(punto):
 
 # ---------- NBA: props de esta noche ----------
 
-# Partidos NBA del miercoles 18 nov (horas en UTC)
-HOU_IND = ("hou_ind", "Rockets @ Pacers", "2026-11-19T00:00:00Z")
-MIL_MIA = ("mil_mia", "Bucks @ Heat", "2026-11-19T00:00:00Z")
-PHI_ORL = ("phi_orl", "76ers @ Magic", "2026-11-19T00:00:00Z")
-CHI_BKN = ("chi_bkn", "Bulls @ Nets", "2026-11-19T00:30:00Z")
-WAS_TOR = ("was_tor", "Wizards @ Raptors", "2026-11-19T00:30:00Z")
-ATL_OKC = ("atl_okc", "Hawks @ Thunder", "2026-11-19T01:00:00Z")
-DET_NOP = ("det_nop", "Pistons @ Pelicans", "2026-11-19T01:00:00Z")
-GSW_DAL = ("gsw_dal", "Warriors @ Mavericks", "2026-11-19T01:00:00Z")
-BOS_DEN = ("bos_den", "Celtics @ Nuggets", "2026-11-19T02:30:00Z")
-UTA_LAL = ("uta_lal", "Jazz @ Lakers", "2026-11-19T03:00:00Z")
+# Partidos NBA del jueves 19 nov (horas en UTC, 8:00 pm ET)
+NYK_MIN = ("nyk_min", "Knicks @ Timberwolves", "2026-11-20T01:00:00Z")
+LAC_SAS = ("lac_sas", "Clippers @ Spurs", "2026-11-20T01:00:00Z")
+GSW_MEM = ("gsw_mem", "Warriors @ Grizzlies", "2026-11-20T01:00:00Z")
+POR_MIL = ("por_mil", "Trail Blazers @ Bucks", "2026-11-20T01:00:00Z")
 
 # jugador, equipo, partido, mercado, linea, momio over, momio under, casa, fuente,
-# ultimos 10 partidos (del mas viejo al mas nuevo, StatMuse)
+# ultimos 10 partidos (del mas viejo al mas nuevo, Land of Basketball / StatMuse)
 PROPS_NBA = [
-    ["Bam Adebayo", "Heat", MIL_MIA, "Rebotes", 8.5, None, -138, "FanDuel", "FanDuel Research",
-     [9, 9, 9, 10, 10, 8, 8, 14, 5, 1]],
-    ["VJ Edgecombe", "76ers", PHI_ORL, "Puntos", 13.5, 102, None, "FanDuel", "FanDuel Research",
-     [13, 10, 21, 11, 19, 13, 8, 15, 11, 14]],
-    ["Nikola Jokic", "Nuggets", BOS_DEN, "Asistencias", 9.5, 116, None, "FanDuel", "FanDuel Research",
-     [11, 10, 10, 8, 11, 8, 9, 8, 10, 7]],
-    ["Kyrie Irving", "Mavericks", GSW_DAL, "Puntos", 22.5, -115, None, "BetMGM", "TheLines",
-     [24, 18, 15, 35, 29, 14, 21, 35, 10, 34]],
-    ["Trae Young", "Wizards", WAS_TOR, "Asistencias", 8.5, -135, None, "BetMGM", "TheLines",
-     [9, 9, 6, 10, 3, 7, 4, 14, 8, 12]],
-    ["Shai Gilgeous-Alexander", "Thunder", ATL_OKC, "Asistencias", 5.5, None, -115, "bet365", "Covers",
-     [2, 3, 8, 8, 4, 9, 3, 2, 5, 2]],
-    ["Cade Cunningham", "Pistons", DET_NOP, "Puntos", 24.5, -108, None, "BetRivers", "SportsBettingDime",
-     [19, 30, 20, 33, 26, 14, 17, 52, 33, 27]],
-    ["Luka Doncic", "Lakers", UTA_LAL, "Puntos", 36.5, -110, None, "Caesars", "SportsBettingDime",
-     [41, 37, 45, 42, 40, 53, 32, 32, 43, 36]],
-    ["Julius Randle", "Nets", CHI_BKN, "Puntos", 22.5, None, -113, "Caesars", "Covers",
-     [24, 15, 20, 21, 22, 19, 13, 17, 22, 33]],
-    ["Alperen Sengun", "Rockets", HOU_IND, "Puntos", 20.5, -105, None, "BetMGM", "SportsBettingDime",
-     [29, 16, 26, 17, 15, 20, 19, 43, 19, 23]],
+    ["Jalen Brunson", "Knicks", NYK_MIN, "Puntos", 26.5, -106, None, "DraftKings", "Picks and Parlays",
+     [38, 24, 19, 33, 31, 23, 27, 33, 28, 31]],
+    ["Karl-Anthony Towns", "Knicks", NYK_MIN, "Rebotes", 12.5, -136, None, "FanDuel", "FanDuel Research",
+     [13, 12, 16, 12, 13, 16, 11, 15, 17, 16]],
+    ["Karl-Anthony Towns", "Knicks", NYK_MIN, "Asistencias", 3.5, -120, None, "BetMGM", "Dimers",
+     [5, 3, 5, 1, 3, 3, 8, 5, 3, 8]],
+    ["Victor Wembanyama", "Spurs", LAC_SAS, "Puntos", 29.5, -103, -113, "Gambling911 (over) / DraftKings (under)", "Gambling911 y ScoresAndOdds",
+     [43, 12, 52, 30, 29, 40, 32, 12, 26, 25]],
+    ["Victor Wembanyama", "Spurs", LAC_SAS, "Rebotes", 11.5, -132, None, "Gambling911", "Gambling911",
+     [7, 11, 24, 14, 7, 11, 9, 12, 10, 18]],
+    ["Stephon Castle", "Spurs", LAC_SAS, "Puntos", 17.5, -110, -108, "bet365 (over) / FanDuel (under)", "ScoresAndOdds",
+     [0, 16, 17, 19, 14, 4, 11, 32, 20, 10]],
+    ["Brandin Podziemski", "Warriors", GSW_MEM, "Triples", 2.5, None, -138, "DraftKings", "SI",
+     [4, 2, 3, 2, 4, 5, 4, 2, 3, 0]],
+    ["Jrue Holiday", "Trail Blazers", POR_MIL, "Puntos + Asistencias", 17.5, None, -112, "FanDuel", "FanDuel Research",
+     [17, 27, 15, 19, 11, 13, 24, 11, 13, 29]],
 ]
 
 
@@ -101,22 +91,24 @@ NFL_PARTIDOS = [
 
 
 # ---------- NHL de hoy: totales ----------
+# (partidos, goles a favor, goles en contra)  ESPN standings + partidos del miercoles
 NHL_EQUIPOS = {
-    "BOS": ("Bruins", 21, 72, 55), "DET": ("Red Wings", 21, 57, 64),
-    "MTL": ("Canadiens", 21, 69, 64), "NJ": ("Devils", 21, 80, 61),
-    "COL": ("Avalanche", 21, 85, 64), "UTA": ("Mammoth", 22, 73, 78),
+    "MTL": ("Canadiens", 22, 72, 66), "CAR": ("Hurricanes", 21, 87, 47),
+    "EDM": ("Oilers", 23, 92, 62), "TB": ("Lightning", 21, 79, 61),
+    "ANA": ("Ducks", 22, 85, 85), "COL": ("Avalanche", 22, 86, 68),
 }
 
-# visitante, local, linea, over, under, hora UTC  (DraftKings via SportsbookReview)
+# visitante, local, linea, over, under, hora UTC  (PickDawgz; casa no indicada)
 NHL_PARTIDOS = [
-    ("BOS", "DET", 5.5, -145, 105, "2026-11-19T00:30:00Z"),
-    ("MTL", "NJ", 6.5, 114, -135, "2026-11-19T00:30:00Z"),
-    ("COL", "UTA", 6.5, -102, -118, "2026-11-19T03:00:00Z"),
+    ("MTL", "CAR", 6.5, -122, 102, "2026-11-20T00:00:00Z"),
+    ("EDM", "TB", 6.5, 105, -125, "2026-11-20T00:30:00Z"),
+    ("ANA", "COL", 6.5, -125, 105, "2026-11-20T02:00:00Z"),
 ]
 
 
-# ---------- Premier League (jornada 11): totales ----------
-# Equipo: (partidos, goles a favor, goles en contra)  ESPN standings
+# ---------- Futbol (20 al 23 nov): totales ----------
+# Equipo: (partidos, goles a favor, goles en contra)  FOX Sports standings
+# Momios: FOX Sports (casa no indicada). local, visitante, linea, over, under, hora UTC
 EPL_EQUIPOS = {
     "Arsenal": (10, 15, 5), "Brighton": (10, 26, 7), "Man City": (10, 21, 13), "Liverpool": (10, 14, 10),
     "Chelsea": (10, 19, 16), "Everton": (10, 12, 10), "Bournemouth": (10, 16, 14), "Brentford": (10, 16, 11),
@@ -124,17 +116,91 @@ EPL_EQUIPOS = {
     "Hull City": (10, 11, 11), "Ipswich": (10, 15, 20), "Fulham": (10, 10, 12), "Nottm Forest": (10, 9, 13),
     "Coventry": (10, 10, 19), "Man United": (10, 14, 19), "Sunderland": (10, 8, 17), "Crystal Palace": (10, 10, 24),
 }
-
-# local, visitante, linea, over, under, hora UTC
 EPL_PARTIDOS = [
-    ("Man City", "Fulham", 3.5, 120, -155, "2026-11-21T12:30:00Z"),
-    ("Tottenham", "Ipswich", 2.5, -177, 135, "2026-11-21T15:00:00Z"),
-    ("Aston Villa", "Sunderland", 2.5, -130, -100, "2026-11-21T15:00:00Z"),
-    ("Coventry", "Crystal Palace", 2.5, -150, 115, "2026-11-21T15:00:00Z"),
-    ("Chelsea", "Leeds", 2.5, -139, 109, "2026-11-21T15:00:00Z"),
-    ("Bournemouth", "Nottm Forest", 2.5, -119, -105, "2026-11-21T15:00:00Z"),
-    ("Newcastle", "Arsenal", 2.5, -143, 115, "2026-11-21T17:30:00Z"),
-    ("Hull City", "Brighton", 2.5, -159, 120, "2026-11-22T14:00:00Z"),
+    ("Man City", "Fulham", 3.5, 119, -157, "2026-11-21T12:30:00Z"),
+    ("Aston Villa", "Sunderland", 2.5, -140, 105, "2026-11-21T15:00:00Z"),
+    ("Bournemouth", "Nottm Forest", 2.5, -124, -103, "2026-11-21T15:00:00Z"),
+    ("Chelsea", "Leeds", 2.5, -136, 105, "2026-11-21T15:00:00Z"),
+    ("Tottenham", "Ipswich", 2.5, -173, 133, "2026-11-21T15:00:00Z"),
+    ("Newcastle", "Arsenal", 2.5, -142, 112, "2026-11-21T17:30:00Z"),
+    ("Hull City", "Brighton", 2.5, -157, 121, "2026-11-22T14:00:00Z"),
+    ("Liverpool", "Man United", 3.5, 123, -159, "2026-11-22T16:30:00Z"),
+    ("Brentford", "Everton", 2.5, -145, 105, "2026-11-23T20:00:00Z"),
+]
+
+LALIGA_EQUIPOS = {
+    "Barcelona": (12, 48, 13), "Real Madrid": (12, 31, 10), "Atletico": (12, 23, 10), "Betis": (12, 20, 15),
+    "Real Sociedad": (12, 21, 20), "Sevilla": (12, 17, 19), "Athletic": (11, 15, 11), "Villarreal": (12, 17, 15),
+    "Deportivo": (12, 15, 14), "Racing Santander": (12, 17, 30), "Celta": (12, 10, 10), "Alaves": (12, 15, 17),
+    "Espanyol": (12, 13, 14), "Rayo": (11, 15, 21), "Getafe": (12, 8, 18), "Osasuna": (12, 12, 23),
+    "Levante": (12, 16, 21), "Elche": (12, 14, 20), "Valencia": (12, 8, 20), "Malaga": (12, 9, 23),
+}
+LALIGA_PARTIDOS = [
+    ("Athletic", "Espanyol", 2.5, -127, -100, "2026-11-20T20:00:00Z"),
+    ("Alaves", "Deportivo", 2.5, 114, -147, "2026-11-21T13:00:00Z"),
+    ("Rayo", "Valencia", 2.5, 101, -129, "2026-11-21T15:15:00Z"),
+    ("Sevilla", "Betis", 2.5, -135, 106, "2026-11-21T17:30:00Z"),
+    ("Real Madrid", "Celta", 3.5, -103, -125, "2026-11-21T20:00:00Z"),
+    ("Barcelona", "Villarreal", 4.5, 108, -139, "2026-11-22T13:00:00Z"),
+    ("Racing Santander", "Real Sociedad", 3.5, -116, -109, "2026-11-22T15:15:00Z"),
+    ("Osasuna", "Malaga", 2.5, -103, -125, "2026-11-22T17:30:00Z"),
+    ("Getafe", "Atletico", 2.5, 100, -130, "2026-11-22T20:00:00Z"),
+]
+
+SERIEA_EQUIPOS = {
+    "Lazio": (11, 25, 9), "Inter": (11, 28, 13), "Roma": (11, 31, 10), "Milan": (11, 23, 13), "Como": (11, 18, 10),
+    "Frosinone": (11, 24, 15), "Juventus": (11, 15, 12), "Bologna": (11, 16, 14), "Cagliari": (11, 10, 15),
+    "Napoli": (11, 18, 14), "Torino": (11, 15, 17), "Atalanta": (11, 17, 20), "Genoa": (11, 11, 16),
+    "Lecce": (11, 12, 22), "Fiorentina": (11, 17, 25), "Parma": (11, 9, 17), "Sassuolo": (11, 16, 29),
+    "Monza": (11, 17, 25), "Venezia": (11, 8, 21), "Udinese": (11, 12, 25),
+}
+SERIEA_PARTIDOS = [
+    ("Como", "Cagliari", 2.5, -192, 150, "2026-11-21T14:00:00Z"),
+    ("Lazio", "Lecce", 2.5, -175, 136, "2026-11-21T14:00:00Z"),
+    ("Parma", "Roma", 2.5, -189, 142, "2026-11-21T17:00:00Z"),
+    ("Napoli", "Torino", 2.5, -151, 114, "2026-11-21T19:45:00Z"),
+    ("Juventus", "Venezia", 2.5, -168, 127, "2026-11-22T11:30:00Z"),
+    ("Bologna", "Udinese", 2.5, -112, -115, "2026-11-22T14:00:00Z"),
+    ("Sassuolo", "Genoa", 2.5, -112, -114, "2026-11-22T14:00:00Z"),
+    ("Milan", "Frosinone", 3.5, -115, -113, "2026-11-22T17:00:00Z"),
+    ("Atalanta", "Inter", 3.5, -101, -130, "2026-11-22T19:45:00Z"),
+    ("Monza", "Fiorentina", 2.5, -174, 132, "2026-11-23T19:45:00Z"),
+]
+
+BUNDES_EQUIPOS = {
+    "Bayern": (9, 29, 9), "Dortmund": (9, 16, 7), "Freiburg": (9, 20, 10), "Leipzig": (9, 27, 13),
+    "Leverkusen": (9, 20, 17), "Werder": (9, 17, 15), "Elversberg": (9, 17, 18), "Stuttgart": (9, 15, 15),
+    "Hoffenheim": (9, 16, 17), "Frankfurt": (9, 15, 20), "Hamburg": (9, 10, 20), "Mainz": (9, 18, 19),
+    "Paderborn": (9, 8, 11), "Augsburg": (9, 20, 20), "Koln": (9, 10, 14), "Union Berlin": (9, 7, 21),
+    "Schalke": (9, 5, 11), "Gladbach": (9, 12, 25),
+}
+BUNDES_PARTIDOS = [
+    ("Bayern", "Koln", 4.5, -109, -117, "2026-11-20T19:30:00Z"),
+    ("Leverkusen", "Paderborn", 3.5, -115, -111, "2026-11-21T14:30:00Z"),
+    ("Frankfurt", "Hoffenheim", 3.5, -114, -112, "2026-11-21T14:30:00Z"),
+    ("Union Berlin", "Leipzig", 3.5, 109, -143, "2026-11-21T14:30:00Z"),
+    ("Gladbach", "Dortmund", 3.5, 117, -152, "2026-11-21T14:30:00Z"),
+    ("Elversberg", "Freiburg", 2.5, -185, 140, "2026-11-21T14:30:00Z"),
+    ("Schalke", "Stuttgart", 3.5, 113, -149, "2026-11-21T17:30:00Z"),
+    ("Augsburg", "Mainz", 3.5, 105, -137, "2026-11-22T14:30:00Z"),
+    ("Werder", "Hamburg", 3.5, 126, -168, "2026-11-22T16:30:00Z"),
+]
+
+LIGAMX_EQUIPOS = {
+    "Cruz Azul": (16, 37, 26), "America": (16, 38, 23), "Guadalajara": (16, 26, 15), "Toluca": (16, 35, 21),
+    "Atlas": (16, 27, 30), "Santos": (16, 23, 20), "Monterrey": (16, 27, 25), "Leon": (16, 23, 21),
+    "Pachuca": (16, 29, 20), "Tijuana": (16, 25, 22), "Pumas": (16, 24, 26), "Queretaro": (16, 18, 24),
+    "Puebla": (16, 19, 23), "San Luis": (16, 19, 24), "Tigres": (16, 17, 25), "Atlante": (16, 16, 26),
+    "Necaxa": (16, 17, 28), "Juarez": (16, 13, 34),
+}
+LIGAMX_PARTIDOS = [
+    ("Puebla", "San Luis", 2.5, -147, 110, "2026-11-21T01:00:00Z"),
+    ("Juarez", "Atlas", 2.5, -148, 111, "2026-11-21T03:00:00Z"),
+    ("Tijuana", "Atlante", 2.5, -156, 116, "2026-11-21T03:00:00Z"),
+    ("Pachuca", "Toluca", 3.5, 108, -145, "2026-11-21T22:50:00Z"),
+    ("Santos", "Leon", 3.5, 123, -168, "2026-11-21T23:00:00Z"),
+    ("Pumas", "Monterrey", 2.5, -164, 123, "2026-11-22T01:00:00Z"),
+    ("Queretaro", "Necaxa", 2.5, -177, 130, "2026-11-23T01:10:00Z"),
 ]
 
 
@@ -146,38 +212,6 @@ EPL_PARTIDOS = [
 BR = "https://www.basketball-reference.com/boxscores/"
 CBS = "https://www.cbssports.com/nfl/gametracker/boxscore/"
 ULTIMO_DUELO = {
-    "hou_ind": {"fecha": "2026-02-02", "liga": "NBA 2025-26", "marcador": [["Rockets", 118], ["Pacers", 114]],
-                "fuente": "https://www.statmuse.com/nba/game/2-2-2026-hou-at-ind-77925"},
-    "mil_mia": {"fecha": "2026-03-12", "liga": "NBA 2025-26", "marcador": [["Bucks", 105], ["Heat", 112]],
-                "fuente": "https://www.statmuse.com/nba/game/3-12-2026-mil-at-mia-78169"},
-    "phi_orl": {"fecha": "2026-04-15", "liga": "NBA 2025-26 (se jugo en Filadelfia)", "marcador": [["Magic", 97], ["76ers", 109]],
-                "fuente": "https://www.statmuse.com/nba/game/4-15-2026-orl-at-phi-78457"},
-    "chi_bkn": {"fecha": "2026-02-09", "liga": "NBA 2025-26", "marcador": [["Bulls", 115], ["Nets", 123]],
-                "fuente": "https://www.statmuse.com/nba/game/2-9-2026-chi-at-bkn-77976"},
-    "was_tor": {"fecha": "2026-10-23", "liga": "NBA 2026-27 (se jugo en Washington)", "marcador": [["Raptors", 112], ["Wizards", 102]],
-                "fuente": "https://www.statmuse.com/nba/game/10-23-2026-tor-at-was-78656"},
-    "atl_okc": {"fecha": "2025-12-29", "liga": "NBA 2025-26", "marcador": [["Hawks", 129], ["Thunder", 140]],
-                "fuente": "https://www.statmuse.com/nba/game/12-29-2025-atl-at-okc-77665"},
-    "det_nop": {"fecha": "2026-03-26", "liga": "NBA 2025-26 (se jugo en Detroit)", "marcador": [["Pelicans", 108], ["Pistons", 129]],
-                "fuente": "https://www.statmuse.com/nba/game/3-26-2026-nop-at-det-78275"},
-    "gsw_dal": {"fecha": "2026-03-23", "liga": "NBA 2025-26 (tiempo extra)", "marcador": [["Warriors", 137], ["Mavericks", 131]],
-                "fuente": "https://www.statmuse.com/nba/game/3-23-2026-gsw-at-dal-78256"},
-    "bos_den": {"fecha": "2026-02-25", "liga": "NBA 2025-26", "marcador": [["Celtics", 84], ["Nuggets", 103]],
-                "fuente": "https://www.statmuse.com/nba/game/2-25-2026-bos-at-den-78059"},
-    "uta_lal": {"fecha": "2026-10-25", "liga": "NBA 2026-27 (se jugo en Utah)", "marcador": [["Lakers", 132], ["Jazz", 123]],
-                "fuente": "https://www.statmuse.com/nba/game/10-25-2026-lal-at-uta-78673"},
-    "nhl_BOS_DET": {"fecha": "2026-03-21", "liga": "NHL 2025-26", "marcador": [["Bruins", 4], ["Red Wings", 2]],
-                    "anteriores": ["13 ene 2026: Bruins 3 - 0 Red Wings (en Boston)", "2 dic 2025: Red Wings 5 - 4 Bruins (en Detroit)",
-                                   "29 nov 2025: Bruins 3 - 2 Red Wings, en penales (en Boston)"],
-                    "fuente": "https://www.hockey-reference.com/boxscores/202603210DET.html"},
-    "nhl_MTL_NJ": {"fecha": "2026-04-05", "liga": "NHL 2025-26 (se jugo en Montreal)", "marcador": [["Devils", 3], ["Canadiens", 0]],
-                   "anteriores": ["4 abr 2026: Canadiens 4 - 3 Devils, en penales (en New Jersey)",
-                                  "6 nov 2025: Devils 4 - 3 Canadiens, tiempo extra (en New Jersey)"],
-                   "fuente": "https://www.hockey-reference.com/boxscores/202604050MTL.html"},
-    "nhl_COL_UTA": {"fecha": "2026-02-25", "liga": "NHL 2025-26", "marcador": [["Avalanche", 4], ["Mammoth", 2]],
-                    "anteriores": ["23 dic 2025: Avalanche 1 - 0 Mammoth (en Colorado)", "21 oct 2025: Mammoth 4 - 3 Avalanche, tiempo extra (en Utah)",
-                                   "9 oct 2025: Avalanche 2 - 1 Mammoth (en Colorado)"],
-                    "fuente": "https://www.hockey-reference.com/boxscores/202602250UTA.html"},
     "nfl_LV_DEN": {"fecha": "2025-12-07", "liga": "NFL 2025, semana 14", "marcador": [["Broncos", 24], ["Raiders", 17]],
                    "detalle": "Bo Nix 212 yds, 0 TD de pase (1 por tierra). Geno Smith 116 yds, 1 TD y salio lesionado; Kenny Pickett 97 yds, 1 TD.",
                    "anteriores": ["6 nov 2025: Broncos 10 - 7 Raiders (en Denver)"],
@@ -209,32 +243,12 @@ ULTIMO_DUELO = {
                                              "18 may 2025: Arsenal 1 - 0 Newcastle (Premier)",
                                              "5 feb 2025: Newcastle 2 - 0 Arsenal (Copa de la Liga)",
                                              "7 ene 2025: Arsenal 0 - 2 Newcastle (Copa de la Liga)"],
-                              "fuente": "https://theanalyst.com/articles/arsenal-vs-newcastle-stats-opta-premier-league-04-2026"},
+                              "fuente": "https://www.sportsmole.co.uk/football/premier-league/newcastle-united-vs-arsenal_game_263178.html"},
 }
 
 # Ultimo partido de cada jugador contra el rival de hoy (puede ser con otro equipo)
 # pts, reb, ast, tri (triples metidos), min (minutos)
 ULTIMO_DUELO_JUGADOR = {
-    "Bam Adebayo": {"fecha": "2026-03-12", "equipo": "Heat", "rival": "Bucks", "pts": 21, "reb": 8, "ast": 2, "tri": 0, "min": 35,
-        "fuente": "https://www.statmuse.com/nba/game/3-12-2026-mil-at-mia-78169"},
-    "VJ Edgecombe": {"fecha": "2026-04-15", "equipo": "76ers", "rival": "Magic", "pts": 19, "reb": 11, "ast": 1, "tri": 1, "min": 42,
-        "fuente": "https://www.statmuse.com/nba/game/4-15-2026-orl-at-phi-78457"},
-    "Nikola Jokic": {"fecha": "2026-02-25", "equipo": "Nuggets", "rival": "Celtics", "pts": 30, "reb": 12, "ast": 6, "tri": 4, "min": 33,
-        "fuente": "https://www.statmuse.com/nba/game/2-25-2026-bos-at-den-78059"},
-    "Kyrie Irving": {"fecha": "2025-02-23", "equipo": "Mavericks", "rival": "Warriors", "pts": 17, "reb": 5, "ast": 4, "tri": 1, "min": 32,
-        "fuente": "https://www.statmuse.com/nba/ask/kyrie-irving-last-game-vs-warriors"},
-    "Trae Young": {"fecha": "2026-10-23", "equipo": "Wizards", "rival": "Raptors", "pts": 22, "reb": 1, "ast": 12, "tri": 4, "min": 37,
-        "fuente": "https://www.statmuse.com/nba/game/10-23-2026-tor-at-was-78656"},
-    "Shai Gilgeous-Alexander": {"fecha": "2025-12-29", "equipo": "Thunder", "rival": "Hawks", "pts": 39, "reb": 6, "ast": 6, "tri": 2, "min": 36,
-        "fuente": "https://www.statmuse.com/nba/game/12-29-2025-atl-at-okc-77665"},
-    "Cade Cunningham": {"fecha": "2025-03-17", "equipo": "Pistons", "rival": "Pelicans", "pts": 24, "reb": 4, "ast": 8, "tri": 1, "min": 30,
-        "fuente": "https://www.statmuse.com/nba/ask/cade-cunningham-last-game-vs-pelicans"},
-    "Luka Doncic": {"fecha": "2026-10-25", "equipo": "Lakers", "rival": "Jazz", "pts": 52, "reb": 8, "ast": 10, "tri": 8, "min": 38,
-        "fuente": "https://www.statmuse.com/nba/game/10-25-2026-lal-at-uta-78673"},
-    "Julius Randle": {"fecha": "2026-01-22", "equipo": "Timberwolves", "rival": "Bulls", "pts": 30, "reb": 7, "ast": 6, "tri": 3, "min": 31,
-        "fuente": "https://www.statmuse.com/nba/ask/julius-randle-last-game-vs-bulls"},
-    "Alperen Sengun": {"fecha": "2026-02-02", "equipo": "Rockets", "rival": "Pacers", "pts": 39, "reb": 16, "ast": 5, "tri": 0, "min": 35,
-        "fuente": "https://www.statmuse.com/nba/game/2-2-2026-hou-at-ind-77925"},
 }
 
 # Como se suma cada mercado de props con la linea del jugador
@@ -302,13 +316,12 @@ def ajuste(efecto, delta, texto):
 
 # Por jugador (props)
 CONTEXTO_JUGADOR = {
-    "Luka Doncic": [ajuste("Under", 0.02, "Segunda noche seguida: anoche jugo 42 minutos con tiempo extra")],
-    "Cade Cunningham": [ajuste("Under", 0.02, "Segunda noche seguida: jugo anoche contra San Antonio")],
-    "Bam Adebayo": [ajuste("Under", 0.02, "Llega como probable por molestia en la cadera y jugo solo 16 minutos en su ultimo partido")],
+    "Brandin Podziemski": [ajuste("Under", 0.02, "Segunda noche seguida: Warriors jugaron anoche en Dallas (y se fue 0 de 5 en triples)")],
 }
 
 # Por partido (clave "evento" o, para la API, el texto "Visitante @ Local")
 CONTEXTO_EVENTO = {
+    "nhl_ANA_COL": [ajuste("Under", 0.02, "Avalanche sin Nathan MacKinnon ni Cale Makar (fuera varias semanas): sus goles de la tabla son con ellos")],
 }
 
 # Estadisticas por liga para el modelo de los picks de la API (pj, a favor, en contra).
@@ -445,7 +458,11 @@ def picks_nhl():
 # Ligas de futbol con datos manuales: nombre -> (tabla de equipos, partidos, prefijo, clave de la API, casa)
 # Para agregar otra liga (LaLiga, Serie A, Liga MX...) copia el formato de EPL_EQUIPOS y EPL_PARTIDOS.
 FUTBOL_LIGAS = {
-    "Premier League": (EPL_EQUIPOS, EPL_PARTIDOS, "epl", "soccer_epl", "Betwatch"),
+    "Premier League": (EPL_EQUIPOS, EPL_PARTIDOS, "epl", "soccer_epl", "FOX Sports"),
+    "LaLiga": (LALIGA_EQUIPOS, LALIGA_PARTIDOS, "laliga", "soccer_spain_la_liga", "FOX Sports"),
+    "Serie A": (SERIEA_EQUIPOS, SERIEA_PARTIDOS, "seriea", "soccer_italy_serie_a", "FOX Sports"),
+    "Bundesliga": (BUNDES_EQUIPOS, BUNDES_PARTIDOS, "bundes", "soccer_germany_bundesliga", "FOX Sports"),
+    "Liga MX": (LIGAMX_EQUIPOS, LIGAMX_PARTIDOS, "ligamx", "soccer_mexico_ligamx", "FOX Sports"),
 }
 
 
@@ -595,27 +612,34 @@ def main():
     print("Parlay:", salida["parlay"])
 
 
-NOTA = ("Edicion del " + EDICION + ": NBA (props de hoy), NHL (hoy), NFL semana 11 y Premier League jornada 11. "
+NOTA = ("Edicion del " + EDICION + ": NBA (props de hoy), NHL (hoy), NFL semana 11 (momios del 18 nov) y futbol del fin de semana: "
+        "Premier League, LaLiga, Serie A, Bundesliga y Liga MX (jornada 17). "
         "Cada pick pasa por el motor de PickLab: mercado + estadisticas + contexto + historial, y solo se publica si tiene "
-        "55% o mas de probabilidad, 3% o mas de ventaja y nivel de confianza A o B. MLB esta fuera de temporada; "
-        "las demas ligas entran en cuanto este activa la API de momios.")
+        "55% o mas de probabilidad, 3% o mas de ventaja y nivel de confianza A o B. Hoy no hubo momios de la API (edicion a mano). "
+        "MLB esta fuera de temporada; NCAA, Euroliga, UFC y tenis entran en cuanto este activa la API de momios.")
 
 FUENTES = [
     ["ESPN - momios NFL semana 11 (DraftKings)", "https://www.espn.com/nfl/odds"],
     ["ESPN - tabla NFL (puntos a favor y en contra)", "https://www.espn.com/nfl/standings"],
-    ["SportsbookReview - totales NHL 18 nov (DraftKings)", "https://www.sportsbookreview.com/betting-odds/nhl-hockey/totals/full-game/?date=2026-11-18"],
-    ["CBS Sports - tabla NHL (goles a favor y en contra)", "https://www.cbssports.com/nhl/standings/"],
-    ["Betwatch - momios Premier League", "https://betwatch.io/odds/premier-league"],
-    ["ESPN - tabla Premier League", "https://www.espn.com/soccer/standings/_/league/eng.1"],
-    ["FanDuel Research - props NBA 18 nov", "https://www.fanduel.com/research/nba-props-today-3-best-nba-player-prop-bets-for-wednesday-nov-18"],
-    ["TheLines - props NBA 18 nov", "https://www.thelines.com/nba/player-props/expert-nba-picks-and-player-props-best-nba-bets-today-nov-18/"],
-    ["SportsBettingDime - props NBA 18 nov", "https://www.sportsbettingdime.com/news/nba/best-player-prop-picks-today-key-injuries-nov-18/"],
-    ["Covers - props NBA", "https://www.covers.com/sport/basketball/nba/player-props"],
-    ["StatMuse - ultimos 10 partidos y enfrentamientos NBA", "https://www.statmuse.com/nba"],
-    ["Hockey-Reference - ultimos enfrentamientos NHL", "https://www.hockey-reference.com/"],
+    ["PickDawgz - totales NHL 19 nov (Canadiens-Hurricanes)", "https://pickdawgz.com/nhl-picks/canadiens-vs-hurricanes-prediction-11-19-2026-todays-nhl-picks/"],
+    ["PickDawgz - totales NHL 19 nov (Oilers-Lightning)", "https://pickdawgz.com/nhl-picks/oilers-vs-lightning-prediction-11-19-2026-todays-nhl-picks/"],
+    ["PickDawgz - totales NHL 19 nov (Ducks-Avalanche)", "https://pickdawgz.com/nhl-picks/ducks-vs-avalanche-prediction-11-19-2026-todays-nhl-picks/"],
+    ["ESPN - tabla NHL (goles a favor y en contra)", "https://www.espn.com/nhl/standings/_/view"],
+    ["AP - guia NHL 19 nov (lesiones y resultados del miercoles)", "https://abc7.com/post/nhl-tonight-guide-12-games-another-packed-thursday/20054694/"],
+    ["FOX Sports - momios y tabla Premier League", "https://www.foxsports.com/soccer/premier-league/standings"],
+    ["FOX Sports - momios y tabla LaLiga", "https://www.foxsports.com/soccer/la-liga/standings"],
+    ["FOX Sports - momios y tabla Serie A", "https://www.foxsports.com/soccer/serie-a/standings"],
+    ["FOX Sports - momios y tabla Bundesliga", "https://www.foxsports.com/soccer/bundesliga/standings"],
+    ["FOX Sports - momios y tabla Liga MX", "https://www.foxsports.com/soccer/liga-mx/standings"],
+    ["FanDuel Research - props NBA 19 nov", "https://www.fanduel.com/research/nba-props-today-prop-bets-for-thursday-nov-19"],
+    ["SI - props NBA 19 nov", "https://www.si.com/betting/best-nba-prop-bets-today-predictions-for-karl-anthony-towns-stephon-castle-deni-avdija-warriors-guard"],
+    ["Picks and Parlays - Brunson 19 nov", "https://picksandparlays.net/free-picks/nba/jalen-brunson-points-prop-pick-vs-timberwolves-november-19-2026"],
+    ["Dimers - props NBA 19 nov", "https://www.dimers.com/nba/news/nba-player-props-11-19-2026-ac"],
+    ["Gambling911 - props Wembanyama 19 nov", "https://gambling911.com/3-top-victor-webanyama-player-prop-bets-vs-la-clippers-november-19"],
+    ["ScoresAndOdds - props NBA", "https://www.scoresandodds.com/nba/props"],
+    ["Land of Basketball - ultimos 10 partidos NBA", "https://www.landofbasketball.com/"],
     ["Ultimos enfrentamientos NFL - CBS Sports y StatMuse", "https://www.statmuse.com/nfl"],
-    ["Ultimo Newcastle vs Arsenal - Opta / The Analyst", "https://theanalyst.com/articles/arsenal-vs-newcastle-stats-opta-premier-league-04-2026"],
-    ["Resultados NBA 17 nov - CBS Sports y PlainTextSports", "https://plaintextsports.com/nba/2026-11-17/"],
+    ["Resultados NBA 18 nov - ESPN y Land of Basketball", "https://www.landofbasketball.com/nba_daily_summary/20261118.htm"],
 ]
 
 

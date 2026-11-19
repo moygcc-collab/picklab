@@ -20,4 +20,8 @@ RESULTADOS = {
     "2026-11-18 | Knicks @ Raptors | Karl-Anthony Towns Over 12.5": "G",  # 16 rebotes
     "2026-11-18 | Knicks @ Raptors | Scottie Barnes Over 34.5": "P",    # 20+4+2 = 26
     "2026-11-18 | Knicks @ Raptors | RJ Barrett Over 19.5": "G",        # 22 puntos
+    # Miercoles 18 nov (ESPN, Land of Basketball, CBS Sports, Bleacher Report)
+    "2026-11-19 | Bulls @ Nets | Julius Randle Under 22.5": "G",        # 17 puntos
+    "2026-11-19 | Hawks @ Thunder | Shai Gilgeous-Alexander Under 5.5": "G",  # 3 asistencias
+    "2026-11-19 | Jazz @ Lakers | Luka Doncic Over 36.5": "P",          # 29 puntos
 }

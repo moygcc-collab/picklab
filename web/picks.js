@@ -1,9 +1,9 @@
 window.PICKS = {
- "actualizado": "2026-11-18 21:06",
+ "actualizado": "2026-11-19 15:59",
  "prueba": false,
  "manual": true,
  "api": false,
- "nota": "Edicion del miercoles 18 de noviembre: NBA (props de hoy), NHL (hoy), NFL semana 11 y Premier League jornada 11. Cada pick pasa por el motor de PickLab: mercado + estadisticas + contexto + historial, y solo se publica si tiene 55% o mas de probabilidad, 3% o mas de ventaja y nivel de confianza A o B. MLB esta fuera de temporada; las demas ligas entran en cuanto este activa la API de momios.",
+ "nota": "Edicion del jueves 19 de noviembre: NBA (props de hoy), NHL (hoy), NFL semana 11 (momios del 18 nov) y futbol del fin de semana: Premier League, LaLiga, Serie A, Bundesliga y Liga MX (jornada 17). Cada pick pasa por el motor de PickLab: mercado + estadisticas + contexto + historial, y solo se publica si tiene 55% o mas de probabilidad, 3% o mas de ventaja y nivel de confianza A o B. Hoy no hubo momios de la API (edicion a mano). MLB esta fuera de temporada; NCAA, Euroliga, UFC y tenis entran en cuanto este activa la API de momios.",
  "fuentes": [
   [
    "ESPN - momios NFL semana 11 (DraftKings)",
@@ -14,56 +14,80 @@ window.PICKS = {
    "https://www.espn.com/nfl/standings"
   ],
   [
-   "SportsbookReview - totales NHL 18 nov (DraftKings)",
-   "https://www.sportsbookreview.com/betting-odds/nhl-hockey/totals/full-game/?date=2026-11-18"
+   "PickDawgz - totales NHL 19 nov (Canadiens-Hurricanes)",
+   "https://pickdawgz.com/nhl-picks/canadiens-vs-hurricanes-prediction-11-19-2026-todays-nhl-picks/"
   ],
   [
-   "CBS Sports - tabla NHL (goles a favor y en contra)",
-   "https://www.cbssports.com/nhl/standings/"
+   "PickDawgz - totales NHL 19 nov (Oilers-Lightning)",
+   "https://pickdawgz.com/nhl-picks/oilers-vs-lightning-prediction-11-19-2026-todays-nhl-picks/"
   ],
   [
-   "Betwatch - momios Premier League",
-   "https://betwatch.io/odds/premier-league"
+   "PickDawgz - totales NHL 19 nov (Ducks-Avalanche)",
+   "https://pickdawgz.com/nhl-picks/ducks-vs-avalanche-prediction-11-19-2026-todays-nhl-picks/"
   ],
   [
-   "ESPN - tabla Premier League",
-   "https://www.espn.com/soccer/standings/_/league/eng.1"
+   "ESPN - tabla NHL (goles a favor y en contra)",
+   "https://www.espn.com/nhl/standings/_/view"
   ],
   [
-   "FanDuel Research - props NBA 18 nov",
-   "https://www.fanduel.com/research/nba-props-today-3-best-nba-player-prop-bets-for-wednesday-nov-18"
+   "AP - guia NHL 19 nov (lesiones y resultados del miercoles)",
+   "https://abc7.com/post/nhl-tonight-guide-12-games-another-packed-thursday/20054694/"
   ],
   [
-   "TheLines - props NBA 18 nov",
-   "https://www.thelines.com/nba/player-props/expert-nba-picks-and-player-props-best-nba-bets-today-nov-18/"
+   "FOX Sports - momios y tabla Premier League",
+   "https://www.foxsports.com/soccer/premier-league/standings"
   ],
   [
-   "SportsBettingDime - props NBA 18 nov",
-   "https://www.sportsbettingdime.com/news/nba/best-player-prop-picks-today-key-injuries-nov-18/"
+   "FOX Sports - momios y tabla LaLiga",
+   "https://www.foxsports.com/soccer/la-liga/standings"
   ],
   [
-   "Covers - props NBA",
-   "https://www.covers.com/sport/basketball/nba/player-props"
+   "FOX Sports - momios y tabla Serie A",
+   "https://www.foxsports.com/soccer/serie-a/standings"
   ],
   [
-   "StatMuse - ultimos 10 partidos y enfrentamientos NBA",
-   "https://www.statmuse.com/nba"
+   "FOX Sports - momios y tabla Bundesliga",
+   "https://www.foxsports.com/soccer/bundesliga/standings"
   ],
   [
-   "Hockey-Reference - ultimos enfrentamientos NHL",
-   "https://www.hockey-reference.com/"
+   "FOX Sports - momios y tabla Liga MX",
+   "https://www.foxsports.com/soccer/liga-mx/standings"
+  ],
+  [
+   "FanDuel Research - props NBA 19 nov",
+   "https://www.fanduel.com/research/nba-props-today-prop-bets-for-thursday-nov-19"
+  ],
+  [
+   "SI - props NBA 19 nov",
+   "https://www.si.com/betting/best-nba-prop-bets-today-predictions-for-karl-anthony-towns-stephon-castle-deni-avdija-warriors-guard"
+  ],
+  [
+   "Picks and Parlays - Brunson 19 nov",
+   "https://picksandparlays.net/free-picks/nba/jalen-brunson-points-prop-pick-vs-timberwolves-november-19-2026"
+  ],
+  [
+   "Dimers - props NBA 19 nov",
+   "https://www.dimers.com/nba/news/nba-player-props-11-19-2026-ac"
+  ],
+  [
+   "Gambling911 - props Wembanyama 19 nov",
+   "https://gambling911.com/3-top-victor-webanyama-player-prop-bets-vs-la-clippers-november-19"
+  ],
+  [
+   "ScoresAndOdds - props NBA",
+   "https://www.scoresandodds.com/nba/props"
+  ],
+  [
+   "Land of Basketball - ultimos 10 partidos NBA",
+   "https://www.landofbasketball.com/"
   ],
   [
    "Ultimos enfrentamientos NFL - CBS Sports y StatMuse",
    "https://www.statmuse.com/nfl"
   ],
   [
-   "Ultimo Newcastle vs Arsenal - Opta / The Analyst",
-   "https://theanalyst.com/articles/arsenal-vs-newcastle-stats-opta-premier-league-04-2026"
-  ],
-  [
-   "Resultados NBA 17 nov - CBS Sports y PlainTextSports",
-   "https://plaintextsports.com/nba/2026-11-17/"
+   "Resultados NBA 18 nov - ESPN y Land of Basketball",
+   "https://www.landofbasketball.com/nba_daily_summary/20261118.htm"
   ]
  ],
  "reglas": {
@@ -76,117 +100,166 @@ window.PICKS = {
    "real": 50.0
   }
  },
- "partidos_analizados": 34,
- "candidatos": 47,
+ "partidos_analizados": 64,
+ "candidatos": 81,
  "descartados": [
-  "Bam Adebayo Under 8.5 (30)",
-  "VJ Edgecombe Over 13.5 (15)",
-  "Nikola Jokic Over 9.5 (18)",
-  "Kyrie Irving Over 22.5 (27)",
-  "Trae Young Over 8.5 (33)",
-  "Cade Cunningham Over 24.5 (37)",
-  "Alperen Sengun Over 20.5 (21)"
+  "Karl-Anthony Towns Over 3.5 (36)",
+  "Victor Wembanyama Over 29.5 (19)",
+  "Victor Wembanyama Over 11.5 (17)",
+  "Brandin Podziemski Under 2.5 (21)",
+  "Jrue Holiday Under 17.5 (50)"
  ],
  "picks": [
   {
-   "evento": "chi_bkn",
+   "evento": "laliga_Real Madrid_Celta",
+   "grupo": "Futbol",
+   "liga": "LaLiga",
+   "partido": "Real Madrid vs Celta",
+   "fecha": "2026-11-21T20:00:00Z",
+   "tipo": "Totales",
+   "mercado": "Total de goles",
+   "pick": "Under 3.5",
+   "momio": -125,
+   "casa": "FOX Sports",
+   "casas": 1,
+   "explicacion": "Con sus goles a favor y en contra en LaLiga esperamos 2.55 goles (Real Madrid 1.75, Celta 0.81)",
+   "base": "Modelo con estadisticas de la temporada + momio sin comision + contexto",
+   "lado": "Under",
+   "prob": 63.4,
+   "ventaja": 7.9,
+   "score": 74,
+   "nivel": "A",
+   "senales": "2/2",
+   "unidades": 1.0,
+   "razones": [
+    {
+     "tipo": "+",
+     "texto": "FOX Sports le da 52.3% ya sin su comision"
+    },
+    {
+     "tipo": "+",
+     "texto": "Modelo de la temporada: le da 74.6% a este pick (Con sus goles a favor y en contra en LaLiga esperamos 2.55 goles (Real Madrid 1.75, Celta 0.81))"
+    },
+    {
+     "tipo": "+",
+     "texto": "El momio -125 implica 55.6%; nosotros calculamos 63.4% (ventaja +7.9%)"
+    }
+   ],
+   "p_estadisticas": 74.6,
+   "p_mercado_pct": 52.3,
+   "id": 1,
+   "implicita": 55.6,
+   "modelo": 74.6,
+   "mercado_prob": 52.3
+  },
+  {
+   "evento": "bundes_Schalke_Stuttgart",
+   "grupo": "Futbol",
+   "liga": "Bundesliga",
+   "partido": "Schalke vs Stuttgart",
+   "fecha": "2026-11-21T17:30:00Z",
+   "tipo": "Totales",
+   "mercado": "Total de goles",
+   "pick": "Under 3.5",
+   "momio": -149,
+   "casa": "FOX Sports",
+   "casas": 1,
+   "explicacion": "Con sus goles a favor y en contra en Bundesliga esperamos 2.54 goles (Schalke 1.24, Stuttgart 1.3)",
+   "base": "Modelo con estadisticas de la temporada + momio sin comision + contexto",
+   "lado": "Under",
+   "prob": 65.5,
+   "ventaja": 5.6,
+   "score": 71,
+   "nivel": "A",
+   "senales": "2/2",
+   "unidades": 1.0,
+   "razones": [
+    {
+     "tipo": "+",
+     "texto": "FOX Sports le da 56.0% ya sin su comision"
+    },
+    {
+     "tipo": "+",
+     "texto": "Modelo de la temporada: le da 74.9% a este pick (Con sus goles a favor y en contra en Bundesliga esperamos 2.54 goles (Schalke 1.24, Stuttgart 1.3))"
+    },
+    {
+     "tipo": "+",
+     "texto": "El momio -149 implica 59.8%; nosotros calculamos 65.5% (ventaja +5.6%)"
+    }
+   ],
+   "p_estadisticas": 74.9,
+   "p_mercado_pct": 56.0,
+   "id": 2,
+   "implicita": 59.8,
+   "modelo": 74.9,
+   "mercado_prob": 56.0
+  },
+  {
+   "evento": "nyk_min",
    "grupo": "NBA",
    "liga": "NBA",
-   "partido": "Bulls @ Nets",
-   "fecha": "2026-11-19T00:30:00Z",
+   "partido": "Knicks @ Timberwolves",
+   "fecha": "2026-11-20T01:00:00Z",
    "tipo": "Props",
    "mercado": "Puntos",
-   "jugador": "Julius Randle",
-   "equipo": "Nets",
-   "pick": "Julius Randle Under 22.5",
-   "lado": "Under",
-   "linea": 22.5,
-   "momio": -113,
-   "casa": "Caesars",
+   "jugador": "Jalen Brunson",
+   "equipo": "Knicks",
+   "pick": "Jalen Brunson Over 26.5",
+   "lado": "Over",
+   "linea": 26.5,
+   "momio": -106,
+   "casa": "DraftKings",
    "casas": 1,
    "valores": [
+    38,
     24,
-    15,
-    20,
-    21,
-    22,
     19,
-    13,
-    17,
-    22,
-    33
+    33,
+    31,
+    23,
+    27,
+    33,
+    28,
+    31
    ],
-   "base": "Ultimos 10 partidos + momio. Linea via Covers, partidos via StatMuse",
-   "duelo": {
-    "fecha": "2026-02-09",
-    "liga": "NBA 2025-26",
-    "marcador": [
-     [
-      "Bulls",
-      115
-     ],
-     [
-      "Nets",
-      123
-     ]
-    ],
-    "fuente": "https://www.statmuse.com/nba/game/2-9-2026-chi-at-bkn-77976",
-    "jugador": {
-     "fecha": "2026-01-22",
-     "equipo": "Timberwolves",
-     "rival": "Bulls",
-     "pts": 30,
-     "reb": 7,
-     "ast": 6,
-     "tri": 3,
-     "min": 31,
-     "fuente": "https://www.statmuse.com/nba/ask/julius-randle-last-game-vs-bulls"
-    },
-    "valor": 30,
-    "pego": false,
-    "resumen": "Julius Randle hizo 30 puntos vs Bulls (linea de hoy 22.5)"
-   },
-   "aciertos": 8,
-   "prob": 65.2,
-   "ventaja": 12.2,
-   "score": 73,
+   "base": "Ultimos 10 partidos + momio. Linea via Picks and Parlays, partidos via StatMuse",
+   "aciertos": 7,
+   "prob": 60.6,
+   "ventaja": 9.1,
+   "score": 71,
    "nivel": "A",
-   "senales": "3/4",
-   "unidades": 1.5,
+   "senales": "3/3",
+   "unidades": 1.0,
    "razones": [
     {
      "tipo": "i",
-     "texto": "Solo encontramos este lado del momio en Caesars; usamos su probabilidad con comision (53.1%), que es mas conservador"
+     "texto": "Solo encontramos este lado del momio en DraftKings; usamos su probabilidad con comision (51.5%), que es mas conservador"
     },
     {
      "tipo": "+",
-     "texto": "Le pego al Under 22.5 en 8 de sus ultimos 10"
+     "texto": "Le pego al Over 26.5 en 7 de sus ultimos 10"
     },
     {
      "tipo": "+",
-     "texto": "Promedia 20.6 contra la linea de 22.5"
+     "texto": "Promedia 28.7 contra la linea de 26.5"
     },
     {
      "tipo": "+",
      "texto": "En racha: 4 de 5 en sus ultimos 5"
     },
     {
-     "tipo": "-",
-     "texto": "Ultimo enfrentamiento: Julius Randle hizo 30 puntos vs Bulls (linea de hoy 22.5): no hubiera pegado"
-    },
-    {
      "tipo": "+",
-     "texto": "El momio -113 implica 53.1%; nosotros calculamos 65.2% (ventaja +12.2%)"
+     "texto": "El momio -106 implica 51.5%; nosotros calculamos 60.6% (ventaja +9.1%)"
     }
    ],
-   "p_estadisticas": 75.0,
-   "p_mercado_pct": 53.1,
-   "promedio": 20.6,
-   "mediana": 21,
-   "maximo": 33,
-   "minimo": 13,
-   "id": 1,
-   "implicita": 53.1
+   "p_estadisticas": 66.7,
+   "p_mercado_pct": 51.5,
+   "promedio": 28.7,
+   "mediana": 31,
+   "maximo": 38,
+   "minimo": 19,
+   "id": 3,
+   "implicita": 51.5
   },
   {
    "evento": "nfl_IND_HOU",
@@ -249,7 +322,7 @@ window.PICKS = {
    ],
    "p_estadisticas": 68.7,
    "p_mercado_pct": 50.4,
-   "id": 2,
+   "id": 4,
    "implicita": 52.8,
    "modelo": 68.7,
    "mercado_prob": 50.4
@@ -321,110 +394,186 @@ window.PICKS = {
    ],
    "p_estadisticas": 71.9,
    "p_mercado_pct": 49.6,
-   "id": 3,
+   "id": 5,
    "implicita": 51.9,
    "modelo": 71.9,
    "mercado_prob": 49.6
   },
   {
-   "evento": "atl_okc",
+   "evento": "bundes_Bayern_Koln",
+   "grupo": "Futbol",
+   "liga": "Bundesliga",
+   "partido": "Bayern vs Koln",
+   "fecha": "2026-11-20T19:30:00Z",
+   "tipo": "Totales",
+   "mercado": "Total de goles",
+   "pick": "Under 4.5",
+   "momio": -117,
+   "casa": "FOX Sports",
+   "casas": 1,
+   "explicacion": "Con sus goles a favor y en contra en Bundesliga esperamos 3.59 goles (Bayern 2.58, Koln 1.01)",
+   "base": "Modelo con estadisticas de la temporada + momio sin comision + contexto",
+   "lado": "Under",
+   "prob": 60.8,
+   "ventaja": 6.9,
+   "score": 68,
+   "nivel": "B",
+   "senales": "2/2",
+   "unidades": 1.0,
+   "razones": [
+    {
+     "tipo": "+",
+     "texto": "FOX Sports le da 50.8% ya sin su comision"
+    },
+    {
+     "tipo": "+",
+     "texto": "Modelo de la temporada: le da 70.7% a este pick (Con sus goles a favor y en contra en Bundesliga esperamos 3.59 goles (Bayern 2.58, Koln 1.01))"
+    },
+    {
+     "tipo": "+",
+     "texto": "El momio -117 implica 53.9%; nosotros calculamos 60.8% (ventaja +6.9%)"
+    }
+   ],
+   "p_estadisticas": 70.7,
+   "p_mercado_pct": 50.8,
+   "id": 6,
+   "implicita": 53.9,
+   "modelo": 70.7,
+   "mercado_prob": 50.8
+  },
+  {
+   "evento": "nyk_min",
    "grupo": "NBA",
    "liga": "NBA",
-   "partido": "Hawks @ Thunder",
-   "fecha": "2026-11-19T01:00:00Z",
+   "partido": "Knicks @ Timberwolves",
+   "fecha": "2026-11-20T01:00:00Z",
    "tipo": "Props",
-   "mercado": "Asistencias",
-   "jugador": "Shai Gilgeous-Alexander",
-   "equipo": "Thunder",
-   "pick": "Shai Gilgeous-Alexander Under 5.5",
-   "lado": "Under",
-   "linea": 5.5,
-   "momio": -115,
-   "casa": "bet365",
+   "mercado": "Rebotes",
+   "jugador": "Karl-Anthony Towns",
+   "equipo": "Knicks",
+   "pick": "Karl-Anthony Towns Over 12.5",
+   "lado": "Over",
+   "linea": 12.5,
+   "momio": -136,
+   "casa": "FanDuel",
    "casas": 1,
    "valores": [
-    2,
-    3,
-    8,
-    8,
-    4,
-    9,
-    3,
-    2,
-    5,
-    2
+    13,
+    12,
+    16,
+    12,
+    13,
+    16,
+    11,
+    15,
+    17,
+    16
    ],
-   "base": "Ultimos 10 partidos + momio. Linea via Covers, partidos via StatMuse",
-   "duelo": {
-    "fecha": "2025-12-29",
-    "liga": "NBA 2025-26",
-    "marcador": [
-     [
-      "Hawks",
-      129
-     ],
-     [
-      "Thunder",
-      140
-     ]
-    ],
-    "fuente": "https://www.statmuse.com/nba/game/12-29-2025-atl-at-okc-77665",
-    "jugador": {
-     "fecha": "2025-12-29",
-     "equipo": "Thunder",
-     "rival": "Hawks",
-     "pts": 39,
-     "reb": 6,
-     "ast": 6,
-     "tri": 2,
-     "min": 36,
-     "fuente": "https://www.statmuse.com/nba/game/12-29-2025-atl-at-okc-77665"
-    },
-    "valor": 6,
-    "pego": false,
-    "resumen": "Shai Gilgeous-Alexander hizo 6 asistencias vs Hawks (linea de hoy 5.5)"
-   },
+   "base": "Ultimos 10 partidos + momio. Linea via FanDuel Research, partidos via StatMuse",
    "aciertos": 7,
-   "prob": 60.4,
-   "ventaja": 6.9,
-   "score": 59,
+   "prob": 63.1,
+   "ventaja": 5.4,
+   "score": 65,
    "nivel": "B",
-   "senales": "3/4",
+   "senales": "3/3",
    "unidades": 1.0,
    "razones": [
     {
      "tipo": "i",
-     "texto": "Solo encontramos este lado del momio en bet365; usamos su probabilidad con comision (53.5%), que es mas conservador"
+     "texto": "Solo encontramos este lado del momio en FanDuel; usamos su probabilidad con comision (57.6%), que es mas conservador"
     },
     {
      "tipo": "+",
-     "texto": "Le pego al Under 5.5 en 7 de sus ultimos 10"
+     "texto": "Le pego al Over 12.5 en 7 de sus ultimos 10"
     },
     {
      "tipo": "+",
-     "texto": "Promedia 4.6 contra la linea de 5.5"
+     "texto": "Promedia 14.1 contra la linea de 12.5"
     },
     {
      "tipo": "+",
      "texto": "En racha: 4 de 5 en sus ultimos 5"
     },
     {
-     "tipo": "-",
-     "texto": "Ultimo enfrentamiento: Shai Gilgeous-Alexander hizo 6 asistencias vs Hawks (linea de hoy 5.5): no hubiera pegado"
-    },
-    {
      "tipo": "+",
-     "texto": "El momio -115 implica 53.5%; nosotros calculamos 60.4% (ventaja +6.9%)"
+     "texto": "El momio -136 implica 57.6%; nosotros calculamos 63.1% (ventaja +5.4%)"
     }
    ],
    "p_estadisticas": 66.7,
-   "p_mercado_pct": 53.5,
-   "promedio": 4.6,
-   "mediana": 4,
-   "maximo": 9,
-   "minimo": 2,
-   "id": 4,
-   "implicita": 53.5
+   "p_mercado_pct": 57.6,
+   "promedio": 14.1,
+   "mediana": 15,
+   "maximo": 17,
+   "minimo": 11,
+   "id": 7,
+   "implicita": 57.6
+  },
+  {
+   "evento": "lac_sas",
+   "grupo": "NBA",
+   "liga": "NBA",
+   "partido": "Clippers @ Spurs",
+   "fecha": "2026-11-20T01:00:00Z",
+   "tipo": "Props",
+   "mercado": "Puntos",
+   "jugador": "Stephon Castle",
+   "equipo": "Spurs",
+   "pick": "Stephon Castle Under 17.5",
+   "lado": "Under",
+   "linea": 17.5,
+   "momio": -108,
+   "casa": "bet365 (over) / FanDuel (under)",
+   "casas": 1,
+   "valores": [
+    0,
+    16,
+    17,
+    19,
+    14,
+    4,
+    11,
+    32,
+    20,
+    10
+   ],
+   "base": "Ultimos 10 partidos + momio. Linea via ScoresAndOdds, partidos via StatMuse",
+   "aciertos": 7,
+   "prob": 59.9,
+   "ventaja": 8.0,
+   "score": 61,
+   "nivel": "B",
+   "senales": "2/3",
+   "unidades": 1.0,
+   "razones": [
+    {
+     "tipo": "-",
+     "texto": "bet365 (over) / FanDuel (under) le da 49.8% ya sin su comision"
+    },
+    {
+     "tipo": "+",
+     "texto": "Le pego al Under 17.5 en 7 de sus ultimos 10"
+    },
+    {
+     "tipo": "+",
+     "texto": "Promedia 14.3 contra la linea de 17.5"
+    },
+    {
+     "tipo": "-",
+     "texto": "Las estadisticas y el mercado no coinciden"
+    },
+    {
+     "tipo": "+",
+     "texto": "El momio -108 implica 51.9%; nosotros calculamos 59.9% (ventaja +8.0%)"
+    }
+   ],
+   "p_estadisticas": 66.7,
+   "p_mercado_pct": 49.8,
+   "promedio": 14.3,
+   "mediana": 16,
+   "maximo": 32,
+   "minimo": 0,
+   "id": 8,
+   "implicita": 51.9
   },
   {
    "evento": "nfl_BAL_CAR",
@@ -486,7 +635,7 @@ window.PICKS = {
    ],
    "p_estadisticas": 65.5,
    "p_mercado_pct": 50.4,
-   "id": 5,
+   "id": 9,
    "implicita": 52.8,
    "modelo": 65.5,
    "mercado_prob": 50.4
@@ -552,110 +701,10 @@ window.PICKS = {
    ],
    "p_estadisticas": 65.5,
    "p_mercado_pct": 50.4,
-   "id": 6,
+   "id": 10,
    "implicita": 52.8,
    "modelo": 65.5,
    "mercado_prob": 50.4
-  },
-  {
-   "evento": "uta_lal",
-   "grupo": "NBA",
-   "liga": "NBA",
-   "partido": "Jazz @ Lakers",
-   "fecha": "2026-11-19T03:00:00Z",
-   "tipo": "Props",
-   "mercado": "Puntos",
-   "jugador": "Luka Doncic",
-   "equipo": "Lakers",
-   "pick": "Luka Doncic Over 36.5",
-   "lado": "Over",
-   "linea": 36.5,
-   "momio": -110,
-   "casa": "Caesars",
-   "casas": 1,
-   "valores": [
-    41,
-    37,
-    45,
-    42,
-    40,
-    53,
-    32,
-    32,
-    43,
-    36
-   ],
-   "base": "Ultimos 10 partidos + momio. Linea via SportsBettingDime, partidos via StatMuse",
-   "duelo": {
-    "fecha": "2026-10-25",
-    "liga": "NBA 2026-27 (se jugo en Utah)",
-    "marcador": [
-     [
-      "Lakers",
-      132
-     ],
-     [
-      "Jazz",
-      123
-     ]
-    ],
-    "fuente": "https://www.statmuse.com/nba/game/10-25-2026-lal-at-uta-78673",
-    "jugador": {
-     "fecha": "2026-10-25",
-     "equipo": "Lakers",
-     "rival": "Jazz",
-     "pts": 52,
-     "reb": 8,
-     "ast": 10,
-     "tri": 8,
-     "min": 38,
-     "fuente": "https://www.statmuse.com/nba/game/10-25-2026-lal-at-uta-78673"
-    },
-    "valor": 52,
-    "pego": true,
-    "resumen": "Luka Doncic hizo 52 puntos vs Jazz (linea de hoy 36.5)"
-   },
-   "aciertos": 7,
-   "prob": 60.0,
-   "ventaja": 7.6,
-   "score": 56,
-   "nivel": "B",
-   "senales": "3/5",
-   "unidades": 1.0,
-   "razones": [
-    {
-     "tipo": "i",
-     "texto": "Solo encontramos este lado del momio en Caesars; usamos su probabilidad con comision (52.4%), que es mas conservador"
-    },
-    {
-     "tipo": "+",
-     "texto": "Le pego al Over 36.5 en 7 de sus ultimos 10"
-    },
-    {
-     "tipo": "+",
-     "texto": "Promedia 40.1 contra la linea de 36.5"
-    },
-    {
-     "tipo": "-",
-     "texto": "Segunda noche seguida: anoche jugo 42 minutos con tiempo extra"
-    },
-    {
-     "tipo": "+",
-     "texto": "Ultimo enfrentamiento: Luka Doncic hizo 52 puntos vs Jazz (linea de hoy 36.5): hubiera pegado"
-    },
-    {
-     "tipo": "+",
-     "texto": "El momio -110 implica 52.4%; nosotros calculamos 60.0% (ventaja +7.6%)"
-    }
-   ],
-   "p_estadisticas": 66.7,
-   "p_mercado_pct": 52.4,
-   "promedio": 40.1,
-   "mediana": 41,
-   "maximo": 53,
-   "minimo": 32,
-   "id": 7,
-   "implicita": 52.4
   },
   {
    "evento": "nfl_LV_DEN",
@@ -725,7 +774,7 @@ window.PICKS = {
    ],
    "p_estadisticas": 65.6,
    "p_mercado_pct": 49.6,
-   "id": 8,
+   "id": 11,
    "implicita": 51.9,
    "modelo": 65.6,
    "mercado_prob": 49.6
@@ -791,7 +840,7 @@ window.PICKS = {
    ],
    "p_estadisticas": 63.8,
    "p_mercado_pct": 51.1,
-   "id": 9,
+   "id": 12,
    "implicita": 53.5,
    "modelo": 63.8,
    "mercado_prob": 51.1
@@ -803,8 +852,8 @@ window.PICKS = {
    2,
    3
   ],
-  "momio": 587,
-  "prob": 24.4
+  "momio": 485,
+  "prob": 25.2
  },
  "grupos": {
   "NFL": {
@@ -816,16 +865,20 @@ window.PICKS = {
   },
   "NBA": {
    "picks": 3,
-   "partidos": 10,
+   "partidos": 4,
    "ligas": [
     "NBA"
    ]
   },
   "Futbol": {
-   "picks": 0,
-   "partidos": 8,
+   "picks": 3,
+   "partidos": 44,
    "ligas": [
-    "Premier League"
+    "Premier League",
+    "LaLiga",
+    "Serie A",
+    "Bundesliga",
+    "Liga MX"
    ]
   },
   "MLB": {

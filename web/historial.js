@@ -1,16 +1,16 @@
 window.HISTORIAL = {
- "actualizado": "2026-11-18 21:06",
+ "actualizado": "2026-11-19 15:59",
  "total": {
-  "ganados": 4,
-  "perdidos": 4,
+  "ganados": 6,
+  "perdidos": 5,
   "empates": 0,
-  "acierto": 50.0,
-  "unidades": 0.71,
-  "roi": 8.8,
-  "prob_promedio": 65.5
+  "acierto": 54.5,
+  "unidades": 1.9,
+  "roi": 16.6,
+  "prob_promedio": 64.5
  },
- "pendientes": 15,
- "publicados": 23,
+ "pendientes": 18,
+ "publicados": 29,
  "serie": [
   {
    "fecha": "2026-11-18",
@@ -43,28 +43,40 @@ window.HISTORIAL = {
   {
    "fecha": "2026-11-18",
    "u": 0.71
+  },
+  {
+   "fecha": "2026-11-19",
+   "u": 2.03
+  },
+  {
+   "fecha": "2026-11-19",
+   "u": 2.9
+  },
+  {
+   "fecha": "2026-11-19",
+   "u": 1.9
   }
  ],
  "por_grupo": {
   "NBA": {
-   "ganados": 4,
-   "perdidos": 4,
+   "ganados": 6,
+   "perdidos": 5,
    "empates": 0,
-   "acierto": 50.0,
-   "unidades": 0.71,
-   "roi": 8.8,
-   "prob_promedio": 65.5
+   "acierto": 54.5,
+   "unidades": 1.9,
+   "roi": 16.6,
+   "prob_promedio": 64.5
   }
  },
  "por_tipo": {
   "Props": {
-   "ganados": 4,
-   "perdidos": 4,
+   "ganados": 6,
+   "perdidos": 5,
    "empates": 0,
-   "acierto": 50.0,
-   "unidades": 0.71,
-   "roi": 8.8,
-   "prob_promedio": 65.5
+   "acierto": 54.5,
+   "unidades": 1.9,
+   "roi": 16.6,
+   "prob_promedio": 64.5
   }
  },
  "por_nivel": {
@@ -76,9 +88,84 @@ window.HISTORIAL = {
    "unidades": 0.71,
    "roi": 8.8,
    "prob_promedio": 65.5
+  },
+  "A": {
+   "ganados": 1,
+   "perdidos": 0,
+   "empates": 0,
+   "acierto": 100.0,
+   "unidades": 1.33,
+   "roi": 88.5,
+   "prob_promedio": 65.2
+  },
+  "B": {
+   "ganados": 1,
+   "perdidos": 1,
+   "empates": 0,
+   "acierto": 50.0,
+   "unidades": -0.13,
+   "roi": -6.5,
+   "prob_promedio": 60.2
   }
  },
  "calificados": [
+  {
+   "clave": "2026-11-19 | Jazz @ Lakers | Luka Doncic Over 36.5",
+   "edicion": "2026-11-18",
+   "fecha": "2026-11-19T03:00:00Z",
+   "grupo": "NBA",
+   "liga": "NBA",
+   "tipo": "Props",
+   "partido": "Jazz @ Lakers",
+   "pick": "Luka Doncic Over 36.5",
+   "momio": -110,
+   "unidades": 1.0,
+   "prob": 60.0,
+   "ventaja": 7.6,
+   "resultado": "P",
+   "nivel": "B",
+   "score": 56,
+   "lado": "Over",
+   "neto": -1.0
+  },
+  {
+   "clave": "2026-11-19 | Hawks @ Thunder | Shai Gilgeous-Alexander Under 5.5",
+   "edicion": "2026-11-18",
+   "fecha": "2026-11-19T01:00:00Z",
+   "grupo": "NBA",
+   "liga": "NBA",
+   "tipo": "Props",
+   "partido": "Hawks @ Thunder",
+   "pick": "Shai Gilgeous-Alexander Under 5.5",
+   "momio": -115,
+   "unidades": 1.0,
+   "prob": 60.4,
+   "ventaja": 6.9,
+   "resultado": "G",
+   "nivel": "B",
+   "score": 59,
+   "lado": "Under",
+   "neto": 0.87
+  },
+  {
+   "clave": "2026-11-19 | Bulls @ Nets | Julius Randle Under 22.5",
+   "edicion": "2026-11-18",
+   "fecha": "2026-11-19T00:30:00Z",
+   "grupo": "NBA",
+   "liga": "NBA",
+   "tipo": "Props",
+   "partido": "Bulls @ Nets",
+   "pick": "Julius Randle Under 22.5",
+   "momio": -113,
+   "unidades": 1.5,
+   "prob": 65.2,
+   "ventaja": 12.2,
+   "resultado": "G",
+   "nivel": "A",
+   "score": 73,
+   "lado": "Under",
+   "neto": 1.33
+  },
   {
    "clave": "2026-11-18 | Hornets @ Lakers | Coby White Under 3.5",
    "edicion": "2026-11-17",
