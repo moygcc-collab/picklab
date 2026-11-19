@@ -37,7 +37,9 @@ GSW_MEM = ("gsw_mem", "Warriors @ Grizzlies", "2026-11-20T01:00:00Z")
 POR_MIL = ("por_mil", "Trail Blazers @ Bucks", "2026-11-20T01:00:00Z")
 
 # jugador, equipo, partido, mercado, linea, momio over, momio under, casa, fuente,
-# ultimos 10 partidos (del mas viejo al mas nuevo, Land of Basketball / StatMuse)
+# ultimos 10 partidos (del mas viejo al mas nuevo, Land of Basketball / StatMuse),
+# y opcional: otras casas con la misma linea [(casa, over, under), ...] -> consenso y mejor precio
+SAO = "ScoresAndOdds"
 PROPS_NBA = [
     ["Jalen Brunson", "Knicks", NYK_MIN, "Puntos", 26.5, -106, None, "DraftKings", "Picks and Parlays",
      [38, 24, 19, 33, 31, 23, 27, 33, 28, 31]],
@@ -49,12 +51,95 @@ PROPS_NBA = [
      [43, 12, 52, 30, 29, 40, 32, 12, 26, 25]],
     ["Victor Wembanyama", "Spurs", LAC_SAS, "Rebotes", 11.5, -132, None, "Gambling911", "Gambling911",
      [7, 11, 24, 14, 7, 11, 9, 12, 10, 18]],
-    ["Stephon Castle", "Spurs", LAC_SAS, "Puntos", 17.5, -110, -108, "bet365 (over) / FanDuel (under)", "ScoresAndOdds",
+    ["Stephon Castle", "Spurs", LAC_SAS, "Puntos", 17.5, -110, -108, "bet365 (over) / FanDuel (under)", SAO,
      [0, 16, 17, 19, 14, 4, 11, 32, 20, 10]],
     ["Brandin Podziemski", "Warriors", GSW_MEM, "Triples", 2.5, None, -138, "DraftKings", "SI",
      [4, 2, 3, 2, 4, 5, 4, 2, 3, 0]],
     ["Jrue Holiday", "Trail Blazers", POR_MIL, "Puntos + Asistencias", 17.5, None, -112, "FanDuel", "FanDuel Research",
      [17, 27, 15, 19, 11, 13, 24, 11, 13, 29]],
+    ["LaMelo Ball", "Timberwolves", NYK_MIN, "Triples", 3.5, -112, -118, "FanDuel", SAO,
+     [6, 0, 6, 4, 3, 4, 6, 4, 2, 3], [("DraftKings", -128, -103), ("bet365", -125, 100)]],
+    ["LaMelo Ball", "Timberwolves", NYK_MIN, "Puntos", 18.5, -125, -106, "FanDuel", SAO,
+     [24, 10, 34, 20, 22, 24, 22, 19, 6, 18]],
+    ["Ayo Dosunmu", "Timberwolves", NYK_MIN, "Puntos", 17.5, -120, -110, "FanDuel", SAO,
+     [15, 27, 19, 21, 26, 26, 18, 24, 8, 30], [("DraftKings", -118, -108), ("bet365", -112, -112)]],
+    ["Rudy Gobert", "Timberwolves", NYK_MIN, "Rebotes", 10.5, 116, -154, "FanDuel", SAO,
+     [4, 13, 10, 11, 11, 15, 6, 10, 15, 4], [("DraftKings", 107, -141), ("bet365", 100, -125), ("BetMGM", -105, -125)]],
+    ["OG Anunoby", "Knicks", NYK_MIN, "Puntos", 15.5, -112, -118, "FanDuel", SAO,
+     [23, 9, 18, 18, 15, 19, 14, 11, 21, 16], [("DraftKings", -101, -126)]],
+    ["Josh Hart", "Knicks", NYK_MIN, "Rebotes", 5.5, -154, 116, "FanDuel", SAO,
+     [12, 8, 4, 8, 6, 6, 4, 5, 5, 4], [("DraftKings", -135, 102), ("bet365", -150, 120)]],
+    ["Rui Hachimura", "Clippers", LAC_SAS, "Puntos", 12.5, -104, -128, "FanDuel", SAO,
+     [16, 5, 12, 24, 21, 14, 13, 7, 4, 20], [("DraftKings", -103, -124), ("bet365", -105, -120)]],
+    ["Devin Vassell", "Spurs", LAC_SAS, "Puntos", 11.5, -136, 102, "FanDuel", SAO,
+     [14, 21, 9, 11, 2, 19, 15, 7, 6, 12], [("DraftKings", -130, 102)]],
+    ["Yaxel Lendeborg", "Warriors", GSW_MEM, "Puntos", 21.5, -112, -118, "FanDuel", SAO,
+     [6, 37, 16, 17, 23, 23, 25, 3, 28, 13], [("DraftKings", -107, -119), ("bet365", -115, -110)]],
+    ["Yaxel Lendeborg", "Warriors", GSW_MEM, "Rebotes", 6.5, -120, -110, "FanDuel", SAO,
+     [1, 4, 5, 8, 8, 7, 10, 7, 8, 5], [("DraftKings", -124, -106), ("bet365", -120, -105)]],
+    ["Cedric Coward", "Grizzlies", GSW_MEM, "Rebotes", 7.5, -122, -108, "FanDuel", SAO,
+     [7, 9, 9, 9, 6, 11, 7, 12, 8, 3], [("DraftKings", -105, -125), ("bet365", 105, -135)]],
+    ["Cedric Coward", "Grizzlies", GSW_MEM, "Puntos", 14.5, -120, -110, "FanDuel", SAO,
+     [10, 10, 23, 10, 3, 15, 14, 23, 18, 20], [("DraftKings", -122, -104)]],
+    ["Tyler Herro", "Bucks", POR_MIL, "Puntos", 19.5, -128, -104, "FanDuel", SAO,
+     [23, 15, 21, 25, 23, 13, 27, 18, 5, 8], [("DraftKings", -121, -105)]],
+    ["Donovan Clingan", "Trail Blazers", POR_MIL, "Rebotes", 11.5, -128, -104, "FanDuel", SAO,
+     [9, 18, 11, 11, 5, 13, 12, 11, 10, 12], [("DraftKings", -132, 100), ("bet365", -125, 100)]],
+    ["Kyle Kuzma", "Bucks", POR_MIL, "Puntos", 12.5, 102, -136, "FanDuel", SAO,
+     [14, 2, 6, 13, 27, 5, 9, 14, 14, 26], [("DraftKings", -103, -124), ("bet365", -115, -110)]],
+]
+
+# ---------- NFL semana 11: props de jugadores ----------
+# Mismo formato. Valores: todos los partidos que jugo en 2026 (NFL.com game logs), del mas viejo al mas nuevo.
+IND_HOU = ("nfl_IND_HOU", "Colts @ Texans", "2026-11-20T01:15:00Z")
+ARI_KC = ("nfl_ARI_KC", "Cardinals @ Chiefs", "2026-11-22T18:00:00Z")
+BAL_CAR = ("nfl_BAL_CAR", "Ravens @ Panthers", "2026-11-22T18:00:00Z")
+NO_CHI = ("nfl_NO_CHI", "Saints @ Bears", "2026-11-22T18:00:00Z")
+TEN_DAL = ("nfl_TEN_DAL", "Titans @ Cowboys", "2026-11-22T18:00:00Z")
+JAX_NYG = ("nfl_JAX_NYG", "Jaguars @ Giants", "2026-11-22T21:25:00Z")
+MIN_SF = ("nfl_MIN_SF", "Vikings @ 49ers (Estadio Banorte, CDMX)", "2026-11-23T01:20:00Z")
+CIN_WSH = ("nfl_CIN_WSH", "Bengals @ Commanders", "2026-11-24T01:15:00Z")
+SFA = "Sharp Football Analysis"
+COV = "Covers"
+PROPS_NFL = [
+    ["C.J. Stroud", "Texans", IND_HOU, "Yardas por pase", 260.5, -112, -112, "BetMGM (over) / Fanatics (under)", SFA,
+     [274, 353, 167, 347, 261, 312, 153, 384, 211]],
+    ["Daniel Jones", "Colts", IND_HOU, "Yardas por pase", 181.5, -114, -114, "BetMGM (over) / DraftKings (under)", SFA,
+     [166, 210, 235, 143, 267, 269, 108, 144, 180, 108]],
+    ["Jonathan Taylor", "Colts", IND_HOU, "Yardas por tierra", 49.5, -114, -110, "DraftKings", "SI y SportsbookReview",
+     [98, 92, 68, 95, 45, 94, 95, 23, 46, 83]],
+    ["Nico Collins", "Texans", IND_HOU, "Yardas por recepcion", 71.5, -112, -112, "DraftKings", "Picks and Parlays",
+     [75, 118, 56, 74, 6, 55, 94]],
+    ["Nico Collins", "Texans", IND_HOU, "Recepciones", 4.5, -145, None, "DraftKings", "SI",
+     [7, 7, 5, 3, 2, 4, 9]],
+    ["Tyler Warren", "Colts", IND_HOU, "Yardas por recepcion", 40.5, -115, -115, "FanDuel (over) / DraftKings (under)", SFA,
+     [13, 21, 55, 41, 83, 18, 44, 1]],
+    ["Trey McBride", "Cardinals", ARI_KC, "Yardas por recepcion", 48.5, -135, None, "Fanatics", COV,
+     [95, 41, 75, 31, 66, 53, 111, 72, 54, 37]],
+    ["Derrick Henry", "Ravens", BAL_CAR, "Yardas por tierra", 65.5, -115, None, "BetMGM", COV,
+     [144, 68, 89, 73, 102, 58, 45, 53, 57, 10]],
+    ["Chris Olave", "Saints", NO_CHI, "Yardas por recepcion", 69.5, -120, None, "Fanatics", COV,
+     [182, 86, 107, 116, 46, 43, 56, 98, 30]],
+    ["Caleb Williams", "Bears", NO_CHI, "Yardas por pase", 249.5, None, -114, "FanDuel", COV,
+     [269, 138, 305, 308, 247, 279]],
+    ["Dak Prescott", "Cowboys", TEN_DAL, "Yardas por pase", 278.5, -120, None, "Fanatics", COV,
+     [175, 279, 276, 335, 316, 258, 212, 195, 335, 343]],
+    ["Cam Skattebo", "Giants", JAX_NYG, "Yardas por tierra", 54.5, -125, None, "Fanatics", COV,
+     [81, 36, 60, 58, 59, 0, 124, 78]],
+    ["Justin Jefferson", "Vikings", MIN_SF, "Yardas por recepcion", 82.5, -114, -114, "DraftKings", SFA,
+     [92, 55, 32, 79, 44, 33, 58, 74]],
+    ["Joe Burrow", "Bengals", CIN_WSH, "Yardas por pase", 300.5, -114, -114, "FanDuel (over) / DraftKings (under)", SFA,
+     [254, 207, 282, 428, 190, 292, 462, 271, 409]],
+    ["Ja'Marr Chase", "Bengals", CIN_WSH, "Yardas por recepcion", 93.5, -114, -114, "FanDuel (over) / DraftKings (under)", SFA,
+     [12, 75, 98, 27, 77, 62, 141, 155, 231]],
+]
+
+# ---------- Draftea (o cualquier casa con lineas alternas) ----------
+# Si en Draftea ves otra linea para un jugador de arriba, pegala aqui con su momio:
+#   [jugador, mercado, lado, linea, momio]   ej. ["Jalen Brunson", "Puntos", "Over", 22.5, -250]
+# El motor la evalua con la linea principal del mercado + sus ultimos partidos y,
+# si pasa las reglas (55%, 3% de ventaja, nivel A o B), sale como pick.
+DRAFTEA = [
 ]
 
 
@@ -317,6 +402,14 @@ def ajuste(efecto, delta, texto):
 # Por jugador (props)
 CONTEXTO_JUGADOR = {
     "Brandin Podziemski": [ajuste("Under", 0.02, "Segunda noche seguida: Warriors jugaron anoche en Dallas (y se fue 0 de 5 en triples)")],
+    "Yaxel Lendeborg": [ajuste("Under", 0.02, "Segunda noche seguida: Warriors jugaron anoche en Dallas"),
+                        ajuste("Over", 0.02, "Stephen Curry y Jimmy Butler estan fuera: mas balones para el")],
+    "Cedric Coward": [ajuste("Under", 0.02, "Segunda noche seguida: Grizzlies jugaron anoche en Cleveland")],
+    "Tyler Herro": [ajuste("Under", 0.02, "Segunda noche seguida: Bucks jugaron anoche en Miami")],
+    "Kyle Kuzma": [ajuste("Under", 0.02, "Segunda noche seguida: Bucks jugaron anoche en Miami")],
+    "Devin Vassell": [ajuste("Over", 0.01, "Dylan Harper esta fuera: mas minutos en la rotacion de Spurs")],
+    "Jonathan Taylor": [ajuste("Under", 0.01, "Lleva 4 partidos seguidos con menos de 70% de los snaps; el novato Seth McGowan le quita acarreos")],
+    "C.J. Stroud": [ajuste("Under", 0.01, "Marvin Harrison Jr. (receptor) esta fuera por lesion")],
 }
 
 # Por partido (clave "evento" o, para la API, el texto "Visitante @ Local")
@@ -347,26 +440,38 @@ ULTIMOS_API = {}
 CLAVE_MERCADO = {"Puntos": "pts", "Rebotes": "reb", "Asistencias": "ast", "Triples": "tri"}
 
 
-def picks_nba():
+def picks_props(lista, grupo, liga):
     salida = []
-    for jugador, equipo, partido, mercado, linea, over, under, casa, fuente, valores in PROPS_NBA:
+    for fila in lista:
+        jugador, equipo, partido, mercado, linea, over, under, casa, fuente, valores = fila[:10]
+        otras = fila[10] if len(fila) > 10 else []
         opciones = []
         if over is not None and under is not None:
             p_over, p_under = sin_comision(over, under)
-            opciones = [("Over", over, p_over, True), ("Under", under, p_under, True)]
+            libros = [(casa, over, under)] + list(otras)
+            if len(libros) > 1:
+                # Consenso: promedio de las probabilidades sin comision y el mejor precio de cada lado
+                p_over = sum(sin_comision(o, u)[0] for _, o, u in libros) / len(libros)
+                p_under = 1 - p_over
+                mejor_o = max(libros, key=lambda x: a_decimal(x[1]))
+                mejor_u = max(libros, key=lambda x: a_decimal(x[2]))
+                opciones = [("Over", mejor_o[1], p_over, True, mejor_o[0]), ("Under", mejor_u[2], p_under, True, mejor_u[0])]
+            else:
+                opciones = [("Over", over, p_over, True, casa), ("Under", under, p_under, True, casa)]
         elif over is not None:
-            opciones = [("Over", over, prob_implicita(over), False)]
+            opciones = [("Over", over, prob_implicita(over), False, casa)]
         else:
-            opciones = [("Under", under, prob_implicita(under), False)]
+            opciones = [("Under", under, prob_implicita(under), False, casa)]
         mejor = None
-        for lado, momio, p_m, dos in opciones:
+        for lado, momio, p_m, dos, casa_lado in opciones:
             c = {
-                "evento": partido[0], "grupo": "NBA", "liga": "NBA", "partido": partido[1], "fecha": partido[2],
+                "evento": partido[0], "grupo": grupo, "liga": liga, "partido": partido[1], "fecha": partido[2],
                 "tipo": "Props", "mercado": mercado, "jugador": jugador, "equipo": equipo,
                 "pick": jugador + " " + lado + " " + str(linea), "lado": lado, "linea": linea,
-                "momio": momio, "casa": casa, "casas": 1, "p_mercado": p_m, "dos_lados": dos,
+                "momio": momio, "casa": casa_lado, "casas": 1 + len(otras) if dos else 1, "p_mercado": p_m, "dos_lados": dos,
                 "valores": valores, "ajustes": CONTEXTO_JUGADOR.get(jugador, []),
-                "base": "Ultimos " + str(len(valores)) + " partidos + momio. Linea via " + fuente + ", partidos via StatMuse",
+                "base": "Ultimos " + str(len(valores)) + " partidos + momio. Linea via " + fuente +
+                        (", partidos via StatMuse / Land of Basketball" if grupo == "NBA" else ", partidos via NFL.com"),
             }
             agregar_duelo(c)
             motor.evaluar(c)
@@ -376,6 +481,31 @@ def picks_nba():
         mejor.update({"promedio": round(sum(valores) / len(valores), 1), "mediana": ordenados[len(ordenados) // 2],
                       "maximo": max(valores), "minimo": min(valores)})
         salida.append(mejor)
+    return salida
+
+
+def picks_draftea(props):
+    # Lineas alternas reales (con momio) que el usuario pega en DRAFTEA
+    salida = []
+    for jugador, mercado, lado, linea, momio in DRAFTEA:
+        base = None
+        for c in props:
+            if c["jugador"] == jugador and c["mercado"] == mercado:
+                base = c
+        if base is None:
+            print("OJO: Draftea sin linea principal para", jugador, mercado)
+            continue
+        b = dict(base)
+        if b["lado"] != lado and not b.get("dos_lados"):
+            print("OJO: Draftea pide el otro lado y solo tenemos un lado del momio:", jugador, mercado)
+            continue
+        if b["lado"] != lado:
+            # Voltear al lado pedido usando la probabilidad del otro lado
+            b["lado"] = lado
+            b["p_mercado"] = 1 - b["p_mercado"]
+        alt = motor.alterna(b, linea, momio, "Draftea")
+        alt["base"] = "Linea alterna de Draftea: mercado de la linea principal + ultimos partidos"
+        salida.append(alt)
     return salida
 
 
@@ -509,9 +639,13 @@ def main():
             ligas_por_grupo[grupo].append(liga)
 
     # 1. Datos manuales (solo para las ligas que la API no trae)
+    props_manual = []
     if not api_picks.hay_props("basketball_nba"):
-        candidatos += picks_nba()
+        props_manual += picks_props(PROPS_NBA, "NBA", "NBA")
         contar("NBA", "NBA", len(set(x[2][0] for x in PROPS_NBA)))
+    if not api_picks.hay_props("americanfootball_nfl"):
+        props_manual += picks_props(PROPS_NFL, "NFL", "NFL")
+    candidatos += props_manual + picks_draftea(props_manual)
     if not api_picks.hay_api("americanfootball_nfl"):
         candidatos += picks_nfl()
         contar("NFL", "NFL", len(NFL_PARTIDOS))
@@ -542,6 +676,20 @@ def main():
     ahora = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
     candidatos = [c for c in candidatos if c["fecha"] > ahora]
     picks = [c for c in candidatos if c["publicar"]]
+
+    # Lineas alternas (para Draftea): de cada prop, que tan seguro es bajar (o subir) la linea
+    escalera = []
+    for c in candidatos:
+        if c["tipo"] != "Props" or c.get("casa") == "Draftea" or not c.get("valores"):
+            continue
+        pasos = motor.escalera(c)
+        if pasos:
+            escalera.append({"grupo": c["grupo"], "jugador": c["jugador"], "equipo": c.get("equipo", ""),
+                             "partido": c["partido"], "fecha": c["fecha"], "mercado": c["mercado"],
+                             "linea": c["linea"], "lado": c["lado"], "momio": c["momio"], "casa": c["casa"],
+                             "prob_principal": round(c["prob"] * 100, 1), "promedio": round(sum(c["valores"]) / len(c["valores"]), 1),
+                             "pasos": pasos})
+    escalera.sort(key=lambda e: -e["pasos"][0]["prob"])
     descartados = [c["pick"] + " (" + str(c["score"]) + ")" for c in candidatos if not c["publicar"] and c["tipo"] == "Props"]
 
     # Orden: primero el nivel de confianza, luego la probabilidad
@@ -592,6 +740,7 @@ def main():
         "candidatos": len(candidatos),
         "descartados": descartados,
         "picks": picks,
+        "escalera": escalera,
         "parlay": {"ids": parlay, "momio": a_americano(decimal) if parlay else 0, "prob": round(prob_parlay * 100, 1)},
         "grupos": grupos,
     }
@@ -610,9 +759,14 @@ def main():
         print(p["id"], p["nivel"], p["score"], p["grupo"], "|", p["pick"], "|", p["partido"], "|", p["momio"],
               "| prob", p["prob"], "| ventaja", p["ventaja"], "|", p["unidades"], "u | senales", p["senales"])
     print("Parlay:", salida["parlay"])
+    print("Escalera (lineas alternas):", len(escalera), "jugadores")
+    for e in escalera[:40]:
+        print("  ", e["jugador"], e["mercado"], e["lado"], e["linea"], "->",
+              ", ".join(str(p["linea"]) + " " + str(p["prob"]) + "% (" + str(p["aciertos"]) + "/" + str(p["partidos"]) + ", min " + str(p["momio_minimo"]) + ")" for p in e["pasos"]))
 
 
-NOTA = ("Edicion del " + EDICION + ": NBA (props de hoy), NHL (hoy), NFL semana 11 (momios del 18 nov) y futbol del fin de semana: "
+NOTA = ("Edicion del " + EDICION + ": mas props de jugadores (NBA de hoy y NFL semana 11), seccion 'Baja la linea' para "
+        "lineas alternas tipo Draftea, NHL (hoy), NFL semana 11 (spreads y totales con momios del 18 nov) y futbol del fin de semana: "
         "Premier League, LaLiga, Serie A, Bundesliga y Liga MX (jornada 17). "
         "Cada pick pasa por el motor de PickLab: mercado + estadisticas + contexto + historial, y solo se publica si tiene "
         "55% o mas de probabilidad, 3% o mas de ventaja y nivel de confianza A o B. Hoy no hubo momios de la API (edicion a mano). "
@@ -636,7 +790,13 @@ FUENTES = [
     ["Picks and Parlays - Brunson 19 nov", "https://picksandparlays.net/free-picks/nba/jalen-brunson-points-prop-pick-vs-timberwolves-november-19-2026"],
     ["Dimers - props NBA 19 nov", "https://www.dimers.com/nba/news/nba-player-props-11-19-2026-ac"],
     ["Gambling911 - props Wembanyama 19 nov", "https://gambling911.com/3-top-victor-webanyama-player-prop-bets-vs-la-clippers-november-19"],
-    ["ScoresAndOdds - props NBA", "https://www.scoresandodds.com/nba/props"],
+    ["ScoresAndOdds - props NBA (FanDuel, DraftKings, bet365)", "https://www.scoresandodds.com/nba/props"],
+    ["Sharp Football Analysis - props NFL semana 11", "https://www.sharpfootballanalysis.com/betting/nfl-player-props-odds-picks-predictions/"],
+    ["Covers - props NFL", "https://www.covers.com/sport/football/nfl/player-props"],
+    ["SI - props Colts vs Texans", "https://www.si.com/betting/colts-vs-texans-best-nfl-prop-bets-for-thursday-night-football-in-week-11-bet-on-jonathan-taylor-2026"],
+    ["Picks and Parlays - Nico Collins", "https://picksandparlays.net/free-picks/nfl/nico-collins-receiving-yards-prop-vs-colts-november-19-2026"],
+    ["NFL.com - game logs 2026 de jugadores", "https://www.nfl.com/players/"],
+    ["Rotowire - alineaciones y lesiones NBA 19 nov", "https://www.rotowire.com/basketball/nba-lineups.php"],
     ["Land of Basketball - ultimos 10 partidos NBA", "https://www.landofbasketball.com/"],
     ["Ultimos enfrentamientos NFL - CBS Sports y StatMuse", "https://www.statmuse.com/nfl"],
     ["Resultados NBA 18 nov - ESPN y Land of Basketball", "https://www.landofbasketball.com/nba_daily_summary/20261118.htm"],

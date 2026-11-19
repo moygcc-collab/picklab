@@ -151,7 +151,9 @@ def evaluar(c):
 
     # 1. Mercado
     pm = c["p_mercado"]
-    if c.get("casas", 1) >= 2:
+    if c.get("mercado_texto"):
+        razones.append(("+" if pm >= 0.5 else "-", c["mercado_texto"]))
+    elif c.get("casas", 1) >= 2:
         razones.append(("+" if pm >= 0.5 else "-", str(c["casas"]) + " casas en consenso: " + pct(pm) + " sin su comision"))
     elif c.get("dos_lados"):
         razones.append(("+" if pm >= 0.5 else "-", c["casa"] + " le da " + pct(pm) + " ya sin su comision"))
@@ -254,6 +256,99 @@ def evaluar(c):
         c["p_estadisticas"] = round(pe * 100, 1)
     c["p_mercado_pct"] = round(pm * 100, 1)
     return c
+
+
+# ---------- Lineas alternas (bajar o subir la linea) ----------
+# Casas como Draftea dejan elegir otra linea del mismo jugador (ej. Over 20.5 en vez de 26.5).
+# La probabilidad de la linea alterna sale de:
+#  - el mercado de la linea principal (sin comision), movido con una curva normal
+#    que usa la dispersion de los ultimos partidos del jugador, y
+#  - las veces que el jugador paso esa linea alterna en sus ultimos partidos.
+# Sin momio real de la linea alterna no es pick: solo decimos el momio minimo para que tenga valor.
+
+PASO_LINEA = {"Puntos": 2, "Rebotes": 1, "Asistencias": 1, "Triples": 1, "Pts + Reb + Ast": 3,
+              "Puntos + Asistencias": 2, "Puntos + Rebotes": 2, "Recepciones": 1,
+              "Yardas por pase": 15, "Yardas por tierra": 10, "Yardas por recepcion": 10}
+
+ESCALERA_MIN = 0.65   # solo mostramos lineas alternas con 65% o mas
+ESCALERA_MAX = 0.93   # arriba de esto el momio ya no vale la pena
+
+
+def inversa_normal(p):
+    # Busqueda binaria: z tal que la normal estandar acumulada da p
+    a, b = -6.0, 6.0
+    for _ in range(80):
+        m = (a + b) / 2
+        if 0.5 * (1 + math.erf(m / math.sqrt(2))) < p:
+            a = m
+        else:
+            b = m
+    return (a + b) / 2
+
+
+def desviacion(valores, linea):
+    n = len(valores)
+    prom = sum(valores) / n
+    var = sum((v - prom) ** 2 for v in valores) / max(1, n - 1)
+    # Piso: al menos 15% de la linea (muestras chicas engañan)
+    return max(math.sqrt(var), 0.15 * linea, 0.8)
+
+
+def mercado_en_linea(c, nueva):
+    # Probabilidad del mercado movida a otra linea, del mismo lado que c["lado"]
+    s = desviacion(c["valores"], c["linea"])
+    p_over = c["p_mercado"] if c["lado"] == "Over" else 1 - c["p_mercado"]
+    p_over = limitar(p_over, 0.03, 0.97)
+    media = c["linea"] + s * inversa_normal(p_over)   # la media que implica el mercado
+    p = normal_mayor(nueva, media, s)
+    return p if c["lado"] == "Over" else 1 - p
+
+
+def americano_de_prob(p):
+    if p >= 0.5:
+        return -int(round(100 * p / (1 - p)))
+    return int(round(100 * (1 - p) / p))
+
+
+def alterna(c, nueva, momio=None, casa=None):
+    # Arma y evalua un candidato con otra linea del mismo jugador
+    alt = dict(c)
+    for k in ["razones", "duelo", "aciertos", "prob", "ventaja", "score", "nivel", "publicar"]:
+        alt.pop(k, None)
+    alt["linea"] = nueva
+    alt["pick"] = c["jugador"] + " " + c["lado"] + " " + str(nueva)
+    alt["p_mercado"] = mercado_en_linea(c, nueva)
+    alt["mercado_texto"] = ("Mercado estimado: la linea principal (" + str(c["linea"]) + ") movida a " + str(nueva) +
+                            " con la dispersion de sus ultimos partidos da " + pct(alt["p_mercado"]))
+    alt["casas"] = 1
+    alt["dos_lados"] = False
+    alt["linea_principal"] = c["linea"]
+    alt["momio"] = momio if momio is not None else -110
+    if casa:
+        alt["casa"] = casa
+    return evaluar(alt)
+
+
+def escalera(c):
+    # Lineas mas faciles: Over -> bajar la linea; Under -> subirla
+    paso = PASO_LINEA.get(c.get("mercado"))
+    if not paso or not c.get("valores"):
+        return []
+    salida = []
+    signo = -1 if c["lado"] == "Over" else 1
+    for k in range(1, 5):
+        nueva = c["linea"] + signo * k * paso
+        if nueva <= 0:
+            break
+        a = alterna(c, nueva)
+        p = a["prob"]
+        if p > ESCALERA_MAX:
+            break
+        if p >= ESCALERA_MIN:
+            salida.append({"linea": nueva, "pick": a["pick"], "prob": round(p * 100, 1),
+                           "aciertos": a["aciertos"], "partidos": len(c["valores"]),
+                           "momio_minimo": americano_de_prob(p - VENTAJA_MINIMA)})
+    return salida
 
 
 # ---------- Ayuda para comparar nombres de equipos ----------

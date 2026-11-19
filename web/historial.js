@@ -1,5 +1,5 @@
 window.HISTORIAL = {
- "actualizado": "2026-11-19 15:59",
+ "actualizado": "2026-11-19 16:44",
  "total": {
   "ganados": 6,
   "perdidos": 5,
@@ -9,8 +9,8 @@ window.HISTORIAL = {
   "roi": 16.6,
   "prob_promedio": 64.5
  },
- "pendientes": 18,
- "publicados": 29,
+ "pendientes": 25,
+ "publicados": 36,
  "serie": [
   {
    "fecha": "2026-11-18",

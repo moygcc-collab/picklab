@@ -46,3 +46,8 @@ En `edicion.py` hay dos listas:
 - `ULTIMO_DUELO`: por partido (la clave es el `evento` del pick, ej. `"cha_lal"` o `"nfl_LV_DEN"`): fecha, liga, marcador `[[visitante, puntos], [local, puntos]]`, detalle, partidos anteriores y fuente.
 - `ULTIMO_DUELO_JUGADOR`: por jugador: su ultimo partido contra el rival de hoy (pts, reb, ast, tri, min).
 Al correr `python edicion.py` se calcula solo si el pick de hoy hubiera pegado en ese partido y la pagina lo muestra en cada pick. Es informacion extra: no cambia la probabilidad del modelo.
+
+## Props de jugadores y "Baja la linea" (Draftea)
+- En `edicion.py` van `PROPS_NBA` y `PROPS_NFL` (yardas por pase, por tierra, por recepcion, recepciones). Se puede poner el momio de varias casas con la misma linea: el motor usa el consenso sin comision y el mejor precio.
+- **Baja la linea:** para cada prop, `motor.escalera()` calcula que tan seguro es bajar la linea (Over) o subirla (Under): mercado de la linea principal movido con la dispersion de sus ultimos partidos + cuantas veces la paso. Como no hay momio real de esa linea, la pagina NO lo cuenta como pick: solo muestra el **momio minimo** que tiene que pagar tu casa para que tenga valor (3% de ventaja).
+- **Draftea:** si ves una linea alterna con su momio, pegala en `DRAFTEA` como `["Jalen Brunson", "Puntos", "Over", 22.5, -250]`. El motor la evalua con las mismas reglas (55%, 3% de ventaja, nivel A o B) y, si pasa, sale como pick con casa Draftea y entra al historial.

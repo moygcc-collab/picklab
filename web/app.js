@@ -195,6 +195,34 @@ function tarjetaPick(p) {
 }
 
 
+// ---------- BAJA LA LINEA (lineas alternas para Draftea) ----------
+
+function tarjetaEscalera(e) {
+  var html = '<div class="tarjeta"' + estiloDeporte(e.grupo) + '>' +
+    '<span style="display:flex;justify-content:space-between;gap:8px"><span class="etiqueta deporte">' + icono(e.grupo, 14) + esc(e.grupo) + " - " + esc(e.mercado) + '</span><span class="gris" style="font-size:13px">' + fecha(e.fecha) + "</span></span>" +
+    '<span><b style="font-family:Space Grotesk,sans-serif;font-size:19px">' + esc(e.jugador) + '</b><br><span class="gris" style="font-size:13px">' + esc(e.partido) + "</span></span>" +
+    '<span class="gris" style="font-size:13px">Linea principal: ' + esc(e.lado) + " " + e.linea + " (" + momio(e.momio) + " en " + esc(e.casa) + ") - promedia " + e.promedio + "</span>" +
+    '<div class="escalera">';
+  e.pasos.forEach(function (p) {
+    html += '<div class="escalon"><b>' + esc(e.lado) + " " + p.linea + "</b>" +
+      '<span class="mono" style="color:var(--c)">' + p.prob + "%</span>" +
+      '<span class="gris">' + p.aciertos + "/" + p.partidos + "</span>" +
+      '<span class="mono">min ' + momio(p.momio_minimo) + "</span></div>";
+  });
+  return html + "</div></div>";
+}
+
+function bloqueEscalera(lista, maximo, titulo) {
+  if (!lista || lista.length === 0) return "";
+  var html = '<section id="escalera"><div class="titulo"><span class="sobretitulo" style="--c:#C6F432">Para Draftea</span><h2>' + titulo + "</h2>" +
+    "<p>Si tu casa te deja bajar (o subir) la linea, aqui esta que tan seguro queda cada jugador. " +
+    "La probabilidad sale del mercado de la linea principal + sus ultimos partidos. " +
+    "<b>No es pick todavia:</b> solo tiene valor si te pagan el momio minimo (min) o mejor. Ej. si dice min -300, un -250 si vale; un -400 no.</p></div><div class=\"rejilla\">";
+  lista.slice(0, maximo).forEach(function (e) { html += tarjetaEscalera(e); });
+  return html + "</div></section>";
+}
+
+
 // ---------- ULTIMO ENFRENTAMIENTO ----------
 
 function fechaCorta(iso) {
@@ -440,6 +468,9 @@ function pintarInicio() {
   });
   html += "</div></div></section>";
 
+  // Lineas alternas
+  html += bloqueEscalera(D.escalera, 12, "Baja la linea");
+
   // Historial (resumen)
   html += '<section id="historial_inicio"><div class="titulo"><span class="sobretitulo" style="--c:#8B5CF6">Transparencia</span><h2>Como nos ha ido</h2><p>Todos los picks publicados, ganados y perdidos. Sin borrar nada.</p></div>' + bloqueHistorial(false) + "</section>";
 
@@ -594,6 +625,8 @@ function pintarDeporte(grupo) {
     }
   }
   html += "</section>";
+
+  html += bloqueEscalera((D.escalera || []).filter(function (e) { return e.grupo === grupo; }), 40, "Baja la linea en " + nombreGrupo(grupo));
 
   var racha = jugadoresEnRacha(todos, 8);
   if (racha.length > 0) {

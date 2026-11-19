@@ -192,6 +192,24 @@
   "lado": "Under"
  },
  {
+  "clave": "2026-11-20 | Knicks @ Timberwolves | Ayo Dosunmu Over 17.5",
+  "edicion": "2026-11-19",
+  "fecha": "2026-11-20T01:00:00Z",
+  "grupo": "NBA",
+  "liga": "NBA",
+  "tipo": "Props",
+  "partido": "Knicks @ Timberwolves",
+  "pick": "Ayo Dosunmu Over 17.5",
+  "momio": -112,
+  "unidades": 1.5,
+  "prob": 65.3,
+  "ventaja": 12.4,
+  "resultado": null,
+  "nivel": "A",
+  "score": 84,
+  "lado": "Over"
+ },
+ {
   "clave": "2026-11-20 | Knicks @ Timberwolves | Jalen Brunson Over 26.5",
   "edicion": "2026-11-19",
   "fecha": "2026-11-20T01:00:00Z",
@@ -228,6 +246,24 @@
   "lado": "Over"
  },
  {
+  "clave": "2026-11-20 | Knicks @ Timberwolves | LaMelo Ball Over 18.5",
+  "edicion": "2026-11-19",
+  "fecha": "2026-11-20T01:00:00Z",
+  "grupo": "NBA",
+  "liga": "NBA",
+  "tipo": "Props",
+  "partido": "Knicks @ Timberwolves",
+  "pick": "LaMelo Ball Over 18.5",
+  "momio": -125,
+  "unidades": 0.5,
+  "prob": 60.8,
+  "ventaja": 5.2,
+  "resultado": null,
+  "nivel": "B",
+  "score": 64,
+  "lado": "Over"
+ },
+ {
   "clave": "2026-11-20 | Colts @ Texans | Colts +12.5",
   "edicion": "2026-11-17",
   "fecha": "2026-11-20T01:15:00Z",
@@ -241,6 +277,24 @@
   "prob": 59.6,
   "ventaja": 6.7,
   "resultado": null
+ },
+ {
+  "clave": "2026-11-20 | Colts @ Texans | Jonathan Taylor Over 49.5",
+  "edicion": "2026-11-19",
+  "fecha": "2026-11-20T01:15:00Z",
+  "grupo": "NFL",
+  "liga": "NFL",
+  "tipo": "Props",
+  "partido": "Colts @ Texans",
+  "pick": "Jonathan Taylor Over 49.5",
+  "momio": -114,
+  "unidades": 1.0,
+  "prob": 59.2,
+  "ventaja": 5.9,
+  "resultado": null,
+  "nivel": "B",
+  "score": 57,
+  "lado": "Over"
  },
  {
   "clave": "2026-11-20 | Colts @ Texans | Over 44.5",
@@ -357,6 +411,24 @@
   "resultado": null
  },
  {
+  "clave": "2026-11-22 | Cardinals @ Chiefs | Trey McBride Over 48.5",
+  "edicion": "2026-11-19",
+  "fecha": "2026-11-22T18:00:00Z",
+  "grupo": "NFL",
+  "liga": "NFL",
+  "tipo": "Props",
+  "partido": "Cardinals @ Chiefs",
+  "pick": "Trey McBride Over 48.5",
+  "momio": -135,
+  "unidades": 1.0,
+  "prob": 63.0,
+  "ventaja": 5.5,
+  "resultado": null,
+  "nivel": "B",
+  "score": 65,
+  "lado": "Over"
+ },
+ {
   "clave": "2026-11-22 | Dolphins @ Bills | Dolphins +16.5",
   "edicion": "2026-11-17",
   "fecha": "2026-11-22T18:00:00Z",
@@ -432,6 +504,24 @@
   "resultado": null
  },
  {
+  "clave": "2026-11-22 | Jaguars @ Giants | Cam Skattebo Over 54.5",
+  "edicion": "2026-11-19",
+  "fecha": "2026-11-22T21:25:00Z",
+  "grupo": "NFL",
+  "liga": "NFL",
+  "tipo": "Props",
+  "partido": "Jaguars @ Giants",
+  "pick": "Cam Skattebo Over 54.5",
+  "momio": -125,
+  "unidades": 1.0,
+  "prob": 62.5,
+  "ventaja": 6.9,
+  "resultado": null,
+  "nivel": "B",
+  "score": 67,
+  "lado": "Over"
+ },
+ {
   "clave": "2026-11-22 | Raiders @ Broncos | Over 40.5",
   "edicion": "2026-11-17",
   "fecha": "2026-11-22T21:25:00Z",
@@ -460,5 +550,41 @@
   "prob": 57.6,
   "ventaja": 5.7,
   "resultado": null
+ },
+ {
+  "clave": "2026-11-23 | Vikings @ 49ers (Estadio Banorte, CDMX) | Justin Jefferson Under 82.5",
+  "edicion": "2026-11-19",
+  "fecha": "2026-11-23T01:20:00Z",
+  "grupo": "NFL",
+  "liga": "NFL",
+  "tipo": "Props",
+  "partido": "Vikings @ 49ers (Estadio Banorte, CDMX)",
+  "pick": "Justin Jefferson Under 82.5",
+  "momio": -114,
+  "unidades": 1.5,
+  "prob": 64.4,
+  "ventaja": 11.1,
+  "resultado": null,
+  "nivel": "A",
+  "score": 80,
+  "lado": "Under"
+ },
+ {
+  "clave": "2026-11-24 | Bengals @ Commanders | Joe Burrow Under 300.5",
+  "edicion": "2026-11-19",
+  "fecha": "2026-11-24T01:15:00Z",
+  "grupo": "NFL",
+  "liga": "NFL",
+  "tipo": "Props",
+  "partido": "Bengals @ Commanders",
+  "pick": "Joe Burrow Under 300.5",
+  "momio": -114,
+  "unidades": 0.5,
+  "prob": 57.4,
+  "ventaja": 4.1,
+  "resultado": null,
+  "nivel": "B",
+  "score": 56,
+  "lado": "Under"
  }
 ]
