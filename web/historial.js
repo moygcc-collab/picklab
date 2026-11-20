@@ -1,16 +1,16 @@
 window.HISTORIAL = {
- "actualizado": "2026-11-19 16:44",
+ "actualizado": "2026-11-20 15:56",
  "total": {
   "ganados": 6,
-  "perdidos": 5,
+  "perdidos": 13,
   "empates": 0,
-  "acierto": 54.5,
-  "unidades": 1.9,
-  "roi": 16.6,
-  "prob_promedio": 64.5
+  "acierto": 31.6,
+  "unidades": -5.1,
+  "roi": -27.5,
+  "prob_promedio": 62.8
  },
- "pendientes": 25,
- "publicados": 36,
+ "pendientes": 22,
+ "publicados": 41,
  "serie": [
   {
    "fecha": "2026-11-18",
@@ -55,60 +55,265 @@ window.HISTORIAL = {
   {
    "fecha": "2026-11-19",
    "u": 1.9
+  },
+  {
+   "fecha": "2026-11-20",
+   "u": 0.9
+  },
+  {
+   "fecha": "2026-11-20",
+   "u": -0.6
+  },
+  {
+   "fecha": "2026-11-20",
+   "u": -1.6
+  },
+  {
+   "fecha": "2026-11-20",
+   "u": -2.6
+  },
+  {
+   "fecha": "2026-11-20",
+   "u": -3.1
+  },
+  {
+   "fecha": "2026-11-20",
+   "u": -3.6
+  },
+  {
+   "fecha": "2026-11-20",
+   "u": -4.6
+  },
+  {
+   "fecha": "2026-11-20",
+   "u": -5.1
   }
  ],
  "por_grupo": {
   "NBA": {
    "ganados": 6,
-   "perdidos": 5,
+   "perdidos": 10,
    "empates": 0,
-   "acierto": 54.5,
-   "unidades": 1.9,
-   "roi": 16.6,
-   "prob_promedio": 64.5
+   "acierto": 37.5,
+   "unidades": -3.1,
+   "roi": -18.8,
+   "prob_promedio": 63.7
+  },
+  "NFL": {
+   "ganados": 0,
+   "perdidos": 3,
+   "empates": 0,
+   "acierto": 0.0,
+   "unidades": -2.0,
+   "roi": -100.0,
+   "prob_promedio": 58.3
   }
  },
  "por_tipo": {
   "Props": {
    "ganados": 6,
-   "perdidos": 5,
+   "perdidos": 11,
    "empates": 0,
-   "acierto": 54.5,
-   "unidades": 1.9,
-   "roi": 16.6,
-   "prob_promedio": 64.5
+   "acierto": 35.3,
+   "unidades": -4.1,
+   "roi": -23.4,
+   "prob_promedio": 63.4
+  },
+  "Spreads": {
+   "ganados": 0,
+   "perdidos": 1,
+   "empates": 0,
+   "acierto": 0.0,
+   "unidades": -0.5,
+   "roi": -100.0,
+   "prob_promedio": 59.6
+  },
+  "Totales": {
+   "ganados": 0,
+   "perdidos": 1,
+   "empates": 0,
+   "acierto": 0.0,
+   "unidades": -0.5,
+   "roi": -100.0,
+   "prob_promedio": 56.1
   }
  },
  "por_nivel": {
   "-": {
    "ganados": 4,
-   "perdidos": 4,
+   "perdidos": 6,
    "empates": 0,
-   "acierto": 50.0,
-   "unidades": 0.71,
-   "roi": 8.8,
-   "prob_promedio": 65.5
+   "acierto": 40.0,
+   "unidades": -0.29,
+   "roi": -3.3,
+   "prob_promedio": 63.9
   },
   "A": {
    "ganados": 1,
-   "perdidos": 0,
+   "perdidos": 2,
    "empates": 0,
-   "acierto": 100.0,
-   "unidades": 1.33,
-   "roi": 88.5,
-   "prob_promedio": 65.2
+   "acierto": 33.3,
+   "unidades": -1.17,
+   "roi": -29.3,
+   "prob_promedio": 63.7
   },
   "B": {
    "ganados": 1,
-   "perdidos": 1,
+   "perdidos": 5,
    "empates": 0,
-   "acierto": 50.0,
-   "unidades": -0.13,
-   "roi": -6.5,
-   "prob_promedio": 60.2
+   "acierto": 16.7,
+   "unidades": -3.63,
+   "roi": -66.0,
+   "prob_promedio": 60.6
   }
  },
  "calificados": [
+  {
+   "clave": "2026-11-20 | Colts @ Texans | Colts +12.5",
+   "edicion": "2026-11-17",
+   "fecha": "2026-11-20T01:15:00Z",
+   "grupo": "NFL",
+   "liga": "NFL",
+   "tipo": "Spreads",
+   "partido": "Colts @ Texans",
+   "pick": "Colts +12.5",
+   "momio": -112,
+   "unidades": 0.5,
+   "prob": 59.6,
+   "ventaja": 6.7,
+   "resultado": "P",
+   "neto": -0.5
+  },
+  {
+   "clave": "2026-11-20 | Colts @ Texans | Jonathan Taylor Over 49.5",
+   "edicion": "2026-11-19",
+   "fecha": "2026-11-20T01:15:00Z",
+   "grupo": "NFL",
+   "liga": "NFL",
+   "tipo": "Props",
+   "partido": "Colts @ Texans",
+   "pick": "Jonathan Taylor Over 49.5",
+   "momio": -114,
+   "unidades": 1.0,
+   "prob": 59.2,
+   "ventaja": 5.9,
+   "resultado": "P",
+   "nivel": "B",
+   "score": 57,
+   "lado": "Over",
+   "neto": -1.0
+  },
+  {
+   "clave": "2026-11-20 | Colts @ Texans | Over 44.5",
+   "edicion": "2026-11-17",
+   "fecha": "2026-11-20T01:15:00Z",
+   "grupo": "NFL",
+   "liga": "NFL",
+   "tipo": "Totales",
+   "partido": "Colts @ Texans",
+   "pick": "Over 44.5",
+   "momio": -105,
+   "unidades": 0.5,
+   "prob": 56.1,
+   "ventaja": 4.9,
+   "resultado": "P",
+   "neto": -0.5
+  },
+  {
+   "clave": "2026-11-20 | Clippers @ Spurs | Stephon Castle Under 17.5",
+   "edicion": "2026-11-19",
+   "fecha": "2026-11-20T01:00:00Z",
+   "grupo": "NBA",
+   "liga": "NBA",
+   "tipo": "Props",
+   "partido": "Clippers @ Spurs",
+   "pick": "Stephon Castle Under 17.5",
+   "momio": -108,
+   "unidades": 1.0,
+   "prob": 59.9,
+   "ventaja": 8.0,
+   "resultado": "P",
+   "nivel": "B",
+   "score": 61,
+   "lado": "Under",
+   "neto": -1.0
+  },
+  {
+   "clave": "2026-11-20 | Knicks @ Timberwolves | Ayo Dosunmu Over 17.5",
+   "edicion": "2026-11-19",
+   "fecha": "2026-11-20T01:00:00Z",
+   "grupo": "NBA",
+   "liga": "NBA",
+   "tipo": "Props",
+   "partido": "Knicks @ Timberwolves",
+   "pick": "Ayo Dosunmu Over 17.5",
+   "momio": -112,
+   "unidades": 1.5,
+   "prob": 65.3,
+   "ventaja": 12.4,
+   "resultado": "P",
+   "nivel": "A",
+   "score": 84,
+   "lado": "Over",
+   "neto": -1.5
+  },
+  {
+   "clave": "2026-11-20 | Knicks @ Timberwolves | Jalen Brunson Over 26.5",
+   "edicion": "2026-11-19",
+   "fecha": "2026-11-20T01:00:00Z",
+   "grupo": "NBA",
+   "liga": "NBA",
+   "tipo": "Props",
+   "partido": "Knicks @ Timberwolves",
+   "pick": "Jalen Brunson Over 26.5",
+   "momio": -106,
+   "unidades": 1.0,
+   "prob": 60.6,
+   "ventaja": 9.1,
+   "resultado": "P",
+   "nivel": "A",
+   "score": 71,
+   "lado": "Over",
+   "neto": -1.0
+  },
+  {
+   "clave": "2026-11-20 | Knicks @ Timberwolves | Karl-Anthony Towns Over 12.5",
+   "edicion": "2026-11-19",
+   "fecha": "2026-11-20T01:00:00Z",
+   "grupo": "NBA",
+   "liga": "NBA",
+   "tipo": "Props",
+   "partido": "Knicks @ Timberwolves",
+   "pick": "Karl-Anthony Towns Over 12.5",
+   "momio": -136,
+   "unidades": 1.0,
+   "prob": 63.1,
+   "ventaja": 5.4,
+   "resultado": "P",
+   "nivel": "B",
+   "score": 65,
+   "lado": "Over",
+   "neto": -1.0
+  },
+  {
+   "clave": "2026-11-20 | Knicks @ Timberwolves | LaMelo Ball Over 18.5",
+   "edicion": "2026-11-19",
+   "fecha": "2026-11-20T01:00:00Z",
+   "grupo": "NBA",
+   "liga": "NBA",
+   "tipo": "Props",
+   "partido": "Knicks @ Timberwolves",
+   "pick": "LaMelo Ball Over 18.5",
+   "momio": -125,
+   "unidades": 0.5,
+   "prob": 60.8,
+   "ventaja": 5.2,
+   "resultado": "P",
+   "nivel": "B",
+   "score": 64,
+   "lado": "Over",
+   "neto": -0.5
+  },
   {
    "clave": "2026-11-19 | Jazz @ Lakers | Luka Doncic Over 36.5",
    "edicion": "2026-11-18",

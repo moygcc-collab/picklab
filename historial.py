@@ -41,8 +41,11 @@ def guardar_edicion(picks, edicion):
     lista = cargar()
     claves_nuevas = [clave_de(p) for p in picks]
 
+    # Solo se quitan los que todavia no empiezan: lo que ya se jugo se queda para calificarlo
+    ahora = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
     lista = [h for h in lista
-             if not (h["edicion"] == edicion and h["resultado"] is None and h["clave"] not in claves_nuevas)]
+             if not (h["edicion"] == edicion and h["resultado"] is None and h["clave"] not in claves_nuevas
+                     and h["fecha"] > ahora)]
 
     por_clave = {}
     for h in lista:

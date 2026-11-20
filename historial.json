@@ -186,7 +186,7 @@
   "unidades": 1.0,
   "prob": 59.9,
   "ventaja": 8.0,
-  "resultado": null,
+  "resultado": "P",
   "nivel": "B",
   "score": 61,
   "lado": "Under"
@@ -204,7 +204,7 @@
   "unidades": 1.5,
   "prob": 65.3,
   "ventaja": 12.4,
-  "resultado": null,
+  "resultado": "P",
   "nivel": "A",
   "score": 84,
   "lado": "Over"
@@ -222,7 +222,7 @@
   "unidades": 1.0,
   "prob": 60.6,
   "ventaja": 9.1,
-  "resultado": null,
+  "resultado": "P",
   "nivel": "A",
   "score": 71,
   "lado": "Over"
@@ -240,7 +240,7 @@
   "unidades": 1.0,
   "prob": 63.1,
   "ventaja": 5.4,
-  "resultado": null,
+  "resultado": "P",
   "nivel": "B",
   "score": 65,
   "lado": "Over"
@@ -258,7 +258,7 @@
   "unidades": 0.5,
   "prob": 60.8,
   "ventaja": 5.2,
-  "resultado": null,
+  "resultado": "P",
   "nivel": "B",
   "score": 64,
   "lado": "Over"
@@ -276,7 +276,7 @@
   "unidades": 0.5,
   "prob": 59.6,
   "ventaja": 6.7,
-  "resultado": null
+  "resultado": "P"
  },
  {
   "clave": "2026-11-20 | Colts @ Texans | Jonathan Taylor Over 49.5",
@@ -291,7 +291,7 @@
   "unidades": 1.0,
   "prob": 59.2,
   "ventaja": 5.9,
-  "resultado": null,
+  "resultado": "P",
   "nivel": "B",
   "score": 57,
   "lado": "Over"
@@ -309,7 +309,7 @@
   "unidades": 0.5,
   "prob": 56.1,
   "ventaja": 4.9,
-  "resultado": null
+  "resultado": "P"
  },
  {
   "clave": "2026-11-20 | Bayern vs Koln | Under 4.5",
@@ -328,6 +328,96 @@
   "nivel": "B",
   "score": 68,
   "lado": "Under"
+ },
+ {
+  "clave": "2026-11-21 | Pacers @ Cavaliers | Pascal Siakam Under 6.5",
+  "edicion": "2026-11-20",
+  "fecha": "2026-11-21T00:30:00Z",
+  "grupo": "NBA",
+  "liga": "NBA",
+  "tipo": "Props",
+  "partido": "Pacers @ Cavaliers",
+  "pick": "Pascal Siakam Under 6.5",
+  "momio": 100,
+  "unidades": 1.0,
+  "prob": 58.9,
+  "ventaja": 8.9,
+  "resultado": null,
+  "nivel": "B",
+  "score": 62,
+  "lado": "Under"
+ },
+ {
+  "clave": "2026-11-21 | Wizards @ Bulls | Josh Giddey Under 13.5",
+  "edicion": "2026-11-20",
+  "fecha": "2026-11-21T01:00:00Z",
+  "grupo": "NBA",
+  "liga": "NBA",
+  "tipo": "Props",
+  "partido": "Wizards @ Bulls",
+  "pick": "Josh Giddey Under 13.5",
+  "momio": -115,
+  "unidades": 1.0,
+  "prob": 60.2,
+  "ventaja": 6.7,
+  "resultado": null,
+  "nivel": "B",
+  "score": 67,
+  "lado": "Under"
+ },
+ {
+  "clave": "2026-11-21 | Wizards @ Bulls | Trae Young Under 9.5",
+  "edicion": "2026-11-20",
+  "fecha": "2026-11-21T01:00:00Z",
+  "grupo": "NBA",
+  "liga": "NBA",
+  "tipo": "Props",
+  "partido": "Wizards @ Bulls",
+  "pick": "Trae Young Under 9.5",
+  "momio": -115,
+  "unidades": 1.0,
+  "prob": 60.2,
+  "ventaja": 6.7,
+  "resultado": null,
+  "nivel": "B",
+  "score": 67,
+  "lado": "Under"
+ },
+ {
+  "clave": "2026-11-21 | Rockets @ Nuggets | Jamal Murray Over 22.5",
+  "edicion": "2026-11-20",
+  "fecha": "2026-11-21T03:00:00Z",
+  "grupo": "NBA",
+  "liga": "NBA",
+  "tipo": "Props",
+  "partido": "Rockets @ Nuggets",
+  "pick": "Jamal Murray Over 22.5",
+  "momio": -120,
+  "unidades": 1.0,
+  "prob": 60.6,
+  "ventaja": 6.1,
+  "resultado": null,
+  "nivel": "B",
+  "score": 66,
+  "lado": "Over"
+ },
+ {
+  "clave": "2026-11-21 | Rockets @ Nuggets | Kevin Durant Over 20.5",
+  "edicion": "2026-11-20",
+  "fecha": "2026-11-21T03:00:00Z",
+  "grupo": "NBA",
+  "liga": "NBA",
+  "tipo": "Props",
+  "partido": "Rockets @ Nuggets",
+  "pick": "Kevin Durant Over 20.5",
+  "momio": -120,
+  "unidades": 1.0,
+  "prob": 60.6,
+  "ventaja": 6.1,
+  "resultado": null,
+  "nivel": "B",
+  "score": 66,
+  "lado": "Over"
  },
  {
   "clave": "2026-11-21 | Newcastle vs Arsenal | Under 2.5",

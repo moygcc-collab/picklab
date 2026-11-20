@@ -24,4 +24,13 @@ RESULTADOS = {
     "2026-11-19 | Bulls @ Nets | Julius Randle Under 22.5": "G",        # 17 puntos
     "2026-11-19 | Hawks @ Thunder | Shai Gilgeous-Alexander Under 5.5": "G",  # 3 asistencias
     "2026-11-19 | Jazz @ Lakers | Luka Doncic Over 36.5": "P",          # 29 puntos
+    # Jueves 19 nov (ESPN, CBS Sports, NBA.com, AP, Yahoo)
+    "2026-11-20 | Clippers @ Spurs | Stephon Castle Under 17.5": "P",          # 21 puntos
+    "2026-11-20 | Knicks @ Timberwolves | Ayo Dosunmu Over 17.5": "P",         # 6 puntos
+    "2026-11-20 | Knicks @ Timberwolves | Jalen Brunson Over 26.5": "P",       # 21 puntos
+    "2026-11-20 | Knicks @ Timberwolves | Karl-Anthony Towns Over 12.5": "P",  # 12 rebotes
+    "2026-11-20 | Knicks @ Timberwolves | LaMelo Ball Over 18.5": "P",         # 15 puntos
+    "2026-11-20 | Colts @ Texans | Colts +12.5": "P",                          # Texans 26 - 3
+    "2026-11-20 | Colts @ Texans | Jonathan Taylor Over 49.5": "P",            # 21 yardas
+    "2026-11-20 | Colts @ Texans | Over 44.5": "P",                            # 29 puntos
 }
