@@ -33,4 +33,13 @@ RESULTADOS = {
     "2026-11-20 | Colts @ Texans | Colts +12.5": "P",                          # Texans 26 - 3
     "2026-11-20 | Colts @ Texans | Jonathan Taylor Over 49.5": "P",            # 21 yardas
     "2026-11-20 | Colts @ Texans | Over 44.5": "P",                            # 29 puntos
+    # Viernes 20 y sabado 21 nov (ESPN, NBA.com, CBS Sports, SI, Yahoo, beIN)
+    "2026-11-21 | Pacers @ Cavaliers | Pascal Siakam Under 6.5": "P",          # 7 rebotes
+    "2026-11-21 | Wizards @ Bulls | Josh Giddey Under 13.5": "G",              # 2 puntos
+    "2026-11-21 | Wizards @ Bulls | Trae Young Under 9.5": "G",                # 5 asistencias
+    "2026-11-21 | Rockets @ Nuggets | Jamal Murray Over 22.5": "P",            # 14 puntos
+    "2026-11-21 | Rockets @ Nuggets | Kevin Durant Over 20.5": "P",            # 16 puntos
+    "2026-11-20 | Bayern vs Koln | Under 4.5": "G",                            # 1-1
+    "2026-11-21 | Schalke vs Stuttgart | Under 3.5": "G",                      # 0-0
+    "2026-11-21 | Newcastle vs Arsenal | Under 2.5": "P",                      # 2-2
 }

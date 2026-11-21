@@ -1,6 +1,6 @@
 # ============================================
 # EDICION DE PICKLAB
-# Edicion: viernes 20 de noviembre de 2026
+# Edicion: sabado 21 de noviembre de 2026
 #
 # Aqui van los datos que se juntan a mano (estadisticas, contexto y, si la API
 # no los trae, momios). La decision de cada pick la toma motor.py.
@@ -17,8 +17,8 @@ import motor
 import api_picks
 import historial
 
-EDICION = "viernes 20 de noviembre"
-FECHA_EDICION = "2026-11-20"  # para el historial (AAAA-MM-DD)
+EDICION = "sabado 21 de noviembre"
+FECHA_EDICION = "2026-11-21"  # para el historial (AAAA-MM-DD)
 
 sin_comision = motor.sin_comision
 
@@ -30,16 +30,12 @@ def texto_linea(punto):
 
 # ---------- NBA: props de esta noche ----------
 
-# Partidos NBA del viernes 20 nov (horas en UTC)
-CHA_ATL = ("cha_atl", "Hornets @ Hawks", "2026-11-21T00:00:00Z")
-IND_CLE = ("ind_cle", "Pacers @ Cavaliers", "2026-11-21T00:30:00Z")
-ORL_BKN = ("orl_bkn", "Magic @ Nets", "2026-11-21T00:30:00Z")
-TOR_DET = ("tor_det", "Raptors @ Pistons", "2026-11-21T00:30:00Z")
-NOP_OKC = ("nop_okc", "Pelicans @ Thunder", "2026-11-21T01:00:00Z")
-WAS_CHI = ("was_chi", "Wizards @ Bulls", "2026-11-21T01:00:00Z")
-PHX_UTA = ("phx_uta", "Suns @ Jazz", "2026-11-21T02:30:00Z")
-HOU_DEN = ("hou_den", "Rockets @ Nuggets", "2026-11-21T03:00:00Z")
-SAC_LAL = ("sac_lal", "Kings @ Lakers", "2026-11-21T03:00:00Z")
+# Partidos NBA del sabado 21 nov (horas en UTC)
+POR_NYK = ("por_nyk", "Trail Blazers @ Knicks", "2026-11-22T00:30:00Z")
+LAC_DAL = ("lac_dal", "Clippers @ Mavericks", "2026-11-22T01:00:00Z")
+MEM_MIN = ("mem_min", "Grizzlies @ Timberwolves", "2026-11-22T01:00:00Z")
+NOP_SAS = ("nop_sas", "Pelicans @ Spurs", "2026-11-22T01:00:00Z")
+BOS_SAC = ("bos_sac", "Celtics @ Kings", "2026-11-22T03:00:00Z")
 
 # jugador, equipo, partido, mercado, linea, momio over, momio under, casa, fuente,
 # ultimos 10 partidos (del mas viejo al mas nuevo, Land of Basketball),
@@ -48,44 +44,46 @@ SAC_LAL = ("sac_lal", "Kings @ Lakers", "2026-11-21T03:00:00Z")
 SAO = "ScoresAndOdds"
 B365 = "bet365"
 PROPS_NBA = [
-    ["Donovan Mitchell", "Cavaliers", IND_CLE, "Puntos", 26.5, -112, -112, B365, SAO,
-     [15, 17, 27, 23, 37, 11, 23, 25, 39, 34]],
-    ["Pascal Siakam", "Pacers", IND_CLE, "Rebotes", 6.5, -125, 100, B365, SAO,
-     [11, 5, 5, 5, 2, 9, 8, 3, 2, 4]],
-    ["Jarrett Allen", "Cavaliers", IND_CLE, "Rebotes", 9.5, -112, -112, B365, SAO,
-     [12, 8, 11, 6, 1, 7, 14, 8, 14, 9]],
-    ["Cade Cunningham", "Pistons", TOR_DET, "Asistencias", 7.5, -115, -110, B365, SAO,
-     [8, 7, 4, 7, 11, 8, 7, 11, 8, 6]],
-    ["Scottie Barnes", "Raptors", TOR_DET, "Puntos", 23.5, -112, -112, B365, SAO,
-     [23, 28, 0, 28, 41, 29, 22, 17, 30, 20]],
-    ["Franz Wagner", "Magic", ORL_BKN, "Puntos", 24.5, -105, -120, B365, SAO,
-     [26, 14, 24, 15, 30, 33, 38, 35, 21, 27]],
-    ["Michael Porter Jr.", "Nets", ORL_BKN, "Triples", 2.5, -150, 120, B365, SAO,
-     [6, 2, 3, 4, 4, 3, 4, 4, 2, 1]],
-    ["Jalen Johnson", "Hawks", CHA_ATL, "Rebotes", 9.5, -125, 100, B365, SAO,
-     [9, 9, 9, 8, 7, 7, 7, 11, 11, 12]],
-    ["Brandon Miller", "Hornets", CHA_ATL, "Triples", 2.5, -140, 110, B365, SAO,
-     [3, 5, 3, 3, 5, 3, 1, 0, 1, 5]],
-    ["Trae Young", "Wizards", WAS_CHI, "Asistencias", 9.5, -110, -115, B365, SAO,
-     [9, 6, 10, 3, 7, 4, 14, 8, 12, 8]],
-    ["Josh Giddey", "Bulls", WAS_CHI, "Puntos", 13.5, -110, -115, B365, SAO,
-     [10, 13, 13, 10, 19, 9, 15, 8, 4, 18]],
-    ["Ajay Mitchell", "Thunder", NOP_OKC, "Puntos", 18.5, -110, -115, B365, SAO,
-     [30, 29, 6, 20, 23, 35, 12, 14, 14, 13]],
-    ["Jeremiah Fears", "Pelicans", NOP_OKC, "Puntos", 16.5, -112, -112, B365, SAO,
-     [12, 19, 24, 25, 11, 14, 18, 13, 19, 16]],
-    ["Darryn Peterson", "Jazz", PHX_UTA, "Pts + Reb + Ast", 27.5, -112, -112, B365, SAO,
-     [23, 16, 28, 36, 33, 31, 37, 26, 20, 15]],
-    ["Jalen Green", "Suns", PHX_UTA, "Puntos", 14.5, 100, -125, B365, SAO,
-     [11, 22, 6, 16, 6, 13, 12, 9, 16, 18]],
-    ["Nikola Jokic", "Nuggets", HOU_DEN, "Rebotes", 11.5, -115, -110, B365, SAO,
-     [13, 7, 9, 10, 13, 16, 11, 8, 15, 8]],
-    ["Kevin Durant", "Rockets", HOU_DEN, "Puntos", 20.5, -120, -105, B365, SAO,
-     [14, 12, 21, 21, 23, 20, 22, 25, 22, 21]],
-    ["Jamal Murray", "Nuggets", HOU_DEN, "Puntos", 22.5, -120, -105, B365, SAO,
-     [23, 39, 35, 14, 16, 38, 30, 23, 28, 21]],
-    ["Domantas Sabonis", "Kings", SAC_LAL, "Rebotes", 12.5, -110, -115, B365, SAO,
-     [14, 15, 14, 7, 17, 12, 2, 12, 13, 13]],
+    ["Jalen Brunson", "Knicks", POR_NYK, "Puntos", 28.5, -105, -120, B365, SAO,
+     [24, 19, 33, 31, 23, 27, 33, 28, 31, 21]],
+    ["Damian Lillard", "Trail Blazers", POR_NYK, "Triples", 3.5, 105, -135, B365, SAO,
+     [1, 2, 4, 2, 4, 2, 6, 2, 5, 5]],
+    ["Donovan Clingan", "Trail Blazers", POR_NYK, "Rebotes", 10.5, -115, -110, B365, SAO,
+     [18, 11, 11, 5, 13, 12, 11, 10, 12, 13]],
+    ["Josh Hart", "Knicks", POR_NYK, "Rebotes", 6.5, -115, -110, B365, SAO,
+     [8, 4, 8, 6, 6, 4, 5, 5, 4, 6]],
+    ["Cooper Flagg", "Mavericks", LAC_DAL, "Pts + Reb + Ast", 39.5, -112, -112, B365, SAO,
+     [48, 27, 34, 38, 42, 59, 22, 31, 24, 47]],
+    ["Daniel Gafford", "Mavericks", LAC_DAL, "Rebotes", 6.5, 100, -125, B365, SAO,
+     [7, 7, 4, 1, 5, 2, 3, 3, 4, 6]],
+    ["Brook Lopez", "Clippers", LAC_DAL, "Puntos", 13.5, -110, -115, B365, SAO,
+     [13, 7, 12, 20, 20, 8, 26, 7, 23, 23]],
+    ["Max Strus", "Clippers", LAC_DAL, "Triples", 2.5, -105, -120, B365, SAO,
+     [3, 3, 1, 2, 0, 4, 1, 5]],
+    ["Rudy Gobert", "Timberwolves", MEM_MIN, "Rebotes", 10.5, 105, -135, B365, SAO,
+     [13, 10, 11, 11, 15, 6, 10, 15, 4, 7]],
+    ["Jaden McDaniels", "Timberwolves", MEM_MIN, "Puntos", 17.5, -105, -120, B365, SAO,
+     [19, 13, 14, 23, 16, 16, 18, 13, 22, 17]],
+    ["Zach Edey", "Grizzlies", MEM_MIN, "Rebotes", 7.5, -105, -120, B365, SAO,
+     [3, 7, 6, 9, 13, 6, 9, 5, 10, 2]],
+    ["Cedric Coward", "Grizzlies", MEM_MIN, "Pts + Reb + Ast", 28.5, -120, -105, B365, SAO,
+     [22, 36, 19, 13, 30, 27, 39, 32, 28, 27]],
+    ["Zion Williamson", "Pelicans", NOP_SAS, "Puntos", 20.5, -110, -115, B365, SAO,
+     [25, 23, 13, 25, 29, 22, 24, 16, 24, 22]],
+    ["Jeremiah Fears", "Pelicans", NOP_SAS, "Asistencias", 5.5, -112, -112, B365, SAO,
+     [7, 2, 5, 5, 8, 5, 7, 7, 10, 4]],
+    ["Keldon Johnson", "Spurs", NOP_SAS, "Puntos", 11.5, -105, -120, B365, SAO,
+     [15, 4, 3, 10, 4, 10, 18, 11, 4, 10]],
+    ["Paul George", "Celtics", BOS_SAC, "Triples", 3.5, -105, -120, B365, SAO,
+     [1, 2, 3, 5, 2, 5, 6, 1, 5, 1]],
+    ["Neemias Queta", "Celtics", BOS_SAC, "Rebotes", 6.5, -145, 115, B365, SAO,
+     [6, 8, 6, 12, 3, 8, 6, 13, 6, 10]],
+    ["Domantas Sabonis", "Kings", BOS_SAC, "Rebotes", 11.5, -135, 105, B365, SAO,
+     [15, 14, 7, 17, 12, 2, 12, 13, 13, 16]],
+    ["Darius Acuff Jr.", "Kings", BOS_SAC, "Asistencias", 6.5, 102, -130, B365, SAO,
+     [5, 6, 12, 8, 10, 6, 6, 6, 6, 12]],
+    ["Zach LaVine", "Kings", BOS_SAC, "Puntos", 17.5, -110, -115, B365, SAO,
+     [21, 11, 23, 21, 14, 15, 31, 12, 18, 19]],
 ]
 
 # ---------- NFL semana 11: props de jugadores ----------
@@ -161,15 +159,32 @@ NFL_PARTIDOS = [
 
 
 # ---------- NHL de hoy: totales ----------
-# (partidos, goles a favor, goles en contra)  ESPN standings + partidos del miercoles
+# (partidos, goles a favor, goles en contra)  ESPN standings (hasta el 20 nov)
 NHL_EQUIPOS = {
-    "MTL": ("Canadiens", 22, 72, 66), "CAR": ("Hurricanes", 21, 87, 47),
-    "EDM": ("Oilers", 23, 92, 62), "TB": ("Lightning", 21, 79, 61),
-    "ANA": ("Ducks", 22, 85, 85), "COL": ("Avalanche", 22, 86, 68),
+    "VGK": ("Golden Knights", 24, 80, 71), "WPG": ("Jets", 23, 71, 77),
+    "NJ": ("Devils", 22, 82, 64), "STL": ("Blues", 22, 68, 67),
+    "NYI": ("Islanders", 21, 68, 61), "DET": ("Red Wings", 22, 58, 68),
+    "LA": ("Kings", 20, 56, 66), "OTT": ("Senators", 23, 75, 68),
+    "PHI": ("Flyers", 25, 63, 85), "MTL": ("Canadiens", 23, 74, 67),
+    "CBJ": ("Blue Jackets", 20, 50, 65), "TOR": ("Maple Leafs", 24, 75, 86),
+    "WSH": ("Capitals", 20, 67, 76), "BOS": ("Bruins", 22, 76, 56),
+    "ANA": ("Ducks", 23, 85, 89), "UTA": ("Mammoth", 23, 77, 79),
+    "SEA": ("Kraken", 19, 64, 67), "SJ": ("Sharks", 24, 65, 86),
+    "MIN": ("Wild", 24, 87, 52), "VAN": ("Canucks", 24, 67, 105),
 }
 
-# visitante, local, linea, over, under, hora UTC  (PickDawgz; casa no indicada)
-NHL_PARTIDOS = [  # viernes 20 nov: no hay partidos NHL
+# visitante, local, linea, over, under, hora UTC  (PickDawgz; coincide con ScoresAndOdds)
+NHL_PARTIDOS = [
+    ("VGK", "WPG", 6.5, -105, -115, "2026-11-22T00:00:00Z"),
+    ("NJ", "STL", 6.5, 114, -135, "2026-11-22T00:00:00Z"),
+    ("NYI", "DET", 5.5, -135, 114, "2026-11-22T00:00:00Z"),
+    ("LA", "OTT", 5.5, -122, 102, "2026-11-22T00:00:00Z"),
+    ("PHI", "MTL", 5.5, -125, 105, "2026-11-22T00:00:00Z"),
+    ("CBJ", "TOR", 6.5, 105, -125, "2026-11-22T00:00:00Z"),
+    ("WSH", "BOS", 6.5, -115, -105, "2026-11-22T00:00:00Z"),
+    ("ANA", "UTA", 6.5, -142, 120, "2026-11-22T02:00:00Z"),
+    ("SEA", "SJ", 6.5, -108, -112, "2026-11-22T03:00:00Z"),
+    ("MIN", "VAN", 6.5, -102, -118, "2026-11-22T03:00:00Z"),
 ]
 
 
@@ -280,28 +295,24 @@ BR = "https://www.basketball-reference.com/boxscores/"
 CBS = "https://www.cbssports.com/nfl/gametracker/boxscore/"
 LOB_H2H = "https://www.landofbasketball.com/head_to_head_games/last_3/"
 ULTIMO_DUELO = {
-    "cha_atl": {"fecha": "2026-10-23", "liga": "NBA 2026-27 (se jugo en Charlotte)", "marcador": [["Hawks", 128], ["Hornets", 81]],
-                "fuente": LOB_H2H + "hawks_vs_hornets_all.htm"},
-    "ind_cle": {"fecha": "2026-04-05", "liga": "NBA 2025-26", "marcador": [["Pacers", 108], ["Cavaliers", 117]],
-                "fuente": LOB_H2H + "cavaliers_vs_pacers_all.htm"},
-    "orl_bkn": {"fecha": "2026-02-05", "liga": "NBA 2025-26 (se jugo en Orlando)", "marcador": [["Nets", 98], ["Magic", 118]],
-                "fuente": LOB_H2H + "magic_vs_nets_all.htm"},
-    "tor_det": {"fecha": "2026-03-31", "liga": "NBA 2025-26", "marcador": [["Raptors", 116], ["Pistons", 127]],
-                "fuente": LOB_H2H + "pistons_vs_raptors_all.htm"},
-    "nop_okc": {"fecha": "2026-01-27", "liga": "NBA 2025-26", "marcador": [["Pelicans", 95], ["Thunder", 104]],
-                "fuente": LOB_H2H + "thunder_vs_pelicans_all.htm"},
-    "was_chi": {"fecha": "2026-10-24", "liga": "NBA 2026-27", "marcador": [["Wizards", 124], ["Bulls", 120]],
-                "fuente": LOB_H2H + "bulls_vs_wizards_all.htm"},
-    "phx_uta": {"fecha": "2026-03-28", "liga": "NBA 2025-26 (se jugo en Phoenix)", "marcador": [["Jazz", 109], ["Suns", 134]],
-                "fuente": LOB_H2H + "jazz_vs_suns_all.htm"},
-    "hou_den": {"fecha": "2026-11-09", "liga": "NBA 2026-27 (se jugo en Houston)", "marcador": [["Nuggets", 100], ["Rockets", 110]],
-                "fuente": LOB_H2H + "nuggets_vs_rockets_all.htm"},
-    "sac_lal": {"fecha": "2026-11-04", "liga": "NBA 2026-27 (se jugo en Sacramento)", "marcador": [["Lakers", 116], ["Kings", 103]],
-                "fuente": LOB_H2H + "lakers_vs_kings_all.htm"},
-    "nfl_LV_DEN": {"fecha": "2025-12-07", "liga": "NFL 2025, semana 14", "marcador": [["Broncos", 24], ["Raiders", 17]],
-                   "detalle": "Bo Nix 212 yds, 0 TD de pase (1 por tierra). Geno Smith 116 yds, 1 TD y salio lesionado; Kenny Pickett 97 yds, 1 TD.",
-                   "anteriores": ["6 nov 2025: Broncos 10 - 7 Raiders (en Denver)"],
-                   "fuente": CBS + "NFL_20251207_DEN@LV/"},
+    "por_nyk": {"fecha": "2026-01-30", "liga": "NBA 2025-26", "marcador": [["Trail Blazers", 97], ["Knicks", 127]],
+                "fuente": LOB_H2H + "knicks_vs_trail_blazers_all.htm"},
+    "lac_dal": {"fecha": "2026-04-07", "liga": "NBA 2025-26 (se jugo en Los Angeles)", "marcador": [["Mavericks", 103], ["Clippers", 116]],
+                "fuente": LOB_H2H + "clippers_vs_mavericks_all.htm"},
+    "mem_min": {"fecha": "2026-03-03", "liga": "NBA 2025-26", "marcador": [["Grizzlies", 110], ["Timberwolves", 117]],
+                "fuente": LOB_H2H + "grizzlies_vs_timberwolves_all.htm"},
+    "nop_sas": {"fecha": "2026-01-25", "liga": "NBA 2025-26", "marcador": [["Pelicans", 104], ["Spurs", 95]],
+                "fuente": LOB_H2H + "pelicans_vs_spurs_all.htm"},
+    "bos_sac": {"fecha": "2026-01-30", "liga": "NBA 2025-26 (se jugo en Boston)", "marcador": [["Kings", 93], ["Celtics", 112]],
+                "fuente": LOB_H2H + "celtics_vs_kings_all.htm"},
+    "nhl_LA_OTT": {"fecha": "2026-10-29", "liga": "NHL 2026-27 (se jugo en Los Angeles, tiempo extra)", "marcador": [["Senators", 5], ["Kings", 6]],
+                   "fuente": "https://www.ksl.com/article/51642470/kings-beat-senators-6-5-in-ot-after-blowing-a-4-goal-lead-in-the-3rd-period"},
+    "nhl_CBJ_TOR": {"fecha": "2026-10-20", "liga": "NHL 2026-27 (se jugo en Columbus)", "marcador": [["Maple Leafs", 6], ["Blue Jackets", 2]],
+                    "fuente": "https://bvmsports.com/2026/10/21/maple-leafs-rout-blue-jackets-6-2-as-marchenko-cowan-shine/"},
+    "nhl_NJ_STL": {"fecha": "2026-11-05", "liga": "NHL 2026-27 (se jugo en New Jersey, tiempo extra)", "marcador": [["Blues", 4], ["Devils", 5]],
+                   "fuente": "https://fieldlevelmedia.com/news/devils-blow-three-goal-lead-hang-on-for-ot-win-over-blues/"},
+    "nhl_MIN_VAN": {"fecha": "2026-10-25", "liga": "NHL 2026-27", "marcador": [["Wild", 4], ["Canucks", 2]],
+                    "fuente": "https://www.nhl.com/wild/news/minnesota-wild-vancouver-canucks-game-recap-october-25-2026-x2730"},
     "nfl_BAL_CAR": {"fecha": "2022-11-20", "liga": "NFL 2022, semana 11", "marcador": [["Panthers", 3], ["Ravens", 13]],
                     "detalle": "Lamar Jackson 209 yds, 0 TD, 1 INT. Baker Mayfield 196 yds, 0 TD, 2 INT. Hace 4 anos: los equipos cambiaron mucho.",
                     "fuente": CBS + "NFL_20221120_CAR@BAL/"},
@@ -399,11 +410,11 @@ def ajuste(efecto, delta, texto):
 
 # Por jugador (props)
 CONTEXTO_JUGADOR = {
-    "Jarrett Allen": [ajuste("Over", 0.02, "Evan Mobley esta fuera: mas rebotes para Allen")],
-    "Scottie Barnes": [ajuste("Over", 0.02, "Kawhi Leonard y RJ Barrett estan fuera: mas tiros para Barnes")],
-    "Franz Wagner": [ajuste("Over", 0.02, "Paolo Banchero esta fuera: mas tiros para Wagner")],
-    "Darryn Peterson": [ajuste("Over", 0.02, "Lauri Markkanen y Jaren Jackson Jr. estan fuera: mas balones para Peterson")],
-    "Ajay Mitchell": [ajuste("Over", 0.01, "Jalen Williams, Chet Holmgren y Cason Wallace estan fuera")],
+    "Zion Williamson": [ajuste("Under", 0.02, "Segunda noche seguida: Pelicans jugaron anoche en Oklahoma City")],
+    "Jeremiah Fears": [ajuste("Under", 0.02, "Segunda noche seguida: Pelicans jugaron anoche en Oklahoma City")],
+    "Domantas Sabonis": [ajuste("Under", 0.02, "Segunda noche seguida: Kings jugaron anoche en Los Angeles")],
+    "Darius Acuff Jr.": [ajuste("Under", 0.02, "Segunda noche seguida: Kings jugaron anoche en Los Angeles")],
+    "Zach LaVine": [ajuste("Under", 0.02, "Segunda noche seguida: Kings jugaron anoche en Los Angeles")],
 }
 
 # Por partido (clave "evento" o, para la API, el texto "Visitante @ Local")
@@ -758,18 +769,21 @@ def main():
               ", ".join(str(p["linea"]) + " " + str(p["prob"]) + "% (" + str(p["aciertos"]) + "/" + str(p["partidos"]) + ", min " + str(p["momio_minimo"]) + ")" for p in e["pasos"]))
 
 
-NOTA = ("Edicion del " + EDICION + ": 19 props NBA de hoy (9 partidos), props y lineas NFL semana 11 (domingo y lunes), "
-        "seccion 'Baja la linea' para lineas alternas tipo Draftea y futbol del fin de semana: Premier League, LaLiga, Serie A, "
-        "Bundesliga y Liga MX. Hoy no hay NHL. Cada pick pasa por el motor de PickLab y solo se publica con 55% o mas de "
-        "probabilidad, 3% o mas de ventaja y nivel A o B. Edicion a mano (sin API de momios).")
+NOTA = ("Edicion del " + EDICION + ": 20 props NBA de esta noche (5 partidos), 10 partidos NHL de la noche, props y lineas "
+        "NFL semana 11 (domingo y lunes), seccion 'Baja la linea' para lineas alternas tipo Draftea y futbol del fin de semana "
+        "(Premier, LaLiga, Serie A, Bundesliga y Liga MX). Cada pick pasa por el motor de PickLab y solo se publica con 55% o mas "
+        "de probabilidad, 3% o mas de ventaja y nivel A o B. Edicion a mano (sin API de momios).")
 
 FUENTES = [
-    ["ScoresAndOdds - props NBA 20 nov (bet365)", "https://www.scoresandodds.com/nba/props"],
+    ["ScoresAndOdds - props NBA 21 nov (bet365)", "https://www.scoresandodds.com/nba/props"],
     ["Land of Basketball - ultimos 10 y enfrentamientos NBA", "https://www.landofbasketball.com/head_to_head_games/"],
     ["Champs or Chumps - head to head NBA", "https://champsorchumps.us/"],
     ["ESPN - lesiones NBA", "https://www.espn.com/nba/injuries"],
-    ["Resultados 19 nov - CBS Sports (Colts @ Texans)", "https://www.cbssports.com/nfl/gametracker/boxscore/NFL_20261119_IND@HOU/"],
-    ["Resultados 19 nov - Knicks @ Timberwolves (NBA.com)", "https://www.nba.com/timberwolves/game/0022600272-knicks-vs-timberwolves-minneapolis-mn-11-19-2026/box-score"],
+    ["PickDawgz - totales NHL 21 nov", "https://www.pickdawgz.com/nhl-picks/"],
+    ["ScoresAndOdds - totales NHL", "https://www.scoresandodds.com/nhl"],
+    ["ESPN - tabla NHL (goles a favor y en contra)", "https://www.espn.com/nhl/standings/_/view"],
+    ["Resultados 20 nov - ESPN (Rockets @ Nuggets)", "https://www.espn.com/nba/recap?gameId=401909312"],
+    ["Resultados 20 nov - ESPN (Wizards @ Bulls)", "https://www.espn.com/nba/boxscore/_/gameId/401909309"],
     ["ESPN - momios NFL semana 11 (DraftKings)", "https://www.espn.com/nfl/odds"],
     ["ESPN - tabla NFL (puntos a favor y en contra)", "https://www.espn.com/nfl/standings"],
     ["FOX Sports - momios y tabla Premier League", "https://www.foxsports.com/soccer/premier-league/standings"],

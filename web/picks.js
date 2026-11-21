@@ -1,12 +1,12 @@
 window.PICKS = {
- "actualizado": "2026-11-20 15:56",
+ "actualizado": "2026-11-21 20:59",
  "prueba": false,
  "manual": true,
  "api": false,
- "nota": "Edicion del viernes 20 de noviembre: 19 props NBA de hoy (9 partidos), props y lineas NFL semana 11 (domingo y lunes), seccion 'Baja la linea' para lineas alternas tipo Draftea y futbol del fin de semana: Premier League, LaLiga, Serie A, Bundesliga y Liga MX. Hoy no hay NHL. Cada pick pasa por el motor de PickLab y solo se publica con 55% o mas de probabilidad, 3% o mas de ventaja y nivel A o B. Edicion a mano (sin API de momios).",
+ "nota": "Edicion del sabado 21 de noviembre: 20 props NBA de esta noche (5 partidos), 10 partidos NHL de la noche, props y lineas NFL semana 11 (domingo y lunes), seccion 'Baja la linea' para lineas alternas tipo Draftea y futbol del fin de semana (Premier, LaLiga, Serie A, Bundesliga y Liga MX). Cada pick pasa por el motor de PickLab y solo se publica con 55% o mas de probabilidad, 3% o mas de ventaja y nivel A o B. Edicion a mano (sin API de momios).",
  "fuentes": [
   [
-   "ScoresAndOdds - props NBA 20 nov (bet365)",
+   "ScoresAndOdds - props NBA 21 nov (bet365)",
    "https://www.scoresandodds.com/nba/props"
   ],
   [
@@ -22,12 +22,24 @@ window.PICKS = {
    "https://www.espn.com/nba/injuries"
   ],
   [
-   "Resultados 19 nov - CBS Sports (Colts @ Texans)",
-   "https://www.cbssports.com/nfl/gametracker/boxscore/NFL_20261119_IND@HOU/"
+   "PickDawgz - totales NHL 21 nov",
+   "https://www.pickdawgz.com/nhl-picks/"
   ],
   [
-   "Resultados 19 nov - Knicks @ Timberwolves (NBA.com)",
-   "https://www.nba.com/timberwolves/game/0022600272-knicks-vs-timberwolves-minneapolis-mn-11-19-2026/box-score"
+   "ScoresAndOdds - totales NHL",
+   "https://www.scoresandodds.com/nhl"
+  ],
+  [
+   "ESPN - tabla NHL (goles a favor y en contra)",
+   "https://www.espn.com/nhl/standings/_/view"
+  ],
+  [
+   "Resultados 20 nov - ESPN (Rockets @ Nuggets)",
+   "https://www.espn.com/nba/recap?gameId=401909312"
+  ],
+  [
+   "Resultados 20 nov - ESPN (Wizards @ Bulls)",
+   "https://www.espn.com/nba/boxscore/_/gameId/401909309"
   ],
   [
    "ESPN - momios NFL semana 11 (DraftKings)",
@@ -87,28 +99,28 @@ window.PICKS = {
   "ventaja_minima": 3,
   "calibracion": {
    "factor": 1.0,
-   "picks": 11,
-   "esperado": 64.5,
-   "real": 54.5
+   "picks": 19,
+   "esperado": 62.8,
+   "real": 31.6
   }
  },
- "partidos_analizados": 65,
- "candidatos": 96,
+ "partidos_analizados": 71,
+ "candidatos": 82,
  "descartados": [
-  "Donovan Mitchell Under 26.5 (48)",
-  "Jarrett Allen Under 9.5 (34)",
-  "Cade Cunningham Under 7.5 (19)",
-  "Scottie Barnes Over 23.5 (32)",
-  "Franz Wagner Over 24.5 (51)",
-  "Michael Porter Jr. Over 2.5 (61)",
-  "Jalen Johnson Under 9.5 (54)",
-  "Brandon Miller Over 2.5 (54)",
-  "Ajay Mitchell Over 18.5 (24)",
-  "Jeremiah Fears Over 16.5 (27)",
-  "Darryn Peterson Over 27.5 (32)",
-  "Jalen Green Under 14.5 (46)",
-  "Nikola Jokic Under 11.5 (40)",
-  "Domantas Sabonis Over 12.5 (32)",
+  "Jalen Brunson Under 28.5 (46)",
+  "Damian Lillard Over 3.5 (27)",
+  "Cooper Flagg Under 39.5 (48)",
+  "Brook Lopez Over 13.5 (27)",
+  "Max Strus Over 2.5 (22)",
+  "Rudy Gobert Over 10.5 (19)",
+  "Jaden McDaniels Under 17.5 (46)",
+  "Zach Edey Under 7.5 (46)",
+  "Cedric Coward Under 28.5 (41)",
+  "Jeremiah Fears Under 5.5 (32)",
+  "Paul George Under 3.5 (38)",
+  "Neemias Queta Under 6.5 (22)",
+  "Darius Acuff Jr. Under 6.5 (52)",
+  "Zach LaVine Over 17.5 (28)",
   "Derrick Henry Over 65.5 (27)",
   "Chris Olave Over 69.5 (39)",
   "Caleb Williams Under 249.5 (19)",
@@ -116,6 +128,252 @@ window.PICKS = {
   "Ja'Marr Chase Under 93.5 (39)"
  ],
  "picks": [
+  {
+   "evento": "lac_dal",
+   "grupo": "NBA",
+   "liga": "NBA",
+   "partido": "Clippers @ Mavericks",
+   "fecha": "2026-11-22T01:00:00Z",
+   "tipo": "Props",
+   "mercado": "Rebotes",
+   "jugador": "Daniel Gafford",
+   "equipo": "Mavericks",
+   "pick": "Daniel Gafford Under 6.5",
+   "lado": "Under",
+   "linea": 6.5,
+   "momio": -125,
+   "casa": "bet365",
+   "casas": 1,
+   "valores": [
+    7,
+    7,
+    4,
+    1,
+    5,
+    2,
+    3,
+    3,
+    4,
+    6
+   ],
+   "base": "Ultimos 10 partidos + momio. Linea via ScoresAndOdds, partidos via StatMuse / Land of Basketball",
+   "duelo": {
+    "fecha": "2026-04-07",
+    "liga": "NBA 2025-26 (se jugo en Los Angeles)",
+    "marcador": [
+     [
+      "Mavericks",
+      103
+     ],
+     [
+      "Clippers",
+      116
+     ]
+    ],
+    "fuente": "https://www.landofbasketball.com/head_to_head_games/last_3/clippers_vs_mavericks_all.htm"
+   },
+   "aciertos": 8,
+   "prob": 66.1,
+   "ventaja": 10.5,
+   "score": 83,
+   "nivel": "A",
+   "senales": "3/3",
+   "unidades": 1.5,
+   "razones": [
+    {
+     "tipo": "+",
+     "texto": "bet365 le da 52.6% ya sin su comision"
+    },
+    {
+     "tipo": "+",
+     "texto": "Le pego al Under 6.5 en 8 de sus ultimos 10"
+    },
+    {
+     "tipo": "+",
+     "texto": "Promedia 4.2 contra la linea de 6.5"
+    },
+    {
+     "tipo": "+",
+     "texto": "En racha: 5 de 5 en sus ultimos 5"
+    },
+    {
+     "tipo": "+",
+     "texto": "El momio -125 implica 55.6%; nosotros calculamos 66.1% (ventaja +10.5%)"
+    }
+   ],
+   "p_estadisticas": 75.0,
+   "p_mercado_pct": 52.6,
+   "promedio": 4.2,
+   "mediana": 4,
+   "maximo": 7,
+   "minimo": 1,
+   "id": 1,
+   "implicita": 55.6
+  },
+  {
+   "evento": "nop_sas",
+   "grupo": "NBA",
+   "liga": "NBA",
+   "partido": "Pelicans @ Spurs",
+   "fecha": "2026-11-22T01:00:00Z",
+   "tipo": "Props",
+   "mercado": "Puntos",
+   "jugador": "Keldon Johnson",
+   "equipo": "Spurs",
+   "pick": "Keldon Johnson Under 11.5",
+   "lado": "Under",
+   "linea": 11.5,
+   "momio": -120,
+   "casa": "bet365",
+   "casas": 1,
+   "valores": [
+    15,
+    4,
+    3,
+    10,
+    4,
+    10,
+    18,
+    11,
+    4,
+    10
+   ],
+   "base": "Ultimos 10 partidos + momio. Linea via ScoresAndOdds, partidos via StatMuse / Land of Basketball",
+   "duelo": {
+    "fecha": "2026-01-25",
+    "liga": "NBA 2025-26",
+    "marcador": [
+     [
+      "Pelicans",
+      104
+     ],
+     [
+      "Spurs",
+      95
+     ]
+    ],
+    "fuente": "https://www.landofbasketball.com/head_to_head_games/last_3/pelicans_vs_spurs_all.htm"
+   },
+   "aciertos": 8,
+   "prob": 65.6,
+   "ventaja": 11.1,
+   "score": 83,
+   "nivel": "A",
+   "senales": "3/3",
+   "unidades": 1.5,
+   "razones": [
+    {
+     "tipo": "+",
+     "texto": "bet365 le da 51.6% ya sin su comision"
+    },
+    {
+     "tipo": "+",
+     "texto": "Le pego al Under 11.5 en 8 de sus ultimos 10"
+    },
+    {
+     "tipo": "+",
+     "texto": "Promedia 8.9 contra la linea de 11.5"
+    },
+    {
+     "tipo": "+",
+     "texto": "En racha: 4 de 5 en sus ultimos 5"
+    },
+    {
+     "tipo": "+",
+     "texto": "El momio -120 implica 54.5%; nosotros calculamos 65.6% (ventaja +11.1%)"
+    }
+   ],
+   "p_estadisticas": 75.0,
+   "p_mercado_pct": 51.6,
+   "promedio": 8.9,
+   "mediana": 10,
+   "maximo": 18,
+   "minimo": 3,
+   "id": 2,
+   "implicita": 54.5
+  },
+  {
+   "evento": "por_nyk",
+   "grupo": "NBA",
+   "liga": "NBA",
+   "partido": "Trail Blazers @ Knicks",
+   "fecha": "2026-11-22T00:30:00Z",
+   "tipo": "Props",
+   "mercado": "Rebotes",
+   "jugador": "Donovan Clingan",
+   "equipo": "Trail Blazers",
+   "pick": "Donovan Clingan Over 10.5",
+   "lado": "Over",
+   "linea": 10.5,
+   "momio": -115,
+   "casa": "bet365",
+   "casas": 1,
+   "valores": [
+    18,
+    11,
+    11,
+    5,
+    13,
+    12,
+    11,
+    10,
+    12,
+    13
+   ],
+   "base": "Ultimos 10 partidos + momio. Linea via ScoresAndOdds, partidos via StatMuse / Land of Basketball",
+   "duelo": {
+    "fecha": "2026-01-30",
+    "liga": "NBA 2025-26",
+    "marcador": [
+     [
+      "Trail Blazers",
+      97
+     ],
+     [
+      "Knicks",
+      127
+     ]
+    ],
+    "fuente": "https://www.landofbasketball.com/head_to_head_games/last_3/knicks_vs_trail_blazers_all.htm"
+   },
+   "aciertos": 8,
+   "prob": 65.2,
+   "ventaja": 11.7,
+   "score": 82,
+   "nivel": "A",
+   "senales": "3/3",
+   "unidades": 1.5,
+   "razones": [
+    {
+     "tipo": "+",
+     "texto": "bet365 le da 50.5% ya sin su comision"
+    },
+    {
+     "tipo": "+",
+     "texto": "Le pego al Over 10.5 en 8 de sus ultimos 10"
+    },
+    {
+     "tipo": "+",
+     "texto": "Promedia 11.6 contra la linea de 10.5"
+    },
+    {
+     "tipo": "+",
+     "texto": "En racha: 4 de 5 en sus ultimos 5"
+    },
+    {
+     "tipo": "+",
+     "texto": "El momio -115 implica 53.5%; nosotros calculamos 65.2% (ventaja +11.7%)"
+    }
+   ],
+   "p_estadisticas": 75.0,
+   "p_mercado_pct": 50.5,
+   "promedio": 11.6,
+   "mediana": 12,
+   "maximo": 18,
+   "minimo": 5,
+   "id": 3,
+   "implicita": 53.5
+  },
   {
    "evento": "nfl_MIN_SF",
    "grupo": "NFL",
@@ -174,144 +432,76 @@ window.PICKS = {
    "mediana": 58,
    "maximo": 92,
    "minimo": 32,
-   "id": 1,
+   "id": 4,
    "implicita": 53.3
   },
   {
-   "evento": "laliga_Real Madrid_Celta",
-   "grupo": "Futbol",
-   "liga": "LaLiga",
-   "partido": "Real Madrid vs Celta",
-   "fecha": "2026-11-21T20:00:00Z",
-   "tipo": "Totales",
-   "mercado": "Total de goles",
-   "pick": "Under 3.5",
-   "momio": -125,
-   "casa": "FOX Sports",
-   "casas": 1,
-   "explicacion": "Con sus goles a favor y en contra en LaLiga esperamos 2.55 goles (Real Madrid 1.75, Celta 0.81)",
-   "base": "Modelo con estadisticas de la temporada + momio sin comision + contexto",
+   "evento": "por_nyk",
+   "grupo": "NBA",
+   "liga": "NBA",
+   "partido": "Trail Blazers @ Knicks",
+   "fecha": "2026-11-22T00:30:00Z",
+   "tipo": "Props",
+   "mercado": "Rebotes",
+   "jugador": "Josh Hart",
+   "equipo": "Knicks",
+   "pick": "Josh Hart Under 6.5",
    "lado": "Under",
-   "prob": 63.4,
-   "ventaja": 7.9,
-   "score": 74,
-   "nivel": "A",
-   "senales": "2/2",
-   "unidades": 1.0,
-   "razones": [
-    {
-     "tipo": "+",
-     "texto": "FOX Sports le da 52.3% ya sin su comision"
-    },
-    {
-     "tipo": "+",
-     "texto": "Modelo de la temporada: le da 74.6% a este pick (Con sus goles a favor y en contra en LaLiga esperamos 2.55 goles (Real Madrid 1.75, Celta 0.81))"
-    },
-    {
-     "tipo": "+",
-     "texto": "El momio -125 implica 55.6%; nosotros calculamos 63.4% (ventaja +7.9%)"
-    }
-   ],
-   "p_estadisticas": 74.6,
-   "p_mercado_pct": 52.3,
-   "id": 2,
-   "implicita": 55.6,
-   "modelo": 74.6,
-   "mercado_prob": 52.3
-  },
-  {
-   "evento": "bundes_Schalke_Stuttgart",
-   "grupo": "Futbol",
-   "liga": "Bundesliga",
-   "partido": "Schalke vs Stuttgart",
-   "fecha": "2026-11-21T17:30:00Z",
-   "tipo": "Totales",
-   "mercado": "Total de goles",
-   "pick": "Under 3.5",
-   "momio": -149,
-   "casa": "FOX Sports",
+   "linea": 6.5,
+   "momio": -110,
+   "casa": "bet365",
    "casas": 1,
-   "explicacion": "Con sus goles a favor y en contra en Bundesliga esperamos 2.54 goles (Schalke 1.24, Stuttgart 1.3)",
-   "base": "Modelo con estadisticas de la temporada + momio sin comision + contexto",
-   "lado": "Under",
-   "prob": 65.5,
-   "ventaja": 5.6,
-   "score": 71,
-   "nivel": "A",
-   "senales": "2/2",
-   "unidades": 1.0,
-   "razones": [
-    {
-     "tipo": "+",
-     "texto": "FOX Sports le da 56.0% ya sin su comision"
-    },
-    {
-     "tipo": "+",
-     "texto": "Modelo de la temporada: le da 74.9% a este pick (Con sus goles a favor y en contra en Bundesliga esperamos 2.54 goles (Schalke 1.24, Stuttgart 1.3))"
-    },
-    {
-     "tipo": "+",
-     "texto": "El momio -149 implica 59.8%; nosotros calculamos 65.5% (ventaja +5.6%)"
-    }
+   "valores": [
+    8,
+    4,
+    8,
+    6,
+    6,
+    4,
+    5,
+    5,
+    4,
+    6
    ],
-   "p_estadisticas": 74.9,
-   "p_mercado_pct": 56.0,
-   "id": 3,
-   "implicita": 59.8,
-   "modelo": 74.9,
-   "mercado_prob": 56.0
-  },
-  {
-   "evento": "nfl_LV_DEN",
-   "grupo": "NFL",
-   "liga": "NFL",
-   "partido": "Raiders @ Broncos",
-   "fecha": "2026-11-22T21:25:00Z",
-   "tipo": "Totales",
-   "mercado": "Total de puntos",
-   "pick": "Over 40.5",
-   "momio": -108,
-   "casa": "DraftKings",
-   "casas": 1,
-   "explicacion": "Con sus puntos a favor y en contra de la temporada proyectamos Broncos 26.4 y Raiders 21.9: 48.3 puntos",
-   "base": "Modelo con estadisticas de la temporada + momio sin comision + contexto",
-   "lado": "Over",
+   "base": "Ultimos 10 partidos + momio. Linea via ScoresAndOdds, partidos via StatMuse / Land of Basketball",
    "duelo": {
-    "fecha": "2025-12-07",
-    "liga": "NFL 2025, semana 14",
+    "fecha": "2026-01-30",
+    "liga": "NBA 2025-26",
     "marcador": [
      [
-      "Broncos",
-      24
+      "Trail Blazers",
+      97
      ],
      [
-      "Raiders",
-      17
+      "Knicks",
+      127
      ]
     ],
-    "detalle": "Bo Nix 212 yds, 0 TD de pase (1 por tierra). Geno Smith 116 yds, 1 TD y salio lesionado; Kenny Pickett 97 yds, 1 TD.",
-    "anteriores": [
-     "6 nov 2025: Broncos 10 - 7 Raiders (en Denver)"
-    ],
-    "fuente": "https://www.cbssports.com/nfl/gametracker/boxscore/NFL_20251207_DEN@LV/",
-    "valor": 41,
-    "pego": true,
-    "resumen": "Total de 41 contra la linea de hoy de 40.5"
+    "fuente": "https://www.landofbasketball.com/head_to_head_games/last_3/knicks_vs_trail_blazers_all.htm"
    },
-   "prob": 61.7,
-   "ventaja": 9.8,
-   "score": 68,
-   "nivel": "B",
+   "aciertos": 8,
+   "prob": 64.8,
+   "ventaja": 12.4,
+   "score": 73,
+   "nivel": "A",
    "senales": "2/3",
    "unidades": 1.5,
    "razones": [
     {
      "tipo": "-",
-     "texto": "DraftKings le da 49.6% ya sin su comision"
+     "texto": "bet365 le da 49.5% ya sin su comision"
     },
     {
      "tipo": "+",
-     "texto": "Modelo de la temporada: le da 71.9% a este pick (Con sus puntos a favor y en contra de la temporada proyectamos Broncos 26.4 y Raiders 21.9: 48.3 puntos)"
+     "texto": "Le pego al Under 6.5 en 8 de sus ultimos 10"
+    },
+    {
+     "tipo": "+",
+     "texto": "Promedia 5.6 contra la linea de 6.5"
+    },
+    {
+     "tipo": "+",
+     "texto": "En racha: 5 de 5 en sus ultimos 5"
     },
     {
      "tipo": "-",
@@ -319,61 +509,103 @@ window.PICKS = {
     },
     {
      "tipo": "+",
-     "texto": "Ultimo enfrentamiento: Total de 41 contra la linea de hoy de 40.5: hubiera pegado"
-    },
-    {
-     "tipo": "+",
-     "texto": "El momio -108 implica 51.9%; nosotros calculamos 61.7% (ventaja +9.8%)"
+     "texto": "El momio -110 implica 52.4%; nosotros calculamos 64.8% (ventaja +12.4%)"
     }
    ],
-   "p_estadisticas": 71.9,
-   "p_mercado_pct": 49.6,
-   "id": 4,
-   "implicita": 51.9,
-   "modelo": 71.9,
-   "mercado_prob": 49.6
+   "p_estadisticas": 75.0,
+   "p_mercado_pct": 49.5,
+   "promedio": 5.6,
+   "mediana": 6,
+   "maximo": 8,
+   "minimo": 4,
+   "id": 5,
+   "implicita": 52.4
   },
   {
-   "evento": "bundes_Bayern_Koln",
-   "grupo": "Futbol",
-   "liga": "Bundesliga",
-   "partido": "Bayern vs Koln",
-   "fecha": "2026-11-20T19:30:00Z",
-   "tipo": "Totales",
-   "mercado": "Total de goles",
-   "pick": "Under 4.5",
-   "momio": -117,
-   "casa": "FOX Sports",
+   "evento": "bos_sac",
+   "grupo": "NBA",
+   "liga": "NBA",
+   "partido": "Celtics @ Kings",
+   "fecha": "2026-11-22T03:00:00Z",
+   "tipo": "Props",
+   "mercado": "Rebotes",
+   "jugador": "Domantas Sabonis",
+   "equipo": "Kings",
+   "pick": "Domantas Sabonis Over 11.5",
+   "lado": "Over",
+   "linea": 11.5,
+   "momio": -135,
+   "casa": "bet365",
    "casas": 1,
-   "explicacion": "Con sus goles a favor y en contra en Bundesliga esperamos 3.59 goles (Bayern 2.58, Koln 1.01)",
-   "base": "Modelo con estadisticas de la temporada + momio sin comision + contexto",
-   "lado": "Under",
-   "prob": 60.8,
-   "ventaja": 6.9,
+   "valores": [
+    15,
+    14,
+    7,
+    17,
+    12,
+    2,
+    12,
+    13,
+    13,
+    16
+   ],
+   "base": "Ultimos 10 partidos + momio. Linea via ScoresAndOdds, partidos via StatMuse / Land of Basketball",
+   "duelo": {
+    "fecha": "2026-01-30",
+    "liga": "NBA 2025-26 (se jugo en Boston)",
+    "marcador": [
+     [
+      "Kings",
+      93
+     ],
+     [
+      "Celtics",
+      112
+     ]
+    ],
+    "fuente": "https://www.landofbasketball.com/head_to_head_games/last_3/celtics_vs_kings_all.htm"
+   },
+   "aciertos": 8,
+   "prob": 64.6,
+   "ventaja": 7.2,
    "score": 68,
    "nivel": "B",
-   "senales": "2/2",
+   "senales": "3/4",
    "unidades": 1.0,
    "razones": [
     {
      "tipo": "+",
-     "texto": "FOX Sports le da 50.8% ya sin su comision"
+     "texto": "bet365 le da 54.1% ya sin su comision"
     },
     {
      "tipo": "+",
-     "texto": "Modelo de la temporada: le da 70.7% a este pick (Con sus goles a favor y en contra en Bundesliga esperamos 3.59 goles (Bayern 2.58, Koln 1.01))"
+     "texto": "Le pego al Over 11.5 en 8 de sus ultimos 10"
     },
     {
      "tipo": "+",
-     "texto": "El momio -117 implica 53.9%; nosotros calculamos 60.8% (ventaja +6.9%)"
+     "texto": "Promedia 12.1 contra la linea de 11.5"
+    },
+    {
+     "tipo": "+",
+     "texto": "En racha: 4 de 5 en sus ultimos 5"
+    },
+    {
+     "tipo": "-",
+     "texto": "Segunda noche seguida: Kings jugaron anoche en Los Angeles"
+    },
+    {
+     "tipo": "+",
+     "texto": "El momio -135 implica 57.4%; nosotros calculamos 64.6% (ventaja +7.2%)"
     }
    ],
-   "p_estadisticas": 70.7,
-   "p_mercado_pct": 50.8,
-   "id": 5,
-   "implicita": 53.9,
-   "modelo": 70.7,
-   "mercado_prob": 50.8
+   "p_estadisticas": 75.0,
+   "p_mercado_pct": 54.1,
+   "promedio": 12.1,
+   "mediana": 13,
+   "maximo": 17,
+   "minimo": 2,
+   "id": 6,
+   "implicita": 57.4
   },
   {
    "evento": "nfl_JAX_NYG",
@@ -433,328 +665,98 @@ window.PICKS = {
    "mediana": 60,
    "maximo": 124,
    "minimo": 0,
-   "id": 6,
+   "id": 7,
    "implicita": 55.6
   },
   {
-   "evento": "was_chi",
+   "evento": "nop_sas",
    "grupo": "NBA",
    "liga": "NBA",
-   "partido": "Wizards @ Bulls",
-   "fecha": "2026-11-21T01:00:00Z",
-   "tipo": "Props",
-   "mercado": "Asistencias",
-   "jugador": "Trae Young",
-   "equipo": "Wizards",
-   "pick": "Trae Young Under 9.5",
-   "lado": "Under",
-   "linea": 9.5,
-   "momio": -115,
-   "casa": "bet365",
-   "casas": 1,
-   "valores": [
-    9,
-    6,
-    10,
-    3,
-    7,
-    4,
-    14,
-    8,
-    12,
-    8
-   ],
-   "base": "Ultimos 10 partidos + momio. Linea via ScoresAndOdds, partidos via StatMuse / Land of Basketball",
-   "duelo": {
-    "fecha": "2026-10-24",
-    "liga": "NBA 2026-27",
-    "marcador": [
-     [
-      "Wizards",
-      124
-     ],
-     [
-      "Bulls",
-      120
-     ]
-    ],
-    "fuente": "https://www.landofbasketball.com/head_to_head_games/last_3/bulls_vs_wizards_all.htm"
-   },
-   "aciertos": 7,
-   "prob": 60.2,
-   "ventaja": 6.7,
-   "score": 67,
-   "nivel": "B",
-   "senales": "3/3",
-   "unidades": 1.0,
-   "razones": [
-    {
-     "tipo": "+",
-     "texto": "bet365 le da 50.5% ya sin su comision"
-    },
-    {
-     "tipo": "+",
-     "texto": "Le pego al Under 9.5 en 7 de sus ultimos 10"
-    },
-    {
-     "tipo": "+",
-     "texto": "Promedia 8.1 contra la linea de 9.5"
-    },
-    {
-     "tipo": "+",
-     "texto": "El momio -115 implica 53.5%; nosotros calculamos 60.2% (ventaja +6.7%)"
-    }
-   ],
-   "p_estadisticas": 66.7,
-   "p_mercado_pct": 50.5,
-   "promedio": 8.1,
-   "mediana": 8,
-   "maximo": 14,
-   "minimo": 3,
-   "id": 7,
-   "implicita": 53.5
-  },
-  {
-   "evento": "was_chi",
-   "grupo": "NBA",
-   "liga": "NBA",
-   "partido": "Wizards @ Bulls",
-   "fecha": "2026-11-21T01:00:00Z",
+   "partido": "Pelicans @ Spurs",
+   "fecha": "2026-11-22T01:00:00Z",
    "tipo": "Props",
    "mercado": "Puntos",
-   "jugador": "Josh Giddey",
-   "equipo": "Bulls",
-   "pick": "Josh Giddey Under 13.5",
-   "lado": "Under",
-   "linea": 13.5,
-   "momio": -115,
-   "casa": "bet365",
-   "casas": 1,
-   "valores": [
-    10,
-    13,
-    13,
-    10,
-    19,
-    9,
-    15,
-    8,
-    4,
-    18
-   ],
-   "base": "Ultimos 10 partidos + momio. Linea via ScoresAndOdds, partidos via StatMuse / Land of Basketball",
-   "duelo": {
-    "fecha": "2026-10-24",
-    "liga": "NBA 2026-27",
-    "marcador": [
-     [
-      "Wizards",
-      124
-     ],
-     [
-      "Bulls",
-      120
-     ]
-    ],
-    "fuente": "https://www.landofbasketball.com/head_to_head_games/last_3/bulls_vs_wizards_all.htm"
-   },
-   "aciertos": 7,
-   "prob": 60.2,
-   "ventaja": 6.7,
-   "score": 67,
-   "nivel": "B",
-   "senales": "3/3",
-   "unidades": 1.0,
-   "razones": [
-    {
-     "tipo": "+",
-     "texto": "bet365 le da 50.5% ya sin su comision"
-    },
-    {
-     "tipo": "+",
-     "texto": "Le pego al Under 13.5 en 7 de sus ultimos 10"
-    },
-    {
-     "tipo": "+",
-     "texto": "Promedia 11.9 contra la linea de 13.5"
-    },
-    {
-     "tipo": "+",
-     "texto": "El momio -115 implica 53.5%; nosotros calculamos 60.2% (ventaja +6.7%)"
-    }
-   ],
-   "p_estadisticas": 66.7,
-   "p_mercado_pct": 50.5,
-   "promedio": 11.9,
-   "mediana": 13,
-   "maximo": 19,
-   "minimo": 4,
-   "id": 8,
-   "implicita": 53.5
-  },
-  {
-   "evento": "hou_den",
-   "grupo": "NBA",
-   "liga": "NBA",
-   "partido": "Rockets @ Nuggets",
-   "fecha": "2026-11-21T03:00:00Z",
-   "tipo": "Props",
-   "mercado": "Puntos",
-   "jugador": "Kevin Durant",
-   "equipo": "Rockets",
-   "pick": "Kevin Durant Over 20.5",
+   "jugador": "Zion Williamson",
+   "equipo": "Pelicans",
+   "pick": "Zion Williamson Over 20.5",
    "lado": "Over",
    "linea": 20.5,
-   "momio": -120,
+   "momio": -110,
    "casa": "bet365",
    "casas": 1,
    "valores": [
-    14,
-    12,
-    21,
-    21,
-    23,
-    20,
-    22,
     25,
+    23,
+    13,
+    25,
+    29,
     22,
-    21
+    24,
+    16,
+    24,
+    22
    ],
    "base": "Ultimos 10 partidos + momio. Linea via ScoresAndOdds, partidos via StatMuse / Land of Basketball",
    "duelo": {
-    "fecha": "2026-11-09",
-    "liga": "NBA 2026-27 (se jugo en Houston)",
+    "fecha": "2026-01-25",
+    "liga": "NBA 2025-26",
     "marcador": [
      [
-      "Nuggets",
-      100
+      "Pelicans",
+      104
      ],
      [
-      "Rockets",
-      110
+      "Spurs",
+      95
      ]
     ],
-    "fuente": "https://www.landofbasketball.com/head_to_head_games/last_3/nuggets_vs_rockets_all.htm"
+    "fuente": "https://www.landofbasketball.com/head_to_head_games/last_3/pelicans_vs_spurs_all.htm"
    },
-   "aciertos": 7,
-   "prob": 60.6,
-   "ventaja": 6.1,
+   "aciertos": 8,
+   "prob": 62.8,
+   "ventaja": 10.4,
    "score": 66,
    "nivel": "B",
-   "senales": "3/3",
-   "unidades": 1.0,
+   "senales": "2/4",
+   "unidades": 1.5,
    "razones": [
     {
-     "tipo": "+",
-     "texto": "bet365 le da 51.6% ya sin su comision"
+     "tipo": "-",
+     "texto": "bet365 le da 49.5% ya sin su comision"
     },
     {
      "tipo": "+",
-     "texto": "Le pego al Over 20.5 en 7 de sus ultimos 10"
+     "texto": "Le pego al Over 20.5 en 8 de sus ultimos 10"
+    },
+    {
+     "tipo": "+",
+     "texto": "Promedia 22.3 contra la linea de 20.5"
+    },
+    {
+     "tipo": "+",
+     "texto": "En racha: 4 de 5 en sus ultimos 5"
     },
     {
      "tipo": "-",
-     "texto": "Promedia 20.1 contra la linea de 20.5"
+     "texto": "Las estadisticas y el mercado no coinciden"
+    },
+    {
+     "tipo": "-",
+     "texto": "Segunda noche seguida: Pelicans jugaron anoche en Oklahoma City"
     },
     {
      "tipo": "+",
-     "texto": "En racha: 4 de 5 en sus ultimos 5"
-    },
-    {
-     "tipo": "+",
-     "texto": "El momio -120 implica 54.5%; nosotros calculamos 60.6% (ventaja +6.1%)"
+     "texto": "El momio -110 implica 52.4%; nosotros calculamos 62.8% (ventaja +10.4%)"
     }
    ],
-   "p_estadisticas": 66.7,
-   "p_mercado_pct": 51.6,
-   "promedio": 20.1,
-   "mediana": 21,
-   "maximo": 25,
-   "minimo": 12,
-   "id": 9,
-   "implicita": 54.5
-  },
-  {
-   "evento": "hou_den",
-   "grupo": "NBA",
-   "liga": "NBA",
-   "partido": "Rockets @ Nuggets",
-   "fecha": "2026-11-21T03:00:00Z",
-   "tipo": "Props",
-   "mercado": "Puntos",
-   "jugador": "Jamal Murray",
-   "equipo": "Nuggets",
-   "pick": "Jamal Murray Over 22.5",
-   "lado": "Over",
-   "linea": 22.5,
-   "momio": -120,
-   "casa": "bet365",
-   "casas": 1,
-   "valores": [
-    23,
-    39,
-    35,
-    14,
-    16,
-    38,
-    30,
-    23,
-    28,
-    21
-   ],
-   "base": "Ultimos 10 partidos + momio. Linea via ScoresAndOdds, partidos via StatMuse / Land of Basketball",
-   "duelo": {
-    "fecha": "2026-11-09",
-    "liga": "NBA 2026-27 (se jugo en Houston)",
-    "marcador": [
-     [
-      "Nuggets",
-      100
-     ],
-     [
-      "Rockets",
-      110
-     ]
-    ],
-    "fuente": "https://www.landofbasketball.com/head_to_head_games/last_3/nuggets_vs_rockets_all.htm"
-   },
-   "aciertos": 7,
-   "prob": 60.6,
-   "ventaja": 6.1,
-   "score": 66,
-   "nivel": "B",
-   "senales": "3/3",
-   "unidades": 1.0,
-   "razones": [
-    {
-     "tipo": "+",
-     "texto": "bet365 le da 51.6% ya sin su comision"
-    },
-    {
-     "tipo": "+",
-     "texto": "Le pego al Over 22.5 en 7 de sus ultimos 10"
-    },
-    {
-     "tipo": "+",
-     "texto": "Promedia 26.7 contra la linea de 22.5"
-    },
-    {
-     "tipo": "+",
-     "texto": "En racha: 4 de 5 en sus ultimos 5"
-    },
-    {
-     "tipo": "+",
-     "texto": "El momio -120 implica 54.5%; nosotros calculamos 60.6% (ventaja +6.1%)"
-    }
-   ],
-   "p_estadisticas": 66.7,
-   "p_mercado_pct": 51.6,
-   "promedio": 26.7,
-   "mediana": 28,
-   "maximo": 39,
-   "minimo": 14,
-   "id": 10,
-   "implicita": 54.5
+   "p_estadisticas": 75.0,
+   "p_mercado_pct": 49.5,
+   "promedio": 22.3,
+   "mediana": 24,
+   "maximo": 29,
+   "minimo": 13,
+   "id": 8,
+   "implicita": 52.4
   },
   {
    "evento": "nfl_ARI_KC",
@@ -836,72 +838,38 @@ window.PICKS = {
    "mediana": 66,
    "maximo": 111,
    "minimo": 31,
-   "id": 11,
+   "id": 9,
    "implicita": 57.4
   },
   {
-   "evento": "ind_cle",
-   "grupo": "NBA",
-   "liga": "NBA",
-   "partido": "Pacers @ Cavaliers",
-   "fecha": "2026-11-21T00:30:00Z",
-   "tipo": "Props",
-   "mercado": "Rebotes",
-   "jugador": "Pascal Siakam",
-   "equipo": "Pacers",
-   "pick": "Pascal Siakam Under 6.5",
-   "lado": "Under",
-   "linea": 6.5,
-   "momio": 100,
-   "casa": "bet365",
+   "evento": "nfl_LV_DEN",
+   "grupo": "NFL",
+   "liga": "NFL",
+   "partido": "Raiders @ Broncos",
+   "fecha": "2026-11-22T21:25:00Z",
+   "tipo": "Totales",
+   "mercado": "Total de puntos",
+   "pick": "Over 40.5",
+   "momio": -108,
+   "casa": "DraftKings",
    "casas": 1,
-   "valores": [
-    11,
-    5,
-    5,
-    5,
-    2,
-    9,
-    8,
-    3,
-    2,
-    4
-   ],
-   "base": "Ultimos 10 partidos + momio. Linea via ScoresAndOdds, partidos via StatMuse / Land of Basketball",
-   "duelo": {
-    "fecha": "2026-04-05",
-    "liga": "NBA 2025-26",
-    "marcador": [
-     [
-      "Pacers",
-      108
-     ],
-     [
-      "Cavaliers",
-      117
-     ]
-    ],
-    "fuente": "https://www.landofbasketball.com/head_to_head_games/last_3/cavaliers_vs_pacers_all.htm"
-   },
-   "aciertos": 7,
-   "prob": 58.9,
-   "ventaja": 8.9,
-   "score": 62,
+   "explicacion": "Con sus puntos a favor y en contra de la temporada proyectamos Broncos 26.4 y Raiders 21.9: 48.3 puntos",
+   "base": "Modelo con estadisticas de la temporada + momio sin comision + contexto",
+   "lado": "Over",
+   "prob": 60.7,
+   "ventaja": 8.8,
+   "score": 60,
    "nivel": "B",
-   "senales": "2/3",
+   "senales": "1/2",
    "unidades": 1.0,
    "razones": [
     {
      "tipo": "-",
-     "texto": "bet365 le da 47.4% ya sin su comision"
+     "texto": "DraftKings le da 49.6% ya sin su comision"
     },
     {
      "tipo": "+",
-     "texto": "Le pego al Under 6.5 en 7 de sus ultimos 10"
-    },
-    {
-     "tipo": "+",
-     "texto": "Promedia 5.4 contra la linea de 6.5"
+     "texto": "Modelo de la temporada: le da 71.9% a este pick (Con sus puntos a favor y en contra de la temporada proyectamos Broncos 26.4 y Raiders 21.9: 48.3 puntos)"
     },
     {
      "tipo": "-",
@@ -909,17 +877,15 @@ window.PICKS = {
     },
     {
      "tipo": "+",
-     "texto": "El momio +100 implica 50.0%; nosotros calculamos 58.9% (ventaja +8.9%)"
+     "texto": "El momio -108 implica 51.9%; nosotros calculamos 60.7% (ventaja +8.8%)"
     }
    ],
-   "p_estadisticas": 66.7,
-   "p_mercado_pct": 47.4,
-   "promedio": 5.4,
-   "mediana": 5,
-   "maximo": 11,
-   "minimo": 2,
-   "id": 12,
-   "implicita": 50.0
+   "p_estadisticas": 71.9,
+   "p_mercado_pct": 49.6,
+   "id": 10,
+   "implicita": 51.9,
+   "modelo": 71.9,
+   "mercado_prob": 49.6
   },
   {
    "evento": "nfl_BAL_CAR",
@@ -981,7 +947,7 @@ window.PICKS = {
    ],
    "p_estadisticas": 65.5,
    "p_mercado_pct": 50.4,
-   "id": 13,
+   "id": 11,
    "implicita": 52.8,
    "modelo": 65.5,
    "mercado_prob": 50.4
@@ -1047,83 +1013,10 @@ window.PICKS = {
    ],
    "p_estadisticas": 65.5,
    "p_mercado_pct": 50.4,
-   "id": 14,
+   "id": 12,
    "implicita": 52.8,
    "modelo": 65.5,
    "mercado_prob": 50.4
-  },
-  {
-   "evento": "nfl_LV_DEN",
-   "grupo": "NFL",
-   "liga": "NFL",
-   "partido": "Raiders @ Broncos",
-   "fecha": "2026-11-22T21:25:00Z",
-   "tipo": "Spreads",
-   "mercado": "Spread",
-   "pick": "Raiders +10",
-   "momio": -108,
-   "casa": "DraftKings",
-   "casas": 1,
-   "explicacion": "Proyectamos que Broncos termine con margen de +4.6 puntos",
-   "base": "Modelo con estadisticas de la temporada + momio sin comision + contexto",
-   "equipo_pick": "Raiders",
-   "rival_pick": "Broncos",
-   "duelo": {
-    "fecha": "2025-12-07",
-    "liga": "NFL 2025, semana 14",
-    "marcador": [
-     [
-      "Broncos",
-      24
-     ],
-     [
-      "Raiders",
-      17
-     ]
-    ],
-    "detalle": "Bo Nix 212 yds, 0 TD de pase (1 por tierra). Geno Smith 116 yds, 1 TD y salio lesionado; Kenny Pickett 97 yds, 1 TD.",
-    "anteriores": [
-     "6 nov 2025: Broncos 10 - 7 Raiders (en Denver)"
-    ],
-    "fuente": "https://www.cbssports.com/nfl/gametracker/boxscore/NFL_20251207_DEN@LV/",
-    "valor": -7,
-    "pego": true,
-    "resumen": "Raiders perdio por 7; con +10 hoy"
-   },
-   "prob": 58.6,
-   "ventaja": 6.7,
-   "score": 56,
-   "nivel": "B",
-   "senales": "2/3",
-   "unidades": 1.0,
-   "razones": [
-    {
-     "tipo": "-",
-     "texto": "DraftKings le da 49.6% ya sin su comision"
-    },
-    {
-     "tipo": "+",
-     "texto": "Modelo de la temporada: le da 65.6% a este pick (Proyectamos que Broncos termine con margen de +4.6 puntos)"
-    },
-    {
-     "tipo": "-",
-     "texto": "Las estadisticas y el mercado no coinciden"
-    },
-    {
-     "tipo": "+",
-     "texto": "Ultimo enfrentamiento: Raiders perdio por 7; con +10 hoy: hubiera pegado"
-    },
-    {
-     "tipo": "+",
-     "texto": "El momio -108 implica 51.9%; nosotros calculamos 58.6% (ventaja +6.7%)"
-    }
-   ],
-   "p_estadisticas": 65.6,
-   "p_mercado_pct": 49.6,
-   "id": 15,
-   "implicita": 51.9,
-   "modelo": 65.6,
-   "mercado_prob": 49.6
   },
   {
    "evento": "nfl_ARI_KC",
@@ -1186,7 +1079,7 @@ window.PICKS = {
    ],
    "p_estadisticas": 63.8,
    "p_mercado_pct": 51.1,
-   "id": 16,
+   "id": 13,
    "implicita": 53.5,
    "modelo": 63.8,
    "mercado_prob": 51.1
@@ -1250,40 +1143,144 @@ window.PICKS = {
    "mediana": 282,
    "maximo": 462,
    "minimo": 190,
-   "id": 17,
+   "id": 14,
    "implicita": 53.3
   }
  ],
  "escalera": [
   {
    "grupo": "NBA",
-   "jugador": "Michael Porter Jr.",
-   "equipo": "Nets",
-   "partido": "Magic @ Nets",
-   "fecha": "2026-11-21T00:30:00Z",
+   "jugador": "Damian Lillard",
+   "equipo": "Trail Blazers",
+   "partido": "Trail Blazers @ Knicks",
+   "fecha": "2026-11-22T00:30:00Z",
    "mercado": "Triples",
-   "linea": 2.5,
+   "linea": 3.5,
    "lado": "Over",
-   "momio": -150,
+   "momio": 105,
    "casa": "bet365",
-   "prob_principal": 62.8,
+   "prob_principal": 48.4,
    "promedio": 3.3,
    "pasos": [
     {
      "linea": 1.5,
-     "pick": "Michael Porter Jr. Over 1.5",
-     "prob": 82.4,
+     "pick": "Damian Lillard Over 1.5",
+     "prob": 84.3,
      "aciertos": 9,
      "partidos": 10,
-     "momio_minimo": -386
+     "momio_minimo": -435
+    }
+   ]
+  },
+  {
+   "grupo": "NBA",
+   "jugador": "Paul George",
+   "equipo": "Celtics",
+   "partido": "Celtics @ Kings",
+   "fecha": "2026-11-22T03:00:00Z",
+   "mercado": "Triples",
+   "linea": 3.5,
+   "lado": "Under",
+   "momio": -120,
+   "casa": "bet365",
+   "prob_principal": 55.6,
+   "promedio": 3.1,
+   "pasos": [
+    {
+     "linea": 5.5,
+     "pick": "Paul George Under 5.5",
+     "prob": 84.2,
+     "aciertos": 9,
+     "partidos": 10,
+     "momio_minimo": -431
     },
     {
-     "linea": 0.5,
-     "pick": "Michael Porter Jr. Over 0.5",
-     "prob": 92.7,
+     "linea": 6.5,
+     "pick": "Paul George Under 6.5",
+     "prob": 92.6,
      "aciertos": 10,
      "partidos": 10,
-     "momio_minimo": -874
+     "momio_minimo": -865
+    }
+   ]
+  },
+  {
+   "grupo": "NBA",
+   "jugador": "Daniel Gafford",
+   "equipo": "Mavericks",
+   "partido": "Clippers @ Mavericks",
+   "fecha": "2026-11-22T01:00:00Z",
+   "mercado": "Rebotes",
+   "linea": 6.5,
+   "lado": "Under",
+   "momio": -125,
+   "casa": "bet365",
+   "prob_principal": 66.1,
+   "promedio": 4.2,
+   "pasos": [
+    {
+     "linea": 7.5,
+     "pick": "Daniel Gafford Under 7.5",
+     "prob": 83.4,
+     "aciertos": 10,
+     "partidos": 10,
+     "momio_minimo": -411
+    },
+    {
+     "linea": 8.5,
+     "pick": "Daniel Gafford Under 8.5",
+     "prob": 89.1,
+     "aciertos": 10,
+     "partidos": 10,
+     "momio_minimo": -618
+    },
+    {
+     "linea": 9.5,
+     "pick": "Daniel Gafford Under 9.5",
+     "prob": 92.5,
+     "aciertos": 10,
+     "partidos": 10,
+     "momio_minimo": -852
+    }
+   ]
+  },
+  {
+   "grupo": "NBA",
+   "jugador": "Jeremiah Fears",
+   "equipo": "Pelicans",
+   "partido": "Pelicans @ Spurs",
+   "fecha": "2026-11-22T01:00:00Z",
+   "mercado": "Asistencias",
+   "linea": 5.5,
+   "lado": "Under",
+   "momio": -112,
+   "casa": "bet365",
+   "prob_principal": 52.0,
+   "promedio": 6.0,
+   "pasos": [
+    {
+     "linea": 7.5,
+     "pick": "Jeremiah Fears Under 7.5",
+     "prob": 79.5,
+     "aciertos": 8,
+     "partidos": 10,
+     "momio_minimo": -325
+    },
+    {
+     "linea": 8.5,
+     "pick": "Jeremiah Fears Under 8.5",
+     "prob": 88.3,
+     "aciertos": 9,
+     "partidos": 10,
+     "momio_minimo": -581
+    },
+    {
+     "linea": 9.5,
+     "pick": "Jeremiah Fears Under 9.5",
+     "prob": 90.5,
+     "aciertos": 9,
+     "partidos": 10,
+     "momio_minimo": -698
     }
    ]
   },
@@ -1329,145 +1326,233 @@ window.PICKS = {
   },
   {
    "grupo": "NBA",
-   "jugador": "Jeremiah Fears",
-   "equipo": "Pelicans",
-   "partido": "Pelicans @ Thunder",
-   "fecha": "2026-11-21T01:00:00Z",
+   "jugador": "Jalen Brunson",
+   "equipo": "Knicks",
+   "partido": "Trail Blazers @ Knicks",
+   "fecha": "2026-11-22T00:30:00Z",
    "mercado": "Puntos",
-   "linea": 16.5,
-   "lado": "Over",
-   "momio": -112,
+   "linea": 28.5,
+   "lado": "Under",
+   "momio": -120,
    "casa": "bet365",
-   "prob_principal": 50.0,
-   "promedio": 17.1,
+   "prob_principal": 55.6,
+   "promedio": 27.0,
    "pasos": [
     {
-     "linea": 12.5,
-     "pick": "Jeremiah Fears Over 12.5",
+     "linea": 32.5,
+     "pick": "Jalen Brunson Under 32.5",
      "prob": 76.9,
      "aciertos": 8,
      "partidos": 10,
      "momio_minimo": -283
     },
     {
-     "linea": 10.5,
-     "pick": "Jeremiah Fears Over 10.5",
-     "prob": 90.7,
+     "linea": 34.5,
+     "pick": "Jalen Brunson Under 34.5",
+     "prob": 90.6,
      "aciertos": 10,
      "partidos": 10,
-     "momio_minimo": -716
+     "momio_minimo": -706
+    },
+    {
+     "linea": 36.5,
+     "pick": "Jalen Brunson Under 36.5",
+     "prob": 92.9,
+     "aciertos": 10,
+     "partidos": 10,
+     "momio_minimo": -890
     }
    ]
   },
   {
    "grupo": "NBA",
-   "jugador": "Ajay Mitchell",
-   "equipo": "Thunder",
-   "partido": "Pelicans @ Thunder",
-   "fecha": "2026-11-21T01:00:00Z",
-   "mercado": "Puntos",
-   "linea": 18.5,
+   "jugador": "Donovan Clingan",
+   "equipo": "Trail Blazers",
+   "partido": "Trail Blazers @ Knicks",
+   "fecha": "2026-11-22T00:30:00Z",
+   "mercado": "Rebotes",
+   "linea": 10.5,
    "lado": "Over",
-   "momio": -110,
+   "momio": -115,
    "casa": "bet365",
-   "prob_principal": 50.8,
-   "promedio": 19.6,
+   "prob_principal": 65.2,
+   "promedio": 11.6,
    "pasos": [
     {
-     "linea": 12.5,
-     "pick": "Ajay Mitchell Over 12.5",
-     "prob": 75.4,
-     "aciertos": 8,
-     "partidos": 10,
-     "momio_minimo": -262
-    },
-    {
-     "linea": 10.5,
-     "pick": "Ajay Mitchell Over 10.5",
-     "prob": 83.0,
+     "linea": 9.5,
+     "pick": "Donovan Clingan Over 9.5",
+     "prob": 75.1,
      "aciertos": 9,
      "partidos": 10,
-     "momio_minimo": -399
-    }
-   ]
-  },
-  {
-   "grupo": "NBA",
-   "jugador": "Nikola Jokic",
-   "equipo": "Nuggets",
-   "partido": "Rockets @ Nuggets",
-   "fecha": "2026-11-21T03:00:00Z",
-   "mercado": "Rebotes",
-   "linea": 11.5,
-   "lado": "Under",
-   "momio": -110,
-   "casa": "bet365",
-   "prob_principal": 54.8,
-   "promedio": 11.0,
-   "pasos": [
-    {
-     "linea": 13.5,
-     "pick": "Nikola Jokic Under 13.5",
-     "prob": 74.4,
-     "aciertos": 8,
-     "partidos": 10,
-     "momio_minimo": -249
+     "momio_minimo": -258
     },
     {
-     "linea": 14.5,
-     "pick": "Nikola Jokic Under 14.5",
-     "prob": 78.1,
-     "aciertos": 8,
+     "linea": 8.5,
+     "pick": "Donovan Clingan Over 8.5",
+     "prob": 79.5,
+     "aciertos": 9,
      "partidos": 10,
-     "momio_minimo": -302
+     "momio_minimo": -326
     },
     {
-     "linea": 15.5,
-     "pick": "Nikola Jokic Under 15.5",
+     "linea": 7.5,
+     "pick": "Donovan Clingan Over 7.5",
+     "prob": 83.2,
+     "aciertos": 9,
+     "partidos": 10,
+     "momio_minimo": -404
+    },
+    {
+     "linea": 6.5,
+     "pick": "Donovan Clingan Over 6.5",
      "prob": 85.9,
      "aciertos": 9,
      "partidos": 10,
-     "momio_minimo": -484
+     "momio_minimo": -483
     }
    ]
   },
   {
    "grupo": "NBA",
-   "jugador": "Pascal Siakam",
-   "equipo": "Pacers",
-   "partido": "Pacers @ Cavaliers",
-   "fecha": "2026-11-21T00:30:00Z",
+   "jugador": "Josh Hart",
+   "equipo": "Knicks",
+   "partido": "Trail Blazers @ Knicks",
+   "fecha": "2026-11-22T00:30:00Z",
    "mercado": "Rebotes",
    "linea": 6.5,
    "lado": "Under",
-   "momio": 100,
+   "momio": -110,
    "casa": "bet365",
-   "prob_principal": 58.9,
-   "promedio": 5.4,
+   "prob_principal": 64.8,
+   "promedio": 5.6,
+   "pasos": [
+    {
+     "linea": 7.5,
+     "pick": "Josh Hart Under 7.5",
+     "prob": 74.7,
+     "aciertos": 8,
+     "partidos": 10,
+     "momio_minimo": -253
+    },
+    {
+     "linea": 8.5,
+     "pick": "Josh Hart Under 8.5",
+     "prob": 91.2,
+     "aciertos": 10,
+     "partidos": 10,
+     "momio_minimo": -750
+    }
+   ]
+  },
+  {
+   "grupo": "NBA",
+   "jugador": "Zach Edey",
+   "equipo": "Grizzlies",
+   "partido": "Grizzlies @ Timberwolves",
+   "fecha": "2026-11-22T01:00:00Z",
+   "mercado": "Rebotes",
+   "linea": 7.5,
+   "lado": "Under",
+   "momio": -120,
+   "casa": "bet365",
+   "prob_principal": 55.6,
+   "promedio": 7.0,
+   "pasos": [
+    {
+     "linea": 9.5,
+     "pick": "Zach Edey Under 9.5",
+     "prob": 74.5,
+     "aciertos": 8,
+     "partidos": 10,
+     "momio_minimo": -251
+    },
+    {
+     "linea": 10.5,
+     "pick": "Zach Edey Under 10.5",
+     "prob": 83.0,
+     "aciertos": 9,
+     "partidos": 10,
+     "momio_minimo": -401
+    },
+    {
+     "linea": 11.5,
+     "pick": "Zach Edey Under 11.5",
+     "prob": 85.7,
+     "aciertos": 9,
+     "partidos": 10,
+     "momio_minimo": -478
+    }
+   ]
+  },
+  {
+   "grupo": "NBA",
+   "jugador": "Jaden McDaniels",
+   "equipo": "Timberwolves",
+   "partido": "Grizzlies @ Timberwolves",
+   "fecha": "2026-11-22T01:00:00Z",
+   "mercado": "Puntos",
+   "linea": 17.5,
+   "lado": "Under",
+   "momio": -120,
+   "casa": "bet365",
+   "prob_principal": 55.6,
+   "promedio": 17.1,
+   "pasos": [
+    {
+     "linea": 19.5,
+     "pick": "Jaden McDaniels Under 19.5",
+     "prob": 74.2,
+     "aciertos": 8,
+     "partidos": 10,
+     "momio_minimo": -247
+    },
+    {
+     "linea": 21.5,
+     "pick": "Jaden McDaniels Under 21.5",
+     "prob": 80.3,
+     "aciertos": 8,
+     "partidos": 10,
+     "momio_minimo": -341
+    }
+   ]
+  },
+  {
+   "grupo": "NBA",
+   "jugador": "Darius Acuff Jr.",
+   "equipo": "Kings",
+   "partido": "Celtics @ Kings",
+   "fecha": "2026-11-22T03:00:00Z",
+   "mercado": "Asistencias",
+   "linea": 6.5,
+   "lado": "Under",
+   "momio": -130,
+   "casa": "bet365",
+   "prob_principal": 58.3,
+   "promedio": 7.7,
    "pasos": [
     {
      "linea": 8.5,
-     "pick": "Pascal Siakam Under 8.5",
-     "prob": 74.0,
-     "aciertos": 8,
+     "pick": "Darius Acuff Jr. Under 8.5",
+     "prob": 73.9,
+     "aciertos": 7,
      "partidos": 10,
      "momio_minimo": -244
     },
     {
      "linea": 9.5,
-     "pick": "Pascal Siakam Under 9.5",
-     "prob": 82.9,
-     "aciertos": 9,
+     "pick": "Darius Acuff Jr. Under 9.5",
+     "prob": 77.5,
+     "aciertos": 7,
      "partidos": 10,
-     "momio_minimo": -398
+     "momio_minimo": -291
     },
     {
      "linea": 10.5,
-     "pick": "Pascal Siakam Under 10.5",
-     "prob": 85.8,
-     "aciertos": 9,
+     "pick": "Darius Acuff Jr. Under 10.5",
+     "prob": 84.7,
+     "aciertos": 8,
      "partidos": 10,
-     "momio_minimo": -482
+     "momio_minimo": -447
     }
    ]
   },
@@ -1513,385 +1598,137 @@ window.PICKS = {
   },
   {
    "grupo": "NBA",
-   "jugador": "Kevin Durant",
-   "equipo": "Rockets",
-   "partido": "Rockets @ Nuggets",
-   "fecha": "2026-11-21T03:00:00Z",
+   "jugador": "Zach LaVine",
+   "equipo": "Kings",
+   "partido": "Celtics @ Kings",
+   "fecha": "2026-11-22T03:00:00Z",
    "mercado": "Puntos",
-   "linea": 20.5,
+   "linea": 17.5,
    "lado": "Over",
-   "momio": -120,
+   "momio": -110,
    "casa": "bet365",
-   "prob_principal": 60.6,
-   "promedio": 20.1,
+   "prob_principal": 52.8,
+   "promedio": 18.5,
    "pasos": [
     {
-     "linea": 18.5,
-     "pick": "Kevin Durant Over 18.5",
-     "prob": 73.2,
-     "aciertos": 8,
-     "partidos": 10,
-     "momio_minimo": -235
-    },
-    {
-     "linea": 16.5,
-     "pick": "Kevin Durant Over 16.5",
-     "prob": 79.0,
-     "aciertos": 8,
-     "partidos": 10,
-     "momio_minimo": -317
-    },
-    {
-     "linea": 14.5,
-     "pick": "Kevin Durant Over 14.5",
-     "prob": 82.5,
-     "aciertos": 8,
-     "partidos": 10,
-     "momio_minimo": -388
-    },
-    {
-     "linea": 12.5,
-     "pick": "Kevin Durant Over 12.5",
-     "prob": 89.2,
-     "aciertos": 9,
-     "partidos": 10,
-     "momio_minimo": -623
-    }
-   ]
-  },
-  {
-   "grupo": "NBA",
-   "jugador": "Darryn Peterson",
-   "equipo": "Jazz",
-   "partido": "Suns @ Jazz",
-   "fecha": "2026-11-21T02:30:00Z",
-   "mercado": "Pts + Reb + Ast",
-   "linea": 27.5,
-   "lado": "Over",
-   "momio": -112,
-   "casa": "bet365",
-   "prob_principal": 52.0,
-   "promedio": 26.5,
-   "pasos": [
-    {
-     "linea": 21.5,
-     "pick": "Darryn Peterson Over 21.5",
-     "prob": 73.0,
-     "aciertos": 7,
-     "partidos": 10,
-     "momio_minimo": -234
-    },
-    {
-     "linea": 18.5,
-     "pick": "Darryn Peterson Over 18.5",
-     "prob": 81.9,
-     "aciertos": 8,
-     "partidos": 10,
-     "momio_minimo": -374
-    },
-    {
-     "linea": 15.5,
-     "pick": "Darryn Peterson Over 15.5",
-     "prob": 89.4,
-     "aciertos": 9,
-     "partidos": 10,
-     "momio_minimo": -636
-    }
-   ]
-  },
-  {
-   "grupo": "NBA",
-   "jugador": "Scottie Barnes",
-   "equipo": "Raptors",
-   "partido": "Raptors @ Pistons",
-   "fecha": "2026-11-21T00:30:00Z",
-   "mercado": "Puntos",
-   "linea": 23.5,
-   "lado": "Over",
-   "momio": -112,
-   "casa": "bet365",
-   "prob_principal": 52.0,
-   "promedio": 23.8,
-   "pasos": [
-    {
-     "linea": 19.5,
-     "pick": "Scottie Barnes Over 19.5",
+     "linea": 13.5,
+     "pick": "Zach LaVine Over 13.5",
      "prob": 72.8,
      "aciertos": 8,
      "partidos": 10,
-     "momio_minimo": -232
-    },
-    {
-     "linea": 17.5,
-     "pick": "Scottie Barnes Over 17.5",
-     "prob": 75.5,
-     "aciertos": 8,
-     "partidos": 10,
-     "momio_minimo": -264
-    },
-    {
-     "linea": 15.5,
-     "pick": "Scottie Barnes Over 15.5",
-     "prob": 82.9,
-     "aciertos": 9,
-     "partidos": 10,
-     "momio_minimo": -398
-    }
-   ]
-  },
-  {
-   "grupo": "NBA",
-   "jugador": "Cade Cunningham",
-   "equipo": "Pistons",
-   "partido": "Raptors @ Pistons",
-   "fecha": "2026-11-21T00:30:00Z",
-   "mercado": "Asistencias",
-   "linea": 7.5,
-   "lado": "Under",
-   "momio": -110,
-   "casa": "bet365",
-   "prob_principal": 49.8,
-   "promedio": 7.7,
-   "pasos": [
-    {
-     "linea": 8.5,
-     "pick": "Cade Cunningham Under 8.5",
-     "prob": 72.1,
-     "aciertos": 8,
-     "partidos": 10,
-     "momio_minimo": -224
-    },
-    {
-     "linea": 9.5,
-     "pick": "Cade Cunningham Under 9.5",
-     "prob": 78.0,
-     "aciertos": 8,
-     "partidos": 10,
-     "momio_minimo": -300
-    },
-    {
-     "linea": 10.5,
-     "pick": "Cade Cunningham Under 10.5",
-     "prob": 81.8,
-     "aciertos": 8,
-     "partidos": 10,
-     "momio_minimo": -372
-    }
-   ]
-  },
-  {
-   "grupo": "NBA",
-   "jugador": "Jalen Green",
-   "equipo": "Suns",
-   "partido": "Suns @ Jazz",
-   "fecha": "2026-11-21T02:30:00Z",
-   "mercado": "Puntos",
-   "linea": 14.5,
-   "lado": "Under",
-   "momio": -125,
-   "casa": "bet365",
-   "prob_principal": 56.1,
-   "promedio": 12.9,
-   "pasos": [
-    {
-     "linea": 16.5,
-     "pick": "Jalen Green Under 16.5",
-     "prob": 72.0,
-     "aciertos": 8,
-     "partidos": 10,
-     "momio_minimo": -222
-    },
-    {
-     "linea": 18.5,
-     "pick": "Jalen Green Under 18.5",
-     "prob": 81.9,
-     "aciertos": 9,
-     "partidos": 10,
-     "momio_minimo": -375
-    },
-    {
-     "linea": 20.5,
-     "pick": "Jalen Green Under 20.5",
-     "prob": 85.6,
-     "aciertos": 9,
-     "partidos": 10,
-     "momio_minimo": -473
-    },
-    {
-     "linea": 22.5,
-     "pick": "Jalen Green Under 22.5",
-     "prob": 92.8,
-     "aciertos": 10,
-     "partidos": 10,
-     "momio_minimo": -884
-    }
-   ]
-  },
-  {
-   "grupo": "NBA",
-   "jugador": "Josh Giddey",
-   "equipo": "Bulls",
-   "partido": "Wizards @ Bulls",
-   "fecha": "2026-11-21T01:00:00Z",
-   "mercado": "Puntos",
-   "linea": 13.5,
-   "lado": "Under",
-   "momio": -115,
-   "casa": "bet365",
-   "prob_principal": 60.2,
-   "promedio": 11.9,
-   "pasos": [
-    {
-     "linea": 15.5,
-     "pick": "Josh Giddey Under 15.5",
-     "prob": 71.9,
-     "aciertos": 8,
-     "partidos": 10,
-     "momio_minimo": -221
-    },
-    {
-     "linea": 17.5,
-     "pick": "Josh Giddey Under 17.5",
-     "prob": 77.4,
-     "aciertos": 8,
-     "partidos": 10,
-     "momio_minimo": -290
-    },
-    {
-     "linea": 19.5,
-     "pick": "Josh Giddey Under 19.5",
-     "prob": 91.2,
-     "aciertos": 10,
-     "partidos": 10,
-     "momio_minimo": -747
-    }
-   ]
-  },
-  {
-   "grupo": "NBA",
-   "jugador": "Brandon Miller",
-   "equipo": "Hornets",
-   "partido": "Hornets @ Hawks",
-   "fecha": "2026-11-21T00:00:00Z",
-   "mercado": "Triples",
-   "linea": 2.5,
-   "lado": "Over",
-   "momio": -140,
-   "casa": "bet365",
-   "prob_principal": 62.0,
-   "promedio": 2.9,
-   "pasos": [
-    {
-     "linea": 1.5,
-     "pick": "Brandon Miller Over 1.5",
-     "prob": 70.1,
-     "aciertos": 7,
-     "partidos": 10,
-     "momio_minimo": -204
-    },
-    {
-     "linea": 0.5,
-     "pick": "Brandon Miller Over 0.5",
-     "prob": 85.7,
-     "aciertos": 9,
-     "partidos": 10,
-     "momio_minimo": -479
-    }
-   ]
-  },
-  {
-   "grupo": "NBA",
-   "jugador": "Trae Young",
-   "equipo": "Wizards",
-   "partido": "Wizards @ Bulls",
-   "fecha": "2026-11-21T01:00:00Z",
-   "mercado": "Asistencias",
-   "linea": 9.5,
-   "lado": "Under",
-   "momio": -115,
-   "casa": "bet365",
-   "prob_principal": 60.2,
-   "promedio": 8.1,
-   "pasos": [
-    {
-     "linea": 10.5,
-     "pick": "Trae Young Under 10.5",
-     "prob": 69.9,
-     "aciertos": 8,
-     "partidos": 10,
-     "momio_minimo": -202
+     "momio_minimo": -231
     },
     {
      "linea": 11.5,
-     "pick": "Trae Young Under 11.5",
-     "prob": 74.1,
-     "aciertos": 8,
-     "partidos": 10,
-     "momio_minimo": -246
-    },
-    {
-     "linea": 12.5,
-     "pick": "Trae Young Under 12.5",
-     "prob": 82.6,
+     "pick": "Zach LaVine Over 11.5",
+     "prob": 81.6,
      "aciertos": 9,
      "partidos": 10,
-     "momio_minimo": -391
+     "momio_minimo": -367
     },
     {
-     "linea": 13.5,
-     "pick": "Trae Young Under 13.5",
-     "prob": 85.4,
-     "aciertos": 9,
+     "linea": 9.5,
+     "pick": "Zach LaVine Over 9.5",
+     "prob": 89.3,
+     "aciertos": 10,
      "partidos": 10,
-     "momio_minimo": -467
+     "momio_minimo": -631
     }
    ]
   },
   {
    "grupo": "NBA",
-   "jugador": "Jamal Murray",
-   "equipo": "Nuggets",
-   "partido": "Rockets @ Nuggets",
-   "fecha": "2026-11-21T03:00:00Z",
+   "jugador": "Keldon Johnson",
+   "equipo": "Spurs",
+   "partido": "Pelicans @ Spurs",
+   "fecha": "2026-11-22T01:00:00Z",
    "mercado": "Puntos",
-   "linea": 22.5,
-   "lado": "Over",
+   "linea": 11.5,
+   "lado": "Under",
    "momio": -120,
    "casa": "bet365",
-   "prob_principal": 60.6,
-   "promedio": 26.7,
+   "prob_principal": 65.6,
+   "promedio": 8.9,
    "pasos": [
     {
-     "linea": 20.5,
-     "pick": "Jamal Murray Over 20.5",
-     "prob": 69.2,
+     "linea": 13.5,
+     "pick": "Keldon Johnson Under 13.5",
+     "prob": 71.7,
      "aciertos": 8,
      "partidos": 10,
-     "momio_minimo": -196
+     "momio_minimo": -219
     },
     {
+     "linea": 15.5,
+     "pick": "Keldon Johnson Under 15.5",
+     "prob": 81.8,
+     "aciertos": 9,
+     "partidos": 10,
+     "momio_minimo": -371
+    },
+    {
+     "linea": 17.5,
+     "pick": "Keldon Johnson Under 17.5",
+     "prob": 85.5,
+     "aciertos": 9,
+     "partidos": 10,
+     "momio_minimo": -472
+    },
+    {
+     "linea": 19.5,
+     "pick": "Keldon Johnson Under 19.5",
+     "prob": 92.8,
+     "aciertos": 10,
+     "partidos": 10,
+     "momio_minimo": -883
+    }
+   ]
+  },
+  {
+   "grupo": "NBA",
+   "jugador": "Zion Williamson",
+   "equipo": "Pelicans",
+   "partido": "Pelicans @ Spurs",
+   "fecha": "2026-11-22T01:00:00Z",
+   "mercado": "Puntos",
+   "linea": 20.5,
+   "lado": "Over",
+   "momio": -110,
+   "casa": "bet365",
+   "prob_principal": 62.8,
+   "promedio": 22.3,
+   "pasos": [
+    {
      "linea": 18.5,
-     "pick": "Jamal Murray Over 18.5",
-     "prob": 72.6,
+     "pick": "Zion Williamson Over 18.5",
+     "prob": 69.5,
      "aciertos": 8,
      "partidos": 10,
-     "momio_minimo": -229
+     "momio_minimo": -199
     },
     {
      "linea": 16.5,
-     "pick": "Jamal Murray Over 16.5",
-     "prob": 75.6,
+     "pick": "Zion Williamson Over 16.5",
+     "prob": 75.1,
      "aciertos": 8,
      "partidos": 10,
-     "momio_minimo": -265
+     "momio_minimo": -259
     },
     {
      "linea": 14.5,
-     "pick": "Jamal Murray Over 14.5",
-     "prob": 83.1,
+     "pick": "Zion Williamson Over 14.5",
+     "prob": 84.0,
      "aciertos": 9,
      "partidos": 10,
-     "momio_minimo": -404
+     "momio_minimo": -427
+    },
+    {
+     "linea": 12.5,
+     "pick": "Zion Williamson Over 12.5",
+     "prob": 91.3,
+     "aciertos": 10,
+     "partidos": 10,
+     "momio_minimo": -754
     }
    ]
   },
@@ -1937,49 +1774,89 @@ window.PICKS = {
   },
   {
    "grupo": "NBA",
-   "jugador": "Domantas Sabonis",
-   "equipo": "Kings",
-   "partido": "Kings @ Lakers",
-   "fecha": "2026-11-21T03:00:00Z",
-   "mercado": "Rebotes",
-   "linea": 12.5,
+   "jugador": "Brook Lopez",
+   "equipo": "Clippers",
+   "partido": "Clippers @ Mavericks",
+   "fecha": "2026-11-22T01:00:00Z",
+   "mercado": "Puntos",
+   "linea": 13.5,
    "lado": "Over",
    "momio": -110,
    "casa": "bet365",
-   "prob_principal": 54.8,
-   "promedio": 11.9,
+   "prob_principal": 49.8,
+   "promedio": 15.9,
    "pasos": [
     {
-     "linea": 11.5,
-     "pick": "Domantas Sabonis Over 11.5",
-     "prob": 68.4,
+     "linea": 9.5,
+     "pick": "Brook Lopez Over 9.5",
+     "prob": 68.1,
+     "aciertos": 7,
+     "partidos": 10,
+     "momio_minimo": -187
+    },
+    {
+     "linea": 7.5,
+     "pick": "Brook Lopez Over 7.5",
+     "prob": 76.6,
      "aciertos": 8,
      "partidos": 10,
-     "momio_minimo": -189
+     "momio_minimo": -279
     },
+    {
+     "linea": 5.5,
+     "pick": "Brook Lopez Over 5.5",
+     "prob": 89.4,
+     "aciertos": 10,
+     "partidos": 10,
+     "momio_minimo": -636
+    }
+   ]
+  },
+  {
+   "grupo": "NBA",
+   "jugador": "Domantas Sabonis",
+   "equipo": "Kings",
+   "partido": "Celtics @ Kings",
+   "fecha": "2026-11-22T03:00:00Z",
+   "mercado": "Rebotes",
+   "linea": 11.5,
+   "lado": "Over",
+   "momio": -135,
+   "casa": "bet365",
+   "prob_principal": 64.6,
+   "promedio": 12.1,
+   "pasos": [
     {
      "linea": 10.5,
      "pick": "Domantas Sabonis Over 10.5",
-     "prob": 71.9,
+     "prob": 68.1,
      "aciertos": 8,
      "partidos": 10,
-     "momio_minimo": -222
+     "momio_minimo": -187
     },
     {
      "linea": 9.5,
      "pick": "Domantas Sabonis Over 9.5",
-     "prob": 75.1,
+     "prob": 71.3,
      "aciertos": 8,
      "partidos": 10,
-     "momio_minimo": -258
+     "momio_minimo": -216
     },
     {
      "linea": 8.5,
      "pick": "Domantas Sabonis Over 8.5",
-     "prob": 77.7,
+     "prob": 74.2,
      "aciertos": 8,
      "partidos": 10,
-     "momio_minimo": -296
+     "momio_minimo": -247
+    },
+    {
+     "linea": 7.5,
+     "pick": "Domantas Sabonis Over 7.5",
+     "prob": 76.6,
+     "aciertos": 8,
+     "partidos": 10,
+     "momio_minimo": -279
     }
    ]
   },
@@ -2073,41 +1950,121 @@ window.PICKS = {
   },
   {
    "grupo": "NBA",
-   "jugador": "Jalen Johnson",
-   "equipo": "Hawks",
-   "partido": "Hornets @ Hawks",
-   "fecha": "2026-11-21T00:00:00Z",
-   "mercado": "Rebotes",
-   "linea": 9.5,
+   "jugador": "Cooper Flagg",
+   "equipo": "Mavericks",
+   "partido": "Clippers @ Mavericks",
+   "fecha": "2026-11-22T01:00:00Z",
+   "mercado": "Pts + Reb + Ast",
+   "linea": 39.5,
    "lado": "Under",
-   "momio": 100,
+   "momio": -112,
    "casa": "bet365",
-   "prob_principal": 58.9,
-   "promedio": 9.0,
+   "prob_principal": 55.0,
+   "promedio": 37.2,
    "pasos": [
     {
-     "linea": 10.5,
-     "pick": "Jalen Johnson Under 10.5",
-     "prob": 67.4,
+     "linea": 45.5,
+     "pick": "Cooper Flagg Under 45.5",
+     "prob": 67.7,
      "aciertos": 7,
      "partidos": 10,
-     "momio_minimo": -181
+     "momio_minimo": -184
     },
     {
-     "linea": 11.5,
-     "pick": "Jalen Johnson Under 11.5",
-     "prob": 83.9,
+     "linea": 48.5,
+     "pick": "Cooper Flagg Under 48.5",
+     "prob": 81.0,
      "aciertos": 9,
      "partidos": 10,
-     "momio_minimo": -425
+     "momio_minimo": -355
     },
     {
-     "linea": 12.5,
-     "pick": "Jalen Johnson Under 12.5",
-     "prob": 92.7,
-     "aciertos": 10,
+     "linea": 51.5,
+     "pick": "Cooper Flagg Under 51.5",
+     "prob": 83.8,
+     "aciertos": 9,
      "partidos": 10,
-     "momio_minimo": -871
+     "momio_minimo": -420
+    }
+   ]
+  },
+  {
+   "grupo": "NBA",
+   "jugador": "Neemias Queta",
+   "equipo": "Celtics",
+   "partido": "Celtics @ Kings",
+   "fecha": "2026-11-22T03:00:00Z",
+   "mercado": "Rebotes",
+   "linea": 6.5,
+   "lado": "Under",
+   "momio": 115,
+   "casa": "bet365",
+   "prob_principal": 47.6,
+   "promedio": 7.8,
+   "pasos": [
+    {
+     "linea": 8.5,
+     "pick": "Neemias Queta Under 8.5",
+     "prob": 67.6,
+     "aciertos": 7,
+     "partidos": 10,
+     "momio_minimo": -183
+    },
+    {
+     "linea": 9.5,
+     "pick": "Neemias Queta Under 9.5",
+     "prob": 71.8,
+     "aciertos": 7,
+     "partidos": 10,
+     "momio_minimo": -220
+    },
+    {
+     "linea": 10.5,
+     "pick": "Neemias Queta Under 10.5",
+     "prob": 80.0,
+     "aciertos": 8,
+     "partidos": 10,
+     "momio_minimo": -334
+    }
+   ]
+  },
+  {
+   "grupo": "NBA",
+   "jugador": "Rudy Gobert",
+   "equipo": "Timberwolves",
+   "partido": "Grizzlies @ Timberwolves",
+   "fecha": "2026-11-22T01:00:00Z",
+   "mercado": "Rebotes",
+   "linea": 10.5,
+   "lado": "Over",
+   "momio": 105,
+   "casa": "bet365",
+   "prob_principal": 48.4,
+   "promedio": 10.2,
+   "pasos": [
+    {
+     "linea": 8.5,
+     "pick": "Rudy Gobert Over 8.5",
+     "prob": 66.8,
+     "aciertos": 7,
+     "partidos": 10,
+     "momio_minimo": -176
+    },
+    {
+     "linea": 7.5,
+     "pick": "Rudy Gobert Over 7.5",
+     "prob": 70.5,
+     "aciertos": 7,
+     "partidos": 10,
+     "momio_minimo": -208
+    },
+    {
+     "linea": 6.5,
+     "pick": "Rudy Gobert Over 6.5",
+     "prob": 78.5,
+     "aciertos": 8,
+     "partidos": 10,
+     "momio_minimo": -308
     }
    ]
   },
@@ -2153,81 +2110,33 @@ window.PICKS = {
   },
   {
    "grupo": "NBA",
-   "jugador": "Donovan Mitchell",
-   "equipo": "Cavaliers",
-   "partido": "Pacers @ Cavaliers",
-   "fecha": "2026-11-21T00:30:00Z",
-   "mercado": "Puntos",
-   "linea": 26.5,
-   "lado": "Under",
-   "momio": -112,
+   "jugador": "Max Strus",
+   "equipo": "Clippers",
+   "partido": "Clippers @ Mavericks",
+   "fecha": "2026-11-22T01:00:00Z",
+   "mercado": "Triples",
+   "linea": 2.5,
+   "lado": "Over",
+   "momio": -105,
    "casa": "bet365",
-   "prob_principal": 55.0,
-   "promedio": 25.1,
+   "prob_principal": 49.2,
+   "promedio": 2.4,
    "pasos": [
     {
-     "linea": 30.5,
-     "pick": "Donovan Mitchell Under 30.5",
-     "prob": 66.6,
-     "aciertos": 7,
-     "partidos": 10,
-     "momio_minimo": -175
-    },
-    {
-     "linea": 32.5,
-     "pick": "Donovan Mitchell Under 32.5",
-     "prob": 69.5,
-     "aciertos": 7,
-     "partidos": 10,
-     "momio_minimo": -199
-    },
-    {
-     "linea": 34.5,
-     "pick": "Donovan Mitchell Under 34.5",
-     "prob": 77.1,
-     "aciertos": 8,
-     "partidos": 10,
-     "momio_minimo": -286
-    }
-   ]
-  },
-  {
-   "grupo": "NBA",
-   "jugador": "Jarrett Allen",
-   "equipo": "Cavaliers",
-   "partido": "Pacers @ Cavaliers",
-   "fecha": "2026-11-21T00:30:00Z",
-   "mercado": "Rebotes",
-   "linea": 9.5,
-   "lado": "Under",
-   "momio": -112,
-   "casa": "bet365",
-   "prob_principal": 53.0,
-   "promedio": 9.0,
-   "pasos": [
-    {
-     "linea": 11.5,
-     "pick": "Jarrett Allen Under 11.5",
+     "linea": 1.5,
+     "pick": "Max Strus Over 1.5",
      "prob": 65.7,
-     "aciertos": 7,
-     "partidos": 10,
+     "aciertos": 5,
+     "partidos": 8,
      "momio_minimo": -168
     },
     {
-     "linea": 12.5,
-     "pick": "Jarrett Allen Under 12.5",
-     "prob": 74.0,
-     "aciertos": 8,
-     "partidos": 10,
-     "momio_minimo": -245
-    },
-    {
-     "linea": 13.5,
-     "pick": "Jarrett Allen Under 13.5",
-     "prob": 76.7,
-     "aciertos": 8,
-     "partidos": 10,
-     "momio_minimo": -281
+     "linea": 0.5,
+     "pick": "Max Strus Over 0.5",
+     "prob": 83.9,
+     "aciertos": 7,
+     "partidos": 8,
+     "momio_minimo": -423
     }
    ]
   },
@@ -2313,49 +2222,49 @@ window.PICKS = {
   },
   {
    "grupo": "NBA",
-   "jugador": "Franz Wagner",
-   "equipo": "Magic",
-   "partido": "Magic @ Nets",
-   "fecha": "2026-11-21T00:30:00Z",
-   "mercado": "Puntos",
-   "linea": 24.5,
-   "lado": "Over",
+   "jugador": "Cedric Coward",
+   "equipo": "Grizzlies",
+   "partido": "Grizzlies @ Timberwolves",
+   "fecha": "2026-11-22T01:00:00Z",
+   "mercado": "Pts + Reb + Ast",
+   "linea": 28.5,
+   "lado": "Under",
    "momio": -105,
    "casa": "bet365",
-   "prob_principal": 56.4,
-   "promedio": 26.3,
+   "prob_principal": 54.4,
+   "promedio": 27.3,
    "pasos": [
     {
-     "linea": 22.5,
-     "pick": "Franz Wagner Over 22.5",
-     "prob": 65.3,
+     "linea": 31.5,
+     "pick": "Cedric Coward Under 31.5",
+     "prob": 65.4,
      "aciertos": 7,
      "partidos": 10,
-     "momio_minimo": -165
+     "momio_minimo": -166
     },
     {
-     "linea": 20.5,
-     "pick": "Franz Wagner Over 20.5",
-     "prob": 74.0,
+     "linea": 34.5,
+     "pick": "Cedric Coward Under 34.5",
+     "prob": 75.7,
      "aciertos": 8,
      "partidos": 10,
-     "momio_minimo": -245
+     "momio_minimo": -267
     },
     {
-     "linea": 18.5,
-     "pick": "Franz Wagner Over 18.5",
-     "prob": 77.4,
-     "aciertos": 8,
+     "linea": 37.5,
+     "pick": "Cedric Coward Under 37.5",
+     "prob": 84.7,
+     "aciertos": 9,
      "partidos": 10,
-     "momio_minimo": -290
+     "momio_minimo": -447
     },
     {
-     "linea": 16.5,
-     "pick": "Franz Wagner Over 16.5",
-     "prob": 80.2,
-     "aciertos": 8,
+     "linea": 40.5,
+     "pick": "Cedric Coward Under 40.5",
+     "prob": 92.3,
+     "aciertos": 10,
      "partidos": 10,
-     "momio_minimo": -338
+     "momio_minimo": -839
     }
    ]
   },
@@ -2398,26 +2307,26 @@ window.PICKS = {
    2,
    3
   ],
-  "momio": 465,
-  "prob": 26.7
+  "momio": 517,
+  "prob": 28.3
  },
  "grupos": {
   "NFL": {
-   "picks": 9,
+   "picks": 8,
    "partidos": 12,
    "ligas": [
     "NFL"
    ]
   },
   "NBA": {
-   "picks": 5,
-   "partidos": 9,
+   "picks": 6,
+   "partidos": 5,
    "ligas": [
     "NBA"
    ]
   },
   "Futbol": {
-   "picks": 3,
+   "picks": 0,
    "partidos": 44,
    "ligas": [
     "Premier League",
@@ -2434,7 +2343,7 @@ window.PICKS = {
   },
   "NHL": {
    "picks": 0,
-   "partidos": 0,
+   "partidos": 10,
    "ligas": [
     "NHL"
    ]

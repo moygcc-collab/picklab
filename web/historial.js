@@ -1,16 +1,16 @@
 window.HISTORIAL = {
- "actualizado": "2026-11-20 15:56",
+ "actualizado": "2026-11-21 20:59",
  "total": {
-  "ganados": 6,
-  "perdidos": 13,
+  "ganados": 10,
+  "perdidos": 17,
   "empates": 0,
-  "acierto": 31.6,
-  "unidades": -5.1,
-  "roi": -27.5,
-  "prob_promedio": 62.8
+  "acierto": 37.0,
+  "unidades": -5.33,
+  "roi": -20.5,
+  "prob_promedio": 61.9
  },
- "pendientes": 22,
- "publicados": 41,
+ "pendientes": 20,
+ "publicados": 47,
  "serie": [
   {
    "fecha": "2026-11-18",
@@ -87,17 +87,58 @@ window.HISTORIAL = {
   {
    "fecha": "2026-11-20",
    "u": -5.1
+  },
+  {
+   "fecha": "2026-11-20",
+   "u": -4.24
+  },
+  {
+   "fecha": "2026-11-21",
+   "u": -5.24
+  },
+  {
+   "fecha": "2026-11-21",
+   "u": -4.37
+  },
+  {
+   "fecha": "2026-11-21",
+   "u": -3.5
+  },
+  {
+   "fecha": "2026-11-21",
+   "u": -4.5
+  },
+  {
+   "fecha": "2026-11-21",
+   "u": -5.5
+  },
+  {
+   "fecha": "2026-11-21",
+   "u": -6.0
+  },
+  {
+   "fecha": "2026-11-21",
+   "u": -5.33
   }
  ],
  "por_grupo": {
-  "NBA": {
-   "ganados": 6,
-   "perdidos": 10,
+  "Futbol": {
+   "ganados": 2,
+   "perdidos": 1,
    "empates": 0,
-   "acierto": 37.5,
-   "unidades": -3.1,
-   "roi": -18.8,
-   "prob_promedio": 63.7
+   "acierto": 66.7,
+   "unidades": 1.03,
+   "roi": 41.0,
+   "prob_promedio": 58.9
+  },
+  "NBA": {
+   "ganados": 8,
+   "perdidos": 13,
+   "empates": 0,
+   "acierto": 38.1,
+   "unidades": -4.36,
+   "roi": -20.3,
+   "prob_promedio": 62.8
   },
   "NFL": {
    "ganados": 0,
@@ -111,13 +152,13 @@ window.HISTORIAL = {
  },
  "por_tipo": {
   "Props": {
-   "ganados": 6,
-   "perdidos": 11,
+   "ganados": 8,
+   "perdidos": 14,
    "empates": 0,
-   "acierto": 35.3,
-   "unidades": -4.1,
-   "roi": -23.4,
-   "prob_promedio": 63.4
+   "acierto": 36.4,
+   "unidades": -5.36,
+   "roi": -23.8,
+   "prob_promedio": 62.7
   },
   "Spreads": {
    "ganados": 0,
@@ -129,45 +170,194 @@ window.HISTORIAL = {
    "prob_promedio": 59.6
   },
   "Totales": {
-   "ganados": 0,
-   "perdidos": 1,
+   "ganados": 2,
+   "perdidos": 2,
    "empates": 0,
-   "acierto": 0.0,
-   "unidades": -0.5,
-   "roi": -100.0,
-   "prob_promedio": 56.1
+   "acierto": 50.0,
+   "unidades": 0.53,
+   "roi": 17.5,
+   "prob_promedio": 58.2
   }
  },
  "por_nivel": {
   "-": {
    "ganados": 4,
-   "perdidos": 6,
+   "perdidos": 7,
    "empates": 0,
-   "acierto": 40.0,
-   "unidades": -0.29,
-   "roi": -3.3,
-   "prob_promedio": 63.9
+   "acierto": 36.4,
+   "unidades": -0.79,
+   "roi": -8.3,
+   "prob_promedio": 62.7
   },
   "A": {
-   "ganados": 1,
+   "ganados": 2,
    "perdidos": 2,
    "empates": 0,
-   "acierto": 33.3,
-   "unidades": -1.17,
-   "roi": -29.3,
-   "prob_promedio": 63.7
+   "acierto": 50.0,
+   "unidades": -0.5,
+   "roi": -10.0,
+   "prob_promedio": 64.2
   },
   "B": {
-   "ganados": 1,
-   "perdidos": 5,
+   "ganados": 4,
+   "perdidos": 8,
    "empates": 0,
-   "acierto": 16.7,
-   "unidades": -3.63,
-   "roi": -66.0,
-   "prob_promedio": 60.6
+   "acierto": 33.3,
+   "unidades": -4.04,
+   "roi": -35.1,
+   "prob_promedio": 60.4
   }
  },
  "calificados": [
+  {
+   "clave": "2026-11-21 | Newcastle vs Arsenal | Under 2.5",
+   "edicion": "2026-11-17",
+   "fecha": "2026-11-21T17:30:00Z",
+   "grupo": "Futbol",
+   "liga": "Premier League",
+   "tipo": "Totales",
+   "partido": "Newcastle vs Arsenal",
+   "pick": "Under 2.5",
+   "momio": 115,
+   "unidades": 0.5,
+   "prob": 50.5,
+   "ventaja": 4.0,
+   "resultado": "P",
+   "neto": -0.5
+  },
+  {
+   "clave": "2026-11-21 | Schalke vs Stuttgart | Under 3.5",
+   "edicion": "2026-11-19",
+   "fecha": "2026-11-21T17:30:00Z",
+   "grupo": "Futbol",
+   "liga": "Bundesliga",
+   "tipo": "Totales",
+   "partido": "Schalke vs Stuttgart",
+   "pick": "Under 3.5",
+   "momio": -149,
+   "unidades": 1.0,
+   "prob": 65.5,
+   "ventaja": 5.6,
+   "resultado": "G",
+   "nivel": "A",
+   "score": 71,
+   "lado": "Under",
+   "neto": 0.67
+  },
+  {
+   "clave": "2026-11-21 | Rockets @ Nuggets | Jamal Murray Over 22.5",
+   "edicion": "2026-11-20",
+   "fecha": "2026-11-21T03:00:00Z",
+   "grupo": "NBA",
+   "liga": "NBA",
+   "tipo": "Props",
+   "partido": "Rockets @ Nuggets",
+   "pick": "Jamal Murray Over 22.5",
+   "momio": -120,
+   "unidades": 1.0,
+   "prob": 60.6,
+   "ventaja": 6.1,
+   "resultado": "P",
+   "nivel": "B",
+   "score": 66,
+   "lado": "Over",
+   "neto": -1.0
+  },
+  {
+   "clave": "2026-11-21 | Rockets @ Nuggets | Kevin Durant Over 20.5",
+   "edicion": "2026-11-20",
+   "fecha": "2026-11-21T03:00:00Z",
+   "grupo": "NBA",
+   "liga": "NBA",
+   "tipo": "Props",
+   "partido": "Rockets @ Nuggets",
+   "pick": "Kevin Durant Over 20.5",
+   "momio": -120,
+   "unidades": 1.0,
+   "prob": 60.6,
+   "ventaja": 6.1,
+   "resultado": "P",
+   "nivel": "B",
+   "score": 66,
+   "lado": "Over",
+   "neto": -1.0
+  },
+  {
+   "clave": "2026-11-21 | Wizards @ Bulls | Josh Giddey Under 13.5",
+   "edicion": "2026-11-20",
+   "fecha": "2026-11-21T01:00:00Z",
+   "grupo": "NBA",
+   "liga": "NBA",
+   "tipo": "Props",
+   "partido": "Wizards @ Bulls",
+   "pick": "Josh Giddey Under 13.5",
+   "momio": -115,
+   "unidades": 1.0,
+   "prob": 60.2,
+   "ventaja": 6.7,
+   "resultado": "G",
+   "nivel": "B",
+   "score": 67,
+   "lado": "Under",
+   "neto": 0.87
+  },
+  {
+   "clave": "2026-11-21 | Wizards @ Bulls | Trae Young Under 9.5",
+   "edicion": "2026-11-20",
+   "fecha": "2026-11-21T01:00:00Z",
+   "grupo": "NBA",
+   "liga": "NBA",
+   "tipo": "Props",
+   "partido": "Wizards @ Bulls",
+   "pick": "Trae Young Under 9.5",
+   "momio": -115,
+   "unidades": 1.0,
+   "prob": 60.2,
+   "ventaja": 6.7,
+   "resultado": "G",
+   "nivel": "B",
+   "score": 67,
+   "lado": "Under",
+   "neto": 0.87
+  },
+  {
+   "clave": "2026-11-21 | Pacers @ Cavaliers | Pascal Siakam Under 6.5",
+   "edicion": "2026-11-20",
+   "fecha": "2026-11-21T00:30:00Z",
+   "grupo": "NBA",
+   "liga": "NBA",
+   "tipo": "Props",
+   "partido": "Pacers @ Cavaliers",
+   "pick": "Pascal Siakam Under 6.5",
+   "momio": 100,
+   "unidades": 1.0,
+   "prob": 58.9,
+   "ventaja": 8.9,
+   "resultado": "P",
+   "nivel": "B",
+   "score": 62,
+   "lado": "Under",
+   "neto": -1.0
+  },
+  {
+   "clave": "2026-11-20 | Bayern vs Koln | Under 4.5",
+   "edicion": "2026-11-19",
+   "fecha": "2026-11-20T19:30:00Z",
+   "grupo": "Futbol",
+   "liga": "Bundesliga",
+   "tipo": "Totales",
+   "partido": "Bayern vs Koln",
+   "pick": "Under 4.5",
+   "momio": -117,
+   "unidades": 1.0,
+   "prob": 60.8,
+   "ventaja": 6.9,
+   "resultado": "G",
+   "nivel": "B",
+   "score": 68,
+   "lado": "Under",
+   "neto": 0.85
+  },
   {
    "clave": "2026-11-20 | Colts @ Texans | Colts +12.5",
    "edicion": "2026-11-17",
