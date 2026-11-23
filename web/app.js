@@ -370,6 +370,15 @@ function bloqueHistorial(completo) {
       html += '<p class="gris" style="font-size:14px">Empezamos a medirlo con los picks del 23 de noviembre.</p>';
     }
   }
+  if (H.aprendizaje && H.aprendizaje.length) {
+    html += '<h3 style="font-size:20px;margin-top:8px">Lo que el motor aprendio</h3>' +
+      '<p class="gris" style="font-size:14px">Cuando un tipo de apuesta pega menos de lo esperado, el motor le baja la confianza solo.</p>';
+    H.aprendizaje.forEach(function (b) {
+      html += '<div style="font-size:14px"><b class="mono">' + esc(b.titulo) + "</b>";
+      b.cambios.forEach(function (c) { html += '<div class="gris">' + esc(c.replace(/\|/g, " ")) + "</div>"; });
+      html += "</div>";
+    });
+  }
   if (H.por_nivel) {
     html += '<h3 style="font-size:20px;margin-top:8px">Por nivel de confianza</h3>';
     Object.keys(H.por_nivel).forEach(function (n) {

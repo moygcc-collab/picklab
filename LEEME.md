@@ -68,3 +68,15 @@ Las reglas para publicar (55%, 3% de ventaja, nivel A o B) no cambiaron.
 - En `edicion.py`, `MINUTOS = {"Jugador": [minutos de sus ultimos partidos]}` (mismo orden que sus valores).
 - Con minutos, el motor calcula produccion por minuto x minutos esperados hoy x ajuste. Rebotes, asistencias, triples y recepciones usan Poisson; puntos, PRA y yardas una normal. Pesa 70% y la racha 30%.
 - `PROYECCION = {"Jugador": {"min": 37, "factor": 1.05, "texto": "Sin Anunoby: mas tiros"}}` para minutos o uso distintos hoy (companero fuera, rival que permite mucho). Solo con datos verificados.
+
+## Cada actualizacion (cuando Moises dice "actualiza")
+Moises decidio seguir a mano (sin pagar la API) hasta que la pagina genere ganancias. El workflow `jalar_momios` esta apagado.
+1. `git pull` y `python historial.py`: califica TODOS los pendientes con 2 fuentes (box score para props). En `CIERRE` pega el momio de cierre si se encuentra.
+2. `python aprendizaje.py`: revisa por segmento (tipo, deporte, lado) y ajusta el motor solo, con limites. Anota los cambios en `aprendizaje.md`. Lee la salida: si un segmento sigue mal, investiga por que (lesiones, minutos, rival) y anotalo en la bitacora a mano.
+3. Datos a fondo (gratis), solo verificados:
+   - Props NBA: linea y momio (bet365 en ScoresAndOdds), ultimos 10 con MINUTOS (Land of Basketball), lesiones de titulares y companeros (Rotowire / ESPN / CBS), segunda noche seguida, y PROYECCION cuando un companero sale (minutos y uso).
+   - NFL: game logs de NFL.com, lesiones del reporte oficial, clima si es extremo.
+   - Spreads/totales: tablas actualizadas; momios de 2 fuentes si se puede.
+   - No poner jugadores en duda (questionable/GTD) salvo que ya este confirmado que juegan.
+4. `python edicion.py`, revisa candidatos, picks, razones y "Baja la linea". Si se puede, corre otra vez cerca del partido: el momio nuevo queda como cierre.
+5. Commit + push y confirma que `publicar_pagina` termino bien.

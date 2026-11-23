@@ -61,7 +61,8 @@ def guardar_edicion(picks, edicion):
             "resultado": None,
         }
         # Datos extra: nivel de confianza y lo necesario para calificar solo
-        for k in ["nivel", "score", "api_id", "liga_clave", "local", "visitante", "linea_num", "lado", "equipo_pick"]:
+        for k in ["nivel", "score", "api_id", "liga_clave", "local", "visitante", "linea_num", "lado", "equipo_pick",
+                  "mercado", "jugador", "linea", "casa", "p_mercado_pct", "p_estadisticas", "proyeccion", "senales"]:
             if k in p:
                 nuevo[k] = p[k]
         viejo = por_clave.get(clave)
@@ -194,6 +195,18 @@ def resumen_clv(lista):
             "en_contra": len([v for v in valores if v < 0]), "promedio": round(sum(valores) / len(valores), 2)}
 
 
+def leer_aprendizaje():
+    # Ultimos ajustes que el motor hizo solo (aprendizaje.py)
+    cambios = []
+    if os.path.exists("aprendizaje.md"):
+        with open("aprendizaje.md", encoding="utf-8") as f:
+            bloques = f.read().split("\n## ")[1:]
+        for b in bloques[-3:]:
+            lineas = b.strip().split("\n")
+            cambios.append({"titulo": lineas[0], "cambios": [l[2:] for l in lineas[1:] if l.startswith("- ")]})
+    return list(reversed(cambios))
+
+
 def escribir_web(lista):
     lista = aplicar_cierres(lista)
     for h in lista:
@@ -232,6 +245,7 @@ def escribir_web(lista):
         "por_tipo": por_tipo,
         "por_nivel": por_nivel,
         "clv": resumen_clv(lista),
+        "aprendizaje": leer_aprendizaje(),
         "calificados": recientes,
     }
     with open(SALIDA_WEB, "w", encoding="utf-8") as f:

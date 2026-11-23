@@ -35,6 +35,27 @@ PRIOR_PROPS = 3           # suavizado de los ultimos partidos: (aciertos + k) / 
 TOPE_POR_PARTIDO = 2      # maximo de picks publicados del mismo partido (si un partido sale raro, no nos tumba 4 picks)
 
 
+# Ajustes aprendidos (aprendizaje.py): pesos y factores por segmento
+AJUSTES = {"segmentos": {}, "pesos": {}}
+if os.path.exists("ajustes_motor.json"):
+    with open("ajustes_motor.json", encoding="utf-8") as _f:
+        AJUSTES = json.load(_f)
+    PESO_MAX_PROPS = AJUSTES.get("pesos", {}).get("PESO_MAX_PROPS", PESO_MAX_PROPS)
+    PESO_MAX_EQUIPOS = AJUSTES.get("pesos", {}).get("PESO_MAX_EQUIPOS", PESO_MAX_EQUIPOS)
+
+
+def factor_segmento(c):
+    # El factor mas prudente de los segmentos a los que pertenece el pick
+    lado = c.get("lado") if c.get("lado") in ("Over", "Under") else "Lado"
+    claves = [c["tipo"], c["grupo"] + "|" + c["tipo"], c["grupo"] + "|" + c["tipo"] + "|" + lado]
+    mejor = (1.0, None)
+    for k in claves:
+        f = AJUSTES.get("segmentos", {}).get(k)
+        if f is not None and f < mejor[0]:
+            mejor = (f, k)
+    return mejor
+
+
 def limitar(x, a, b):
     return max(a, min(b, x))
 
@@ -269,7 +290,13 @@ def evaluar(c):
 
     # 4. Historial
     cal = calibracion()
-    if cal["factor"] < 1:
+    f_seg, seg = factor_segmento(c)
+    if f_seg < cal["factor"]:
+        p = 0.5 + (p - 0.5) * f_seg
+        d = AJUSTES.get("detalle", {}).get(seg, {})
+        razones.append(("i", "Aprendizaje: en " + seg.replace("|", " ") + " vamos " + d.get("record", "") + " (" +
+                        str(d.get("real")) + "% contra " + str(d.get("esperado")) + "% esperado), asi que bajamos la confianza"))
+    elif cal["factor"] < 1:
         p = 0.5 + (p - 0.5) * cal["factor"]
         razones.append(("i", "Ajuste por historial: nuestros picks pegaron " + str(cal["real"]) + "% contra " +
                         str(cal["esperado"]) + "% esperado, asi que bajamos la confianza"))

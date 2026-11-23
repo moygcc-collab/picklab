@@ -1,12 +1,14 @@
 name: jalar_momios
 
+# APAGADO por ahora (sin llave valida de The Odds API): solo corre si le das "Run workflow".
+# Para prenderlo otra vez, quita el # de las dos lineas de schedule.
 # Todos los dias a las 5:10 am de Monterrey (11:10 UTC) y cuando le das "Run workflow":
 # 1. Baja momios de todas las ligas activas con The Odds API (secreto ODDS_API_KEY)
 # 2. Califica solo los spreads/totales que ya terminaron
 # 3. Recalcula los picks con el motor y publica la pagina
 on:
-  schedule:
-    - cron: "10 11 * * *"
+  # schedule:
+  #   - cron: "10 11 * * *"
   workflow_dispatch:
 
 permissions:

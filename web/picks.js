@@ -1,5 +1,5 @@
 window.PICKS = {
- "actualizado": "2026-11-23 05:26",
+ "actualizado": "2026-11-23 05:38",
  "prueba": false,
  "manual": true,
  "api": false,

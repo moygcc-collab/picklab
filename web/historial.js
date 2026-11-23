@@ -1,5 +1,5 @@
 window.HISTORIAL = {
- "actualizado": "2026-11-23 05:26",
+ "actualizado": "2026-11-23 05:38",
  "total": {
   "ganados": 19,
   "perdidos": 26,
@@ -290,6 +290,16 @@ window.HISTORIAL = {
   "en_contra": 0,
   "promedio": null
  },
+ "aprendizaje": [
+  {
+   "titulo": "2026-11-23 05:38 (45 picks calificados)",
+   "cambios": [
+    "NBA|Props: factor 1.0 -> 0.77 (11-15, esperado 63.3%, real 42.3%)",
+    "NBA|Props|Over: factor 1.0 -> 0.83 (6-9, esperado 63.1%, real 40.0%)",
+    "Props: factor 1.0 -> 0.75 (12-18, esperado 63.2%, real 40.0%)"
+   ]
+  }
+ ],
  "calificados": [
   {
    "clave": "2026-11-23 | Vikings @ 49ers (Estadio Banorte, CDMX) | Justin Jefferson Under 82.5",
