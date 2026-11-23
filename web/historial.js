@@ -1,15 +1,15 @@
 window.HISTORIAL = {
- "actualizado": "2026-11-21 20:59",
+ "actualizado": "2026-11-23 05:17",
  "total": {
-  "ganados": 10,
-  "perdidos": 17,
-  "empates": 0,
-  "acierto": 37.0,
-  "unidades": -5.33,
-  "roi": -20.5,
-  "prob_promedio": 61.9
+  "ganados": 19,
+  "perdidos": 26,
+  "empates": 1,
+  "acierto": 42.2,
+  "unidades": -6.24,
+  "roi": -14.7,
+  "prob_promedio": 61.5
  },
- "pendientes": 20,
+ "pendientes": 1,
  "publicados": 47,
  "serie": [
   {
@@ -119,96 +119,506 @@ window.HISTORIAL = {
   {
    "fecha": "2026-11-21",
    "u": -5.33
+  },
+  {
+   "fecha": "2026-11-21",
+   "u": -4.53
+  },
+  {
+   "fecha": "2026-11-22",
+   "u": -3.23
+  },
+  {
+   "fecha": "2026-11-22",
+   "u": -4.73
+  },
+  {
+   "fecha": "2026-11-22",
+   "u": -6.23
+  },
+  {
+   "fecha": "2026-11-22",
+   "u": -4.98
+  },
+  {
+   "fecha": "2026-11-22",
+   "u": -4.98
+  },
+  {
+   "fecha": "2026-11-22",
+   "u": -4.24
+  },
+  {
+   "fecha": "2026-11-22",
+   "u": -4.74
+  },
+  {
+   "fecha": "2026-11-22",
+   "u": -5.24
+  },
+  {
+   "fecha": "2026-11-22",
+   "u": -4.5
+  },
+  {
+   "fecha": "2026-11-22",
+   "u": -5.0
+  },
+  {
+   "fecha": "2026-11-22",
+   "u": -4.55
+  },
+  {
+   "fecha": "2026-11-22",
+   "u": -4.09
+  },
+  {
+   "fecha": "2026-11-22",
+   "u": -4.59
+  },
+  {
+   "fecha": "2026-11-22",
+   "u": -4.16
+  },
+  {
+   "fecha": "2026-11-22",
+   "u": -5.16
+  },
+  {
+   "fecha": "2026-11-22",
+   "u": -4.24
+  },
+  {
+   "fecha": "2026-11-22",
+   "u": -4.74
+  },
+  {
+   "fecha": "2026-11-23",
+   "u": -6.24
   }
  ],
  "por_grupo": {
   "Futbol": {
-   "ganados": 2,
+   "ganados": 3,
    "perdidos": 1,
    "empates": 0,
-   "acierto": 66.7,
-   "unidades": 1.03,
-   "roi": 41.0,
-   "prob_promedio": 58.9
+   "acierto": 75.0,
+   "unidades": 1.83,
+   "roi": 52.2,
+   "prob_promedio": 60.0
   },
   "NBA": {
-   "ganados": 8,
-   "perdidos": 13,
-   "empates": 0,
-   "acierto": 38.1,
-   "unidades": -4.36,
-   "roi": -20.3,
-   "prob_promedio": 62.8
+   "ganados": 11,
+   "perdidos": 15,
+   "empates": 1,
+   "acierto": 42.3,
+   "unidades": -4.06,
+   "roi": -14.3,
+   "prob_promedio": 63.3
   },
   "NFL": {
-   "ganados": 0,
-   "perdidos": 3,
+   "ganados": 5,
+   "perdidos": 10,
    "empates": 0,
-   "acierto": 0.0,
-   "unidades": -2.0,
-   "roi": -100.0,
-   "prob_promedio": 58.3
+   "acierto": 33.3,
+   "unidades": -4.0,
+   "roi": -38.1,
+   "prob_promedio": 58.7
   }
  },
  "por_tipo": {
   "Props": {
-   "ganados": 8,
-   "perdidos": 14,
-   "empates": 0,
-   "acierto": 36.4,
-   "unidades": -5.36,
-   "roi": -23.8,
-   "prob_promedio": 62.7
+   "ganados": 12,
+   "perdidos": 18,
+   "empates": 1,
+   "acierto": 40.0,
+   "unidades": -6.82,
+   "roi": -20.7,
+   "prob_promedio": 63.2
   },
   "Spreads": {
-   "ganados": 0,
-   "perdidos": 1,
+   "ganados": 2,
+   "perdidos": 4,
    "empates": 0,
-   "acierto": 0.0,
-   "unidades": -0.5,
-   "roi": -100.0,
-   "prob_promedio": 59.6
+   "acierto": 33.3,
+   "unidades": -1.11,
+   "roi": -37.1,
+   "prob_promedio": 57.7
   },
   "Totales": {
-   "ganados": 2,
-   "perdidos": 2,
+   "ganados": 5,
+   "perdidos": 4,
    "empates": 0,
-   "acierto": 50.0,
-   "unidades": 0.53,
-   "roi": 17.5,
-   "prob_promedio": 58.2
+   "acierto": 55.6,
+   "unidades": 1.7,
+   "roi": 26.1,
+   "prob_promedio": 58.3
   }
  },
  "por_nivel": {
   "-": {
-   "ganados": 4,
-   "perdidos": 7,
+   "ganados": 8,
+   "perdidos": 12,
    "empates": 0,
-   "acierto": 36.4,
-   "unidades": -0.79,
-   "roi": -8.3,
-   "prob_promedio": 62.7
+   "acierto": 40.0,
+   "unidades": -1.03,
+   "roi": -7.1,
+   "prob_promedio": 60.3
   },
   "A": {
-   "ganados": 2,
-   "perdidos": 2,
+   "ganados": 5,
+   "perdidos": 5,
    "empates": 0,
    "acierto": 50.0,
-   "unidades": -0.5,
-   "roi": -10.0,
-   "prob_promedio": 64.2
+   "unidades": -1.65,
+   "roi": -12.2,
+   "prob_promedio": 64.6
   },
   "B": {
-   "ganados": 4,
-   "perdidos": 8,
-   "empates": 0,
-   "acierto": 33.3,
-   "unidades": -4.04,
-   "roi": -35.1,
-   "prob_promedio": 60.4
+   "ganados": 6,
+   "perdidos": 9,
+   "empates": 1,
+   "acierto": 40.0,
+   "unidades": -3.56,
+   "roi": -24.5,
+   "prob_promedio": 61.1
   }
  },
  "calificados": [
+  {
+   "clave": "2026-11-23 | Vikings @ 49ers (Estadio Banorte, CDMX) | Justin Jefferson Under 82.5",
+   "edicion": "2026-11-19",
+   "fecha": "2026-11-23T01:20:00Z",
+   "grupo": "NFL",
+   "liga": "NFL",
+   "tipo": "Props",
+   "partido": "Vikings @ 49ers (Estadio Banorte, CDMX)",
+   "pick": "Justin Jefferson Under 82.5",
+   "momio": -114,
+   "unidades": 1.5,
+   "prob": 64.4,
+   "ventaja": 11.1,
+   "resultado": "P",
+   "nivel": "A",
+   "score": 80,
+   "lado": "Under",
+   "neto": -1.5
+  },
+  {
+   "clave": "2026-11-22 | Jaguars @ Giants | Cam Skattebo Over 54.5",
+   "edicion": "2026-11-19",
+   "fecha": "2026-11-22T21:25:00Z",
+   "grupo": "NFL",
+   "liga": "NFL",
+   "tipo": "Props",
+   "partido": "Jaguars @ Giants",
+   "pick": "Cam Skattebo Over 54.5",
+   "momio": -125,
+   "unidades": 1.0,
+   "prob": 62.5,
+   "ventaja": 6.9,
+   "resultado": "P",
+   "nivel": "B",
+   "score": 67,
+   "lado": "Over",
+   "neto": -1.0
+  },
+  {
+   "clave": "2026-11-22 | Raiders @ Broncos | Over 40.5",
+   "edicion": "2026-11-17",
+   "fecha": "2026-11-22T21:25:00Z",
+   "grupo": "NFL",
+   "liga": "NFL",
+   "tipo": "Totales",
+   "partido": "Raiders @ Broncos",
+   "pick": "Over 40.5",
+   "momio": -108,
+   "unidades": 1,
+   "prob": 60.7,
+   "ventaja": 8.8,
+   "resultado": "G",
+   "neto": 0.93
+  },
+  {
+   "clave": "2026-11-22 | Raiders @ Broncos | Raiders +10",
+   "edicion": "2026-11-17",
+   "fecha": "2026-11-22T21:25:00Z",
+   "grupo": "NFL",
+   "liga": "NFL",
+   "tipo": "Spreads",
+   "partido": "Raiders @ Broncos",
+   "pick": "Raiders +10",
+   "momio": -108,
+   "unidades": 0.5,
+   "prob": 57.6,
+   "ventaja": 5.7,
+   "resultado": "P",
+   "neto": -0.5
+  },
+  {
+   "clave": "2026-11-22 | Jets @ Chargers | Jets +3.5",
+   "edicion": "2026-11-17",
+   "fecha": "2026-11-22T21:05:00Z",
+   "grupo": "NFL",
+   "liga": "NFL",
+   "tipo": "Spreads",
+   "partido": "Jets @ Chargers",
+   "pick": "Jets +3.5",
+   "momio": -118,
+   "unidades": 0.5,
+   "prob": 57.6,
+   "ventaja": 3.4,
+   "resultado": "G",
+   "neto": 0.42
+  },
+  {
+   "clave": "2026-11-22 | Cardinals @ Chiefs | Cardinals +16.5",
+   "edicion": "2026-11-17",
+   "fecha": "2026-11-22T18:00:00Z",
+   "grupo": "NFL",
+   "liga": "NFL",
+   "tipo": "Spreads",
+   "partido": "Cardinals @ Chiefs",
+   "pick": "Cardinals +16.5",
+   "momio": -115,
+   "unidades": 0.5,
+   "prob": 57.4,
+   "ventaja": 3.9,
+   "resultado": "P",
+   "neto": -0.5
+  },
+  {
+   "clave": "2026-11-22 | Cardinals @ Chiefs | Over 41.5",
+   "edicion": "2026-11-17",
+   "fecha": "2026-11-22T18:00:00Z",
+   "grupo": "NFL",
+   "liga": "NFL",
+   "tipo": "Totales",
+   "partido": "Cardinals @ Chiefs",
+   "pick": "Over 41.5",
+   "momio": -108,
+   "unidades": 0.5,
+   "prob": 55.6,
+   "ventaja": 3.7,
+   "resultado": "P",
+   "neto": -0.5
+  },
+  {
+   "clave": "2026-11-22 | Cardinals @ Chiefs | Trey McBride Over 48.5",
+   "edicion": "2026-11-19",
+   "fecha": "2026-11-22T18:00:00Z",
+   "grupo": "NFL",
+   "liga": "NFL",
+   "tipo": "Props",
+   "partido": "Cardinals @ Chiefs",
+   "pick": "Trey McBride Over 48.5",
+   "momio": -135,
+   "unidades": 1.0,
+   "prob": 63.0,
+   "ventaja": 5.5,
+   "resultado": "G",
+   "nivel": "B",
+   "score": 65,
+   "lado": "Over",
+   "neto": 0.74
+  },
+  {
+   "clave": "2026-11-22 | Dolphins @ Bills | Dolphins +16.5",
+   "edicion": "2026-11-17",
+   "fecha": "2026-11-22T18:00:00Z",
+   "grupo": "NFL",
+   "liga": "NFL",
+   "tipo": "Spreads",
+   "partido": "Dolphins @ Bills",
+   "pick": "Dolphins +16.5",
+   "momio": -112,
+   "unidades": 0.5,
+   "prob": 58.0,
+   "ventaja": 5.1,
+   "resultado": "P",
+   "neto": -0.5
+  },
+  {
+   "clave": "2026-11-22 | Ravens @ Panthers | Over 43.5",
+   "edicion": "2026-11-17",
+   "fecha": "2026-11-22T18:00:00Z",
+   "grupo": "NFL",
+   "liga": "NFL",
+   "tipo": "Totales",
+   "partido": "Ravens @ Panthers",
+   "pick": "Over 43.5",
+   "momio": -112,
+   "unidades": 0.5,
+   "prob": 58.0,
+   "ventaja": 5.1,
+   "resultado": "G",
+   "neto": 0.45
+  },
+  {
+   "clave": "2026-11-22 | Saints @ Bears | Saints +11.5",
+   "edicion": "2026-11-17",
+   "fecha": "2026-11-22T18:00:00Z",
+   "grupo": "NFL",
+   "liga": "NFL",
+   "tipo": "Spreads",
+   "partido": "Saints @ Bears",
+   "pick": "Saints +11.5",
+   "momio": -108,
+   "unidades": 0.5,
+   "prob": 56.2,
+   "ventaja": 4.3,
+   "resultado": "G",
+   "neto": 0.46
+  },
+  {
+   "clave": "2026-11-22 | Titans @ Cowboys | Under 54.5",
+   "edicion": "2026-11-17",
+   "fecha": "2026-11-22T18:00:00Z",
+   "grupo": "NFL",
+   "liga": "NFL",
+   "tipo": "Totales",
+   "partido": "Titans @ Cowboys",
+   "pick": "Under 54.5",
+   "momio": 100,
+   "unidades": 0.5,
+   "prob": 54.1,
+   "ventaja": 4.1,
+   "resultado": "P",
+   "neto": -0.5
+  },
+  {
+   "clave": "2026-11-22 | Celtics @ Kings | Domantas Sabonis Over 11.5",
+   "edicion": "2026-11-21",
+   "fecha": "2026-11-22T03:00:00Z",
+   "grupo": "NBA",
+   "liga": "NBA",
+   "tipo": "Props",
+   "partido": "Celtics @ Kings",
+   "pick": "Domantas Sabonis Over 11.5",
+   "momio": -135,
+   "unidades": 1.0,
+   "prob": 64.6,
+   "ventaja": 7.2,
+   "resultado": "G",
+   "nivel": "B",
+   "score": 68,
+   "lado": "Over",
+   "neto": 0.74
+  },
+  {
+   "clave": "2026-11-22 | Clippers @ Mavericks | Daniel Gafford Under 6.5",
+   "edicion": "2026-11-21",
+   "fecha": "2026-11-22T01:00:00Z",
+   "grupo": "NBA",
+   "liga": "NBA",
+   "tipo": "Props",
+   "partido": "Clippers @ Mavericks",
+   "pick": "Daniel Gafford Under 6.5",
+   "momio": -125,
+   "unidades": 1.5,
+   "prob": 66.1,
+   "ventaja": 10.5,
+   "resultado": "P",
+   "nivel": "A",
+   "score": 83,
+   "lado": "Under",
+   "neto": -1.5
+  },
+  {
+   "clave": "2026-11-22 | Pelicans @ Spurs | Keldon Johnson Under 11.5",
+   "edicion": "2026-11-21",
+   "fecha": "2026-11-22T01:00:00Z",
+   "grupo": "NBA",
+   "liga": "NBA",
+   "tipo": "Props",
+   "partido": "Pelicans @ Spurs",
+   "pick": "Keldon Johnson Under 11.5",
+   "momio": -120,
+   "unidades": 1.5,
+   "prob": 65.6,
+   "ventaja": 11.1,
+   "resultado": "G",
+   "nivel": "A",
+   "score": 83,
+   "lado": "Under",
+   "neto": 1.25
+  },
+  {
+   "clave": "2026-11-22 | Pelicans @ Spurs | Zion Williamson Over 20.5",
+   "edicion": "2026-11-21",
+   "fecha": "2026-11-22T01:00:00Z",
+   "grupo": "NBA",
+   "liga": "NBA",
+   "tipo": "Props",
+   "partido": "Pelicans @ Spurs",
+   "pick": "Zion Williamson Over 20.5",
+   "momio": -110,
+   "unidades": 1.5,
+   "prob": 62.8,
+   "ventaja": 10.4,
+   "resultado": "E",
+   "nivel": "B",
+   "score": 66,
+   "lado": "Over",
+   "neto": 0
+  },
+  {
+   "clave": "2026-11-22 | Trail Blazers @ Knicks | Donovan Clingan Over 10.5",
+   "edicion": "2026-11-21",
+   "fecha": "2026-11-22T00:30:00Z",
+   "grupo": "NBA",
+   "liga": "NBA",
+   "tipo": "Props",
+   "partido": "Trail Blazers @ Knicks",
+   "pick": "Donovan Clingan Over 10.5",
+   "momio": -115,
+   "unidades": 1.5,
+   "prob": 65.2,
+   "ventaja": 11.7,
+   "resultado": "G",
+   "nivel": "A",
+   "score": 82,
+   "lado": "Over",
+   "neto": 1.3
+  },
+  {
+   "clave": "2026-11-22 | Trail Blazers @ Knicks | Josh Hart Under 6.5",
+   "edicion": "2026-11-21",
+   "fecha": "2026-11-22T00:30:00Z",
+   "grupo": "NBA",
+   "liga": "NBA",
+   "tipo": "Props",
+   "partido": "Trail Blazers @ Knicks",
+   "pick": "Josh Hart Under 6.5",
+   "momio": -110,
+   "unidades": 1.5,
+   "prob": 64.8,
+   "ventaja": 12.4,
+   "resultado": "P",
+   "nivel": "A",
+   "score": 73,
+   "lado": "Under",
+   "neto": -1.5
+  },
+  {
+   "clave": "2026-11-21 | Real Madrid vs Celta | Under 3.5",
+   "edicion": "2026-11-19",
+   "fecha": "2026-11-21T20:00:00Z",
+   "grupo": "Futbol",
+   "liga": "LaLiga",
+   "tipo": "Totales",
+   "partido": "Real Madrid vs Celta",
+   "pick": "Under 3.5",
+   "momio": -125,
+   "unidades": 1.0,
+   "prob": 63.4,
+   "ventaja": 7.9,
+   "resultado": "G",
+   "nivel": "A",
+   "score": 74,
+   "lado": "Under",
+   "neto": 0.8
+  },
   {
    "clave": "2026-11-21 | Newcastle vs Arsenal | Under 2.5",
    "edicion": "2026-11-17",

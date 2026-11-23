@@ -42,4 +42,25 @@ RESULTADOS = {
     "2026-11-20 | Bayern vs Koln | Under 4.5": "G",                            # 1-1
     "2026-11-21 | Schalke vs Stuttgart | Under 3.5": "G",                      # 0-0
     "2026-11-21 | Newcastle vs Arsenal | Under 2.5": "P",                      # 2-2
+    # Sabado 21 nov (CBS Sports, NBA.com, ESPN, FOX Sports, realmadrid.com, Flashscore)
+    "2026-11-21 | Real Madrid vs Celta | Under 3.5": "G",                      # 2-1
+    "2026-11-22 | Trail Blazers @ Knicks | Donovan Clingan Over 10.5": "G",    # 13 rebotes
+    "2026-11-22 | Trail Blazers @ Knicks | Josh Hart Under 6.5": "P",          # 8 rebotes
+    "2026-11-22 | Clippers @ Mavericks | Daniel Gafford Under 6.5": "P",       # 10 rebotes
+    "2026-11-22 | Pelicans @ Spurs | Keldon Johnson Under 11.5": "G",          # 10 puntos
+    "2026-11-22 | Pelicans @ Spurs | Zion Williamson Over 20.5": "E",          # no jugo (golpe en el muslo)
+    "2026-11-22 | Celtics @ Kings | Domantas Sabonis Over 11.5": "G",          # 17 rebotes
+    # NFL semana 11, domingo 22 nov (ESPN, CBS Sports, Yahoo, sitios oficiales)
+    "2026-11-22 | Cardinals @ Chiefs | Cardinals +16.5": "P",                  # Chiefs 34 - 7
+    "2026-11-22 | Cardinals @ Chiefs | Over 41.5": "P",                        # 41 puntos
+    "2026-11-22 | Cardinals @ Chiefs | Trey McBride Over 48.5": "G",           # 54 yardas
+    "2026-11-22 | Dolphins @ Bills | Dolphins +16.5": "P",                     # Bills 26 - 9
+    "2026-11-22 | Ravens @ Panthers | Over 43.5": "G",                         # Panthers 35 - 33
+    "2026-11-22 | Saints @ Bears | Saints +11.5": "G",                         # Bears 21 - 13
+    "2026-11-22 | Titans @ Cowboys | Under 54.5": "P",                         # Cowboys 51 - 30
+    "2026-11-22 | Jets @ Chargers | Jets +3.5": "G",                           # Jets 27 - 24
+    "2026-11-22 | Jaguars @ Giants | Cam Skattebo Over 54.5": "P",             # 34 yardas
+    "2026-11-22 | Raiders @ Broncos | Over 40.5": "G",                         # Broncos 38 - 24
+    "2026-11-22 | Raiders @ Broncos | Raiders +10": "P",                       # perdieron por 14
+    "2026-11-23 | Vikings @ 49ers (Estadio Banorte, CDMX) | Justin Jefferson Under 82.5": "P",  # 86 yardas
 }

@@ -465,7 +465,7 @@
   "unidades": 1.0,
   "prob": 63.4,
   "ventaja": 7.9,
-  "resultado": null,
+  "resultado": "G",
   "nivel": "A",
   "score": 74,
   "lado": "Under"
@@ -483,7 +483,7 @@
   "unidades": 1.5,
   "prob": 65.2,
   "ventaja": 11.7,
-  "resultado": null,
+  "resultado": "G",
   "nivel": "A",
   "score": 82,
   "lado": "Over"
@@ -501,7 +501,7 @@
   "unidades": 1.5,
   "prob": 64.8,
   "ventaja": 12.4,
-  "resultado": null,
+  "resultado": "P",
   "nivel": "A",
   "score": 73,
   "lado": "Under"
@@ -519,7 +519,7 @@
   "unidades": 1.5,
   "prob": 66.1,
   "ventaja": 10.5,
-  "resultado": null,
+  "resultado": "P",
   "nivel": "A",
   "score": 83,
   "lado": "Under"
@@ -537,7 +537,7 @@
   "unidades": 1.5,
   "prob": 65.6,
   "ventaja": 11.1,
-  "resultado": null,
+  "resultado": "G",
   "nivel": "A",
   "score": 83,
   "lado": "Under"
@@ -555,7 +555,7 @@
   "unidades": 1.5,
   "prob": 62.8,
   "ventaja": 10.4,
-  "resultado": null,
+  "resultado": "E",
   "nivel": "B",
   "score": 66,
   "lado": "Over"
@@ -573,7 +573,7 @@
   "unidades": 1.0,
   "prob": 64.6,
   "ventaja": 7.2,
-  "resultado": null,
+  "resultado": "G",
   "nivel": "B",
   "score": 68,
   "lado": "Over"
@@ -591,7 +591,7 @@
   "unidades": 0.5,
   "prob": 57.4,
   "ventaja": 3.9,
-  "resultado": null
+  "resultado": "P"
  },
  {
   "clave": "2026-11-22 | Cardinals @ Chiefs | Over 41.5",
@@ -606,7 +606,7 @@
   "unidades": 0.5,
   "prob": 55.6,
   "ventaja": 3.7,
-  "resultado": null
+  "resultado": "P"
  },
  {
   "clave": "2026-11-22 | Cardinals @ Chiefs | Trey McBride Over 48.5",
@@ -621,7 +621,7 @@
   "unidades": 1.0,
   "prob": 63.0,
   "ventaja": 5.5,
-  "resultado": null,
+  "resultado": "G",
   "nivel": "B",
   "score": 65,
   "lado": "Over"
@@ -639,7 +639,7 @@
   "unidades": 0.5,
   "prob": 58.0,
   "ventaja": 5.1,
-  "resultado": null
+  "resultado": "P"
  },
  {
   "clave": "2026-11-22 | Ravens @ Panthers | Over 43.5",
@@ -654,7 +654,7 @@
   "unidades": 0.5,
   "prob": 58.0,
   "ventaja": 5.1,
-  "resultado": null
+  "resultado": "G"
  },
  {
   "clave": "2026-11-22 | Saints @ Bears | Saints +11.5",
@@ -669,7 +669,7 @@
   "unidades": 0.5,
   "prob": 56.2,
   "ventaja": 4.3,
-  "resultado": null
+  "resultado": "G"
  },
  {
   "clave": "2026-11-22 | Titans @ Cowboys | Under 54.5",
@@ -684,7 +684,7 @@
   "unidades": 0.5,
   "prob": 54.1,
   "ventaja": 4.1,
-  "resultado": null
+  "resultado": "P"
  },
  {
   "clave": "2026-11-22 | Jets @ Chargers | Jets +3.5",
@@ -699,7 +699,7 @@
   "unidades": 0.5,
   "prob": 57.6,
   "ventaja": 3.4,
-  "resultado": null
+  "resultado": "G"
  },
  {
   "clave": "2026-11-22 | Jaguars @ Giants | Cam Skattebo Over 54.5",
@@ -714,7 +714,7 @@
   "unidades": 1.0,
   "prob": 62.5,
   "ventaja": 6.9,
-  "resultado": null,
+  "resultado": "P",
   "nivel": "B",
   "score": 67,
   "lado": "Over"
@@ -732,7 +732,7 @@
   "unidades": 1,
   "prob": 60.7,
   "ventaja": 8.8,
-  "resultado": null
+  "resultado": "G"
  },
  {
   "clave": "2026-11-22 | Raiders @ Broncos | Raiders +10",
@@ -747,7 +747,7 @@
   "unidades": 0.5,
   "prob": 57.6,
   "ventaja": 5.7,
-  "resultado": null
+  "resultado": "P"
  },
  {
   "clave": "2026-11-23 | Vikings @ 49ers (Estadio Banorte, CDMX) | Justin Jefferson Under 82.5",
@@ -762,7 +762,7 @@
   "unidades": 1.5,
   "prob": 64.4,
   "ventaja": 11.1,
-  "resultado": null,
+  "resultado": "P",
   "nivel": "A",
   "score": 80,
   "lado": "Under"

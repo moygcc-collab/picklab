@@ -27,9 +27,12 @@ from calcular_picks import prob_implicita, a_decimal
 PROB_MINIMA = 0.55
 VENTAJA_MINIMA = 0.03
 TOPE_CONTEXTO = 0.05      # el contexto mueve como maximo 5 puntos de probabilidad
-PESO_MAX_PROPS = 0.6      # peso maximo de los ultimos partidos en props
-PESO_MAX_EQUIPOS = 0.5    # peso maximo del modelo de temporada en spreads/totales
+PESO_MAX_PROPS = 0.4      # peso maximo de los ultimos partidos en props (antes 0.6: el mercado sabe mas que 10 partidos)
+PESO_MAX_EQUIPOS = 0.4    # peso maximo del modelo de temporada en spreads/totales (antes 0.5)
 MINIMO_CALIBRAR = 30      # picks calificados necesarios para ajustar por historial
+VENTANA_CALIBRAR = 60     # la calibracion mira los ultimos 60 picks calificados
+PRIOR_PROPS = 3           # suavizado de los ultimos partidos: (aciertos + k) / (n + 2k)
+TOPE_POR_PARTIDO = 2      # maximo de picks publicados del mismo partido (si un partido sale raro, no nos tumba 4 picks)
 
 
 def limitar(x, a, b):
@@ -82,6 +85,8 @@ def calibracion():
     with open("historial.json", encoding="utf-8") as f:
         lista = json.load(f)
     hechos = [h for h in lista if h.get("resultado") in ("G", "P")]
+    # Solo los ultimos VENTANA_CALIBRAR: si el motor mejora, la calibracion se recupera
+    hechos = sorted(hechos, key=lambda h: h["fecha"])[-VENTANA_CALIBRAR:]
     _calibracion["picks"] = len(hechos)
     if not hechos:
         return _calibracion
@@ -171,8 +176,8 @@ def evaluar(c):
             aciertos = len([v for v in valores if v > c["linea"]])
         else:
             aciertos = len([v for v in valores if v < c["linea"]])
-        # Laplace: 9 de 10 cuenta como 83%, no 90% (muestra chica)
-        pe = (aciertos + 1) / (n + 2)
+        # Suavizado: con k=1, 9 de 10 cuenta como 83%; con k=3, 9 de 10 cuenta como 75% (muestra chica)
+        pe = (aciertos + PRIOR_PROPS) / (n + 2 * PRIOR_PROPS)
         peso = PESO_MAX_PROPS * min(1, n / 10)
         c["aciertos"] = aciertos
         prom = sum(valores) / n

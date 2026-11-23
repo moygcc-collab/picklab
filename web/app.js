@@ -397,7 +397,15 @@ function pintarInicio() {
   }
 
   if (D.picks.length === 0) {
-    app.innerHTML = html + '<div class="vacio">Todavia no hay picks. Corre: python edicion.py</div>';
+    var texto = D.candidatos > 0
+      ? "Hoy revisamos " + D.candidatos + " apuestas posibles y ninguna paso las reglas (55% o mas de probabilidad, 3% o mas de ventaja y nivel A o B). Mejor no apostar que apostar sin ventaja."
+      : "Todavia no hay picks para hoy.";
+    html += '<div class="vacio">' + texto + "</div>";
+    html += bloqueEscalera(D.escalera, 12, "Baja la linea");
+    if (H) {
+      html += '<section id="historial_inicio"><div class="titulo"><span class="sobretitulo" style="--c:#8B5CF6">Transparencia</span><h2>Como nos ha ido</h2><p>Todos los picks publicados, ganados y perdidos. Sin borrar nada.</p></div>' + bloqueHistorial(false) + "</section>";
+    }
+    app.innerHTML = html;
     return;
   }
 

@@ -10,9 +10,10 @@ Pagina de picks de apuestas basada en numeros. Se publica en GitHub Pages: https
 ## El motor
 Cada pick pasa por 4 senales:
 - **Mercado:** probabilidad sin comision (consenso si hay varias casas) y el mejor precio disponible.
-- **Estadisticas:** props = veces que el jugador paso la linea en sus ultimos 10 (pesa hasta 60%); spreads/totales = modelo con lo que anota y recibe cada equipo (pesa hasta 50%).
+- **Estadisticas:** props = veces que el jugador paso la linea en sus ultimos 10, suavizado (9 de 10 cuenta como 75%) y pesa hasta 40%; spreads/totales = modelo con lo que anota y recibe cada equipo (pesa hasta 40%).
 - **Contexto:** ajustes chicos (descanso, lesiones, racha, ultimo enfrentamiento del ultimo ano) con tope de 5 puntos.
-- **Historial:** con 30+ picks calificados, si pegamos menos de lo esperado el motor baja su confianza solo.
+- **Historial:** con 30+ picks calificados (mira los ultimos 60), si pegamos menos de lo esperado el motor baja su confianza solo.
+- **Tope por partido:** maximo 2 picks del mismo partido, porque estan conectados (si el partido sale bajo, fallan juntos).
 
 Salen: probabilidad, ventaja, **score de confianza 0-100** (probabilidad 35%, ventaja 25%, senales que coinciden 25%, calidad de datos 15%), **nivel A (70+) o B (55-69)**, razones a favor y en contra, y unidades (Kelly/16, entre 0.5u y 2u).
 Solo se publica si: probabilidad >= 55%, ventaja >= 3% y nivel A o B.
@@ -51,3 +52,8 @@ Al correr `python edicion.py` se calcula solo si el pick de hoy hubiera pegado e
 - En `edicion.py` van `PROPS_NBA` y `PROPS_NFL` (yardas por pase, por tierra, por recepcion, recepciones). Se puede poner el momio de varias casas con la misma linea: el motor usa el consenso sin comision y el mejor precio.
 - **Baja la linea:** para cada prop, `motor.escalera()` calcula que tan seguro es bajar la linea (Over) o subirla (Under): mercado de la linea principal movido con la dispersion de sus ultimos partidos + cuantas veces la paso. Como no hay momio real de esa linea, la pagina NO lo cuenta como pick: solo muestra el **momio minimo** que tiene que pagar tu casa para que tenga valor (3% de ventaja).
 - **Draftea:** si ves una linea alterna con su momio, pegala en `DRAFTEA` como `["Jalen Brunson", "Puntos", "Over", 22.5, -250]`. El motor la evalua con las mismas reglas (55%, 3% de ventaja, nivel A o B) y, si pasa, sale como pick con casa Draftea y entra al historial.
+
+## Ajuste del 23 nov (despues de 19-26)
+Los props esperaban 63% y pegaron 40%: las rachas de 10 partidos pesaban demasiado contra el mercado. Cambios en `motor.py`:
+PESO_MAX_PROPS 0.6 -> 0.4, PRIOR_PROPS 1 -> 3 (mas suavizado), PESO_MAX_EQUIPOS 0.5 -> 0.4, TOPE_POR_PARTIDO = 2 y calibracion con los ultimos 60 picks.
+Las reglas para publicar (55%, 3% de ventaja, nivel A o B) no cambiaron.
