@@ -57,3 +57,14 @@ Al correr `python edicion.py` se calcula solo si el pick de hoy hubiera pegado e
 Los props esperaban 63% y pegaron 40%: las rachas de 10 partidos pesaban demasiado contra el mercado. Cambios en `motor.py`:
 PESO_MAX_PROPS 0.6 -> 0.4, PRIOR_PROPS 1 -> 3 (mas suavizado), PESO_MAX_EQUIPOS 0.5 -> 0.4, TOPE_POR_PARTIDO = 2 y calibracion con los ultimos 60 picks.
 Las reglas para publicar (55%, 3% de ventaja, nivel A o B) no cambiaron.
+
+## Medir contra el cierre (CLV)
+- Cada pick guarda el momio con el que se publico. Si `edicion.py` se vuelve a correr antes del partido, el momio nuevo se guarda como `momio_cierre` (el original no cambia).
+- Tambien se puede pegar a mano en `CIERRE` dentro de `resultados.py`: `{clave: momio}` (el momio justo antes del partido, mismo lado y misma linea).
+- CLV = probabilidad del cierre - probabilidad de nuestro momio. Positivo = conseguimos mejor precio que el mercado al final. Es la mejor senal de que el modelo sirve, mucho antes que el record.
+- La pagina lo muestra en "Como nos ha ido" -> "Contra el cierre".
+
+## Modelo de minutos (props)
+- En `edicion.py`, `MINUTOS = {"Jugador": [minutos de sus ultimos partidos]}` (mismo orden que sus valores).
+- Con minutos, el motor calcula produccion por minuto x minutos esperados hoy x ajuste. Rebotes, asistencias, triples y recepciones usan Poisson; puntos, PRA y yardas una normal. Pesa 70% y la racha 30%.
+- `PROYECCION = {"Jugador": {"min": 37, "factor": 1.05, "texto": "Sin Anunoby: mas tiros"}}` para minutos o uso distintos hoy (companero fuera, rival que permite mucho). Solo con datos verificados.

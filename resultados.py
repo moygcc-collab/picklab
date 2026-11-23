@@ -64,3 +64,13 @@ RESULTADOS = {
     "2026-11-22 | Raiders @ Broncos | Raiders +10": "P",                       # perdieron por 14
     "2026-11-23 | Vikings @ 49ers (Estadio Banorte, CDMX) | Justin Jefferson Under 82.5": "P",  # 86 yardas
 }
+
+# ============================================
+# MOMIOS DE CIERRE (opcional): el momio justo antes de que empiece el partido,
+# del mismo lado y la misma linea del pick. Sirve para saber si le ganamos al mercado:
+# si seguido conseguimos mejor precio que el cierre, el modelo va bien aunque una semana salga mala.
+#   "2026-11-24 | Bengals @ Commanders | Under 52.5": -120,
+# (Si corres edicion.py otra vez antes del partido, el ultimo momio se guarda solo.)
+# ============================================
+CIERRE = {
+}

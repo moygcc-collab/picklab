@@ -1,5 +1,5 @@
 window.HISTORIAL = {
- "actualizado": "2026-11-23 05:17",
+ "actualizado": "2026-11-23 05:26",
  "total": {
   "ganados": 19,
   "perdidos": 26,
@@ -284,6 +284,12 @@ window.HISTORIAL = {
    "prob_promedio": 61.1
   }
  },
+ "clv": {
+  "picks": 0,
+  "a_favor": 0,
+  "en_contra": 0,
+  "promedio": null
+ },
  "calificados": [
   {
    "clave": "2026-11-23 | Vikings @ 49ers (Estadio Banorte, CDMX) | Justin Jefferson Under 82.5",
@@ -302,6 +308,7 @@ window.HISTORIAL = {
    "nivel": "A",
    "score": 80,
    "lado": "Under",
+   "clv": null,
    "neto": -1.5
   },
   {
@@ -321,6 +328,7 @@ window.HISTORIAL = {
    "nivel": "B",
    "score": 67,
    "lado": "Over",
+   "clv": null,
    "neto": -1.0
   },
   {
@@ -337,6 +345,7 @@ window.HISTORIAL = {
    "prob": 60.7,
    "ventaja": 8.8,
    "resultado": "G",
+   "clv": null,
    "neto": 0.93
   },
   {
@@ -353,6 +362,7 @@ window.HISTORIAL = {
    "prob": 57.6,
    "ventaja": 5.7,
    "resultado": "P",
+   "clv": null,
    "neto": -0.5
   },
   {
@@ -369,6 +379,7 @@ window.HISTORIAL = {
    "prob": 57.6,
    "ventaja": 3.4,
    "resultado": "G",
+   "clv": null,
    "neto": 0.42
   },
   {
@@ -385,6 +396,7 @@ window.HISTORIAL = {
    "prob": 57.4,
    "ventaja": 3.9,
    "resultado": "P",
+   "clv": null,
    "neto": -0.5
   },
   {
@@ -401,6 +413,7 @@ window.HISTORIAL = {
    "prob": 55.6,
    "ventaja": 3.7,
    "resultado": "P",
+   "clv": null,
    "neto": -0.5
   },
   {
@@ -420,6 +433,7 @@ window.HISTORIAL = {
    "nivel": "B",
    "score": 65,
    "lado": "Over",
+   "clv": null,
    "neto": 0.74
   },
   {
@@ -436,6 +450,7 @@ window.HISTORIAL = {
    "prob": 58.0,
    "ventaja": 5.1,
    "resultado": "P",
+   "clv": null,
    "neto": -0.5
   },
   {
@@ -452,6 +467,7 @@ window.HISTORIAL = {
    "prob": 58.0,
    "ventaja": 5.1,
    "resultado": "G",
+   "clv": null,
    "neto": 0.45
   },
   {
@@ -468,6 +484,7 @@ window.HISTORIAL = {
    "prob": 56.2,
    "ventaja": 4.3,
    "resultado": "G",
+   "clv": null,
    "neto": 0.46
   },
   {
@@ -484,6 +501,7 @@ window.HISTORIAL = {
    "prob": 54.1,
    "ventaja": 4.1,
    "resultado": "P",
+   "clv": null,
    "neto": -0.5
   },
   {
@@ -503,6 +521,7 @@ window.HISTORIAL = {
    "nivel": "B",
    "score": 68,
    "lado": "Over",
+   "clv": null,
    "neto": 0.74
   },
   {
@@ -522,6 +541,7 @@ window.HISTORIAL = {
    "nivel": "A",
    "score": 83,
    "lado": "Under",
+   "clv": null,
    "neto": -1.5
   },
   {
@@ -541,6 +561,7 @@ window.HISTORIAL = {
    "nivel": "A",
    "score": 83,
    "lado": "Under",
+   "clv": null,
    "neto": 1.25
   },
   {
@@ -560,6 +581,7 @@ window.HISTORIAL = {
    "nivel": "B",
    "score": 66,
    "lado": "Over",
+   "clv": null,
    "neto": 0
   },
   {
@@ -579,6 +601,7 @@ window.HISTORIAL = {
    "nivel": "A",
    "score": 82,
    "lado": "Over",
+   "clv": null,
    "neto": 1.3
   },
   {
@@ -598,6 +621,7 @@ window.HISTORIAL = {
    "nivel": "A",
    "score": 73,
    "lado": "Under",
+   "clv": null,
    "neto": -1.5
   },
   {
@@ -617,6 +641,7 @@ window.HISTORIAL = {
    "nivel": "A",
    "score": 74,
    "lado": "Under",
+   "clv": null,
    "neto": 0.8
   },
   {
@@ -633,6 +658,7 @@ window.HISTORIAL = {
    "prob": 50.5,
    "ventaja": 4.0,
    "resultado": "P",
+   "clv": null,
    "neto": -0.5
   },
   {
@@ -652,6 +678,7 @@ window.HISTORIAL = {
    "nivel": "A",
    "score": 71,
    "lado": "Under",
+   "clv": null,
    "neto": 0.67
   },
   {
@@ -671,6 +698,7 @@ window.HISTORIAL = {
    "nivel": "B",
    "score": 66,
    "lado": "Over",
+   "clv": null,
    "neto": -1.0
   },
   {
@@ -690,6 +718,7 @@ window.HISTORIAL = {
    "nivel": "B",
    "score": 66,
    "lado": "Over",
+   "clv": null,
    "neto": -1.0
   },
   {
@@ -709,6 +738,7 @@ window.HISTORIAL = {
    "nivel": "B",
    "score": 67,
    "lado": "Under",
+   "clv": null,
    "neto": 0.87
   },
   {
@@ -728,6 +758,7 @@ window.HISTORIAL = {
    "nivel": "B",
    "score": 67,
    "lado": "Under",
+   "clv": null,
    "neto": 0.87
   },
   {
@@ -747,6 +778,7 @@ window.HISTORIAL = {
    "nivel": "B",
    "score": 62,
    "lado": "Under",
+   "clv": null,
    "neto": -1.0
   },
   {
@@ -766,6 +798,7 @@ window.HISTORIAL = {
    "nivel": "B",
    "score": 68,
    "lado": "Under",
+   "clv": null,
    "neto": 0.85
   },
   {
@@ -782,6 +815,7 @@ window.HISTORIAL = {
    "prob": 59.6,
    "ventaja": 6.7,
    "resultado": "P",
+   "clv": null,
    "neto": -0.5
   },
   {
@@ -801,6 +835,7 @@ window.HISTORIAL = {
    "nivel": "B",
    "score": 57,
    "lado": "Over",
+   "clv": null,
    "neto": -1.0
   },
   {
@@ -817,6 +852,7 @@ window.HISTORIAL = {
    "prob": 56.1,
    "ventaja": 4.9,
    "resultado": "P",
+   "clv": null,
    "neto": -0.5
   },
   {
@@ -836,6 +872,7 @@ window.HISTORIAL = {
    "nivel": "B",
    "score": 61,
    "lado": "Under",
+   "clv": null,
    "neto": -1.0
   },
   {
@@ -855,6 +892,7 @@ window.HISTORIAL = {
    "nivel": "A",
    "score": 84,
    "lado": "Over",
+   "clv": null,
    "neto": -1.5
   },
   {
@@ -874,6 +912,7 @@ window.HISTORIAL = {
    "nivel": "A",
    "score": 71,
    "lado": "Over",
+   "clv": null,
    "neto": -1.0
   },
   {
@@ -893,6 +932,7 @@ window.HISTORIAL = {
    "nivel": "B",
    "score": 65,
    "lado": "Over",
+   "clv": null,
    "neto": -1.0
   },
   {
@@ -912,6 +952,7 @@ window.HISTORIAL = {
    "nivel": "B",
    "score": 64,
    "lado": "Over",
+   "clv": null,
    "neto": -0.5
   },
   {
@@ -931,6 +972,7 @@ window.HISTORIAL = {
    "nivel": "B",
    "score": 56,
    "lado": "Over",
+   "clv": null,
    "neto": -1.0
   },
   {
@@ -950,6 +992,7 @@ window.HISTORIAL = {
    "nivel": "B",
    "score": 59,
    "lado": "Under",
+   "clv": null,
    "neto": 0.87
   },
   {
@@ -969,6 +1012,7 @@ window.HISTORIAL = {
    "nivel": "A",
    "score": 73,
    "lado": "Under",
+   "clv": null,
    "neto": 1.33
   },
   {
@@ -985,6 +1029,7 @@ window.HISTORIAL = {
    "prob": 70.6,
    "ventaja": 19.1,
    "resultado": "P",
+   "clv": null,
    "neto": -1
   },
   {
@@ -1001,6 +1046,7 @@ window.HISTORIAL = {
    "prob": 74.7,
    "ventaja": 19.4,
    "resultado": "G",
+   "clv": null,
    "neto": 1.61
   },
   {
@@ -1017,6 +1063,7 @@ window.HISTORIAL = {
    "prob": 67.1,
    "ventaja": 16.4,
    "resultado": "P",
+   "clv": null,
    "neto": -1
   },
   {
@@ -1033,6 +1080,7 @@ window.HISTORIAL = {
    "prob": 67.5,
    "ventaja": 15.4,
    "resultado": "P",
+   "clv": null,
    "neto": -1
   },
   {
@@ -1049,6 +1097,7 @@ window.HISTORIAL = {
    "prob": 65.2,
    "ventaja": 19.2,
    "resultado": "G",
+   "clv": null,
    "neto": 1.17
   },
   {
@@ -1065,6 +1114,7 @@ window.HISTORIAL = {
    "prob": 62.5,
    "ventaja": 11.3,
    "resultado": "G",
+   "clv": null,
    "neto": 0.95
   },
   {
@@ -1081,6 +1131,7 @@ window.HISTORIAL = {
    "prob": 56.6,
    "ventaja": 5.1,
    "resultado": "G",
+   "clv": null,
    "neto": 0.47
   },
   {
@@ -1097,6 +1148,7 @@ window.HISTORIAL = {
    "prob": 59.5,
    "ventaja": 10.7,
    "resultado": "P",
+   "clv": null,
    "neto": -0.5
   }
  ]

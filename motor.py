@@ -68,6 +68,44 @@ def sin_comision(momio_a, momio_b):
     return pa / (pa + pb), pb / (pa + pb)
 
 
+def poisson_cdf(k, lam):
+    suma = 0
+    for i in range(int(math.floor(k)) + 1):
+        suma += math.exp(-lam) * lam ** i / math.factorial(i)
+    return suma
+
+
+# ---------- Modelo de minutos (props) ----------
+# En lugar de solo contar cuantas veces paso la linea, calculamos:
+#   produccion por minuto (ultimos partidos) x minutos que esperamos hoy x ajuste (rival, companeros fuera)
+# Para conteos chicos (rebotes, asistencias, triples) usamos Poisson; para puntos, PRA y yardas, una normal.
+MERCADOS_CONTEO = ("Rebotes", "Asistencias", "Triples", "Recepciones")
+
+
+def proyeccion_minutos(c):
+    valores, minutos = c["valores"], c["minutos"]
+    jugados = [(v, mi) for v, mi in zip(valores, minutos) if mi and mi > 0]
+    if len(jugados) < 5:
+        return None
+    total_min = sum(mi for _, mi in jugados)
+    por_minuto = sum(v for v, _ in jugados) / total_min
+    # Minutos de hoy: los que nos digan (companero fuera, restriccion) o el promedio de sus ultimos 5
+    recientes = [mi for _, mi in jugados[-5:]]
+    min_hoy = c.get("min_proy") or sum(recientes) / len(recientes)
+    media = por_minuto * min_hoy * c.get("factor_proy", 1.0)
+    if c.get("mercado") in MERCADOS_CONTEO:
+        lam = max(media, 0.1)
+        p_over = 1 - poisson_cdf(c["linea"], lam)
+    else:
+        # Dispersion: que tanto se alejo de su produccion esperada partido a partido
+        resid = [v - por_minuto * mi for v, mi in jugados]
+        var = sum(r ** 2 for r in resid) / max(1, len(resid) - 1)
+        desv = max(math.sqrt(var), 0.15 * c["linea"], 1.0)
+        p_over = normal_mayor(c["linea"], media, desv)
+    p = p_over if c["lado"] == "Over" else 1 - p_over
+    return {"p": limitar(p, 0.03, 0.97), "media": media, "por_minuto": por_minuto, "min_hoy": min_hoy}
+
+
 # ---------- Calibracion con el historial ----------
 
 _calibracion = None
@@ -178,6 +216,19 @@ def evaluar(c):
             aciertos = len([v for v in valores if v < c["linea"]])
         # Suavizado: con k=1, 9 de 10 cuenta como 83%; con k=3, 9 de 10 cuenta como 75% (muestra chica)
         pe = (aciertos + PRIOR_PROPS) / (n + 2 * PRIOR_PROPS)
+        # Si tenemos sus minutos, el modelo de minutos pesa 70% y la racha 30%
+        if c.get("minutos") and len(c["minutos"]) == n:
+            pm_min = proyeccion_minutos(c)
+            if pm_min:
+                pe = 0.7 * pm_min["p"] + 0.3 * pe
+                c["proyeccion"] = round(pm_min["media"], 1)
+                razones.append(("+" if (pm_min["media"] > c["linea"]) == (c["lado"] == "Over") else "-",
+                                "Proyeccion: " + str(round(pm_min["por_minuto"], 2)) + " por minuto x " +
+                                str(round(pm_min["min_hoy"], 1)) + " minutos" +
+                                (" x ajuste " + str(c["factor_proy"]) if c.get("factor_proy", 1.0) != 1.0 else "") +
+                                " = " + str(round(pm_min["media"], 1)) + " (linea " + str(c["linea"]) + ")"))
+                if c.get("proy_texto"):
+                    razones.append(("i", c["proy_texto"]))
         peso = PESO_MAX_PROPS * min(1, n / 10)
         c["aciertos"] = aciertos
         prom = sum(valores) / n

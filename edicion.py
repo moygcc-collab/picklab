@@ -55,6 +55,19 @@ PROPS_NFL = [
      [12, 75, 98, 27, 77, 62, 141, 155, 231]],
 ]
 
+# ---------- Minutos y proyeccion (props) ----------
+# MINUTOS: minutos de cada uno de sus ultimos partidos, en el mismo orden que sus valores.
+#   {"Jalen Brunson": [34, 36, 33, ...]}   (Land of Basketball / StatMuse traen los minutos)
+#   Con minutos, el motor usa "produccion por minuto x minutos de hoy" (pesa 70%) y la racha (30%).
+# PROYECCION: ajustes verificados para hoy:
+#   "min": minutos esperados (ej. 38 si sale un titular de su posicion), "factor": ajuste por rival/uso (1.05 = +5%),
+#   "texto": por que.   {"Jalen Brunson": {"min": 37, "factor": 1.05, "texto": "Sin Anunoby: mas tiros"}}
+MINUTOS = {
+}
+PROYECCION = {
+}
+
+
 # ---------- Draftea (o cualquier casa con lineas alternas) ----------
 # Si en Draftea ves otra linea para un jugador de arriba, pegala aqui con su momio:
 #   [jugador, mercado, lado, linea, momio]   ej. ["Jalen Brunson", "Puntos", "Over", 22.5, -250]
@@ -371,6 +384,10 @@ def picks_props(lista, grupo, liga):
                 "pick": jugador + " " + lado + " " + str(linea), "lado": lado, "linea": linea,
                 "momio": momio, "casa": casa_lado, "casas": 1 + len(otras) if dos else 1, "p_mercado": p_m, "dos_lados": dos,
                 "valores": valores, "ajustes": CONTEXTO_JUGADOR.get(jugador, []),
+                "minutos": MINUTOS.get(jugador) if len(MINUTOS.get(jugador) or []) == len(valores) else None,
+                "min_proy": (PROYECCION.get(jugador) or {}).get("min"),
+                "factor_proy": (PROYECCION.get(jugador) or {}).get("factor", 1.0),
+                "proy_texto": (PROYECCION.get(jugador) or {}).get("texto"),
                 "base": "Ultimos " + str(len(valores)) + " partidos + momio. Linea via " + fuente +
                         (", partidos via StatMuse / Land of Basketball" if grupo == "NBA" else ", partidos via NFL.com"),
             }
@@ -613,7 +630,8 @@ def main():
         if "p_estadisticas" in p and not p.get("valores"):
             p["modelo"] = p["p_estadisticas"]
             p["mercado_prob"] = p["p_mercado_pct"]
-        for k in ["p_mercado", "p_modelo", "peso_modelo", "ajustes", "publicar", "dos_lados", "muestra", "modelo_texto"]:
+        for k in ["p_mercado", "p_modelo", "peso_modelo", "ajustes", "publicar", "dos_lados", "muestra", "modelo_texto",
+                  "minutos", "min_proy", "factor_proy", "proy_texto"]:
             p.pop(k, None)
 
     # Parlay: los 3 de mas confianza de partidos diferentes (nivel A primero)

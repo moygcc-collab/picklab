@@ -12,7 +12,7 @@
 import json
 import os
 from datetime import datetime, timezone
-from calcular_picks import a_decimal
+from calcular_picks import a_decimal, prob_implicita
 
 ARCHIVO = "historial.json"
 SALIDA_WEB = "web/historial.js"
@@ -67,8 +67,15 @@ def guardar_edicion(picks, edicion):
         viejo = por_clave.get(clave)
         if viejo is None:
             lista.append(nuevo)
-        elif viejo["resultado"] is None and viejo["edicion"] == edicion:
-            viejo.update(nuevo)
+        elif viejo["resultado"] is None and viejo["fecha"] > datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"):
+            # Ya estaba publicado y el partido no empieza: el momio con el que se publico se queda,
+            # y el de ahora se guarda como "ultimo momio visto" (sirve para medir si le ganamos al cierre)
+            if p["momio"] != viejo["momio"]:
+                viejo["momio_cierre"] = p["momio"]
+                viejo["cierre_fuente"] = "ultima corrida antes del partido"
+            for k in ["nivel", "score"]:
+                if k in nuevo:
+                    viejo[k] = nuevo[k]
         # Si ya estaba en una edicion anterior, se queda el original
 
     lista.sort(key=lambda h: (h["fecha"], h["clave"]))
@@ -157,7 +164,40 @@ def aplicar_resultados(lista):
     return lista
 
 
+def aplicar_cierres(lista):
+    # Momios de cierre que se pegan a mano en resultados.py (CIERRE = {clave: momio})
+    try:
+        from resultados import CIERRE
+    except ImportError:
+        CIERRE = {}
+    for h in lista:
+        if h["clave"] in CIERRE:
+            h["momio_cierre"] = CIERRE[h["clave"]]
+            h["cierre_fuente"] = "manual"
+    return lista
+
+
+def clv(h):
+    # Le ganamos al cierre si nuestro momio paga mas que el de cierre.
+    # CLV = probabilidad del cierre - probabilidad de nuestro momio (en puntos %). Positivo = bien.
+    if h.get("momio_cierre") is None:
+        return None
+    return round(100 * (prob_implicita(h["momio_cierre"]) - prob_implicita(h["momio"])), 1)
+
+
+def resumen_clv(lista):
+    con = [h for h in lista if clv(h) is not None]
+    if not con:
+        return {"picks": 0, "a_favor": 0, "en_contra": 0, "promedio": None}
+    valores = [clv(h) for h in con]
+    return {"picks": len(con), "a_favor": len([v for v in valores if v > 0]),
+            "en_contra": len([v for v in valores if v < 0]), "promedio": round(sum(valores) / len(valores), 2)}
+
+
 def escribir_web(lista):
+    lista = aplicar_cierres(lista)
+    for h in lista:
+        h["clv"] = clv(h)
     calificados = [h for h in lista if h["resultado"] is not None]
     pendientes = [h for h in lista if h["resultado"] is None]
 
@@ -191,6 +231,7 @@ def escribir_web(lista):
         "por_grupo": por_grupo,
         "por_tipo": por_tipo,
         "por_nivel": por_nivel,
+        "clv": resumen_clv(lista),
         "calificados": recientes,
     }
     with open(SALIDA_WEB, "w", encoding="utf-8") as f:
@@ -207,6 +248,9 @@ def main():
     t = salida["total"]
     print("Record:", t["ganados"], "-", t["perdidos"], "-", t["empates"],
           "| acierto", t["acierto"], "% | unidades", t["unidades"], "| ROI", t["roi"], "%")
+    c = salida["clv"]
+    if c["picks"]:
+        print("Contra el cierre:", c["a_favor"], "a favor,", c["en_contra"], "en contra | CLV promedio", c["promedio"], "puntos")
 
     # Lista de pendientes cuyo partido ya empezo, para calificarlos
     ahora = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")

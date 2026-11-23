@@ -358,6 +358,18 @@ function bloqueHistorial(completo) {
       '<div class="barra"><div style="width:' + Math.max(4, (Math.abs(r.unidades) / maxAbs) * 100) + "%;background:" + (r.unidades >= 0 ? "var(--c)" : "var(--rojo)") + '"></div></div>' +
       '<span class="mono" style="font-size:13px;text-align:right">' + r.ganados + "-" + r.perdidos + " " + unidadesTexto(r.unidades) + "</span></div>";
   });
+  if (H.clv) {
+    var cl = H.clv;
+    html += '<h3 style="font-size:20px;margin-top:8px">Contra el cierre</h3>' +
+      '<p class="gris" style="font-size:14px">Si seguido conseguimos mejor momio que el que habia justo antes del partido, el modelo le esta ganando al mercado (aunque una semana salga mala).</p>';
+    if (cl.picks > 0) {
+      html += '<div style="display:flex;justify-content:space-between;font-size:14px"><span>' + cl.picks + " picks medidos</span>" +
+        '<span class="mono"><span class="verde">' + cl.a_favor + " a favor</span> - " + '<span class="rojo">' + cl.en_contra + " en contra</span> - CLV promedio " +
+        '<span class="' + (cl.promedio >= 0 ? "verde" : "rojo") + '">' + (cl.promedio > 0 ? "+" : "") + cl.promedio + " pts</span></span></div>";
+    } else {
+      html += '<p class="gris" style="font-size:14px">Empezamos a medirlo con los picks del 23 de noviembre.</p>';
+    }
+  }
   if (H.por_nivel) {
     html += '<h3 style="font-size:20px;margin-top:8px">Por nivel de confianza</h3>';
     Object.keys(H.por_nivel).forEach(function (n) {

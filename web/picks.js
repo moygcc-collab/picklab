@@ -1,5 +1,5 @@
 window.PICKS = {
- "actualizado": "2026-11-23 05:16",
+ "actualizado": "2026-11-23 05:26",
  "prueba": false,
  "manual": true,
  "api": false,
@@ -86,69 +86,20 @@ window.PICKS = {
   "prob_minima": 55,
   "ventaja_minima": 3,
   "calibracion": {
-   "factor": 1.0,
-   "picks": 27,
-   "esperado": 61.9,
-   "real": 37.0
+   "factor": 0.5,
+   "picks": 45,
+   "esperado": 61.5,
+   "real": 42.2
   }
  },
  "partidos_analizados": 52,
  "candidatos": 13,
  "descartados": [
-  "Joe Burrow Under 300.5 (41)",
-  "Ja'Marr Chase Under 93.5 (37)"
+  "Joe Burrow Under 300.5 (38)",
+  "Ja'Marr Chase Under 93.5 (36)"
  ],
  "picks": [],
- "escalera": [
-  {
-   "grupo": "NFL",
-   "jugador": "Joe Burrow",
-   "equipo": "Bengals",
-   "partido": "Bengals @ Commanders",
-   "fecha": "2026-11-24T01:15:00Z",
-   "mercado": "Yardas por pase",
-   "linea": 300.5,
-   "lado": "Under",
-   "momio": -114,
-   "casa": "FanDuel (over) / DraftKings (under)",
-   "prob_principal": 53.6,
-   "promedio": 310.6,
-   "pasos": [
-    {
-     "linea": 360.5,
-     "pick": "Joe Burrow Under 360.5",
-     "prob": 68.2,
-     "aciertos": 6,
-     "partidos": 9,
-     "momio_minimo": -188
-    }
-   ]
-  },
-  {
-   "grupo": "NFL",
-   "jugador": "Ja'Marr Chase",
-   "equipo": "Bengals",
-   "partido": "Bengals @ Commanders",
-   "fecha": "2026-11-24T01:15:00Z",
-   "mercado": "Yardas por recepcion",
-   "linea": 93.5,
-   "lado": "Under",
-   "momio": -114,
-   "casa": "FanDuel (over) / DraftKings (under)",
-   "prob_principal": 51.2,
-   "promedio": 97.6,
-   "pasos": [
-    {
-     "linea": 133.5,
-     "pick": "Ja'Marr Chase Under 133.5",
-     "prob": 67.7,
-     "aciertos": 6,
-     "partidos": 9,
-     "momio_minimo": -183
-    }
-   ]
-  }
- ],
+ "escalera": [],
  "parlay": {
   "ids": [],
   "momio": 0,
