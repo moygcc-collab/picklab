@@ -1,6 +1,6 @@
 # ============================================
 # EDICION DE PICKLAB
-# Edicion: lunes 23 de noviembre de 2026 (cubre lunes 23 a miercoles 25)
+# Edicion: martes 24 de noviembre de 2026 (NBA de hoy + Champions martes y miercoles)
 #
 # Aqui van los datos que se juntan a mano (estadisticas, contexto y, si la API
 # no los trae, momios). La decision de cada pick la toma motor.py.
@@ -17,8 +17,8 @@ import motor
 import api_picks
 import historial
 
-EDICION = "lunes 23 de noviembre"
-FECHA_EDICION = "2026-11-23"  # para el historial (AAAA-MM-DD)
+EDICION = "martes 24 de noviembre"
+FECHA_EDICION = "2026-11-24"  # para el historial (AAAA-MM-DD)
 
 sin_comision = motor.sin_comision
 
@@ -30,25 +30,29 @@ def texto_linea(punto):
 
 # ---------- NBA: props de esta noche ----------
 
-# Partidos NBA del lunes 23 nov (hora UTC del martes 24). Momios: Covers / RotoBaller (solo un lado publicado)
-# Valores y minutos: Land of Basketball (ultimos 10 jugados, del mas viejo al mas nuevo)
-MEM_CHA = ("nba_MEM_CHA", "Grizzlies @ Hornets", "2026-11-24T00:00:00Z")
-POR_PHI = ("nba_POR_PHI", "Trail Blazers @ 76ers", "2026-11-24T00:00:00Z")
-MIL_TOR = ("nba_MIL_TOR", "Bucks @ Raptors", "2026-11-24T00:30:00Z")
-BKN_MIN = ("nba_BKN_MIN", "Nets @ Timberwolves", "2026-11-24T00:30:00Z")
-PHX_NO = ("nba_PHX_NO", "Suns @ Pelicans", "2026-11-24T01:00:00Z")
-LAC_HOU = ("nba_LAC_HOU", "Clippers @ Rockets", "2026-11-24T01:30:00Z")
-COVERS = "Covers"
-RB = "RotoBaller"
+# Partidos NBA del martes 24 nov (hora UTC del miercoles 25). Momios: ScoresAndOdds (mejor precio de cada lado,
+# misma linea; puede ser de casas distintas). Valores y minutos: Land of Basketball (ultimos 10, del mas viejo al mas nuevo)
+DET_ORL = ("nba_DET_ORL", "Pistons @ Magic", "2026-11-25T00:00:00Z")
+BOS_WAS = ("nba_BOS_WAS", "Celtics @ Wizards", "2026-11-25T01:00:00Z")
+DAL_DEN = ("nba_DAL_DEN", "Mavericks @ Nuggets", "2026-11-25T03:00:00Z")
+SAO = "ScoresAndOdds"
 PROPS_NBA = [
-    ["Moussa Diabate", "Hornets", MEM_CHA, "Rebotes", 9.5, -130, None, "bet365", COVERS, [17, 9, 12, 8, 9, 6, 13, 12, 16, 15]],
-    ["Cedric Coward", "Grizzlies", MEM_CHA, "Triples", 2.5, 135, None, "bet365", COVERS, [4, 2, 1, 1, 0, 4, 2, 4, 5, 4]],
-    ["Cedric Coward", "Grizzlies", MEM_CHA, "Pts + Reb + Ast", 26.5, -115, None, "Fanatics", RB, [36, 19, 13, 30, 27, 39, 32, 28, 27, 32]],
-    ["Deni Avdija", "Trail Blazers", POR_PHI, "Puntos", 22.5, -120, None, "BetMGM", COVERS, [24, 28, 21, 22, 15, 24, 28, 34, 27, 20]],
-    ["Tyler Herro", "Bucks", MIL_TOR, "Puntos", 20.5, None, -110, "bet365", COVERS, [21, 25, 23, 13, 27, 18, 5, 8, 19, 50]],
-    ["Julius Randle", "Nets", BKN_MIN, "Puntos", 21.5, None, -118, "DraftKings", COVERS, [20, 21, 22, 19, 13, 17, 22, 33, 17, 27]],
-    ["Alperen Sengun", "Rockets", LAC_HOU, "Puntos", 21.5, None, -111, "DraftKings", COVERS, [26, 17, 15, 20, 19, 43, 19, 23, 7, 28]],
-    ["Jeremiah Fears", "Pelicans", PHX_NO, "Puntos", 17.5, 100, None, "Novig", RB, [24, 25, 11, 14, 18, 13, 19, 16, 22, 29]],
+    ["Anthony Davis", "Wizards", BOS_WAS, "Puntos", 21.5, -105, -112, "BetMGM (over) / bet365 (under)", SAO, [27, 26, 44, 21, 30, 14, 23, 25, 36, 22]],
+    ["Trae Young", "Wizards", BOS_WAS, "Puntos", 15.5, 104, -111, "FanDuel (over) / BetMGM (under)", SAO, [23, 4, 20, 15, 37, 0, 13, 11, 16, 11]],
+    ["Trae Young", "Wizards", BOS_WAS, "Asistencias", 7.5, -115, 103, "BetMGM (over) / DraftKings (under)", SAO, [10, 3, 7, 4, 14, 8, 12, 8, 5, 11]],
+    ["Jayson Tatum", "Celtics", BOS_WAS, "Rebotes", 7.5, -108, -102, "FanDuel (over) / DraftKings (under)", SAO, [4, 6, 8, 4, 6, 7, 6, 12, 8, 10]],
+    ["Jayson Tatum", "Celtics", BOS_WAS, "Asistencias", 6.5, 102, -114, "bet365 (over) / Caesars (under)", SAO, [7, 9, 9, 6, 4, 8, 6, 4, 3, 6]],
+    ["Derrick White", "Celtics", BOS_WAS, "Asistencias", 4.5, -114, 100, "FanDuel (over) / bet365 (under)", SAO, [3, 7, 5, 7, 3, 7, 2, 2, 8, 5]],
+    ["Desmond Bane", "Magic", DET_ORL, "Puntos", 17.5, -109, -112, "DraftKings (over) / bet365 (under)", SAO, [19, 20, 15, 15, 25, 21, 24, 15, 21, 17]],
+    ["Anthony Black", "Magic", DET_ORL, "Puntos", 14.5, -105, -112, "BetMGM (over) / bet365 (under)", SAO, [23, 10, 18, 26, 22, 5, 20, 15, 13, 14]],
+    ["Franz Wagner", "Magic", DET_ORL, "Rebotes", 6.5, 105, -115, "BetMGM (over) / bet365 (under)", SAO, [3, 8, 6, 7, 8, 9, 8, 8, 5, 8]],
+    ["Franz Wagner", "Magic", DET_ORL, "Asistencias", 6.5, -119, -100, "DraftKings (over) / FanDuel (under)", SAO, [6, 15, 11, 7, 1, 12, 9, 11, 7, 6]],
+    ["Ausar Thompson", "Pistons", DET_ORL, "Puntos", 10.5, -105, -108, "Fanatics (over) / FanDuel (under)", SAO, [14, 11, 7, 8, 17, 10, 14, 10, 13, 18]],
+    ["Cooper Flagg", "Mavericks", DAL_DEN, "Rebotes", 6.5, 110, -120, "Fanatics (over) / bet365 (under)", SAO, [10, 10, 5, 10, 7, 8, 3, 5, 6, 3]],
+    ["Cooper Flagg", "Mavericks", DAL_DEN, "Asistencias", 6.5, 105, -125, "DraftKings (over) / bet365 (under)", SAO, [5, 7, 12, 6, 3, 5, 4, 9, 8, 4]],
+    ["Kyrie Irving", "Mavericks", DAL_DEN, "Asistencias", 4.5, -125, 106, "bet365 (over) / FanDuel (under)", SAO, [9, 5, 2, 4, 4, 4, 5, 5, 4, 8]],
+    ["Nikola Jokic", "Nuggets", DAL_DEN, "Asistencias", 9.5, -115, 108, "BetMGM (over) / FanDuel (under)", SAO, [8, 11, 8, 9, 8, 10, 7, 9, 11, 11]],
+    ["Jamal Murray", "Nuggets", DAL_DEN, "Asistencias", 6.5, 106, -125, "DraftKings (over) / bet365 (under)", SAO, [6, 7, 8, 2, 8, 9, 4, 2, 7, 7]],
 ]
 
 
@@ -68,13 +72,18 @@ PROPS_NFL = [
 #   "min": minutos esperados (ej. 38 si sale un titular de su posicion), "factor": ajuste por rival/uso (1.05 = +5%),
 #   "texto": por que.   {"Jalen Brunson": {"min": 37, "factor": 1.05, "texto": "Sin Anunoby: mas tiros"}}
 MINUTOS = {
-    "Moussa Diabate": [35, 35, 31, 28, 24, 29, 32, 26, 38, 30],
-    "Cedric Coward": [33, 23, 28, 27, 30, 33, 27, 33, 25, 30],
-    "Deni Avdija": [30, 35, 35, 39, 24, 34, 35, 35, 30, 36],
-    "Tyler Herro": [31, 33, 35, 27, 35, 34, 20, 24, 31, 40],
-    "Julius Randle": [37, 36, 31, 34, 30, 29, 31, 34, 27, 39],
-    "Alperen Sengun": [38, 39, 32, 35, 37, 37, 28, 30, 14, 36],
-    "Jeremiah Fears": [36, 29, 29, 28, 34, 33, 29, 31, 38, 34],
+    "Anthony Davis": [34, 30, 34, 34, 44, 31, 35, 34, 34, 33],
+    "Trae Young": [37, 28, 38, 34, 45, 26, 33, 32, 35, 28],
+    "Jayson Tatum": [34, 32, 29, 29, 32, 38, 30, 36, 37, 38],
+    "Derrick White": [30, 36, 25, 27, 22, 38, 23, 32, 35, 32],
+    "Desmond Bane": [40, 36, 32, 36, 34, 35, 39, 38, 31, 33],
+    "Anthony Black": [33, 31, 38, 33, 39, 37, 33, 37, 37, 35],
+    "Franz Wagner": [38, 38, 40, 38, 39, 36, 38, 36, 36, 32],
+    "Ausar Thompson": [26, 34, 24, 28, 43, 18, 29, 34, 33, 38],
+    "Cooper Flagg": [40, 33, 28, 39, 27, 38, 27, 34, 36, 31],
+    "Kyrie Irving": [35, 36, 28, 29, 38, 27, 37, 29, 35, 27],
+    "Nikola Jokic": [36, 30, 36, 39, 37, 37, 38, 39, 38, 42],
+    "Jamal Murray": [39, 28, 34, 39, 32, 38, 35, 38, 36, 45],
 }
 PROYECCION = {
 }
@@ -110,7 +119,6 @@ NFL_EQUIPOS = {
 # Semana 12 (25-30 nov): ya hay spread y total (DraftKings via CBS), pero ninguna fuente publico el momio
 # de cada lado (spread ni over/under), asi que todavia no entran al motor.
 NFL_PARTIDOS = [
-    ("CIN", "WSH", 6.0, -113, -107, 54.5, -116, -103, "2026-11-24T01:15:00Z", False),
 ]
 
 
@@ -133,13 +141,6 @@ NHL_EQUIPOS = {
 # visitante, local, linea, over, under, hora UTC  (DraftKings via ESPN odds, 23 nov)
 # Martes 24 solo hay VGK @ EDM (sin casa confirmada) y los 14 del miercoles todavia no tienen linea
 NHL_PARTIDOS = [
-    ("CBJ", "NJ", 6.5, 110, -130, "2026-11-24T00:00:00Z"),
-    ("CGY", "OTT", 5.5, -125, 105, "2026-11-24T00:30:00Z"),
-    ("UTA", "WPG", 6.5, -110, -110, "2026-11-24T00:30:00Z"),
-    ("LA", "MTL", 6.5, 110, -130, "2026-11-24T00:30:00Z"),
-    ("TOR", "NYI", 6.5, -108, -112, "2026-11-24T00:30:00Z"),
-    ("ANA", "SEA", 6.5, -125, 105, "2026-11-24T02:40:00Z"),
-    ("MIN", "SJ", 6.5, 105, -125, "2026-11-24T03:00:00Z"),
 ]
 
 
@@ -217,8 +218,14 @@ ULTIMO_DUELO = {
 # Ultimo partido de cada jugador contra el rival de hoy (puede ser con otro equipo)
 # pts, reb, ast, tri (triples metidos), min (minutos)
 ULTIMO_DUELO_JUGADOR = {
-    "Tyler Herro": {"rival": "Raptors", "fecha": "2026-11-06", "pts": 23, "reb": 5, "ast": 10, "tri": 1, "min": 35,
-                    "fuente": "https://www.landofbasketball.com/nba_players_games/last_10/tyler_herro_all.htm"},
+    "Nikola Jokic": {"rival": "Mavericks", "fecha": "2026-03-25", "pts": 23, "reb": 21, "ast": 19, "tri": 1, "min": 38,
+                     "fuente": "https://www.statmuse.com/nba/ask/nikola-jokic-last-game-vs-mavericks"},
+    "Cooper Flagg": {"rival": "Nuggets", "fecha": "2026-03-25", "pts": 26, "reb": 8, "ast": 7, "tri": 1, "min": 36,
+                     "fuente": "https://www.statmuse.com/nba/ask/cooper-flagg-last-game-vs-nuggets"},
+    "Jayson Tatum": {"rival": "Wizards", "fecha": "2026-03-14", "pts": 20, "reb": 14, "ast": 7, "tri": 2, "min": 32,
+                     "fuente": "https://www.statmuse.com/nba/ask/jayson-tatum-last-game-vs-wizards"},
+    "Franz Wagner": {"rival": "Pistons", "fecha": "2026-04-27", "pts": 19, "reb": 5, "ast": 3, "tri": 1, "min": 24,
+                     "fuente": "https://www.statmuse.com/nba/ask/franz-wagner-last-game-vs-pistons"},
 }
 
 # Como se suma cada mercado de props con la linea del jugador
@@ -467,8 +474,6 @@ def picks_nhl():
 # Ligas de futbol con datos manuales: nombre -> (tabla de equipos, partidos, prefijo, clave de la API, casa)
 # Para agregar otra liga (LaLiga, Serie A, Liga MX...) copia el formato de EPL_EQUIPOS y EPL_PARTIDOS.
 FUTBOL_LIGAS = {
-    "Premier League": (EPL_EQUIPOS, EPL_PARTIDOS, "epl", "soccer_epl", "FOX Sports"),
-    "Serie A": (SERIEA_EQUIPOS, SERIEA_PARTIDOS, "seriea", "soccer_italy_serie_a", "FOX Sports"),
     "Champions League": (UCL_EQUIPOS, UCL_PARTIDOS, "ucl", "soccer_uefa_champs_league", "FOX Sports"),
 }
 
@@ -653,28 +658,23 @@ def main():
               ", ".join(str(p["linea"]) + " " + str(p["prob"]) + "% (" + str(p["aciertos"]) + "/" + str(p["partidos"]) + ", min " + str(p["momio_minimo"]) + ")" for p in e["pasos"]))
 
 
-NOTA = ("Edicion del " + EDICION + " (lunes a miercoles): Monday Night Football (Bengals @ Commanders, spread y total), "
-        "8 props NBA de hoy, 7 partidos NHL, Brentford-Everton, Monza-Fiorentina y los 18 partidos de la jornada 5 de "
-        "Champions (martes y miercoles). Las lineas NFL de la semana 12 ya salieron (spread y total) pero ninguna fuente "
-        "publico los momios de cada lado, asi que entran en la edicion del jueves. En los props NBA solo se encontro "
-        "un lado del momio: el motor usa la probabilidad con comision, que es mas conservadora. "
+NOTA = ("Edicion del " + EDICION + ": 16 props NBA de los 3 partidos de hoy (Pistons-Magic, Celtics-Wizards y "
+        "Mavericks-Nuggets), esta vez con momio de los dos lados, y los partidos de Champions del martes y miercoles. "
+        "Resultado del lunes: Burrow tiro 300 yardas (Under 300.5 gano). Las lineas NFL de la semana 12 entran el jueves. "
         "Solo se publica con 55% o mas, 3% o mas de ventaja y nivel A o B.")
 
 FUENTES = [
-    ["ESPN - Bengals @ Commanders (linea DraftKings y lesiones)", "https://www.espn.com/nfl/game/_/gameId/401873078"],
-    ["ESPN.in - tabla NFL (puntos a favor y en contra)", "https://www.espn.in/nfl/table/_/sort/pointsfor"],
-    ["CBS Sports - lineas NFL semana 12 (DraftKings)", "https://www.cbssports.com/nfl/news/nfl-week-12-early-odds-bills-over-chiefs-thanksgiving-steelers/"],
-    ["Covers - props NBA de hoy", "https://www.covers.com/sport/basketball/nba/player-props"],
-    ["RotoBaller - props NBA 23 nov", "https://www.rotoballer.com/todays-best-nba-player-prop-bets-11-23-26/2001450"],
-    ["Land of Basketball - partidos del 23 nov y ultimos 10", "https://www.landofbasketball.com/nba_daily_summary/20261123.htm"],
-    ["NBA.com - reporte de lesiones Pelicans vs Suns", "https://www.nba.com/pelicans/news/pelicans-vs-suns-injury-report-game-preview-11-23-2026"],
-    ["ESPN - totales NHL (DraftKings)", "https://www.espn.com/nhl/odds"],
-    ["ESPN - tabla NHL (goles a favor y en contra)", "https://www.espn.com/nhl/standings/_/view"],
+    ["Joe Burrow 300 yardas vs Commanders - RotoWire", "https://www.rotowire.com/football/headlines/joe-burrow-news-another-300-yard-effort-in-loss-649560"],
+    ["Bengals vs Commanders box score - FOX Sports", "https://www.foxsports.com/nfl/week-11-cincinnati-bengals-vs-washington-commanders-nov-23-2026-game-boxscore-11283?tab=boxscore"],
+    ["ScoresAndOdds - props NBA de hoy", "https://www.scoresandodds.com/nba/props"],
+    ["Covers - props NBA", "https://www.covers.com/sport/basketball/nba/player-props"],
+    ["CBS Sports - calendario NBA 24 nov", "https://www.cbssports.com/nba/schedule/20261124/"],
+    ["Land of Basketball - ultimos 10 partidos", "https://www.landofbasketball.com/nba_daily_summary/20261124.htm"],
+    ["Rotowire - alineaciones y lesiones NBA", "https://www.rotowire.com/basketball/nba-lineups.php"],
+    ["StatMuse - ultimo partido contra el rival", "https://www.statmuse.com/nba"],
     ["FOX Sports - calendario y momios Champions League", "https://www.foxsports.com/soccer/champions-league/schedule"],
     ["CBS Sports - momios Champions League", "https://www.cbssports.com/soccer/champions-league/odds/"],
     ["Soccernews - tabla fase de liga Champions", "https://www.soccernews.com/soccer-stats/europe-uefa-champions-league/league-table/"],
-    ["FOX Sports - momios y tabla Premier League", "https://www.foxsports.com/soccer/premier-league/standings"],
-    ["FOX Sports - momios y tabla Serie A", "https://www.foxsports.com/soccer/serie-a/standings"],
 ]
 
 

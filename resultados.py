@@ -63,6 +63,8 @@ RESULTADOS = {
     "2026-11-22 | Raiders @ Broncos | Over 40.5": "G",                         # Broncos 38 - 24
     "2026-11-22 | Raiders @ Broncos | Raiders +10": "P",                       # perdieron por 14
     "2026-11-23 | Vikings @ 49ers (Estadio Banorte, CDMX) | Justin Jefferson Under 82.5": "P",  # 86 yardas
+    # Monday Night Football, lunes 23 nov (RotoWire y FOX Sports box score): Commanders 22 - 20 Bengals
+    "2026-11-24 | Bengals @ Commanders | Joe Burrow Under 300.5": "G",          # 300 yardas
 }
 
 # ============================================

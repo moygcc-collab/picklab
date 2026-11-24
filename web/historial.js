@@ -1,15 +1,15 @@
 window.HISTORIAL = {
- "actualizado": "2026-11-23 06:53",
+ "actualizado": "2026-11-24 11:35",
  "total": {
-  "ganados": 19,
+  "ganados": 20,
   "perdidos": 26,
   "empates": 1,
-  "acierto": 42.2,
-  "unidades": -6.24,
-  "roi": -14.7,
-  "prob_promedio": 61.5
+  "acierto": 43.5,
+  "unidades": -5.8,
+  "roi": -13.5,
+  "prob_promedio": 61.4
  },
- "pendientes": 1,
+ "pendientes": 0,
  "publicados": 47,
  "serie": [
   {
@@ -195,6 +195,10 @@ window.HISTORIAL = {
   {
    "fecha": "2026-11-23",
    "u": -6.24
+  },
+  {
+   "fecha": "2026-11-24",
+   "u": -5.8
   }
  ],
  "por_grupo": {
@@ -217,24 +221,24 @@ window.HISTORIAL = {
    "prob_promedio": 63.3
   },
   "NFL": {
-   "ganados": 5,
+   "ganados": 6,
    "perdidos": 10,
    "empates": 0,
-   "acierto": 33.3,
-   "unidades": -4.0,
-   "roi": -38.1,
-   "prob_promedio": 58.7
+   "acierto": 37.5,
+   "unidades": -3.56,
+   "roi": -32.4,
+   "prob_promedio": 58.6
   }
  },
  "por_tipo": {
   "Props": {
-   "ganados": 12,
+   "ganados": 13,
    "perdidos": 18,
    "empates": 1,
-   "acierto": 40.0,
-   "unidades": -6.82,
-   "roi": -20.7,
-   "prob_promedio": 63.2
+   "acierto": 41.9,
+   "unidades": -6.38,
+   "roi": -19.1,
+   "prob_promedio": 63.0
   },
   "Spreads": {
    "ganados": 2,
@@ -275,13 +279,13 @@ window.HISTORIAL = {
    "prob_promedio": 64.6
   },
   "B": {
-   "ganados": 6,
+   "ganados": 7,
    "perdidos": 9,
    "empates": 1,
-   "acierto": 40.0,
-   "unidades": -3.56,
-   "roi": -24.5,
-   "prob_promedio": 61.1
+   "acierto": 43.8,
+   "unidades": -3.12,
+   "roi": -20.8,
+   "prob_promedio": 60.9
   }
  },
  "clv": {
@@ -301,6 +305,26 @@ window.HISTORIAL = {
   }
  ],
  "calificados": [
+  {
+   "clave": "2026-11-24 | Bengals @ Commanders | Joe Burrow Under 300.5",
+   "edicion": "2026-11-19",
+   "fecha": "2026-11-24T01:15:00Z",
+   "grupo": "NFL",
+   "liga": "NFL",
+   "tipo": "Props",
+   "partido": "Bengals @ Commanders",
+   "pick": "Joe Burrow Under 300.5",
+   "momio": -114,
+   "unidades": 0.5,
+   "prob": 57.4,
+   "ventaja": 4.1,
+   "resultado": "G",
+   "nivel": "B",
+   "score": 56,
+   "lado": "Under",
+   "clv": null,
+   "neto": 0.44
+  },
   {
    "clave": "2026-11-23 | Vikings @ 49ers (Estadio Banorte, CDMX) | Justin Jefferson Under 82.5",
    "edicion": "2026-11-19",

@@ -1,6 +1,6 @@
 {
- "actualizado": "2026-11-23 05:38",
- "picks": 45,
+ "actualizado": "2026-11-24 11:35",
+ "picks": 46,
  "segmentos": {
   "NBA|Props": 0.77,
   "NBA|Props|Over": 0.83,
@@ -47,10 +47,10 @@
    "factor": 1.0
   },
   "NFL|Props": {
-   "picks": 4,
-   "record": "1-3",
-   "esperado": 62.3,
-   "real": 25.0,
+   "picks": 5,
+   "record": "2-3",
+   "esperado": 61.3,
+   "real": 40.0,
    "factor": 1.0
   },
   "NFL|Props|Over": {
@@ -61,10 +61,10 @@
    "factor": 1.0
   },
   "NFL|Props|Under": {
-   "picks": 1,
-   "record": "0-1",
-   "esperado": 64.4,
-   "real": 0.0,
+   "picks": 2,
+   "record": "1-1",
+   "esperado": 60.9,
+   "real": 50.0,
    "factor": 1.0
   },
   "NFL|Spreads": {
@@ -103,10 +103,10 @@
    "factor": 1.0
   },
   "Props": {
-   "picks": 30,
-   "record": "12-18",
-   "esperado": 63.2,
-   "real": 40.0,
+   "picks": 31,
+   "record": "13-18",
+   "esperado": 63.0,
+   "real": 41.9,
    "factor": 0.75
   },
   "Spreads": {
