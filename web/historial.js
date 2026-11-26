@@ -1,5 +1,5 @@
 window.HISTORIAL = {
- "actualizado": "2026-11-24 11:35",
+ "actualizado": "2026-11-26 09:52",
  "total": {
   "ganados": 20,
   "perdidos": 26,
